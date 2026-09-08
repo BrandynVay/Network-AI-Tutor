@@ -13,8 +13,8 @@ Track the current phase here and keep it updated as milestones complete.
 
 - [x] CLAUDE.md initialized
 - [x] SCHEDULE/ scaffolded with Day 01-Day 90 folders
-- [ ] Student interview completed
-- [ ] 20-question diagnostic quiz administered
+- [x] Student interview completed (see SCHEDULE/STUDENT_PROFILE.md)
+- [x] 20-question diagnostic quiz administered — awaiting answers
 - [ ] Follow-up diagnostic rounds completed (if needed) — confidence in domain-level assessment reached
 - [ ] SCHEDULE/OUTLINE.md written (90-day plan mapped to objectives, weighted to weak areas)
 - [ ] Day 01 session file written
