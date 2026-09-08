@@ -27,7 +27,10 @@ every session. Append to it at the end of every day (see CLAUDE.md).
 
 ## Diagnostic quiz (round 1)
 
-- Status: **20-question quiz administered 2026-09-08, awaiting answers.**
+- Status: **20-question quiz administered 2026-09-08.** Student opted to
+  answer via the companion app instead of in chat — see
+  `diagnostic/round1` in the app's database (CLAUDE.md § Companion app)
+  rather than chat transcript for their raw answers.
 - Covers 4 questions per domain (Concepts, Implementation, Operations,
   Security, Troubleshooting), mixed difficulty (easy → applied/scenario).
 - Results and domain-confidence assessment to be logged here once answers

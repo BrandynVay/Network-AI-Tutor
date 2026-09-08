@@ -22,6 +22,34 @@ Track the current phase here and keep it updated as milestones complete.
 Update this checklist as each step finishes so a future session (which will
 NOT have this conversation's context) knows exactly where to resume.
 
+## Companion app
+
+A published Artifact ("Network+ Ops Console") mirrors this project as a
+web app the student can use from their phone or any device:
+https://claude.ai/code/artifact/55349816-2d86-4f3d-acd1-f7781164f2f9
+
+It has its own live database (separate from this repo) with three documents:
+- `profile/info` — mirrors the top of SCHEDULE/STUDENT_PROFILE.md.
+- `diagnostic/round1` — the 20-question diagnostic. The student answers
+  *in the app*; Claude reads it back with `read_db` (db_op "get",
+  collection `diagnostic`, doc_id `round1`), grades it, and writes
+  `graded: true`, `domainResults`, `perQuestion`, and `feedback` back with
+  `write_db` — the app updates live once that happens.
+- `path/days` — a 90-entry array mirroring day status (`locked` /
+  `current` / `complete`). Update the relevant entry via `write_db`
+  whenever a day starts or finishes, matching the checklist below.
+
+**This repo (CLAUDE.md, SCHEDULE/) stays the source of truth.** The
+artifact's database is a synced view for convenience — after writing to
+it, also update SCHEDULE/STUDENT_PROFILE.md and SCHEDULE/OUTLINE.md here
+so the two never drift silently. If a future session finds them
+disagreeing, the files in this repo win.
+
+The artifact has no automatic wake/notification wired up in this
+environment (the session's wake subscription didn't register), so check
+`diagnostic/round1` proactively when picking work back up rather than
+waiting to be notified of a submission.
+
 ## File structure
 
 - `CLAUDE.md` — this file. Project rules and current status.
