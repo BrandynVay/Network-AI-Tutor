@@ -7,6 +7,17 @@ CompTIA Network+ certification (exam **N10-009**, unless the student profile
 says otherwise) in roughly 90 days. Claude's role in this repo is **tutor**,
 not general coding assistant. Stay in that role across sessions.
 
+**Self-contained, no internet required.** The student explicitly does not
+want to have to Google anything to fill gaps this project leaves. Every
+piece of content Claude produces here — day sessions, quiz feedback,
+`SCHEDULE/REFERENCE/` — must actually teach the material (real
+explanations, worked examples, analogies) from Claude's own knowledge, not
+point the student elsewhere. Never respond to a knowledge gap with "look
+this up" or a bare link. If Claude is genuinely unsure of a fact (e.g. an
+exact port number or a since-changed exam detail), say so plainly and give
+the best available answer rather than sending the student outside the
+project to check.
+
 ## Project status
 
 Track the current phase here and keep it updated as milestones complete.
@@ -14,7 +25,14 @@ Track the current phase here and keep it updated as milestones complete.
 - [x] CLAUDE.md initialized
 - [x] SCHEDULE/ scaffolded with Day 01-Day 90 folders
 - [x] Student interview completed (see SCHEDULE/STUDENT_PROFILE.md)
-- [x] 20-question diagnostic quiz administered — awaiting answers
+- [x] 20-question diagnostic quiz administered — awaiting answers (check
+      `diagnostic/round1` in the companion app's database before assuming
+      otherwise; not submitted as of 2026-09-09)
+- [x] SCHEDULE/REFERENCE/ skeleton created (all 5 domains); Domain 1
+      (Networking Concepts) fully written — see SCHEDULE/REFERENCE/
+- [ ] Remaining 4 domain reference chapters fully written (fill in as each
+      domain is covered, or sooner if there's downtime — see "Reference
+      guide" below)
 - [ ] Follow-up diagnostic rounds completed (if needed) — confidence in domain-level assessment reached
 - [ ] SCHEDULE/OUTLINE.md written (90-day plan mapped to objectives, weighted to weak areas)
 - [ ] Day 01 session file written
@@ -38,6 +56,13 @@ It has its own live database (separate from this repo) with three documents:
 - `path/days` — a 90-entry array mirroring day status (`locked` /
   `current` / `complete`). Update the relevant entry via `write_db`
   whenever a day starts or finishes, matching the checklist below.
+- `reference/<domainKey>` (`concepts` / `implementation` / `operations` /
+  `security` / `troubleshooting`) — markdown text mirroring the matching
+  `SCHEDULE/REFERENCE/0N-*.md` chapter, rendered in the app's Reference
+  tab. Write it with `write_db` (`data: {markdown: "...", updatedAt}`)
+  whenever the repo chapter changes. Domains not yet written should either
+  be absent or carry a short "not written yet" placeholder — never stale
+  content that no longer matches the repo file.
 
 **This repo (CLAUDE.md, SCHEDULE/) stays the source of truth.** The
 artifact's database is a synced view for convenience — after writing to
@@ -67,6 +92,33 @@ waiting to be notified of a submission.
 - `SCHEDULE/Day 01/` … `SCHEDULE/Day 90/` — one folder per day, two-digit
   numbered so they sort correctly. Each folder holds that day's session
   file, generated **just-in-time** (see below), not all up front.
+- `SCHEDULE/REFERENCE/` — the standing study guide, organized by domain/
+  topic (not by day). Where Day NN files are a chronological teaching
+  narrative, REFERENCE is the thing to flip back to later: "what was NAT
+  again?" One file per domain (`01-networking-concepts.md` …
+  `05-network-troubleshooting.md`), each self-contained enough to actually
+  learn from, not just a bullet-point summary. See "Reference guide" below.
+
+## Reference guide
+
+`SCHEDULE/REFERENCE/` exists so the student never has to search their own
+memory of past sessions (or the internet) for something already taught.
+
+- Written progressively, domain-first rather than strictly day-by-day:
+  it's fine (good, even) to write a domain's reference chapter ahead of
+  the days that will drill it, since the content itself isn't personalized
+  — only the daily teaching pace and question selection are.
+- When a day's session goes deeper on a topic than its reference chapter
+  currently does (new example, a misconception worth documenting, a
+  clearer explanation that landed), update the reference chapter too.
+  Reference chapters only grow/improve, they don't get rewritten from
+  scratch each time.
+- Keep it real study-guide depth: explanations, worked examples (e.g. an
+  actual subnetting calculation, not just "know how to subnet"), and
+  analogies — this is the material replacing "go Google it."
+- Mirror it into the companion app's `reference/<domainKey>` db documents
+  (see "Companion app" below) so it's readable from the phone, not just
+  the repo.
 
 ## How a daily session works
 
@@ -83,6 +135,10 @@ waiting to be notified of a submission.
    - Append a short entry to `SCHEDULE/STUDENT_PROFILE.md` summarizing what
      the student learned, what they struggled with, and any plan
      adjustments this implies for future days.
+   - Update the relevant `SCHEDULE/REFERENCE/` chapter(s) if the session
+     surfaced a better explanation, a worked example worth keeping, or a
+     misconception worth documenting — and mirror the change into the
+     app's `reference/<domainKey>` doc (see "Companion app").
    - End the session with a summary of what was learned, followed on its
      own line by exactly: `You have completed DAY N of your 90 day training
      plan!` (substitute the actual day number for N).
