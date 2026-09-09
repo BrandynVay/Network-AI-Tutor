@@ -1,7 +1,27 @@
-# Student Profile
+# Student Profile — Network+ track
 
-Durable record of what's known about the student. Read this at the start of
-every session. Append to it at the end of every day (see CLAUDE.md).
+Durable record of what's known about the student for this track. Read
+this at the start of every session. Append to it at the end of every day
+(see the root `CLAUDE.md`, which holds cross-track methodology only —
+this file holds this track's own facts and history).
+
+## Exam facts
+
+Track-specific facts referenced by `CLAUDE.md` § Exam readiness — kept
+here, not in `CLAUDE.md`, so a future track (Security+, CCNA) doesn't
+inherit stale Network+ numbers.
+
+- **Exam code:** N10-009 (CompTIA Network+, current as of this project's
+  setup — see "Version currency check" in `CLAUDE.md`).
+- **Format:** 90 questions, 90 minutes, multiple-choice plus
+  performance-based questions (PBQs).
+- **Passing score:** 720 on a 100–900 scale.
+- **Domains and blueprint weighting:**
+  1. Networking Concepts — 23%
+  2. Networking Implementation — 20%
+  3. Networking Operations — 19%
+  4. Network Security — 14%
+  5. Network Troubleshooting — 24%
 
 ## Interview (2026-09-08)
 
@@ -36,8 +56,9 @@ every session. Append to it at the end of every day (see CLAUDE.md).
 
 - Status: **20-question quiz administered 2026-09-08.** Student opted to
   answer via the companion app instead of in chat — see
-  `diagnostic/round1` in the app's database (CLAUDE.md § Companion app)
-  rather than chat transcript for their raw answers.
+  `tracks/network-plus/diagnostic/round1` in the app's database
+  (root `CLAUDE.md` § Companion app) rather than chat transcript for
+  their raw answers.
 - Covers 4 questions per domain (Concepts, Implementation, Operations,
   Security, Troubleshooting), mixed difficulty (easy → applied/scenario).
 - Results and domain-confidence assessment to be logged here once answers
@@ -47,25 +68,26 @@ every session. Append to it at the end of every day (see CLAUDE.md).
 
 ## Exam logistics
 
-- **Booked:** No. (Prompt the student to book once the day-60 practice
-  exam is logged — see CLAUDE.md § Exam readiness.)
+- **Booked:** No. (Prompt the student to book once the ⅔-mark practice
+  exam — roughly day 60 on this 90-day track — is logged. See root
+  `CLAUDE.md` § Exam readiness.)
 - **Exam date:** Not set.
 
 ## Practice exam results
 
 (Empty — log each full-length practice exam here as it happens: date,
 day number, overall score /900, per-domain breakdown, and any plan
-adjustment it triggered. Scheduled for roughly day 30, day 60, day 80 —
-see CLAUDE.md § Exam readiness.)
+adjustment it triggered. Scheduled for roughly day 30, day 60, day 80 on
+this 90-day track — see root `CLAUDE.md` § Exam readiness.)
 
 ## Mastery gate log
 
 (Empty — log any domain that fails the ≥80% mastery gate here: which
 domain, which day, what remediation was inserted, and the recheck
-outcome. See CLAUDE.md § Exam readiness.)
+outcome. See root `CLAUDE.md` § Exam readiness.)
 
 ## Daily session log
 
 (Empty — populate with a dated entry after each completed day's session:
 what was covered, what the student struggled with, what clicked, and any
-resulting adjustment to SCHEDULE/OUTLINE.md.)
+resulting adjustment to `OUTLINE.md`.)
