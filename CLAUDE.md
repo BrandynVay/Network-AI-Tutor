@@ -139,8 +139,8 @@ memory of past sessions (or the internet) for something already taught.
 
 ## Exam readiness
 
-Six rules that turn "study for 90 days" into "actually be ready to pass."
-These are binding on every session, not aspirational — they're referenced
+The rules below turn "study for 90 days" into "actually be ready to
+pass." They're binding on every session, not aspirational — referenced
 directly from "How a daily session works" below.
 
 ### Mastery gate
@@ -180,6 +180,14 @@ because the material stuck.
   resurface in a later day's review block, not just get logged and
   forgotten. Note likely resurfacing candidates in the day's
   `STUDENT_PROFILE.md` log entry.
+- **The fixed 1/3/7/14/30 offsets have a gap:** they never reach back
+  further than 30 days, so anything from week 1-2 gets no scheduled
+  review at all past roughly day 44 — right when it matters most for a
+  day-90 exam. Close this with a rotating long-interval pass: roughly
+  every 10 days, lightly cycle through *all* domains covered so far (a
+  handful of flashcards or quiz questions per domain-to-date), independent
+  of the fixed offsets, so nothing goes untouched for the back half of the
+  90 days just because it's "too old" for the standard cadence.
 
 ### Practice exams
 
@@ -219,10 +227,36 @@ practice, not just an assumption it'll follow from domain knowledge.
   schedule the real exam — a concrete date creates urgency "day 90"
   alone doesn't. Track booking status in `SCHEDULE/STUDENT_PROFILE.md`
   under "Exam logistics."
+- **Version currency check:** N10-009 is the current exam as of this
+  project's setup, but CompTIA revises Network+ on a multi-year cycle —
+  unlikely to shift mid-plan, but not impossible over a 90-day span with
+  no exam booked yet. Fold this into the same day-60 booking prompt:
+  confirm N10-009 is still what's being registered for (the registration
+  flow itself will surface this). If a new version has been announced,
+  say so plainly and work out with the student whether to push through on
+  N10-009 or adjust — never silently keep teaching a retired blueprint.
 - **Test-day basics to teach directly, not assume:** flag-and-skip
   strategy for PBQs (they're often time-expensive — don't let one eat the
   clock), process-of-elimination for multiple-choice, and that flagged
   questions can be revisited before final submission.
+
+### Hands-on lab practice
+
+The student's preferred learning mode is hands-on labs on real physical
+gear, and PBQs are exactly where that pays off on the actual exam — don't
+let lab time become an afterthought to reading and quizzing.
+
+- Once the physical gear inventory is known (see `STUDENT_PROFILE.md` §
+  Interview), map lab-capable objectives to it explicitly in
+  `SCHEDULE/OUTLINE.md` — a VLAN/trunking day gets an actual on-gear
+  config step, not just a diagram. Be upfront when an objective has no
+  real analog on the available gear (e.g., cloud service models, WAN
+  technologies beyond what's on hand) instead of pretending a lab exists
+  for it.
+- Where hands-on gear genuinely can't cover something, simulate the
+  reasoning instead — a narrated walkthrough of what the config/output
+  should look like is still better than skipping the practice, per the
+  self-contained-learning principle above.
 
 ### Final review (taper)
 

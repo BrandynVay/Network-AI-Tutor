@@ -12,10 +12,17 @@ every session. Append to it at the end of every day (see CLAUDE.md).
 - **Time budget:** ~1 hour/day, 5-6 days/week.
 - **Preferred learning mode:** Hands-on labs/simulations — favor
   configuration exercises over passive reading.
-- **Lab access:** Physical home lab gear (real routers/switches/APs on
-  hand). Design labs assuming physical equipment, not just Packet
-  Tracer/GNS3 — ask about specific gear (models, quantity) if a lab plan
-  needs to know.
+- **Lab access:** Physical home lab gear, confirmed 2026-09-09 — has
+  **managed switch(es)** (VLAN/trunking/port-config capable, not just
+  unmanaged), **a router or firewall appliance** (standalone router or a
+  router/firewall combo), and **wireless AP(s)** separate from an
+  all-in-one home router (supports SSID/channel/roaming labs). This is a
+  solid, lab-capable set — design real on-gear exercises for switching,
+  routing/firewall, and wireless objectives (see CLAUDE.md § Hands-on lab
+  practice) rather than defaulting to Packet Tracer/GNS3 or diagrams-only.
+  Exact models/quantities not yet known — ask when a specific lab step
+  needs to know (e.g., port count, whether the router supports a specific
+  feature being taught).
 - **90-day start date:** Day 01 = 2026-09-09 (tomorrow). Target exam window
   around Day 90 ≈ 2026-12-07. No exam date booked yet — revisit scheduling
   the real exam as the plan nears completion.
