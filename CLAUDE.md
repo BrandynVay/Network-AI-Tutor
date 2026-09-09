@@ -63,6 +63,15 @@ It has its own live database (separate from this repo) with three documents:
   whenever the repo chapter changes. Domains not yet written should either
   be absent or carry a short "not written yet" placeholder — never stale
   content that no longer matches the repo file.
+- `flashcards/progress` — `{cardStats: {<cardId>: {seen, correctStreak,
+  lastResult, lastSeenAt}}}`, written by the app itself (viewer taps
+  "Got it"/"Missed it"), not by Claude. The card deck (front/back text) is
+  static JS in the artifact, currently ~66 cards covering only the
+  Networking Concepts chapter. **When a new `SCHEDULE/REFERENCE/` chapter
+  gets fully written, add a matching batch of flashcards to the deck in
+  the same pass** — pull them straight from that chapter's content so
+  cards and reference stay consistent, same as the diagnostic quiz
+  questions do.
 
 **This repo (CLAUDE.md, SCHEDULE/) stays the source of truth.** The
 artifact's database is a synced view for convenience — after writing to
