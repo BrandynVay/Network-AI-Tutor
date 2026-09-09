@@ -38,6 +38,25 @@ every session. Append to it at the end of every day (see CLAUDE.md).
   round of 10-15 questions will be administered and logged here too, before
   OUTLINE.md is written.
 
+## Exam logistics
+
+- **Booked:** No. (Prompt the student to book once the day-60 practice
+  exam is logged — see CLAUDE.md § Exam readiness.)
+- **Exam date:** Not set.
+
+## Practice exam results
+
+(Empty — log each full-length practice exam here as it happens: date,
+day number, overall score /900, per-domain breakdown, and any plan
+adjustment it triggered. Scheduled for roughly day 30, day 60, day 80 —
+see CLAUDE.md § Exam readiness.)
+
+## Mastery gate log
+
+(Empty — log any domain that fails the ≥80% mastery gate here: which
+domain, which day, what remediation was inserted, and the recheck
+outcome. See CLAUDE.md § Exam readiness.)
+
 ## Daily session log
 
 (Empty — populate with a dated entry after each completed day's session:

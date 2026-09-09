@@ -94,9 +94,11 @@ waiting to be notified of a submission.
 
 - `CLAUDE.md` — this file. Project rules and current status.
 - `SCHEDULE/OUTLINE.md` — the 90-day plan: which Network+ domain/objective(s)
-  each day covers, weighted toward the student's weak areas. Written once,
-  after the diagnostic phase, then treated as the source of truth for what
-  each day *should* cover — but see "Adapting the plan" below.
+  each day covers, weighted toward the student's weak areas, each day's
+  `review:` note (see "Spaced repetition"), the practice exam days
+  (~day 30/60/80) and the final taper block (see "Exam readiness"). Written
+  once, after the diagnostic phase, then treated as the source of truth
+  for what each day *should* cover — but see "Adapting the plan" below.
 - `SCHEDULE/STUDENT_PROFILE.md` — durable record of what we know about the
   student: interview answers, diagnostic quiz results, per-domain
   confidence/weakness ratings, and a running log of notes from each
@@ -135,35 +137,172 @@ memory of past sessions (or the internet) for something already taught.
   (see "Companion app" below) so it's readable from the phone, not just
   the repo.
 
+## Exam readiness
+
+Six rules that turn "study for 90 days" into "actually be ready to pass."
+These are binding on every session, not aspirational — they're referenced
+directly from "How a daily session works" below.
+
+### Mastery gate
+
+Don't advance the schedule just because a day happened — advance it
+because the material stuck.
+
+- Before moving on to *new* content in a domain, the student needs
+  **≥80% accuracy** on that domain's quiz/flashcard questions attempted so
+  far (or, lacking enough attempts yet, a clear qualitative read from the
+  session that they've actually got it — don't wait on a stat that
+  doesn't exist yet).
+- If a day's check-in falls short of that bar, the next day does **not**
+  proceed to new outline material — insert a remediation day instead
+  (re-teach the specific gap, more targeted practice, recheck), and log
+  this as a plan deviation in `SCHEDULE/STUDENT_PROFILE.md` per "Adapting
+  the plan" below.
+- Applies per-domain, not globally — strength in Security doesn't excuse
+  skipping the gate on Concepts.
+- Record gate outcomes (pass/hold, and why) in that day's
+  `STUDENT_PROFILE.md` log entry.
+
+### Spaced repetition
+
+"Mix in review" isn't optional flavor — bake it into the day structure.
+
+- When writing `SCHEDULE/OUTLINE.md`, each day (beyond roughly the first
+  two weeks) gets a `review:` note alongside its new-material objective,
+  naming which earlier days' material to re-touch — roughly a
+  1 / 3 / 7 / 14 / 30-day-later cadence (day N reviews N-1, N-3, N-7,
+  N-14, and N-30, where those exist).
+- In practice: part of most sessions (a handful of flashcards, a couple
+  of quiz questions, a quick verbal check) is deliberately pulled from
+  older material, not just the day's new topic.
+- Missed-question tracking: when the student gets something wrong
+  (diagnostic, quiz, flashcard, or mid-session), that specific gap should
+  resurface in a later day's review block, not just get logged and
+  forgotten. Note likely resurfacing candidates in the day's
+  `STUDENT_PROFILE.md` log entry.
+
+### Practice exams
+
+Small quizzes test recall of a topic; full-length exams test whether the
+student can actually *pass* — a different skill that needs direct
+practice, not just an assumption it'll follow from domain knowledge.
+
+- Reserve dedicated full-length practice exam days in
+  `SCHEDULE/OUTLINE.md` at roughly **day 30, day 60, and day 80**
+  (shift if the plan compresses — see "Falling behind" — but never drop
+  the last one before test day).
+- Format: 90 questions, timed to 90 minutes, domain mix matching the real
+  exam blueprint weighting (Concepts 23%, Implementation 20%, Operations
+  19%, Security 14%, Troubleshooting 24%) — not just whatever's freshest
+  in memory.
+- After each practice exam, log the score and a per-domain breakdown in
+  `SCHEDULE/STUDENT_PROFILE.md` under "Practice exam results," and treat
+  a weak domain surfaced here the same as a diagnostic finding — adjust
+  upcoming days per "Adapting the plan."
+- Readiness signal: consistently scoring meaningfully above the real
+  passing cutoff (see "Exam logistics") across practice exams, not just
+  clearing it once.
+
+### Exam logistics
+
+- **Format:** 90 questions, 90 minutes, multiple-choice plus
+  performance-based questions (PBQs — hands-on simulation tasks, e.g.
+  configuring a subnet or reading a topology diagram). PBQs are exactly
+  where the student's stated hands-on/lab learning preference matters
+  most — don't let prep skew toward multiple-choice drilling only.
+- **Passing score:** 720 on a 100–900 scale (CompTIA's official N10-009
+  cutoff). If this ever seems to have changed, say so plainly rather than
+  asserting a stale number as current — per the self-contained-learning
+  principle above.
+- **Booking the exam:** no exam date was booked as of the interview. Once
+  the day-60 practice exam is logged, prompt the student to actually
+  schedule the real exam — a concrete date creates urgency "day 90"
+  alone doesn't. Track booking status in `SCHEDULE/STUDENT_PROFILE.md`
+  under "Exam logistics."
+- **Test-day basics to teach directly, not assume:** flag-and-skip
+  strategy for PBQs (they're often time-expensive — don't let one eat the
+  clock), process-of-elimination for multiple-choice, and that flagged
+  questions can be revisited before final submission.
+
+### Final review (taper)
+
+The last stretch before a real exam is for consolidation, not cramming.
+
+- The final ~5-7 days of the outline (adjust once a real exam date is
+  booked) are marked review-only in `SCHEDULE/OUTLINE.md` — no new
+  material, regardless of how the rest of the plan went. Content that
+  didn't get covered by then is a "Falling behind" problem to resolve
+  earlier, not something to cram into the taper.
+- Structure it as: broad review across all 5 domains weighted by the
+  student's actual weak spots (from practice exam results) → a final
+  practice exam a few days out, not exam-eve → deliberately light,
+  low-stress days right before the real test.
+
+### Falling behind
+
+90 *days* in this project means 90 session units, not 90 calendar days —
+the student is on a ~5-6 day/week cadence, so calendar slip is expected
+and not itself a problem. Handle it explicitly rather than pretending the
+schedule is fixed:
+
+- Day numbering tracks session count, not calendar date. Missing a day
+  just means resuming at the next unfinished `Day NN` next time — don't
+  renumber or skip ahead.
+- If a real exam date is booked and the actual session pace means the
+  outline won't finish in time, address it explicitly instead of silently
+  cramming or silently letting the date slide:
+  1. First choice: compress by cutting lowest-priority remaining content
+     (pure-review days on the student's *strongest* domains first — never
+     cut the taper or the remaining practice exams).
+  2. If compression alone won't close the gap, say so plainly and let the
+     student choose: push the exam date back, or accept a thinner pass on
+     the strongest domain(s).
+- Whichever path is taken, log the decision and reasoning in
+  `SCHEDULE/STUDENT_PROFILE.md` — this is a plan deviation per "Adapting
+  the plan," not a silent renumbering.
+
 ## How a daily session works
 
 1. At the **start** of a day's session, read `SCHEDULE/OUTLINE.md` and
    `SCHEDULE/STUDENT_PROFILE.md`, then generate that day's session file
    inside `SCHEDULE/Day NN/` from (a) what the outline says Day NN should
-   cover and (b) anything learned about the student since the outline was
-   written (e.g. Day 07 revealed subnetting is still shaky, so Day 12 gets
-   adjusted even though the outline originally had it as review-only).
+   cover, including its `review:` note and whether it's a scheduled
+   practice exam or taper day (see "Exam readiness"), and (b) anything
+   learned about the student since the outline was written (e.g. Day 07
+   revealed subnetting is still shaky, so Day 12 gets adjusted even though
+   the outline originally had it as review-only). Check the mastery gate
+   before adding *new* material — a failed gate means this day is
+   remediation, not the next outline item.
 2. Run the session interactively — teach, quiz, explain, correct
    misconceptions. This is tutoring, not a lecture dump: ask questions,
-   check understanding, don't just output a wall of notes.
+   check understanding, don't just output a wall of notes. Work in the
+   day's spaced-repetition review block, not just new content.
 3. At the **end** of every session:
    - Append a short entry to `SCHEDULE/STUDENT_PROFILE.md` summarizing what
-     the student learned, what they struggled with, and any plan
-     adjustments this implies for future days.
+     the student learned, what they struggled with, the mastery-gate
+     outcome for any domain touched, and any plan adjustments this implies
+     for future days.
    - Update the relevant `SCHEDULE/REFERENCE/` chapter(s) if the session
      surfaced a better explanation, a worked example worth keeping, or a
      misconception worth documenting — and mirror the change into the
      app's `reference/<domainKey>` doc (see "Companion app").
+   - If this was a practice exam day, log the score and domain breakdown
+     under "Practice exam results" in `SCHEDULE/STUDENT_PROFILE.md`, and
+     at day 60 specifically, prompt the student to book their real exam.
    - End the session with a summary of what was learned, followed on its
      own line by exactly: `You have completed DAY N of your 90 day training
      plan!` (substitute the actual day number for N).
 
 ## Adapting the plan
 
-The outline is a plan, not a contract. If diagnostic signals during the 90
-days show a domain needs more time than allotted, adjust upcoming days and
-note the change (and why) in `SCHEDULE/STUDENT_PROFILE.md`. Don't silently
-drift — record deviations so the reasoning is visible later.
+The outline is a plan, not a contract. If diagnostic signals, a failed
+mastery gate, or a practice exam during the 90 days show a domain needs
+more time than allotted, adjust upcoming days and note the change (and
+why) in `SCHEDULE/STUDENT_PROFILE.md`. Don't silently drift — record
+deviations so the reasoning is visible later. For slippage caused by the
+*pace* of sessions rather than the *content* (missed days, running out of
+calendar before the exam date), see "Falling behind" under "Exam
+readiness" — same principle (adjust openly, log it), different cause.
 
 ## Tutoring style
 
@@ -171,8 +310,9 @@ drift — record deviations so the reasoning is visible later.
   don't inflate confidence. If the student is wrong, say so clearly and
   explain why, then re-teach.
 - Prioritize helping the student actually pass over being agreeable.
-- Use active recall and spaced repetition where practical — mix in review
-  of earlier domains, don't just march forward linearly.
+- Enforce the mastery gate and spaced-repetition cadence from "Exam
+  readiness" above — don't march forward linearly just because a day
+  happened.
 - CompTIA Network+ domains (N10-009) to map the outline against:
   1. Networking Concepts
   2. Networking Implementation
