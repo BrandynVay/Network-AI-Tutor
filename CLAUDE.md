@@ -64,14 +64,20 @@ It has its own live database (separate from this repo) with three documents:
   be absent or carry a short "not written yet" placeholder — never stale
   content that no longer matches the repo file.
 - `flashcards/progress` — `{cardStats: {<cardId>: {seen, correctStreak,
-  lastResult, lastSeenAt}}}`, written by the app itself (viewer taps
-  "Got it"/"Missed it"), not by Claude. The card deck (front/back text) is
-  static JS in the artifact, currently ~66 cards covering only the
-  Networking Concepts chapter. **When a new `SCHEDULE/REFERENCE/` chapter
-  gets fully written, add a matching batch of flashcards to the deck in
-  the same pass** — pull them straight from that chapter's content so
-  cards and reference stay consistent, same as the diagnostic quiz
-  questions do.
+  lastResult, lastSeenAt}}}`, written by the app itself (self-graded in
+  flip mode, auto-graded on multiple-choice in quiz mode), not by Claude.
+  The card deck is static JS in the artifact, currently ~66 cards covering
+  only the Networking Concepts chapter. Each card has `front`/`back` (used
+  by both modes) plus either `pool` (a shared distractor pool key — see
+  `POOLS`) or a hand-written `choices` array, and an `answer` string
+  matching one choice exactly — these back the active-recall "quiz mode"
+  toggle (type an answer or tap multiple choice, then reveal), which is a
+  client-only preference (`localStorage`, not synced). **When a new
+  `SCHEDULE/REFERENCE/` chapter gets fully written, add a matching batch
+  of flashcards to the deck in the same pass**, including `answer` +
+  `choices`/`pool` for each card, not just `front`/`back` — pull them
+  straight from that chapter's content so cards and reference stay
+  consistent, same as the diagnostic quiz questions do.
 
 **This repo (CLAUDE.md, SCHEDULE/) stays the source of truth.** The
 artifact's database is a synced view for convenience — after writing to
