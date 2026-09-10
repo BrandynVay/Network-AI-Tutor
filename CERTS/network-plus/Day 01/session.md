@@ -21,6 +21,11 @@ Spaced repetition).
 
 ## What actually happened
 
-(To be filled in as the session runs, then summarized in
-`STUDENT_PROFILE.md` § Daily session log at the end per `CLAUDE.md` §
-How a daily session works.)
+This session started teaching OSI/encapsulation live in chat, but was
+interrupted before finishing (no answers given yet to the in-progress
+check-in questions) when the student asked for daily teaching to move
+into the companion app instead. The in-app **Tutor** tab now exists for
+this — see root `CLAUDE.md` § Companion app § Tutor chat. Day 01 should
+be (re)done there; this file's "What actually happened" stays unfilled
+until a repo session syncs a finished `tracks/network-plus/tutor/day01`
+doc into it, per the proactive-sync rule in `CLAUDE.md`.

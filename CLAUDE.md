@@ -82,8 +82,22 @@ that track exists for real).
 - [x] `CERTS/network-plus/OUTLINE.md` written — 90 days mapped to domains
       weighted by real exam blueprint (diagnostic gave no differentiating
       signal), practice exams at day 30/60/80/87, taper days 84-90
-- [ ] Day 01 session in progress (see `CERTS/network-plus/Day 01/session.md`)
-      — OSI model & encapsulation
+- [x] `tracks/network-plus/outline/days` seeded in the app's db (mirrors
+      `OUTLINE.md`'s day-by-day table — domain/topic/lab flag/special per
+      day) so the in-app tutor knows what each day should cover.
+- [x] In-app AI tutor chat built (the student explicitly chose this over
+      continuing daily teaching in this chat session) — see "Companion app"
+      § Tutor chat below. Daily sessions now happen in the app's **Tutor**
+      tab, not here.
+- [ ] Day 01 (OSI model & encapsulation) was started in this chat session
+      before the in-app tutor existed (see `CERTS/network-plus/Day 01/session.md`)
+      but never finished here — the student should instead do Day 01 in the
+      app's Tutor tab now that it exists. Next repo session: check
+      `tracks/network-plus/tutor/day01` — if it shows `finished: true`, sync
+      its summary into `STUDENT_PROFILE.md` § Daily session log and this
+      session.md, mark this checklist item done, and stop treating Day 01 as
+      chat-driven; if it's still empty/unfinished, the student hasn't done it
+      in-app yet.
 
 Update this checklist as each step finishes so a future session (which
 will NOT have this conversation's context) knows exactly where to resume.
@@ -123,6 +137,20 @@ the `CERTS/<track-id>/` folder name:
   the note below) and grade manually with `read_db`/`write_db` — same as
   before — **only if it's still `false`**; don't re-grade a doc the app
   already graded.
+- `tracks/<trackId>/outline/days` — an N-entry array mirroring
+  `OUTLINE.md`'s day-by-day table: `{n, domain, topic, lab, special?,
+  label?}` per day (`special` is `"practice-exam"` or `"taper"` for those
+  days, with `label` instead of `domain`/`topic`). This is the data the
+  in-app tutor reads to know what each day should cover — re-seed it
+  (`write_db` `set`) whenever `OUTLINE.md` changes materially (a plan
+  deviation, a compression from "Falling behind," etc.) so the two don't
+  drift.
+- `tracks/<trackId>/tutor/day<NN>` (two-digit, e.g. `day01`) — one
+  document per day holding that day's **in-app tutor chat transcript**:
+  `{day, messages: [{role, text}], finished, summary, masteryHold,
+  masteryNote, updatedAt}`. This is where daily teaching now actually
+  happens (see "Tutor chat" below) — Claude does not run these sessions
+  live in the repo chat anymore.
 - `tracks/<trackId>/path/days` — an N-entry array (N = that track's day
   count) mirroring day status (`locked` / `current` / `complete`).
 - `tracks/<trackId>/reference/<domainKey>` — markdown text mirroring the
@@ -147,6 +175,42 @@ the `CERTS/<track-id>/` folder name:
   `front`/`back` — pull them straight from the chapter's content so cards
   and reference stay consistent, same as the diagnostic quiz questions do.
 
+**Tutor chat (in-app daily teaching):** the student explicitly chose to
+have daily teaching happen *in the app*, not in a chat session with
+Claude — the Overview/Path tabs' old "in chat" wording is retired
+accordingly. The app's **Tutor** tab is a real chat with Claude, run via
+the `sample` runtime capability directly from the page, on the viewer's
+own usage:
+- On open, it reads the current day from `tracks/<trackId>/path/days`
+  and that day's entry from `tracks/<trackId>/outline/days`, pulls in
+  that domain's `tracks/<trackId>/reference/<domainKey>` chapter (if
+  written) as source material, computes the 1/3/7/14/30-day spaced-
+  repetition lookback per "Spaced repetition," and includes the graded
+  diagnostic's domain results — all folded into a leading instructions
+  turn (since `sample` calls are memory-less; there is no system prompt,
+  so standing instructions are just the first turn the page always
+  resends).
+- The transcript persists to `tracks/<trackId>/tutor/day<NN>` after every
+  exchange, so it survives a reload.
+- **"Finish today's lesson"** asks Claude (via `sample.json`) for a
+  session summary and a qualitative mastery self-assessment
+  (`masteryHold`/`masteryNote`) from the full transcript, writes those
+  back to the day's tutor doc (`finished: true`), marks that day
+  `complete` in `tracks/<trackId>/path/days` and the next day `current`
+  (unless `masteryHold` is true, in which case the next day is left
+  `locked` — the app does not auto-advance past a held mastery gate; a
+  human session needs to look at it, per "Mastery gate").
+- This is intentionally a **lighter-weight, qualitative** stand-in for
+  the full mastery-gate/practice-exam machinery below — it does not
+  compute the ≥80% quantitative gate, and it doesn't run a real timed
+  practice exam on a scheduled practice-exam day (it runs a condensed
+  mixed-domain question set instead and says so to the student). Treat
+  its `masteryHold`/summary as a strong signal, not a substitute for a
+  human (repo-chat) session's own judgment when something looks off.
+- If `sample` is unavailable in a given view (no consent, unsupported
+  host), the tab shows a fallback note and the student falls back to a
+  chat session with Claude here, same as always.
+
 Network+ data was migrated from an earlier, un-namespaced schema
 (`profile/info`, `diagnostic/round1`, etc. with no `tracks/` prefix) —
 that old schema is retired; everything now lives under `tracks/network-plus/`.
@@ -159,8 +223,19 @@ finds them disagreeing, the files in this repo win.
 
 The artifact has no automatic wake/notification wired up in this
 environment (the session's wake subscription didn't register), so check
-the active track's `diagnostic/round1` proactively when picking work back
-up rather than waiting to be notified of a submission.
+the active track's `diagnostic/round1` **and `tutor/day<NN>` for the
+current day** proactively when picking work back up, rather than waiting
+to be notified. Specifically, **at the start of every session**: read
+`tracks/<trackId>/path/days` to find the current day, then read
+`tracks/<trackId>/tutor/day<NN>` for it. If `finished: true` and this
+hasn't been synced yet (checklist item above / no matching entry in
+`STUDENT_PROFILE.md` § Daily session log), sync it now: write that day's
+`session.md` "What actually happened," append the `STUDENT_PROFILE.md`
+log entry (summary, mastery-gate read from `masteryHold`/`masteryNote`,
+any plan adjustment), and reconcile day status if the app's auto-advance
+and this file's assumptions disagree. Do this *before* starting any new
+work — the app may have moved several days ahead of what this repo last
+recorded.
 
 ## File structure
 
@@ -385,6 +460,18 @@ schedule is fixed:
   plan," not a silent renumbering.
 
 ## How a daily session works
+
+**Daily teaching normally happens in the companion app's Tutor tab now**
+(see "Companion app" § Tutor chat), not in this chat — the student
+explicitly chose that. This section's steps below still apply, just
+running *inside the app* via `sample` rather than in a live conversation
+here. Claude's job in a repo session is: sync what the app already did
+(see the proactive-sync rule in "Companion app"), keep `OUTLINE.md` /
+`STUDENT_PROFILE.md` / `REFERENCE/` current against it, and step back into
+running a session directly here only when `sample`/the app is unavailable
+to the student, or when something the app flagged (a `masteryHold`, a
+weird transcript) needs a real judgment call the lighter in-app
+self-assessment isn't built to make.
 
 1. At the **start** of a day's session, read the active track's
    `OUTLINE.md` and `STUDENT_PROFILE.md`, then generate that day's
