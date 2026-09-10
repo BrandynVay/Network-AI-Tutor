@@ -52,19 +52,46 @@ inherit stale Network+ numbers.
   whether that's a real strength or just unexamined confidence. Network
   Troubleshooting wasn't asked about directly in this round.
 
-## Diagnostic quiz (round 1)
+## Diagnostic quiz (round 1) — graded 2026-09-10
 
-- Status: **20-question quiz administered 2026-09-08.** Student opted to
-  answer via the companion app instead of in chat — see
-  `tracks/network-plus/diagnostic/round1` in the app's database
-  (root `CLAUDE.md` § Companion app) rather than chat transcript for
-  their raw answers.
-- Covers 4 questions per domain (Concepts, Implementation, Operations,
-  Security, Troubleshooting), mixed difficulty (easy → applied/scenario).
-- Results and domain-confidence assessment to be logged here once answers
-  are in. If confidence in the assessment is low after round 1, a follow-up
-  round of 10-15 questions will be administered and logged here too, before
-  OUTLINE.md is written.
+- Administered 2026-09-08, submitted 2026-09-09 (in-app), graded 2026-09-10.
+  Raw answers and per-question notes: `tracks/network-plus/diagnostic/round1`
+  in the app's database.
+- **Result: 0/20 correct outright, across all 5 domains (0/4 each).** Every
+  answer was honestly flagged "unsure" by the student — that honesty is
+  exactly what made this diagnostic useful instead of misleading.
+- **This does not match the self-reported "some networking exposure."**
+  Formal terminology, port numbers, subnetting mechanics, OSI layer
+  functions, troubleshooting methodology, and security fundamentals were
+  essentially all unknown. Take the interview's background self-report
+  with a grain of salt going forward — lean on measured results
+  (diagnostics, practice exams, mastery-gate checks), not self-assessment.
+- **Real signal underneath the zeros — 4 questions got explicit "partial"
+  credit** for genuine, correct-direction instincts even though the full
+  answer wasn't there:
+  - Q7 (VLAN purpose): correctly identified isolation/segmentation, missed
+    802.1Q as the trunk tagging protocol.
+  - Q14 (AAA): roughly right on authentication vs. authorization, honestly
+    flagged not knowing accounting.
+  - Q18 (DNS troubleshooting): pinging the hostname to check DNS is a
+    genuinely reasonable real-world technique, just didn't name "DNS" or
+    nslookup/dig explicitly.
+  - Q20 (switch port fault): one plausible cause (PoE) offered, missing a
+    second and not the most standard textbook cause (port
+    disabled/err-disabled, duplex/speed mismatch).
+  This reads as real hands-on/practical instinct without the formal
+  vocabulary yet — a good sign for how fast concepts should click once
+  introduced properly, not a sign the diagnostic was too hard.
+- **Plan implication:** all 5 domains need to start from true fundamentals,
+  not just the 3 self-flagged as weak — Security and Troubleshooting need
+  just as much ground-up work despite not being flagged. No meaningful
+  differentiation in weak-vs-strong domain weighting from this data; treat
+  the 90-day outline's early weighting as uniform across domains until
+  daily mastery-gate results start actually differentiating them.
+- **No follow-up diagnostic round administered.** The result is unambiguous
+  (uniformly weak, not uncertain), so a second round would mostly confirm
+  the same finding rather than sharpen it — proceeding straight to
+  `OUTLINE.md`.
 
 ## Exam logistics
 

@@ -66,9 +66,11 @@ that track exists for real).
 - [x] CLAUDE.md initialized
 - [x] `CERTS/network-plus/` scaffolded with Day 01-Day 90 folders
 - [x] Student interview completed (see `CERTS/network-plus/STUDENT_PROFILE.md`)
-- [x] 20-question diagnostic quiz administered — awaiting answers (check
-      `tracks/network-plus/diagnostic/round1` in the companion app's
-      database before assuming otherwise; not submitted as of 2026-09-09)
+- [x] 20-question diagnostic quiz administered, submitted, and graded —
+      0/20 outright, uniformly weak across all 5 domains (see
+      `CERTS/network-plus/STUDENT_PROFILE.md` § Diagnostic quiz for the
+      full breakdown and plan implications). No follow-up round needed —
+      result was unambiguous, not uncertain.
 - [x] `CERTS/network-plus/REFERENCE/` skeleton created (all 5 domains);
       Domain 1 (Networking Concepts) fully written
 - [x] Exam-readiness methodology added (mastery gate, spaced repetition,
@@ -77,10 +79,9 @@ that track exists for real).
       (Network+ active; Security+/CCNA shown locked until their turn)
 - [ ] Remaining 4 domain reference chapters fully written (fill in as each
       domain is covered, or sooner if there's downtime)
-- [ ] Follow-up diagnostic rounds completed (if needed) — confidence in
-      domain-level assessment reached
 - [ ] `CERTS/network-plus/OUTLINE.md` written (90-day plan mapped to
-      objectives, weighted to weak areas)
+      objectives — weighting is uniform across domains per the diagnostic,
+      not skewed to 3 domains as originally planned)
 - [ ] Day 01 session file written
 
 Update this checklist as each step finishes so a future session (which
