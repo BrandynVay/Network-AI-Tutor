@@ -79,10 +79,11 @@ that track exists for real).
       (Network+ active; Security+/CCNA shown locked until their turn)
 - [ ] Remaining 4 domain reference chapters fully written (fill in as each
       domain is covered, or sooner if there's downtime)
-- [ ] `CERTS/network-plus/OUTLINE.md` written (90-day plan mapped to
-      objectives — weighting is uniform across domains per the diagnostic,
-      not skewed to 3 domains as originally planned)
-- [ ] Day 01 session file written
+- [x] `CERTS/network-plus/OUTLINE.md` written — 90 days mapped to domains
+      weighted by real exam blueprint (diagnostic gave no differentiating
+      signal), practice exams at day 30/60/80/87, taper days 84-90
+- [ ] Day 01 session in progress (see `CERTS/network-plus/Day 01/session.md`)
+      — OSI model & encapsulation
 
 Update this checklist as each step finishes so a future session (which
 will NOT have this conversation's context) knows exactly where to resume.
