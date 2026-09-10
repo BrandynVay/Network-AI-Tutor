@@ -109,11 +109,20 @@ the `CERTS/<track-id>/` folder name:
 - `tracks/<trackId>/profile/info` — mirrors the top of that track's
   `STUDENT_PROFILE.md`.
 - `tracks/<trackId>/diagnostic/round1` — the diagnostic quiz. The student
-  answers *in the app*; Claude reads it back with `read_db` (db_op "get",
-  collection `tracks/<trackId>/diagnostic`, doc_id `round1`), grades it,
-  and writes `graded: true`, `domainResults`, `perQuestion`, and
-  `feedback` back with `write_db` — the app updates live once that
-  happens.
+  answers *in the app*, and **the app grades itself immediately on
+  submit** using the `sample` runtime capability (`window.claude.use
+  ("sample")`) — it sends the answers plus a built-in answer key/rubric
+  (`DIAGNOSTIC_KEY` in the artifact's JS) to Claude directly from the
+  page, on the viewer's own usage, and writes `graded: true`,
+  `domainResults`, `perQuestion`, and `feedback` straight back to the doc.
+  No round-trip through a chat session is needed for this to happen.
+  **This can still fail or be declined** (no consent, rate-limited,
+  `sample` unavailable in that view) — when it does, the app leaves
+  `graded: false` and shows a note that the tutor will grade it in chat
+  instead. So: check `graded` proactively when picking work back up (per
+  the note below) and grade manually with `read_db`/`write_db` — same as
+  before — **only if it's still `false`**; don't re-grade a doc the app
+  already graded.
 - `tracks/<trackId>/path/days` — an N-entry array (N = that track's day
   count) mirroring day status (`locked` / `current` / `complete`).
 - `tracks/<trackId>/reference/<domainKey>` — markdown text mirroring the
