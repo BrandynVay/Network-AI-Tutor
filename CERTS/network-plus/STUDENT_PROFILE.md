@@ -31,7 +31,15 @@ inherit stale Network+ numbers.
   not currently working a networking job).
 - **Time budget:** ~1 hour/day, 5-6 days/week.
 - **Preferred learning mode:** Hands-on labs/simulations — favor
-  configuration exercises over passive reading.
+  configuration exercises over passive reading. **Clarified 2026-09-15:**
+  the student is a strongly visual learner and explicitly asked for
+  diagrams and ELI5-style (explain-like-I'm-5) analogy-first explanations
+  as a standing requirement, not a one-off — plain prose/text walls alone
+  don't land well; a picture of the mechanism plus a simple, concrete
+  analogy is what actually makes something click and stay motivating.
+  This is now project-wide methodology (see root `CLAUDE.md` § Tutoring
+  style), not just a Network+ preference — carry it into Security+ and
+  CCNA too.
 - **Lab access:** Physical home lab gear, confirmed 2026-09-09 — has
   **managed switch(es)** (VLAN/trunking/port-config capable, not just
   unmanaged), **a router or firewall appliance** (standalone router or a

@@ -288,9 +288,19 @@ for something already taught.
 - Keep it real study-guide depth: explanations, worked examples (e.g. an
   actual subnetting calculation, not just "know how to subnet"), and
   analogies — this is the material replacing "go Google it."
+- **Visual by default (per "Tutoring style" § Visual/ELI5 below):** any
+  concept that's a structure, a flow, a sequence of steps, or a
+  comparison gets a hand-drawn inline SVG diagram in the chapter, not
+  just a paragraph describing it — see `01-networking-concepts.md` §§ 1-2
+  (the OSI stack + encapsulation diagrams) for the pattern to follow:
+  simple shapes, the page's own `--accent`/`--text`/`--border` CSS
+  variables so it stays theme-correct, a one-sentence `<figcaption>`
+  stating the actual claim the picture makes. A domain chapter with zero
+  diagrams by the time it's "done" is incomplete, not just plain.
 - Mirror it into the companion app's `tracks/<trackId>/reference/<domainKey>`
   db documents (see "Companion app" below) so it's readable from the
-  phone, not just the repo.
+  phone, not just the repo — diagrams included; the app's Reference tab
+  renders markdown (including raw inline `<svg>`/`<figure>` HTML) as-is.
 
 ## Exam readiness
 
@@ -531,3 +541,37 @@ readiness" — same principle (adjust openly, log it), different cause.
   facts (for Network+: Networking Concepts, Networking Implementation,
   Networking Operations, Network Security, Network Troubleshooting) — not
   duplicated here, so it can't drift out of sync when a new track starts.
+
+### Visual / ELI5 by default
+
+Confirmed 2026-09-15 (see each track's `STUDENT_PROFILE.md` § Interview):
+the student is a strongly visual learner. This is a standing requirement
+for every track and every surface Claude teaches through — not a style
+suggestion, not opt-in per session.
+
+- **Reach for an analogy before a definition.** Explain the plain-English
+  mechanism a term is hiding behind (a switch is a mail sorter that only
+  knows this building's mailboxes; a router is the post office that knows
+  how to get mail to *other* buildings) before, or instead of, the formal
+  definition. The formal term still gets taught — exam questions use it
+  — but it should land *after* the concept already makes sense, not as
+  the only thing offered.
+- **Reach for a diagram before a paragraph** whenever the thing being
+  explained is a structure, a flow, a sequence, or a comparison — which
+  is most of networking (a stack of layers, a packet getting wrapped in
+  headers, traffic taking one path vs. another, a subnet's address
+  range). See "Reference guide" above for how `REFERENCE/` chapters do
+  this with inline SVG; the same standard applies live, in a day session
+  or the in-app Tutor chat — a quick, clean diagram (SVG where the
+  surface supports it, otherwise clean ASCII art) beats a paragraph of
+  prose describing positions and arrows in words.
+- **Motivation is part of the job, not a nice-to-have.** Land the "why
+  this is actually kind of cool" angle, not just the "here's what you
+  need to know for the test" angle — a student who's engaged remembers
+  more than one who's grinding.
+- This doesn't relax "Be a rigorous, honest tutor" above — a fun analogy
+  or a clean diagram is not a substitute for correctness, and a picture
+  that's simpler than the real mechanism is a lie by omission. Simplify
+  the *explanation*, never the *material* — if an ELI5 version would
+  teach something the exam would mark wrong, say the more precise version
+  instead and work the analogy harder, don't water down the truth.

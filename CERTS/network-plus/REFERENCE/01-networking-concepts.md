@@ -40,6 +40,44 @@ problem at?").
 **N**eed **D**ata **P**rocessing." Bottom to top (1→7): "**P**lease **D**o
 **N**ot **T**hrow **S**ausage **P**izza **A**way."
 
+<figure class="diagram">
+<svg viewBox="0 0 640 400" role="img" aria-label="The OSI seven-layer stack, with data encapsulating downward when sending and decapsulating upward when receiving.">
+  <defs>
+    <marker id="osiArrowDown" viewBox="0 0 10 10" refX="5" refY="9" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <polygon points="0,0 10,0 5,10" fill="var(--accent)"></polygon>
+    </marker>
+    <marker id="osiArrowUp" viewBox="0 0 10 10" refX="5" refY="1" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <polygon points="0,10 10,10 5,0" fill="currentColor"></polygon>
+    </marker>
+  </defs>
+  <line x1="40" y1="22" x2="40" y2="358" stroke="var(--accent)" stroke-width="2" marker-end="url(#osiArrowDown)"></line>
+  <text x="24" y="190" transform="rotate(-90 24 190)" text-anchor="middle" font-size="12" fill="var(--accent)">SENDING — encapsulate ↓</text>
+  <line x1="95" y1="358" x2="95" y2="22" stroke="currentColor" stroke-width="2" marker-end="url(#osiArrowUp)"></line>
+  <text x="112" y="190" transform="rotate(-90 112 190)" text-anchor="middle" font-size="12" fill="currentColor">RECEIVING — decapsulate ↑</text>
+  <g font-size="14">
+    <rect x="160" y="20" width="460" height="44" rx="4" fill="none" stroke="currentColor" stroke-width="1.5"></rect>
+    <text x="178" y="47" fill="currentColor">7 · Application</text>
+    <rect x="160" y="70" width="460" height="44" rx="4" fill="none" stroke="currentColor" stroke-width="1.5"></rect>
+    <text x="178" y="97" fill="currentColor">6 · Presentation</text>
+    <rect x="160" y="120" width="460" height="44" rx="4" fill="none" stroke="currentColor" stroke-width="1.5"></rect>
+    <text x="178" y="147" fill="currentColor">5 · Session</text>
+    <rect x="160" y="170" width="460" height="44" rx="4" fill="none" stroke="var(--accent)" stroke-width="2"></rect>
+    <text x="178" y="197" fill="currentColor">4 · Transport</text>
+    <text x="605" y="197" text-anchor="end" font-size="11" fill="var(--accent)">PDU: segment</text>
+    <rect x="160" y="220" width="460" height="44" rx="4" fill="none" stroke="var(--accent)" stroke-width="2"></rect>
+    <text x="178" y="247" fill="currentColor">3 · Network</text>
+    <text x="605" y="247" text-anchor="end" font-size="11" fill="var(--accent)">PDU: packet</text>
+    <rect x="160" y="270" width="460" height="44" rx="4" fill="none" stroke="var(--accent)" stroke-width="2"></rect>
+    <text x="178" y="297" fill="currentColor">2 · Data Link</text>
+    <text x="605" y="297" text-anchor="end" font-size="11" fill="var(--accent)">PDU: frame</text>
+    <rect x="160" y="320" width="460" height="44" rx="4" fill="none" stroke="var(--accent)" stroke-width="2"></rect>
+    <text x="178" y="347" fill="currentColor">1 · Physical</text>
+    <text x="605" y="347" text-anchor="end" font-size="11" fill="var(--accent)">PDU: bits</text>
+  </g>
+</svg>
+<figcaption>Data always leaves at Layer 7 and always arrives at Layer 1. Sending wraps it in a new header at every layer going down (encapsulation); receiving strips one header per layer going up (decapsulation). The four bottom layers each rename the data as it's wrapped — segment → packet → frame → bits — the exact sequence the exam tests directly.</figcaption>
+</figure>
+
 **Why layer 3 vs layer 2 keeps showing up on the exam:** Layer 2 only
 knows about devices on the *same* local network segment (it uses MAC
 addresses, which don't route). Layer 3 is what lets traffic leave your
@@ -68,6 +106,55 @@ until the browser on the other end gets the original HTTP request.
 **Know the PDU (protocol data unit) name at each layer** — segment
 (transport), packet (network), frame (data link), bits (physical). This
 gets asked directly.
+
+<figure class="diagram">
+<svg viewBox="0 0 560 400" role="img" aria-label="Encapsulation: how one HTTP request gets a new header added at each layer going down the stack, becoming a segment, then a packet, then a frame, then bits.">
+  <defs>
+    <marker id="encArrow" viewBox="0 0 10 10" refX="5" refY="9" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <polygon points="0,0 10,0 5,10" fill="var(--accent)"></polygon>
+    </marker>
+    <marker id="bitsArrow" viewBox="0 0 10 10" refX="5" refY="9" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <polygon points="0,0 10,0 5,10" fill="currentColor"></polygon>
+    </marker>
+  </defs>
+  <text x="360" y="14" text-anchor="middle" font-size="12" font-weight="700" fill="currentColor">DATA</text>
+  <rect x="260" y="20" width="200" height="40" rx="4" fill="none" stroke="currentColor" stroke-width="1.5"></rect>
+  <text x="360" y="45" text-anchor="middle" font-size="11" fill="currentColor">HTTP request</text>
+  <line x1="360" y1="60" x2="360" y2="108" stroke="var(--accent)" stroke-width="2" marker-end="url(#encArrow)"></line>
+  <text x="375" y="88" font-size="11" fill="var(--accent)">+ TCP header — adds port numbers</text>
+  <text x="320" y="104" text-anchor="middle" font-size="12" font-weight="700" fill="currentColor">SEGMENT</text>
+  <rect x="180" y="110" width="80" height="40" rx="4" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"></rect>
+  <text x="220" y="134" text-anchor="middle" font-size="11" fill="currentColor">TCP hdr</text>
+  <rect x="260" y="110" width="200" height="40" rx="4" fill="none" stroke="currentColor" stroke-width="1.5"></rect>
+  <text x="360" y="134" text-anchor="middle" font-size="11" fill="currentColor">HTTP request</text>
+  <line x1="360" y1="150" x2="360" y2="198" stroke="var(--accent)" stroke-width="2" marker-end="url(#encArrow)"></line>
+  <text x="375" y="178" font-size="11" fill="var(--accent)">+ IP header — adds IP addresses</text>
+  <text x="280" y="194" text-anchor="middle" font-size="12" font-weight="700" fill="currentColor">PACKET</text>
+  <rect x="100" y="200" width="80" height="40" rx="4" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"></rect>
+  <text x="140" y="224" text-anchor="middle" font-size="11" fill="currentColor">IP hdr</text>
+  <rect x="180" y="200" width="80" height="40" rx="4" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"></rect>
+  <text x="220" y="224" text-anchor="middle" font-size="11" fill="currentColor">TCP hdr</text>
+  <rect x="260" y="200" width="200" height="40" rx="4" fill="none" stroke="currentColor" stroke-width="1.5"></rect>
+  <text x="360" y="224" text-anchor="middle" font-size="11" fill="currentColor">HTTP request</text>
+  <line x1="360" y1="240" x2="360" y2="288" stroke="var(--accent)" stroke-width="2" marker-end="url(#encArrow)"></line>
+  <text x="375" y="268" font-size="11" fill="var(--accent)">+ Ethernet header &amp; trailer — adds MAC addresses</text>
+  <text x="270" y="284" text-anchor="middle" font-size="12" font-weight="700" fill="currentColor">FRAME</text>
+  <rect x="20" y="290" width="80" height="40" rx="4" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"></rect>
+  <text x="60" y="314" text-anchor="middle" font-size="11" fill="currentColor">Eth hdr</text>
+  <rect x="100" y="290" width="80" height="40" rx="4" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"></rect>
+  <text x="140" y="314" text-anchor="middle" font-size="11" fill="currentColor">IP hdr</text>
+  <rect x="180" y="290" width="80" height="40" rx="4" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"></rect>
+  <text x="220" y="314" text-anchor="middle" font-size="11" fill="currentColor">TCP hdr</text>
+  <rect x="260" y="290" width="200" height="40" rx="4" fill="none" stroke="currentColor" stroke-width="1.5"></rect>
+  <text x="360" y="314" text-anchor="middle" font-size="11" fill="currentColor">HTTP request</text>
+  <rect x="460" y="290" width="60" height="40" rx="4" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"></rect>
+  <text x="490" y="314" text-anchor="middle" font-size="11" fill="currentColor">Eth trlr</text>
+  <line x1="270" y1="330" x2="270" y2="368" stroke="currentColor" stroke-width="2" marker-end="url(#bitsArrow)"></line>
+  <text x="285" y="360" font-size="11" fill="currentColor">→ sent as electrical signal / light / radio</text>
+  <text x="270" y="388" text-anchor="middle" font-size="12" font-weight="700" fill="currentColor">BITS</text>
+</svg>
+<figcaption>Same request, four stages. Each header gets tacked onto the FRONT (and Ethernet also adds a trailer at the very end) — the original HTTP request never changes, it just rides inside more and more wrapping. On the wire, this is the literal byte order: Ethernet header, IP header, TCP header, your data, Ethernet trailer.</figcaption>
+</figure>
 
 ## 2. TCP/IP model
 
@@ -308,6 +395,9 @@ Applying both: `2001:0db8:0000:0000:0000:ff00:0042:8329` →
 
 ---
 
-*Chapter status: complete. Next chapters to write: Networking
-Implementation, Networking Operations, Network Security, Network
-Troubleshooting.*
+*Chapter status: complete, with diagrams (OSI stack, encapsulation) added
+2026-09-15 per the student's visual/ELI5 learning-style requirement — see
+`CLAUDE.md` § Tutoring style § Visual/ELI5 by default. Next chapters to
+write: Networking Implementation, Networking Operations, Network
+Security, Network Troubleshooting — each should get diagrams in the same
+pass, not bolted on later.*
