@@ -211,6 +211,35 @@ own usage:
   host), the tab shows a fallback note and the student falls back to a
   chat session with Claude here, same as always.
 
+**Daily gate (added 2026-09-19):** a full-screen overlay the student
+explicitly asked for, so opening the app is never a passive, easy-to-skip
+moment — it has to be dismissed before anything else in the app is usable.
+- Shows **once per calendar day** (tracked client-side in
+  `localStorage['npq_dailyGateDate']`, not synced — it's a per-device
+  nudge, not shared state) the first time the app loads that day. Content:
+  the current day number, a thin progress bar (`day / 90`), an
+  encouraging line (a special one for a practice-exam/taper/gate day,
+  otherwise picked from a small static pool — deliberately NOT generated
+  via `sample`, since spending the viewer's usage and a consent prompt on
+  a one-line pep talk before they've done anything isn't worth it), and a
+  **"Start Day N"** button.
+- **The button does NOT advance the day counter or mark anything
+  complete** — it only dismisses the overlay and jumps to the **Tutor**
+  tab for the already-current day. Day advancement stays exactly where it
+  already was: "Finish today's lesson" in the Tutor tab, gated by
+  `masteryHold` same as before (see "Tutor chat" above). This was a
+  deliberate call, not the literal ask — the student's request could be
+  read as "the button also bumps the day counter," but that would let a
+  UI ritual silently bypass the mastery gate the rest of this file is
+  built around; "start" and "finish/advance" are kept as two different
+  actions on purpose. If the student wants the button to actually
+  auto-advance regardless of mastery-gate outcome, that's a real
+  methodology change to raise with them explicitly, not something to
+  infer quietly.
+- Degrades gracefully: still shows (with day 1 / generic messaging) even
+  when `db`/`sample` aren't available in that view, since it's pure
+  client-side chrome with no dependency on live sync.
+
 Network+ data was migrated from an earlier, un-namespaced schema
 (`profile/info`, `diagnostic/round1`, etc. with no `tracks/` prefix) —
 that old schema is retired; everything now lives under `tracks/network-plus/`.
