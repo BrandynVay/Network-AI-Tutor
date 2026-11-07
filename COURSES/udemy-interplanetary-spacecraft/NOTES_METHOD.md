@@ -167,6 +167,17 @@ note where the instructor used a word loosely (e.g. "corrosion" for UV
 bond-breaking). It's read on screen, not copied. On the +1 day review
 the student explains three of them aloud without looking.
 
+**Strengthened 2026-11-07 at the student's request:** the vocabulary
+page covers *every* term that appears anywhere in the PDF, including
+words Claude itself introduces in the notes column or analogies
+(Δv, prograde, capture burn, "commitment ladder", mission names).
+Assume no prior vocabulary. The two earlier PDFs (S1 satellites, S1-L3
+spacecraft types) were backfilled with vocabulary pages the same day.
+**Nothing from a vocabulary page goes into the paper notebook** — the
+student's pages are full and that's fine; the vocab is a screen-side
+reference. Optional only: a bare word list (no definitions) in the back
+pages as a self-test.
+
 Working pipeline now confirmed: the student pastes the Udemy transcript
 plus slide screenshots → Claude returns one PDF: (1) the spread at the
 small-page budget, (2) teach + fact-check + question-bank cards, (3)
