@@ -110,3 +110,21 @@ whole game):
 - **Every few days, give Claude a photo of a spread** or type the cue
   questions in: Claude checks answers, catches wrong facts, and writes
   harder follow-ups for the question bank.
+
+## Highlighter key (pencil + highlighters, "aesthetic but functional")
+
+Printable version with a mock finished page: `SpaceX-Mission-Notebook.pdf`
+in this folder (6 pages: cover, setup, filled example spread, blank
+template, highlighter style page, review schedule).
+
+- **Yellow** = term/definition to know · **Pink** = equation (boxed) ·
+  **Blue** = question / "?" / ask Claude · **Green** = the "aha" line ·
+  **Orange** = a mistake I made → copy to question bank.
+- Write the whole lecture in pencil first. Light pencil = guess, dark
+  pencil = corrected; don't erase the guess.
+- **Highlight on the +1 day review, not while writing**, and only what
+  you could not recall with the notes covered. The highlights then mark
+  your gaps, which is what makes them functional instead of decorative.
+- Keep: title banner per lecture, one tiny doodle icon per topic, a
+  "3 takeaways" box. Skip: lettering practice, multiple fonts,
+  re-copying neat versions, decorating during the video.
