@@ -137,3 +137,23 @@ can look at**, not as chat text: a rebuilt version of their spread
 what to sharpen / question-bank cards. Build it the same way as
 `SpaceX-Mission-Notebook.pdf` (HTML → Playwright PDF, letter landscape)
 and save it under `feedback/` named `S<section>-<topic>.pdf`.
+
+## Small notebook (confirmed 2026-11-07)
+
+The student's notebook is a small format (roughly A5, ~22 ruled lines
+a page, exact count not yet confirmed). See
+`SpaceX-Notebook-SMALL-addendum.pdf`. Same method, smaller budget:
+
+- One lecture = one spread still. **Summary shrinks to 3 lines and
+  moves to the bottom of the LEFT (draw) page**, under the 3 takeaways,
+  so the right page is only cues + notes.
+- Line budget per lecture: header 1 · drawing ~11 · takeaways 3 ·
+  summary 3 · cues 4-6 · keyword notes 8-10. If it doesn't fit, start a
+  second spread for the same lecture; never shrink the handwriting.
+- Reserved pages: inside cover tracker · p1 index · p2 equations & key
+  numbers · p3 abbreviation + highlighter key · last 6 pages question
+  bank.
+- Feedback PDFs from now on show the spread at the small page's
+  proportions with this line budget; teaching detail, fact checks and
+  Q-bank cards go on a separate screen-only page. One drawing per
+  lecture on paper; extra diagrams live in the PDF.
