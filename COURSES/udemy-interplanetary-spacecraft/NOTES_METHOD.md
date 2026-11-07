@@ -157,3 +157,17 @@ a page, exact count not yet confirmed). See
   proportions with this line budget; teaching detail, fact checks and
   Q-bank cards go on a separate screen-only page. One drawing per
   lecture on paper; extra diagrams live in the PDF.
+
+## Vocabulary page (added 2026-11-07)
+
+The student flagged that the instructor uses terms as if already known.
+**Every lecture PDF gets a vocabulary page**: each term the lecture
+uses, one plain-English line, one everyday analogy in italics, and a
+note where the instructor used a word loosely (e.g. "corrosion" for UV
+bond-breaking). It's read on screen, not copied. On the +1 day review
+the student explains three of them aloud without looking.
+
+Working pipeline now confirmed: the student pastes the Udemy transcript
+plus slide screenshots → Claude returns one PDF: (1) the spread at the
+small-page budget, (2) teach + fact-check + question-bank cards, (3)
+vocabulary.

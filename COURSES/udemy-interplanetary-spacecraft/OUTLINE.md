@@ -25,7 +25,7 @@ track for now — see root `CLAUDE.md` § Current focus.
 
 | # | Section | Lectures | Length | File | Done |
 |---|---------|----------|--------|------|------|
-| 1 | Presentation, intro to space engineering, mission design & objectives, Quiz 1 (time of flight) | 3 + quiz | 13 min | `sections/01-mission-design-and-time-of-flight.md` | [ ] |
+| 1 | Presentation, intro to space engineering, mission design & objectives, Quiz 1 (time of flight) | 3 + quiz | 13 min | `sections/01-mission-design-and-time-of-flight.md` | [x] 2026-11-07 |
 | 2 | Space Environment | 3 | 11 min | `sections/02-space-environment.md` | [ ] |
 | 3 | Orbital Mechanics | 3 | 34 min | `sections/03-orbital-mechanics.md` | [ ] |
 | 4 | Space Propulsion Systems | 5 | 27 min | `sections/04-space-propulsion.md` | [ ] |
@@ -50,4 +50,5 @@ the Done column and date it when a section's quiz is graded.
 |------|---------|---------------|
 | 2026-11-07 | — | Course adopted; Network+ paused. Scaffold written. |
 | 2026-11-07 | 1 | Lec 3 slide "Types of interplanetary spacecraft" (flyby → orbiter → atmospheric → lander → rover → penetrator, + observatory, comms). PDF: `feedback/S1-L3-types-of-interplanetary-spacecraft.pdf` (the "commitment ladder" diagram, examples, Q-bank cards). |
+| 2026-11-07 | 2 | Lec 4 "Space Vacuum Conditions": transcript + all 6 slides received. PDF: `feedback/S2-L4-space-vacuum.pdf` (5 "free services" diagram, fact checks: 0.3 µm not mm, corrosion vs UV bond-breaking, "no dissipation" overstated; vocabulary page added at student request). Section 1 complete (4/4). |
 | 2026-11-07 | 1 | Student sent a photo of their first Cornell page (satellite types, LEO/MEO/GEO altitudes — all correct). Feedback PDF: `feedback/S1-satellite-types-and-orbits.pdf` (geosync vs geostationary, why 35,786 km, harder cues, group the 8 types by job, draw the left page). |
