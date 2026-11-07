@@ -57,7 +57,7 @@ Set the notebook up once, before lecture 1:
  inside cover      REVIEW TRACKER (one row per section, tick as you go)
                    Sec | watched | +1 day | +3 | +7 | +14 | +30
  page 1-2          INDEX: section / lecture -> page number
- page 3-4          EQUATION SHEET: every formula, boxed, with units and
+ page 3-4          EQUATIONS & KEY NUMBERS: every formula, boxed, with units and
                    one worked number. Grows all course. Nothing else goes here.
  last 10 pages     QUESTION BANK (work from the back): every quiz question
                    you got wrong or every "?" you wrote, one per line,
@@ -96,7 +96,7 @@ Rules for the spread:
   "GEO." A cue you can't answer later is a flashcard.
 - **Summary last, from memory.** Close the video, five lines. If you
   can't, you don't have it yet, and that's the useful signal.
-- **Box every equation twice:** once in the notes, once on the
+- **Box every equation twice** (if the lecture has one; many won't): once in the notes, once on the
   equation sheet with a worked number.
 
 Retention schedule (this is the part most people skip, and it's the
