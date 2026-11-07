@@ -128,3 +128,12 @@ template, highlighter style page, review schedule).
 - Keep: title banner per lecture, one tiny doodle icon per topic, a
   "3 takeaways" box. Skip: lettering practice, multiple fonts,
   re-copying neat versions, decorating during the video.
+
+## Feedback format (added 2026-11-07)
+
+The student wants every piece of feedback on their notes **as a PDF they
+can look at**, not as chat text: a rebuilt version of their spread
+(drawn left page + Cornell right page) plus a page of what was right /
+what to sharpen / question-bank cards. Build it the same way as
+`SpaceX-Mission-Notebook.pdf` (HTML → Playwright PDF, letter landscape)
+and save it under `feedback/` named `S<section>-<topic>.pdf`.

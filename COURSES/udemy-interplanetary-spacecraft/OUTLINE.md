@@ -49,3 +49,4 @@ the Done column and date it when a section's quiz is graded.
 | Date | Section | What happened |
 |------|---------|---------------|
 | 2026-11-07 | — | Course adopted; Network+ paused. Scaffold written. |
+| 2026-11-07 | 1 | Student sent a photo of their first Cornell page (satellite types, LEO/MEO/GEO altitudes — all correct). Feedback PDF: `feedback/S1-satellite-types-and-orbits.pdf` (geosync vs geostationary, why 35,786 km, harder cues, group the 8 types by job, draw the left page). |
