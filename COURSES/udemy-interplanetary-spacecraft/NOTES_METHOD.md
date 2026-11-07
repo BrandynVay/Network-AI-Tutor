@@ -175,8 +175,14 @@ Assume no prior vocabulary. The two earlier PDFs (S1 satellites, S1-L3
 spacecraft types) were backfilled with vocabulary pages the same day.
 **Nothing from a vocabulary page goes into the paper notebook** — the
 student's pages are full and that's fine; the vocab is a screen-side
-reference. Optional only: a bare word list (no definitions) in the back
-pages as a self-test.
+reference. **Paper version (decided 2026-11-07):** the student has no free
+pages after Section 1, so the notebook gets a **word bank in the back**:
+the 4 pages before the 6-page question bank. One line per word:
+`word · page-it-appears-on · 3-5 word meaning`, grouped by section.
+Only words that were actually new to the student (5-8 per lecture, not
+the full PDF list). Reviewed by covering the meaning column on each
++1/+3/+7 pass; missed twice → question card; nailed 3× → tick and skip.
+Layout: `Word-Bank-layout.pdf`.
 
 Working pipeline now confirmed: the student pastes the Udemy transcript
 plus slide screenshots → Claude returns one PDF: (1) the spread at the
