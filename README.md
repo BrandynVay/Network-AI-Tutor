@@ -1,5 +1,13 @@
 # Network-AI-Tutor
 
+> **Current focus (2026-11-07):** the Network+ track is paused. The
+> student is working through a Udemy course on interplanetary spacecraft
+> and satellite engineering instead; see
+> [`COURSES/udemy-interplanetary-spacecraft/`](./COURSES/udemy-interplanetary-spacecraft/)
+> and the note-taking method in `NOTES_METHOD.md` there. Everything
+> below describes the certification system, which stays intact for when
+> Network+ resumes.
+
 A personal, AI-driven study system for passing IT certifications —
 built and run by Claude as a dedicated tutor, not a generic assistant.
 It exists to prepare one student for a sequence of exams, one at a time:

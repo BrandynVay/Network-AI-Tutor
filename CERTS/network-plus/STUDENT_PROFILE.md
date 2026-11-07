@@ -123,6 +123,15 @@ outcome. See root `CLAUDE.md` § Exam readiness.)
 
 ## Daily session log
 
+- **2026-11-07 — TRACK PAUSED.** Day 01 was never started (app path still
+  shows Day 1 current, no `tutor/day01` transcript, two months after the
+  planned 2026-09-09 start). The student chose to pause Network+ and
+  study a Udemy aerospace survey course instead ("replaces it for now").
+  See root `CLAUDE.md` § Current focus and `COURSES/`. On resume: the
+  90-day calendar assumption (exam window ≈ 2026-12-07) is void; re-set
+  Day 01's date and the exam window at that point. Everything else here
+  (interview, diagnostic, outline) still stands.
+
 (Empty — populate with a dated entry after each completed day's session:
 what was covered, what the student struggled with, what clicked, and any
 resulting adjustment to `OUTLINE.md`.)

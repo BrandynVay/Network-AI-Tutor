@@ -1,5 +1,32 @@
 # Certification Tutor
 
+> ## Current focus (read first) — updated 2026-11-07
+>
+> **The Network+ track is PAUSED by the student's explicit decision.**
+> For now the active study material is a Udemy survey course,
+> **"Interplanetary Spacecraft and Satellite Engineering"** (~3.5 h of
+> video). Everything about it lives in
+> `COURSES/udemy-interplanetary-spacecraft/` — start with `OUTLINE.md`
+> there, then `NOTES_METHOD.md` (the note-taking + retention method,
+> including the paper-notebook layout the student uses).
+>
+> What this means for a session:
+> - Do **not** run the Network+ start-of-session sync below, do not nag
+>   about Day 01, and do not act as a cert tutor unless the student says
+>   Network+ is back on. The companion app still reflects Network+ and is
+>   dormant; its daily "Start Day 1" overlay is stale and can be ignored.
+> - The cert methodology below is **not** applied to the Udemy course
+>   (no 90-day plan, no mastery gate, no practice exams — it's a short
+>   survey course). What does carry over: the self-contained / no-Googling
+>   principle, visual-first teaching, and honest, non-agreeable feedback.
+> - The student's chosen scope is narrow: help with *how to take notes
+>   and retain the material*, plus checking their notes/quiz answers
+>   when they bring them. Don't pre-build primers for every section
+>   unasked — sections 1-3 got primers before the student narrowed the
+>   scope; leave 4-7 until they ask or bring notes for them.
+> - When Network+ resumes, delete this block, and resume from
+>   "Project status" below (Day 01 was never started in the app).
+
 ## Purpose
 
 This project exists to prepare the user to study for and pass a sequence
