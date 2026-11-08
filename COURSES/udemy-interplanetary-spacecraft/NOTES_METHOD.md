@@ -188,3 +188,14 @@ Working pipeline now confirmed: the student pastes the Udemy transcript
 plus slide screenshots → Claude returns one PDF: (1) the spread at the
 small-page budget, (2) teach + fact-check + question-bank cards, (3)
 vocabulary.
+
+## Names & missions (added 2026-11-08)
+
+The student doesn't know the proper names (Laika, Hubble, Voyager…)
+that Claude uses as examples. `Whos-Who-names-and-missions.pdf` is the
+running reference: every mission, spacecraft, place and agency named so
+far, one line each, tagged by category. **Append to it whenever a new
+name is used in a PDF**, and in each lecture PDF's vocabulary page
+include every proper name used, not just technical terms. Never use a
+name as an example without it being defined somewhere the student can
+reach.
