@@ -199,3 +199,14 @@ name is used in a PDF**, and in each lecture PDF's vocabulary page
 include every proper name used, not just technical terms. Never use a
 name as an example without it being defined somewhere the student can
 reach.
+
+## ELI5 box first (added 2026-11-09)
+
+The student confirmed the goal is to be taught the concepts like they're
+5, not just handed organized notes. **Page 2 of every lecture PDF opens
+with a boxed "Like you're 5" paragraph**: plain words, a physical
+picture (playground, hula hoop, sunscreen, doorknob zap), no Greek
+letters, no numbers, before any technical content. If the box doesn't
+make sense on its own, the rest of the page can't. The S3-L1 PDF has the
+first one; earlier PDFs carry their analogies inside the teach section
+rather than up front.
