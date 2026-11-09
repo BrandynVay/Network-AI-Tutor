@@ -268,3 +268,16 @@ so it wraps) spelling out the code. Lay panels out vertically with
 deliberate margins; check the rasterized page for overlapping labels
 and for the summary box being pushed off the page before sending.
 Re-issued S3-L1 (v3) and S3-L3 (v2) this way.
+
+## Review kits (added 2026-11-09)
+
+When the student pauses to review, the deliverable is a **Teach-It-Back
+Kit** PDF in `review/`: (1) a one-paragraph through-line tying the
+sections into one story, (2) each concept re-taught at 5th-grade level
+with a bold "SAY:" line and a napkin-drawing prompt, (3) a timed
+teach-back script skeleton (key line + drawing + hand-off per block),
+(4) a quiz we own, mixing fact / explain-why / "a friend asks" items,
+with answers keyed back to the scene to review, (5) a rehearsal plan
+(with notes → cue card only → nothing + record) and a one-index-card
+cue card. The student then sends the run-3 recording or transcript and
+Claude grades it as the friend would hear it.
