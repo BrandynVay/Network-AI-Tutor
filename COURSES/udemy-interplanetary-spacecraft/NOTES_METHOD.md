@@ -255,3 +255,16 @@ the page. The line budget still applies to the content; the rendering
 just got bigger. Watch for SVG text clipping at the bottom of the
 drawing: give the viewBox room and check the rasterized page before
 sending. Applies to every PDF from S3-L1 on.
+
+## Drawings must be pencil-ready (added 2026-11-09)
+
+The student draws in pencil only (highlighters are for the +1 review
+pass, not for drawing). So **no meaning may be carried by color in a
+page-1 drawing.** Encode everything with what a pencil can do:
+thin vs thick line, solid vs dashed vs dotted, filled vs hollow dot,
+shaded vs clear, and a text label on every line. Grayscale only.
+A **"PENCIL KEY" box sits under the drawing** (HTML, not inside the SVG,
+so it wraps) spelling out the code. Lay panels out vertically with
+deliberate margins; check the rasterized page for overlapping labels
+and for the summary box being pushed off the page before sending.
+Re-issued S3-L1 (v3) and S3-L3 (v2) this way.
