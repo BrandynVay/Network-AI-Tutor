@@ -210,3 +210,24 @@ letters, no numbers, before any technical content. If the box doesn't
 make sense on its own, the rest of the page can't. The S3-L1 PDF has the
 first one; earlier PDFs carry their analogies inside the teach section
 rather than up front.
+
+## The real goal (stated 2026-11-09): hold a conversation
+
+The student's goal is not a grade: it's to understand everything and
+**hold their own in a conversation** about these topics. That makes
+*explaining out loud* the primary practice, not recall. Two standing
+steps, in addition to everything above:
+
+1. **60-second explain, every lecture.** After the 3-line summary, the
+   student explains the lecture to Claude in their own words, no notes
+   open, as if a friend asked "what did you learn?" Claude replies like
+   a curious friend (follow-ups, "wait, why?"), then says honestly where
+   it got fuzzy. Fuzzy → fix before moving on. Log each one in the
+   OUTLINE session log with a one-line read (solid / fuzzy on X).
+2. **Conversation test, every section.** When a section ends, Claude
+   plays a space-curious person at a party and asks five questions
+   (mix of easy and probing). Honest grade; shaky items go back into
+   the review cycle and the question bank.
+
+Each lecture PDF's page 2 ELI5 box doubles as the "say it out loud"
+version of the material.
