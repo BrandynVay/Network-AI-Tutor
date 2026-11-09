@@ -231,3 +231,17 @@ steps, in addition to everything above:
 
 Each lecture PDF's page 2 ELI5 box doubles as the "say it out loud"
 version of the material.
+
+## Actual per-lecture order (confirmed by the student 2026-11-09)
+
+1. Student watches the video (no notes during).
+2. Student sends the Udemy transcript + slide screenshots.
+3. Claude returns the PDF: spread · teach page (ELI5 box first) ·
+   vocabulary · page 4 "Say it out loud".
+4. Student writes the spread in the notebook **from the PDF**. Two
+   safeguards Claude should keep repeating: cover the PDF's left page
+   and draw first, then fix; and do the 3-line summary with the PDF
+   closed.
+5. Student sends a photo of the spread + the 60-second explanation.
+   Claude replies as a curious friend, gives an honest read, and fills
+   page 4's feedback box.
