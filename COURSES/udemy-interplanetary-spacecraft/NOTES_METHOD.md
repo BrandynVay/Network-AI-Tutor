@@ -245,3 +245,13 @@ version of the material.
 5. Student sends a photo of the spread + the 60-second explanation.
    Claude replies as a curious friend, gives an honest read, and fills
    page 4's feedback box.
+
+## PDF page 1 is now full size (changed 2026-11-09)
+
+The small-notebook mock-up (two 3.6-inch pages plus a side card) was
+too small to read. **Page 1 now shows the two notebook pages at half a
+landscape sheet each** (about 5 × 7.3 in, 12 px text), nothing else on
+the page. The line budget still applies to the content; the rendering
+just got bigger. Watch for SVG text clipping at the bottom of the
+drawing: give the viewBox room and check the rasterized page before
+sending. Applies to every PDF from S3-L1 on.
