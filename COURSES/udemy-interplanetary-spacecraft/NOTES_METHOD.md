@@ -281,3 +281,14 @@ with answers keyed back to the scene to review, (5) a rehearsal plan
 (with notes → cue card only → nothing + record) and a one-index-card
 cue card. The student then sends the run-3 recording or transcript and
 Claude grades it as the friend would hear it.
+
+## Name it, then explain it (added 2026-11-10)
+
+The student saw a Google answer naming the five fixed orbital parameters
+as the "Classical Keplerian Elements" and realized the official names
+had never been given alongside the analogies. Standing rule: **official
+term in bold first, then also-called names, then the plain meaning and
+the analogy.** The app's Terms tab (115 entries) is the living glossary;
+every new lecture adds its official vocabulary there and in the lecture
+PDF's vocabulary page. The depth target is "could read a real article or
+NASA page and recognize every term," not just "can follow the course."

@@ -81,6 +81,7 @@ table.deep th{background:var(--paper2)}
     <button role="tab" data-tab="learn">Learn</button>
     <button role="tab" data-tab="quiz">Quiz</button>
     <button role="tab" data-tab="cards">Cards</button>
+    <button role="tab" data-tab="terms">Terms</button>
     <button role="tab" data-tab="teach">Teach</button>
     <button role="tab" data-tab="progress">Progress</button>
   </nav>
@@ -320,6 +321,133 @@ const PROGRAMS = {
   land:"Space gives you nothing for free. Getting there is falling and missing. Staying alive is doing the air's five jobs yourself. Going anywhere is time versus fuel, unless you borrow a planet."},
 };
 const PROGRAM_ORDER=["s1","s2","s3","full"];
+
+// Official terminology. [term, also-called, plain meaning, scene]
+const TERMS = [
+ // --- orbits & elements
+ ["Classical Orbital Elements (COEs)","Keplerian elements · orbital parameters · the six elements","The six numbers that completely describe an orbit: a, e, i, Ω, ω, ν. Five fix the shape and orientation; the sixth says where the body is. The hula hoop's six settings.","hoop"],
+ ["Semi-major axis (a)","half the major axis · 'size' of the orbit","Half the longest width of the ellipse; the average of perigee and apogee distances from the center of the body. Sets the orbit's size and, through Kepler's third law, its period.","hoop"],
+ ["Semi-minor axis (b)","—","Half the shortest width of the ellipse. Related to a and e by b = a·√(1−e²). Rarely quoted; a and e carry the information.","hoop"],
+ ["Eccentricity (e)","'shape' of the orbit","How far the ellipse departs from a circle. 0 = circle, 0 < e < 1 = ellipse, e = 1 = parabola (escape), e > 1 = hyperbola (flyby).","hoop"],
+ ["Inclination (i)","tilt","Angle between the orbital plane and the reference plane (Earth's equator for Earth satellites). 0° equatorial, 90° polar, > 90° retrograde.","hoop"],
+ ["Right ascension of the ascending node (Ω, RAAN)","longitude of the ascending node · 'swivel'","Angle, measured in the reference plane from the vernal equinox (♈), to the point where the orbit crosses the plane heading north.","hoop"],
+ ["Argument of periapsis (ω)","argument of perigee · 'spin in plane'","Angle, measured in the orbital plane, from the ascending node to periapsis. Says which way the long axis of the ellipse points.","hoop"],
+ ["True anomaly (ν or θ)","—","Angle from periapsis to the body's current position, measured at the central body. The only element that changes quickly as the orbit proceeds.","hoop"],
+ ["Mean anomaly (M) and eccentric anomaly (E)","—","Two other ways of saying 'where along the orbit.' Mean anomaly grows evenly with time (useful for computing); eccentric anomaly is a geometric helper between the two. Course doesn't cover them; you'll see them in real data.","hoop"],
+ ["Epoch","—","The timestamp the elements are valid for. Elements drift, so a set of COEs always comes with an epoch.","hoop"],
+ ["Orbital plane","—","The flat sheet the orbit lies in. Always passes through the center of the body being orbited. Why GEO must be over the equator.","hoop"],
+ ["Reference plane","fundamental plane","The plane you measure inclination from: Earth's equator for Earth orbits, the ecliptic for Sun orbits.","hoop"],
+ ["Vernal equinox direction (♈)","First Point of Aries · reference direction","Fixed direction in space, toward where the Sun sits on the March equinox. The zero point for measuring Ω. Not 'toward the Sun,' which moves daily.","hoop"],
+ ["Ecliptic","—","The plane of Earth's orbit around the Sun. Reference plane for heliocentric (Sun-centered) orbits. Tilted 23.4° to the equator.","hoop"],
+ ["Equatorial plane","—","The plane through Earth's equator. Reference plane for geocentric (Earth-centered) orbits.","hoop"],
+ ["Line of nodes","—","The line where the orbital plane cuts the reference plane; it joins the ascending and descending nodes.","hoop"],
+ ["Ascending / descending node","—","The two points where an inclined orbit pierces the reference plane: ascending going north, descending going south.","hoop"],
+ ["Apsis (plural apsides)","—","Either extreme point of an orbit: the nearest or the farthest.","hoop"],
+ ["Periapsis / apoapsis","perigee/apogee (Earth) · perihelion/aphelion (Sun) · perilune/apolune (Moon) · periareion/apoareion (Mars)","The closest and farthest points of an orbit from the central body. Fastest at periapsis, slowest at apoapsis.","hoop"],
+ ["Line of apsides","major axis","The straight line through periapsis and apoapsis, passing through the central body. Its half-length is a.","hoop"],
+ ["Geocentric / heliocentric","Earth-centered / Sun-centered","Which body sits at the focus. Satellites are geocentric; interplanetary cruise is heliocentric.","hoop"],
+ ["Prograde / retrograde","posigrade / —","Prograde: moving in the same direction as the body's rotation (east for Earth) or along your own velocity. Retrograde: opposite. Also used for burns: prograde speeds up, retrograde slows down.","hoop"],
+ ["Kepler's laws","—","1: orbits are ellipses with the central body at a focus. 2: equal areas in equal times (fast near, slow far). 3: T² ∝ a³ (bigger orbit, longer period).","hoop"],
+ ["Orbital period (T)","—","Time for one revolution: T = 2π√(a³/μ). Depends only on a and the central body.","shelf"],
+ ["Standard gravitational parameter (μ)","GM · 'mu'","The body's mass times the gravitational constant, in one number: Earth μ = 398,600 km³/s². Shows up in every orbit formula.","hoop"],
+ ["Vis-viva equation","orbital energy equation","v² = μ(2/r − 1/a). Speed anywhere on any orbit from distance and semi-major axis. Gives circular speed (a = r) and escape speed (a → ∞).","hoop"],
+ ["Specific orbital energy (ε)","—","Kinetic plus potential energy per kilogram: ε = −μ/(2a). Negative = bound orbit, zero = escape, positive = hyperbolic. More speed at a given r → higher ε → bigger a.","flyby"],
+ ["Circular velocity","—","v = √(μ/r). The speed that keeps you at constant height. LEO ≈ 7.7 km/s.","shelf"],
+ ["Escape velocity","—","v = √(2μ/r), exactly √2 × circular. Reach it and you never come back. From LEO ≈ 11 km/s.","shelf"],
+ ["Two-body problem","Kepler problem","The idealization behind all of this: one body, one central mass, nothing else. Real orbits add perturbations on top.","hoop"],
+ ["Perturbation (orbital)","—","Any small extra force that bends the ideal two-body orbit: Earth's bulge (J₂), drag, Moon and Sun, sunlight pressure. Causes elements to drift over time.","hoop"],
+ ["J₂ / nodal precession","—","Earth's equatorial bulge slowly swivels an inclined orbit's Ω. Engineers exploit it to make sun-synchronous orbits.","shelf"],
+ // --- orbit regimes
+ ["Low Earth Orbit (LEO)","—","~200–2,000 km altitude; period 1.5–2 h. ISS, Hubble, Starlink, most Earth imaging.","shelf"],
+ ["Very Low Earth Orbit (VLEO)","—","Below ~250–300 km. Sharper imaging, heavy drag, short life without constant reboost.","shelf"],
+ ["Medium Earth Orbit (MEO)","—","~2,000–35,786 km; 2–24 h periods. Navigation constellations (GPS 20,200 km, 12 h).","shelf"],
+ ["Geosynchronous orbit (GSO)","—","Any orbit with a one-sidereal-day period (23 h 56 min). The satellite returns to the same sky position daily; if inclined it traces a figure-8 ground track.","shelf"],
+ ["Geostationary orbit (GEO)","Clarke orbit","The special geosynchronous orbit that is also circular and equatorial (i = 0), at 35,786 km altitude (42,164 km radius), so the satellite appears fixed. TV and weather satellites.","shelf"],
+ ["Geostationary transfer orbit (GTO)","—","The elliptical Hohmann leg from LEO up to GEO: perigee ~200–300 km, apogee 35,786 km. Circularized by an apogee kick burn.","fuel"],
+ ["Highly elliptical orbit (HEO)","Molniya · Tundra","Very stretched orbits that linger near apogee over high latitudes for hours. Used for Russian comms and some early-warning satellites.","shelf"],
+ ["Sun-synchronous orbit (SSO)","—","A near-polar LEO (~98° inclination) whose plane precesses once a year (via J₂) so it passes over any spot at the same local solar time. Consistent lighting for cameras.","shelf"],
+ ["Polar orbit","—","Inclination near 90°; passes over both poles, so Earth rotates underneath and the whole surface is eventually covered.","shelf"],
+ ["Ground track","—","The path a satellite's sub-point traces on the Earth's surface. A sinusoid for inclined LEO, a point for GEO, a figure-8 for inclined GSO.","shelf"],
+ ["Sidereal day","—","Earth's true rotation relative to the stars: 23 h 56 min 4 s. The GSO period. The 24-h solar day includes Earth's progress around the Sun.","shelf"],
+ ["Footprint / coverage area","field of view (FOV) · swath","The patch of Earth a satellite can see or communicate with at one moment. Grows with altitude.","shelf"],
+ ["Constellation","—","A set of satellites in coordinated orbits that function as one system (GPS, Iridium, Starlink). Arranged in several orbital planes so coverage is continuous.","shelf"],
+ ["Orbital plane (constellation sense) · Walker constellation","—","Constellations spread satellites over several planes at the same inclination; 'Walker' is the standard way of describing that arrangement (e.g. GPS ≈ 6 planes × 4 satellites).","shelf"],
+ ["Revisit time","—","How long until a satellite (or constellation) sees the same spot again. Shorter with more satellites or higher altitude.","shelf"],
+ // --- transfers & flybys
+ ["Delta-v (Δv)","velocity change · 'the fuel bill'","Total change in speed a maneuver or mission requires (km/s). Converts to propellant mass through the rocket equation.","fuel"],
+ ["Impulsive burn","impulsive maneuver","An engine firing treated as instantaneous. Hohmann assumes two of them.","fuel"],
+ ["Hohmann transfer","minimum-energy two-impulse transfer","Half an ellipse tangent to both the starting and target orbit, 180° apart, two prograde burns. Cheapest two-burn transfer between coplanar circular orbits (for radius ratios under ~11.9).","fuel"],
+ ["Bi-elliptic transfer","—","A three-burn alternative that goes far out and comes back. Beats Hohmann only for very large radius ratios. Named so you recognize it.","fuel"],
+ ["Circularization burn","apogee kick","The second burn of a Hohmann: at apoapsis, speed up to round the ellipse into the target circle.","fuel"],
+ ["Plane change","inclination change","A burn to tilt the orbital plane. Very expensive: Δv = 2v·sin(Δi/2). Done at apogee where v is small.","fuel"],
+ ["Lambert's problem","—","Given two position vectors and the time of flight between them, find the orbit that connects them (and so the Δv). The core of trajectory design.","fuel"],
+ ["Time of flight (TOF)","transfer time","Duration of a transfer. For a Hohmann, half the transfer ellipse's period: π√(a³/μ).","fuel"],
+ ["Synodic period","launch-window spacing","Time between successive identical Earth–target alignments: Earth–Mars ≈ 780 days (26 months).","fuel"],
+ ["Launch window","—","The span of dates when a transfer is possible within the available Δv. Opens roughly every synodic period.","fuel"],
+ ["Phase angle","lead angle","How far ahead (or behind) the target planet must be at departure so it's there on arrival. Mars Hohmann: ~44° ahead.","fuel"],
+ ["Patched conics","conic approximation","Approximating an interplanetary trajectory as a chain of two-body conics: Earth-centered hyperbola → Sun-centered ellipse → target-centered hyperbola, 'patched' at the sphere-of-influence boundaries.","fuel"],
+ ["Sphere of influence (SOI)","—","The region around a planet where its gravity dominates the Sun's for trajectory purposes. Earth's ≈ 925,000 km.","fuel"],
+ ["Hyperbolic excess velocity (v∞)","—","Your speed relative to a planet when far from it, before capture or after escape. The 'in' and 'out' speed of a flyby, equal in magnitude in the planet's frame.","flyby"],
+ ["Characteristic energy (C3)","launch energy","C3 = v∞² at Earth departure (km²/s²). C3 = 0 is bare escape; Mars needs ~10–15.","fuel"],
+ ["Gravity assist","flyby · swing-by · slingshot","Passing close to a moving planet so its gravity bends your path; in the Sun's frame you gain (pass behind) or lose (pass in front) speed, borrowed from the planet's orbital motion.","flyby"],
+ ["Turning angle (δ)","deflection angle","How much a flyby bends your direction. Larger for slower approaches and closer passes.","flyby"],
+ ["Periapsis of the flyby","closest approach · flyby altitude","How close you pass the planet during a gravity assist. Closer = more bend, up to the atmosphere limit.","flyby"],
+ ["Capture burn","orbit insertion · OI","The retrograde burn at arrival that slows a spacecraft enough for the planet's gravity to hold it. Flybys skip it.","fuel"],
+ ["Aerobraking / aerocapture","—","Using a planet's upper atmosphere to shed speed instead of fuel (gradually, over many passes = aerobraking; in one pass = aerocapture, not yet flown).","fuel"],
+ ["Tsiolkovsky rocket equation","ideal rocket equation","Δv = Iₛₚ·g₀·ln(m₀/m_f). Links fuel fraction to Δv; why fast transfers are impossible. Coming in the propulsion section.","fuel"],
+ // --- mission design & spacecraft
+ ["Payload","—","The part of the spacecraft that does the mission: instrument, camera, antenna, experiment.","fall"],
+ ["Bus (spacecraft bus)","platform","Everything that keeps the payload alive and pointed: structure, power, thermal, propulsion, attitude control, comms, computer.","fall"],
+ ["Subsystem","—","One functional slice of the bus: EPS (power), TCS (thermal), ADCS (attitude), C&DH (computer), TT&C (telemetry, tracking & command), propulsion, structure.","fall"],
+ ["ADCS","attitude determination and control system · AOCS (with orbit control)","Sensors and actuators that find and hold the spacecraft's pointing. Section 6.","fall"],
+ ["Attitude","orientation · pointing","Which way the spacecraft is facing. Not altitude (height).","fall"],
+ ["Mission requirements / constraints","—","Requirements: what the mission must achieve. Constraints: limits it must live within (mass, cost, launch vehicle, schedule).","fall"],
+ ["Mass / power / Δv / link budget","budgets","Ledgers of how much of a resource you have versus need. Every subsystem draws on them.","fall"],
+ ["Flyby / orbiter / atmospheric probe / lander / rover / penetrator (impactor)","mission types · spacecraft classes","The ladder of ways to visit a body, in order of increasing Δv, risk and science return.","fuel"],
+ ["Entry, descent and landing (EDL)","—","The sequence from atmospheric entry to touchdown for a lander or rover.","fuel"],
+ ["Observatory spacecraft","space telescope","A spacecraft whose target is the sky rather than a body: Hubble, JWST, Kepler.","shelf"],
+ ["Relay satellite","data relay · comms relay","A spacecraft that forwards signals between other spacecraft and Earth: Mars orbiters for rovers, TDRS for the ISS, Queqiao for the far side of the Moon.","shelf"],
+ // --- environment
+ ["Vacuum (hard vacuum)","—","Pressure so low that gas effects vanish: no convection, no pressure support, no damping, no discharge path.","vac"],
+ ["Outgassing","—","Release of trapped gas and volatiles from materials in vacuum. Measured as TML (total mass loss) and CVCM (collected volatile condensable material); spacecraft materials must stay under 1% and 0.1%.","vac"],
+ ["Bake-out","—","Heating components in a vacuum chamber before launch so they outgas on the ground instead of in orbit.","vac"],
+ ["Contamination (molecular / particulate)","—","Outgassed films (molecular) and dust (particulate) landing on optics and sensors. The real reason to keep outgassing materials away from instruments.","vac"],
+ ["Clean room (ISO class)","—","A filtered-air facility rated by particles per cubic meter: ISO 8 is ordinary spacecraft assembly, ISO 5–6 for sensitive optics.","vac"],
+ ["Ultraviolet (UV) photodegradation","UV degradation","Breaking of chemical bonds in polymers by UV photons whose energy exceeds the bond energy (~4 eV at 300 nm vs ~3.6 eV for C–C).","vac"],
+ ["Photon","—","A packet of light. Energy rises as wavelength shortens; UV photons carry enough to break bonds, visible ones don't.","vac"],
+ ["Bond dissociation energy","bond energy","Energy needed to snap one chemical bond, a few eV. The threshold UV and atomic oxygen have to beat.","vac"],
+ ["Polymer","plastic · organic material","Long-chain carbon-based material: Kapton, Mylar, Teflon, epoxies, paints. Vulnerable to UV and atomic oxygen.","vac"],
+ ["Kapton","polyimide film","The gold-colored insulation film all over spacecraft. The textbook atomic-oxygen victim unless coated.","air"],
+ ["Multilayer insulation (MLI)","thermal blanket","Stacks of thin reflective film that slow radiative heat loss. The crinkly gold/silver wrapping on spacecraft.","vac"],
+ ["Radiator","—","A panel that dumps the spacecraft's waste heat into space by radiation, the only heat exit in vacuum.","vac"],
+ ["Conduction / convection / radiation","three modes of heat transfer","Through solids by contact / by moving fluid / by electromagnetic emission. Vacuum removes convection.","vac"],
+ ["Damping","energy dissipation","Anything that drains a vibration's energy. Air does it for free on Earth; in vacuum only internal material damping remains, and it's small.","vac"],
+ ["Spacecraft charging","surface charging · electrostatic discharge (ESD)","Build-up of electric charge on surfaces with no path to bleed it off, until it arcs. Mitigated by conductive coatings and bonding (grounding straps).","vac"],
+ ["Newton's first law","law of inertia","An object keeps its state of motion unless a net force acts. In vacuum there's nothing to supply that force, so motion and rotation persist.","vac"],
+ // --- atmosphere
+ ["Troposphere / stratosphere / mesosphere / thermosphere / exosphere","atmospheric layers","Temperature-defined layers: 0–11 km / 11–50 / 50–90 / 90–500 / 500+. Boundaries are the 'pauses' (tropopause etc.).","air"],
+ ["Homosphere / heterosphere","—","Below ~100 km the air is mixed to a uniform composition (homosphere). Above, gases separate by molecular weight (heterosphere).","air"],
+ ["Turbopause","homopause","The ~100 km boundary where turbulent mixing stops and diffusive separation begins.","air"],
+ ["Ozone (O₃) / ozone layer","—","Three-atom oxygen, concentrated 15–35 km in the stratosphere, absorbing UV below ~0.3 µm. Earth's sunscreen and the stratosphere's heater.","air"],
+ ["Atomic oxygen (AO, O)","—","Single oxygen atoms produced by UV photodissociation of O₂ above ~100 km; the dominant species ~200–600 km. Highly reactive; erodes polymers at orbital velocity.","air"],
+ ["Photodissociation","—","Light breaking a molecule apart. O₂ + UV → O + O.","air"],
+ ["Erosion yield","—","Volume of material removed per incoming atomic-oxygen atom (cm³/atom). Kapton ≈ 3×10⁻²⁴; used as the reference material.","air"],
+ ["Fluence","—","Total number of atoms (or particles) that hit a surface over time, per cm². Erosion = fluence × erosion yield.","air"],
+ ["Ram / wake","—","Ram: the side facing the direction of motion, which takes the atomic-oxygen and drag hits. Wake: the sheltered trailing side.","air"],
+ ["Atmospheric drag","aerodynamic drag","Resistance from residual air in LEO that slowly lowers the orbit. Grows with solar activity; the ISS reboosts to counter it.","air"],
+ ["Ionosphere","—","~60–1,000 km, overlapping the upper layers: solar UV and X-rays ionize atoms, leaving free electrons that refract and reflect radio and delay GPS signals.","air"],
+ ["Number density","numerical density","Particles per unit volume (m⁻³). The y-axis of the composition chart, on a log scale.","air"],
+ ["Solar activity (F10.7, Ap)","space weather indices","Measures of the Sun's radio output and geomagnetic disturbance. High activity heats and puffs up the thermosphere, increasing drag.","air"],
+ ["Anomalous oxygen","hot oxygen","A minor population of extra-energetic O atoms included in atmosphere models above ~300 km.","air"],
+ ["Geocorona","—","The faint hydrogen halo of the exosphere, glowing in UV, extending tens of thousands of km.","air"],
+ // --- attitude (preview)
+ ["Disturbance torque","perturbing torque","A small twisting force on a spacecraft: gravity-gradient, solar radiation pressure, aerodynamic, magnetic.","vac"],
+ ["Reaction wheel / momentum wheel / control moment gyro (CMG)","—","Internal spinning masses used to turn or stabilize a spacecraft without fuel; CMGs tilt a spinning wheel for much larger torque.","vac"],
+ ["Momentum dumping","desaturation · momentum unloading","Using thrusters or magnetorquers to let saturated reaction wheels spin back down.","vac"],
+ ["Star tracker / sun sensor / magnetometer / gyroscope","attitude sensors","Instruments that determine pointing: star patterns, Sun direction, Earth's field, rotation rate.","vac"],
+ ["Magnetorquer","torque rod","An electromagnet that pushes against Earth's magnetic field to produce small torques. LEO only, no propellant.","vac"],
+];
+
 const INTERVALS=[1,3,7,14,30];
 
 // ---------------------------------------------------------------- STATE / STORAGE
@@ -386,7 +514,7 @@ document.getElementById("tabs").addEventListener("click",e=>{ const b=e.target.c
 function esc(s){ return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
 function render(){
   document.querySelectorAll("#tabs button").forEach(b=>b.setAttribute("aria-selected",b.dataset.tab===tab));
-  ({home,learn,quiz,cards,teach,progress})[tab]();
+  ({home,learn,quiz,cards,terms,teach,progress})[tab]();
   window.scrollTo({top:0});
 }
 
@@ -408,7 +536,7 @@ function home(){
     <div class="card"><h3>3 · Weakest scene</h3><p style="margin:6px 0"><span class="pill" style="border-color:${weak[0][0].color};color:${weak[0][0].color}">${weak[0][0].n} · ${esc(weak[0][0].name)}</span> <b>${weak[0][1]}%</b></p><p class="small muted">Re-read it like you're 5, then do its quiz.</p><button class="btn" data-go="learn" data-scene="${weak[0][0].id}">Open scene</button></div>
     <div class="card"><h3>4 · Say it out loud</h3><p class="small muted">${lastSession?`Last quiz: ${lastSession.right}/${lastSession.total} on ${lastSession.date}.`:"No quiz yet."} Teach-back talks, one per section, each with a timer.</p><button class="btn" data-go="teach">Open Teach</button></div>
   </div>
-  <p class="note" style="margin-top:14px">Progress is saved per person. The badge at the top says whether it's on your account (syncs between phone and laptop) or just this device.</p>`;
+  <p class="note" style="margin-top:14px"><b>Terms tab:</b> the official name for everything, searchable. Use it whenever a word in the lecture or an article feels unfamiliar. Progress is saved per person. The badge at the top says whether it's on your account (syncs between phone and laptop) or just this device.</p>`;
   view.querySelectorAll("[data-go]").forEach(b=>b.addEventListener("click",()=>{ tab=b.dataset.go; if(b.dataset.scene) openScene=b.dataset.scene; render(); }));
 }
 
@@ -521,6 +649,20 @@ function cards(){
   view.querySelectorAll("[data-g]").forEach(b=>b.addEventListener("click",()=>{ rec("cards",String(i),b.dataset.g==="1"); ci++; flipped=false; render(); }));
 }
 document.addEventListener("keydown",e=>{ if(tab!=="cards"||!cardQueue||ci>=cardQueue.length) return; if(e.key===" "){ e.preventDefault(); flipped=!flipped; render(); } if(flipped&&(e.key==="1"||e.key==="2")){ rec("cards",String(cardQueue[ci]),e.key==="2"); ci++; flipped=false; render(); } });
+
+
+// ---- Terms (official vocabulary)
+let termQ="", termScene="all";
+function terms(){
+  const q=termQ.trim().toLowerCase();
+  const list=TERMS.filter(t=>(termScene==="all"||t[3]===termScene)&&(!q||t.join(" ").toLowerCase().includes(q)));
+  view.innerHTML=`<h2>Terms: the real names</h2><p class="muted small">Every official term from Sections 1–3, plus the ones a real article assumes you know. <b>Name first, then what else it's called, then the plain meaning.</b> ${TERMS.length} entries.</p>
+  <div class="row"><input id="tq" type="search" placeholder="Search terms…" value="${esc(termQ)}" style="flex:1;min-width:200px;padding:10px 12px;border:2px solid var(--line2);border-radius:12px;background:var(--paper);color:var(--fg);font:500 1rem var(--f-body)"></div>
+  <div class="row" style="margin:8px 0 12px"><button class="pill ${termScene==="all"?"on":""}" style="cursor:pointer" data-sc="all">All</button>${SCENES.map(s=>`<button class="pill ${termScene===s.id?"on":""}" style="cursor:pointer;${termScene===s.id?"":"border-color:"+s.color+";color:"+s.color}" data-sc="${s.id}">${s.n} ${esc(s.name)}</button>`).join("")}</div>
+  <div class="grid" id="tl">${list.map(t=>{const sc=SCENES.find(x=>x.id===t[3]); return `<div class="card" style="padding:12px 14px"><div class="row" style="justify-content:space-between;align-items:flex-start"><h3 style="margin:0;font-size:1.05rem">${esc(t[0])}</h3><span class="pill" style="border-color:${sc.color};color:${sc.color};flex:none">${sc.n}</span></div>${t[1]&&t[1]!=="—"?`<div class="small muted" style="margin:2px 0 6px"><b>Also called:</b> ${esc(t[1])}</div>`:""}<div class="small">${esc(t[2])}</div></div>`;}).join("")||`<p class="muted">No matches.</p>`}</div>`;
+  const inp=document.getElementById("tq"); inp.addEventListener("input",()=>{ termQ=inp.value; const pos=inp.selectionStart; terms(); const i2=document.getElementById("tq"); i2.focus(); try{i2.setSelectionRange(pos,pos)}catch(e){} });
+  view.querySelectorAll("[data-sc]").forEach(b=>b.addEventListener("click",()=>{ termScene=b.dataset.sc; terms(); }));
+}
 
 // ---- Teach (timer)
 let tmr=null, tStart=null, tElapsed=0, tRunning=false;

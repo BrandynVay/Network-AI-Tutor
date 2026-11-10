@@ -50,6 +50,7 @@ the Done column and date it when a section's quiz is graded.
 |------|---------|---------------|
 | 2026-11-07 | — | Course adopted; Network+ paused. Scaffold written. |
 | 2026-11-07 | 1 | Lec 3 slide "Types of interplanetary spacecraft" (flyby → orbiter → atmospheric → lander → rover → penetrator, + observatory, comms). PDF: `feedback/S1-L3-types-of-interplanetary-spacecraft.pdf` (the "commitment ladder" diagram, examples, Q-bank cards). |
+| 2026-11-10 | 1-3 | Student flagged missing official terminology (saw "Classical Keplerian Elements" on Google). Added a **Terms** tab to the app: 115 official terms with also-called names and plain meanings, searchable, filter by scene. New standing rule: name it, then explain it. |
 | 2026-11-10 | 1-3 | Teach-back split into per-section talks (S1 3¼ min, S2 3 min, S3 4¼ min) + full 7 min, in the app Teach tab and in `review/Teach-It-Back-Kit-S1-S3-v2.pdf` (pages 5-6). Student will use the PDF on a call. |
 | 2026-11-10 | 2 | Added atmospheric composition to the app at student request ("need to know everything"): Go-deeper table on the air scene (gas mix by height: N₂/O₂/Ar/CO₂ → atomic O → He → H; ozone; ionosphere; anomalous O), +8 MC, +8 cards. |
 | 2026-11-10 | 1-3 | Built the **Space X Study** app (interactive quiz, flashcards with spaced review, ELI5 scenes, timed teach-back): https://claude.ai/artifact/CnDfEEJHGhs76GMZNu7BSM · source in `app/`. Content = the Teach-It-Back Kit, interactive. |

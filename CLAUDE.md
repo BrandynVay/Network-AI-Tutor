@@ -29,15 +29,25 @@
 >   (source mirrored at `COURSES/udemy-interplanetary-spacecraft/app/space-x-study.html`).
 >   Tabs: Today · Learn (7 scenes, ELI5) · Quiz (61 multiple-choice +
 >   13 explain-out-loud, instant feedback, spaced review) · Cards (52
->   flashcards, 1/3/7/14/30-day intervals) · Teach (timed talks: Section 1
+>   flashcards, 1/3/7/14/30-day intervals) · Terms (115-entry
+>   searchable glossary of OFFICIAL terminology: name · also-called ·
+>   plain meaning · scene) · Teach (timed talks: Section 1
 >   3¼ min · Section 2 3 min · Section 3 4¼ min · full 7 min, each with
 >   cue card) · Progress. Progress is stored per viewer in
 >   the artifact db at `data/users/<id>/progress` (private to the
 >   viewer; Claude cannot read it), with a localStorage fallback. The
 >   Network+ Ops Console was deliberately NOT modified: its structure is
 >   cert-blueprint-specific. When new lectures are done, add their
->   questions/cards to the arrays at the top of the HTML (`SCENES`,
->   `MC`, `WHY`, `CARDS`) and republish to the same URL.
+>   questions/cards/terms to the arrays at the top of the HTML (`SCENES`,
+>   `MC`, `WHY`, `CARDS`, `TERMS`) and republish to the same URL.
+> - **Name it, then explain it (rule since 2026-11-10):** the student
+>   flagged feeling like they were "missing so much" because explanations
+>   led with analogies and never gave the official term (e.g. the six
+>   orbital parameters are the *Classical Orbital Elements / Keplerian
+>   elements*). From now on every concept, in chat and in PDFs, gives the
+>   **official term in bold first**, then its other names, then the
+>   plain-English version and the analogy. Add every new official term
+>   to `TERMS` in the app.
 > - When Network+ resumes, delete this block, and resume from
 >   "Project status" below (Day 01 was never started in the app).
 
