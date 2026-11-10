@@ -24,6 +24,19 @@
 >   when they bring them. Don't pre-build primers for every section
 >   unasked — sections 1-3 got primers before the student narrowed the
 >   scope; leave 4-7 until they ask or bring notes for them.
+> - **Space X Study app (added 2026-11-10):** a separate published
+>   Artifact for this course, https://claude.ai/artifact/CnDfEEJHGhs76GMZNu7BSM
+>   (source mirrored at `COURSES/udemy-interplanetary-spacecraft/app/space-x-study.html`).
+>   Tabs: Today · Learn (7 scenes, ELI5) · Quiz (53 multiple-choice +
+>   13 explain-out-loud, instant feedback, spaced review) · Cards (44
+>   flashcards, 1/3/7/14/30-day intervals) · Teach (timed 7-minute
+>   teach-back + cue card) · Progress. Progress is stored per viewer in
+>   the artifact db at `data/users/<id>/progress` (private to the
+>   viewer; Claude cannot read it), with a localStorage fallback. The
+>   Network+ Ops Console was deliberately NOT modified: its structure is
+>   cert-blueprint-specific. When new lectures are done, add their
+>   questions/cards to the arrays at the top of the HTML (`SCENES`,
+>   `MC`, `WHY`, `CARDS`) and republish to the same URL.
 > - When Network+ resumes, delete this block, and resume from
 >   "Project status" below (Day 01 was never started in the app).
 

@@ -1,0 +1,503 @@
+<title>Space X Study</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: one sticky tab bar, one scrolling pane; cards for items, no card for prose. */
+:root{
+  --bg:#f7f5ef; --paper:#fffdf7; --fg:#15192b; --mute:#5a6072; --line:#d9d6cc;
+  --accent:#ff6b1a; --accent-ink:#fff; --navy:#0b1437; --blue:#1e7cff; --green:#19b36b; --pink:#e5338f; --purple:#7b3fe4; --yellow:#ffd23f;
+  --good:#1a9a5a; --bad:#d13b3b; --warn:#c98a00;
+  --f-head:"Space Grotesk",system-ui,sans-serif; --f-body:"Inter",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --bg:#0e1222; --paper:#161b30; --fg:#eef0f6; --mute:#a7adc2; --line:#2a3152; --navy:#dbe3ff; --accent:#ff8a47; --good:#3ddc84; --bad:#ff6b6b; --warn:#ffcf5a; color-scheme:dark } }
+:root[data-theme="dark"]{ --bg:#0e1222; --paper:#161b30; --fg:#eef0f6; --mute:#a7adc2; --line:#2a3152; --navy:#dbe3ff; --accent:#ff8a47; --good:#3ddc84; --bad:#ff6b6b; --warn:#ffcf5a; color-scheme:dark }
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.5}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.wrap{max-width:900px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:12px 40px}
+header.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}
+h1{font-family:var(--f-head);font-size:1.5rem;margin:0;letter-spacing:-.3px}
+h1 span{color:var(--accent)}
+h2{font-family:var(--f-head);font-size:1.25rem;margin:18px 0 8px;text-wrap:balance}
+h3{font-family:var(--f-head);font-size:1.05rem;margin:0 0 6px}
+.tag{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);display:flex;gap:6px;overflow-x:auto;padding:6px 0 10px;scrollbar-width:none}
+nav.tabs::-webkit-scrollbar{display:none}
+nav.tabs button{flex:none;border:2px solid var(--line);background:var(--paper);color:var(--fg);font:600 .92rem var(--f-body);padding:8px 14px;border-radius:999px;cursor:pointer}
+nav.tabs button[aria-selected="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+nav.tabs button:focus-visible,button:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.card{background:var(--paper);border:2px solid var(--line);border-radius:14px;padding:14px 16px;min-width:0}
+.grid{display:grid;gap:12px}
+@media(min-width:640px){.grid.two{grid-template-columns:1fr 1fr}}
+.btn{border:2px solid var(--fg);background:var(--paper);color:var(--fg);font:600 .95rem var(--f-body);padding:10px 16px;border-radius:12px;cursor:pointer}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.ghost{border-color:var(--line);color:var(--mute)}
+.btn:disabled{opacity:.5;cursor:default}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.pill{display:inline-block;padding:3px 10px;border-radius:999px;font-size:.78rem;font-weight:700;border:2px solid var(--line);color:var(--mute)}
+.pill.on{background:var(--navy);color:var(--bg);border-color:var(--navy)}
+.bar{height:10px;background:var(--line);border-radius:999px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--green);border-radius:999px}
+.muted{color:var(--mute)}
+.say{border-left:5px solid var(--accent);padding:6px 10px;margin:8px 0;font-weight:600;background:color-mix(in srgb,var(--accent) 10%,var(--paper))}
+.opt{display:block;width:100%;text-align:left;border:2px solid var(--line);background:var(--paper);color:var(--fg);padding:12px 14px;border-radius:12px;margin:8px 0;font:500 1rem var(--f-body);cursor:pointer}
+.opt:hover{border-color:var(--fg)}
+.opt.right{border-color:var(--good);background:color-mix(in srgb,var(--good) 14%,var(--paper))}
+.opt.wrong{border-color:var(--bad);background:color-mix(in srgb,var(--bad) 14%,var(--paper))}
+.opt:disabled{cursor:default}
+.explain{margin-top:10px;padding:10px 12px;border-radius:10px;background:color-mix(in srgb,var(--blue) 10%,var(--paper));border:2px solid color-mix(in srgb,var(--blue) 40%,var(--line))}
+.flash{min-height:180px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:1.15rem;padding:20px;cursor:pointer;user-select:none}
+.flash .back{color:var(--mute)}
+.big{font-family:var(--f-head);font-size:2.6rem;font-weight:700;font-variant-numeric:tabular-nums;line-height:1}
+.timer{font-family:var(--f-head);font-size:3rem;font-weight:700;font-variant-numeric:tabular-nums;text-align:center}
+.block{border-radius:12px;padding:12px 14px;color:#fff}
+.stat{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line)}
+.stat:last-child{border-bottom:0}
+.small{font-size:.9rem}
+.note{font-size:.85rem;color:var(--mute)}
+.cue{font-family:var(--f-head);font-size:1rem;line-height:1.7;border:2px dashed var(--fg);border-radius:12px;padding:12px 14px;background:var(--paper)}
+kbd{font:600 .8rem var(--f-body);border:1px solid var(--line);border-radius:6px;padding:1px 6px}
+ul.clean{margin:6px 0 0 18px;padding:0}
+ul.clean li{margin:4px 0}
+.sr{position:absolute;left:-9999px}
+@media (prefers-reduced-motion: no-preference){ .opt,.btn,nav.tabs button{transition:background .15s,border-color .15s} }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div><div class="tag">Interplanetary Spacecraft & Satellite Engineering · Sections 1–3</div><h1>Space <span>X</span> Study</h1></div>
+    <div id="syncBadge" class="pill" title="Where your progress is saved">…</div>
+  </header>
+  <nav class="tabs" role="tablist" id="tabs">
+    <button role="tab" data-tab="home" aria-selected="true">Today</button>
+    <button role="tab" data-tab="learn">Learn</button>
+    <button role="tab" data-tab="quiz">Quiz</button>
+    <button role="tab" data-tab="cards">Cards</button>
+    <button role="tab" data-tab="teach">Teach</button>
+    <button role="tab" data-tab="progress">Progress</button>
+  </nav>
+  <main id="view"></main>
+</div>
+
+<script>
+// ---------------------------------------------------------------- CONTENT
+const SCENES = [
+ {id:"fall", n:1, name:"Falling & missing", color:"#ff6b1a", sec:"S1 · S3",
+  story:"Throw a ball sideways. It falls and lands. Throw it harder, it lands farther. Now throw it so hard that by the time it falls, the ground has curved away underneath it. It never lands. It just keeps falling around the Earth. That's an orbit. The space station isn't floating; it's falling, and missing, 16 times a day.",
+  say:"An orbit is falling and missing. Go sideways fast enough and you never hit the ground.",
+  draw:"A mountain, three throws, the third one wrapping all the way around.",
+  why:[["So why do astronauts float?","Because they're falling too, together with the station. Like the drop on a roller coaster, but it never ends."],["Does the ISS ever need a push?","Yes. The thin air at 400 km slows it a little, so it loses about 2 km of height a month and fires thrusters to climb back."]]},
+ {id:"shelf", n:2, name:"Three shelves", color:"#1e7cff", sec:"S1 · S3",
+  story:"Satellites live on three shelves. Low shelf (LEO): 200–2,000 km up, laps Earth every 90 minutes, sees a tiny patch in sharp detail. Middle shelf (MEO): up to 36,000 km, 12-hour laps, GPS lives here. Top shelf (GEO): exactly 35,786 km, one lap takes exactly one day, so from the ground it hangs still. Higher means you see more, move slower, see less detail, and the radio takes longer. Low satellites only see one spot for minutes, so to cover the planet you fly a swarm: a constellation.",
+  say:"Higher means you see more but move slower. One exact height hangs still, and it has to be over the equator.",
+  draw:"Earth, three rings, a flashlight cone from each ring to show how big a patch it sees.",
+  why:[["Why over the equator?","Every orbit is centered on the middle of the Earth, and the equator is the only ground circle that matches. Park it over New York and New York slides away underneath."],["Why does GPS need 24 satellites but TV needs 1?","GPS is low enough that each satellite sees a patch and keeps moving; you need many so four are always overhead. A GEO TV satellite sees a third of the planet and never moves."]]},
+ {id:"hoop", n:3, name:"The hula hoop", color:"#7b3fe4", sec:"S3",
+  story:"Earth is a basketball; the orbit is a hula hoop around it. To tell someone exactly how the hoop sits you need six things: how big (a), how squished (e), how tilted (i), which way the tilt faces (Ω, swivel), which way the squished end points (ω, spin), and where the ball is right now (ν). Five freeze the hoop; one moves. Most orbits are ovals with Earth off to one side, so there's a closest point (perigee) and a farthest point (apogee). Like a swing: fastest at the bottom, slowest at the top. Those are the two spots where you fire the engine.",
+  say:"Six numbers describe any orbit: size, squash, tilt, swivel, spin, and where you are. Fastest at the low point, slowest at the high point.",
+  draw:"An egg with Earth off-center, two dots labeled fast and slow. Then a tilted hoop over a flat disk.",
+  why:[["Why six numbers, not three?","Size and shape don't tell you how the hoop is turned in space. That takes three more angles."],["What does firing the engine at perigee do?","It raises the far side of the orbit, apogee. Firing at apogee raises perigee. That's how you climb from a low orbit to a high one in two burns."]]},
+ {id:"vac", n:4, name:"Five free services", color:"#19b36b", sec:"S2",
+  story:"Down here, the air does five jobs you never notice: it's sunscreen (ozone blocks harsh UV), it's pressure (holds gas inside materials), it's a damper (a buzzing ruler stops because air steals its energy), it's a fan (hot air carries heat away), and it's a ground wire (static leaks away). Vacuum cancels all five. So in space UV snaps plastics, trapped gas pushes out and fogs your lenses (outgassing), vibrations never die, hot spots stay hot, and charge builds until it sparks. And it starts on the ground: clean rooms, because one speck can kill a sensor.",
+  say:"Earth's air is doing five jobs for you right now. Space does none of them, so the spacecraft has to do all five itself.",
+  draw:"A box labeled spacecraft with five arrows pointing in, each labeled with the missing service.",
+  why:[["Why does the ISS have big white panels?","Radiators. It makes its own heat and there's no air to blow it away, so it glows the heat off into space. Radiation is the only exit left."],["What is outgassing really?","Gas trapped inside materials at one atmosphere pushes out into vacuum. It can crack the material and, worse, it lands on cold lenses and sensors and fogs them."]]},
+ {id:"air", n:5, name:"The air bites back", color:"#d4a500", sec:"S2",
+  story:"The air is a layer cake. Troposphere (0–11 km): weather, planes, colder going up. Stratosphere (to 50 km): warmer going up, because the ozone here soaks up UV and turns it into heat. Mesosphere (to 90 km): coldest, meteors burn. Thermosphere (to 500 km): the thermometer says 1000 °C but there's almost no air, so nothing can hand that heat to you. The ISS flies through it and doesn't melt. Up there UV also splits oxygen pairs into single oxygen atoms, which grab onto anything. The spacecraft plows into them at 7.5 km/s and they eat its plastics.",
+  say:"The top of the atmosphere is 1000 degrees but can't burn you, because there's nothing there. What is there is loose oxygen atoms that eat plastic.",
+  draw:"A stack of five bands with a zigzag temperature line beside it.",
+  why:[["1000 degrees and nothing melts?","Temperature is how fast the molecules move; heat is how many there are to hit you. One sparkler is 1000 °C and won't warm a room."],["Who's moving at 7.5 km/s, the atom or the spacecraft?","The spacecraft. The atoms are nearly still. It plows into them, so each hit carries enough energy to break a chemical bond."]]},
+ {id:"fuel", n:6, name:"The fuel bill", color:"#e5338f", sec:"S1 · S3",
+  story:"First, the ladder of ways to visit a planet: fly past, orbit, drop a probe into its air, land, drive, or crash on purpose. Each rung costs more fuel to slow down and brings back more science. Now, getting there. You don't aim at Mars; you aim at where Mars will be. The cheapest route is a lazy half-ellipse that meets Mars halfway around the Sun: the Hohmann transfer, about 8.5 months, two burns. Faster costs wildly more fuel. Lambert's problem is the calculator: two points plus a time in, orbit and fuel bill out. And you can only launch when Earth and Mars line up, every 26 months.",
+  say:"Fast is expensive, slow is cheap. The lazy throw takes eight and a half months and you can only do it every two years.",
+  draw:"Two circles around a dot, a dashed half-oval connecting them, a burn at each end.",
+  why:[["Why not just go whenever?","Mars has to be in the right spot when you arrive. That lineup happens every 26 months."],["Why can't we do Mars in 20 days?","The math gives you an orbit for it, but the speed change needed is enormous. No rocket can carry that fuel."]]},
+ {id:"flyby", n:7, name:"The free lunch", color:"#555555", sec:"S1 · S3",
+  story:"For really far places the lazy throw is still too expensive. So you cheat. Swing close past a planet. In the planet's eyes you come in and go out at the same speed, just bent. But the planet is moving around the Sun, and the bend lines you up to carry some of that motion along. You leave faster than you arrived, for free: a flyby, or gravity assist. A ball bouncing off the front of a moving truck. More speed means a bigger orbit, so you reach farther. Pass in front of the planet instead and you slow down. The price is time: Rosetta took 10 years and four flybys to reach a comet.",
+  say:"Bounce off a moving planet and you leave faster than you came. It's free, but it takes years.",
+  draw:"A planet with a thick arrow showing it moving, a dashed path bending around it.",
+  why:[["Isn't that free energy?","No. It comes from the planet, which slows down by an amount nobody could ever measure."],["Why couldn't New Horizons stop at Pluto?","It left Earth so fast, plus a Jupiter boost, that no fuel could brake it into orbit. Speed bought the trip; speed cost the orbit."]]},
+];
+
+// Multiple-choice questions. a = index of correct option. x = explanation.
+const MC = [
+ {s:"fall", q:"Why doesn't an orbiting satellite fall down?", o:["There is no gravity in space","It IS falling, but moves sideways so fast the ground curves away","Its engines hold it up","The vacuum pushes it up"], a:1, x:"An orbit is falling and missing. Gravity is almost as strong at 400 km as on the ground."},
+ {s:"fall", q:"Why do astronauts float inside the ISS?", o:["No gravity up there","They are falling together with the station","The station spins to cancel gravity","Air pressure lifts them"], a:1, x:"Everyone and everything on board is in free fall together, so nothing presses on anything."},
+ {s:"fall", q:"How many times a day does the ISS circle Earth?", o:["About 1","About 4","About 16","About 50"], a:2, x:"One lap takes about 92 minutes, so roughly 16 laps a day."},
+ {s:"shelf", q:"LEO is roughly which altitude band?", o:["0–200 km","200–2,000 km","2,000–35,786 km","35,786 km exactly"], a:1, x:"Low Earth Orbit: 200 to 2,000 km. The ISS sits at 400 km."},
+ {s:"shelf", q:"About how long is one lap in LEO?", o:["90 minutes","12 hours","24 hours","A week"], a:0, x:"LEO periods run 1.5 to 2 hours. Higher orbits take longer."},
+ {s:"shelf", q:"Where does GPS live, and how long is its lap?", o:["LEO, 90 min","MEO, 12 h","GEO, 24 h","Beyond the Moon"], a:1, x:"GPS is at about 20,200 km, in MEO, with a 12-hour period."},
+ {s:"shelf", q:"Why is GEO at exactly 35,786 km?", o:["It's the edge of the atmosphere","It's a round number in miles","It's the one altitude where one lap takes exactly one Earth rotation","It's the Moon's distance divided by 10"], a:2, x:"Calculated, not chosen. Lower is too fast, higher is too slow."},
+ {s:"shelf", q:"Why can't a TV satellite hang over New York?", o:["New York is too cold","Every orbit is centered on Earth's center; only the equator moves in a matching circle","Too many buildings block the signal","It would fall faster at 41° north"], a:1, x:"Over New York it would drift north and south every day, tracing a figure 8. Only the equator works."},
+ {s:"shelf", q:"Geosynchronous vs geostationary: which one hangs over one spot?", o:["Geosynchronous","Geostationary","Both","Neither"], a:1, x:"Geosynchronous = one-day lap at any tilt. Geostationary = one-day lap AND over the equator."},
+ {s:"shelf", q:"Going higher, what gets WORSE?", o:["Coverage","Detail and radio delay","Lifetime","Fuel to stay up"], a:1, x:"Higher sees more but sees it blurrier and the radio takes longer. Coverage gets better."},
+ {s:"shelf", q:"Why does GPS need 24+ satellites while a TV satellite needs 1?", o:["GPS satellites are cheaper","GPS is lower, each sees a patch and keeps moving, so you need many for 4 always overhead","GPS satellites break more often","TV signals are stronger"], a:1, x:"Low and moving means a swarm. GEO sees a third of the planet and never moves."},
+ {s:"shelf", q:"What is a constellation?", o:["A star pattern used for navigation","A group of satellites in planned orbits working as one system","Any satellite above GEO","The rings of Saturn"], a:1, x:"GPS, Starlink and Iridium are constellations: a swarm so someone is always overhead."},
+ {s:"shelf", q:"How many GPS satellites does your phone need to see at once?", o:["1","2","At least 4","All 24"], a:2, x:"Three for position and a fourth to fix the phone's clock error."},
+ {s:"shelf", q:"The ISS orbits inside which atmospheric layer?", o:["Stratosphere","Mesosphere","Thermosphere","Exosphere"], a:2, x:"At 400 km it is in the thermosphere, which runs roughly 90 to 500 km."},
+ {s:"hoop", q:"How many numbers fully describe an orbit?", o:["2","3","6","12"], a:2, x:"Size, shape, tilt, swivel, spin, position: a, e, i, Ω, ω, ν."},
+ {s:"hoop", q:"Which parameter is the only one that changes as the satellite moves?", o:["a, semi-major axis","e, eccentricity","i, inclination","ν, true anomaly"], a:3, x:"Five freeze the hoop; true anomaly says where the bead is right now."},
+ {s:"hoop", q:"What does eccentricity measure?", o:["How tilted the orbit is","How squashed the ellipse is","How fast the satellite goes","How big the orbit is"], a:1, x:"0 is a circle, near 1 is a cigar, over 1 never closes (a flyby)."},
+ {s:"hoop", q:"Where is a satellite moving fastest?", o:["Apogee","Perigee","Halfway between","Same speed everywhere"], a:1, x:"Like a swing: fastest at the bottom (perigee), slowest at the top (apogee)."},
+ {s:"hoop", q:"You fire the engine at perigee, speeding up. What happens?", o:["Perigee gets lower","Apogee rises","The orbit tilts","Nothing changes"], a:1, x:"A push at the low point raises the far side. A push at apogee raises perigee."},
+ {s:"hoop", q:"The semi-major axis a equals…", o:["perigee distance minus apogee distance","(perigee radius + apogee radius) ÷ 2, both from Earth's center","the altitude at perigee","the orbit's period"], a:1, x:"Half the line of apsides. Measure from Earth's center, not the surface."},
+ {s:"hoop", q:"Which parameter is the 'swivel', where the tilted orbit crosses the equator going north?", o:["Inclination i","Longitude of the ascending node Ω","Argument of periapsis ω","True anomaly ν"], a:1, x:"Ω is measured in the equator plane from the vernal equinox direction (♈) to the ascending node."},
+ {s:"hoop", q:"For an Earth satellite, the reference plane and direction are…", o:["The ecliptic and the Sun's direction","The equator and the vernal equinox (♈)","The orbit itself and north","Earth's surface and Greenwich"], a:1, x:"The instructor said ecliptic / toward the Sun; that's for orbits around the Sun. Earth orbits use the equator and ♈."},
+ {s:"hoop", q:"An orbit with eccentricity greater than 1 is…", o:["A perfect circle","A gentle oval","An open path that never closes, like a flyby","Impossible"], a:2, x:"e = 1 is escape, e > 1 is a hyperbola: swing past and leave."},
+ {s:"vac", q:"Which is NOT one of the five free services Earth's air provides?", o:["Sunscreen (ozone)","A damper for vibration","Gravity","A ground wire for static"], a:2, x:"The five: sunscreen, pressure, damper, fan (convection), ground wire. Gravity is still there in space."},
+ {s:"vac", q:"Why does a spacecraft need radiator panels?", o:["To shield it from UV","To dump its own heat, since there is no air to carry heat away","To collect solar power","To protect polymers from atomic oxygen"], a:1, x:"No convection in vacuum. Conduction to a radiator and radiation into space is the only exit."},
+ {s:"vac", q:"What is outgassing?", o:["Fuel leaking from the tank","Gas trapped in materials escaping into vacuum, which can fog lenses","Air escaping from the cabin","Exhaust from the thrusters"], a:1, x:"Hence bake-outs before launch and keeping outgassing materials away from sensors."},
+ {s:"vac", q:"Why do UV photons damage plastics but not metals?", o:["Plastics are darker","UV energy exceeds the carbon bond energy that holds polymers together; metal bonds are different","Metals reflect all light","Plastics are thinner"], a:1, x:"A 300 nm photon carries ~4 eV; a carbon-carbon bond is ~3.6 eV. The photon wins."},
+ {s:"vac", q:"Why do vibrations last much longer on a spacecraft than on Earth?", o:["Spacecraft are lighter","No air to absorb the energy, so the spacecraft must damp it itself","Vacuum amplifies sound","Solar wind keeps shaking it"], a:1, x:"Newton's first law with nothing to stop it. Dampers and reaction wheels do the job the air used to."},
+ {s:"vac", q:"Ozone absorbs UV below about what wavelength?", o:["0.3 millimeters","0.3 micrometers (300 nm)","3 meters","0.3 nanometers"], a:1, x:"The captions said millimeters; the slide said micrometers. 0.3 µm = 300 nm."},
+ {s:"vac", q:"What happens to static charge on a spacecraft?", o:["It leaks into the air","It builds up until it sparks, so you ground everything and use conductive coatings","It is burned by the engines","It is absorbed by the solar panels"], a:1, x:"No discharge path to the environment. Spacecraft charging is a real design problem."},
+ {s:"vac", q:"Why are spacecraft built in clean rooms?", o:["To keep workers cool","One speck on a sensor or lens can ruin it, and voids from dirty manufacturing cause outgassing","It is cheaper","Regulations require white suits"], a:1, x:"Particles and voids start in the factory. Constant checking all the way through."},
+ {s:"air", q:"Order the layers from the ground up.", o:["Stratosphere, troposphere, mesosphere, thermosphere","Troposphere, stratosphere, mesosphere, thermosphere, exosphere","Mesosphere, troposphere, thermosphere, stratosphere","Exosphere, thermosphere, troposphere, stratosphere"], a:1, x:"Tropo (0–11), strato (11–50), meso (50–90), thermo (90–500), exo (500+)."},
+ {s:"air", q:"Why does the stratosphere get warmer as you go up?", o:["It's closer to the Sun","The ozone layer absorbs UV and turns it into heat","Jet engines heat it","Air is denser up there"], a:1, x:"Absorbed light becomes heat. Earth's sunscreen is also a heater."},
+ {s:"air", q:"The thermosphere is around 1000 °C. Why doesn't the ISS cook?", o:["It has thick insulation","There are almost no molecules, so there's nothing to carry the heat into it","It orbits above the thermosphere","It is painted white"], a:1, x:"Temperature is molecule speed; heat needs numbers. A sparkler is 1000 °C and won't warm a room."},
+ {s:"air", q:"What is atomic oxygen?", o:["Ozone, O₃","Single oxygen atoms, made when UV splits O₂","Liquid oxygen for rockets","Oxygen dissolved in metal"], a:1, x:"Highly reactive. The main gas from about 200 to 600 km, exactly where LEO satellites fly."},
+ {s:"air", q:"In an atomic-oxygen hit at 7.5 km/s, what is moving that fast?", o:["The oxygen atom","The spacecraft","The Sun's light","The Earth"], a:1, x:"The atoms are nearly still. The spacecraft plows into them, and each hit carries enough energy to break a bond."},
+ {s:"air", q:"Which layer is the coldest?", o:["Troposphere","Stratosphere","Mesosphere","Thermosphere"], a:2, x:"The mesosphere, around −90 °C. Meteors burn up here."},
+ {s:"air", q:"Which materials does atomic oxygen hurt most?", o:["Steel","Polymers like Kapton","Glass","Gold"], a:1, x:"Metals form a thin oxide skin and mostly stop. Polymers erode like sandblasted glass."},
+ {s:"fuel", q:"Rank these visit types from least to most committed.", o:["Lander, flyby, orbiter","Flyby, orbiter, atmospheric probe, lander, rover, penetrator","Rover, lander, orbiter, flyby","Penetrator, flyby, rover"], a:1, x:"Each rung costs more fuel to slow down and more risk, and returns more science."},
+ {s:"fuel", q:"Which spacecraft type needs NO braking burn at its target?", o:["Orbiter","Lander","Flyby","Rover"], a:2, x:"It passes once and keeps going. That's why Voyager could visit four planets."},
+ {s:"fuel", q:"What goes into Lambert's problem, and what comes out?", o:["In: fuel and mass. Out: the planet","In: two positions and a travel time. Out: the orbit connecting them, and so the Δv","In: an orbit. Out: a launch date","In: a rocket. Out: a landing site"], a:1, x:"The instructor said it backwards. Time goes in; the fuel bill comes out."},
+ {s:"fuel", q:"Why can't we fly to Mars in 20 days?", o:["Mars is too far to see","An orbit for it exists, but the Δv is absurd; no rocket can carry the fuel","The crew would get bored","Radio won't reach"], a:1, x:"Fast is expensive. The math works, the fuel doesn't exist."},
+ {s:"fuel", q:"Describe a Hohmann transfer.", o:["A straight line from Earth to Mars","Half an ellipse touching both orbits, depart and arrive 180° apart, two burns","A spiral that takes 10 years","A flyby of the Moon"], a:1, x:"The lazy throw. About 8.5 months to Mars, cheapest in fuel."},
+ {s:"fuel", q:"How often can you launch to Mars on a Hohmann path?", o:["Every day","Every month","About every 26 months","Once a decade"], a:2, x:"Earth and Mars have to line up with Mars about 44° ahead. That recurs every 26 months."},
+ {s:"fuel", q:"Δv (delta-v) is best described as…", o:["The spacecraft's top speed","The total speed change a trip needs, which is really the fuel bill","The distance to the target","The engine's temperature"], a:1, x:"The currency of spaceflight. Every bit of Δv costs fuel you had to carry."},
+ {s:"fuel", q:"A Hohmann transfer's time of flight equals…", o:["The full period of the transfer ellipse","Half the period of the transfer ellipse","One Earth year","The target's period"], a:1, x:"Your Section 1 quiz: TOF = π√(a³/μ), half of T = 2π√(a³/μ)."},
+ {s:"flyby", q:"In the planet's own frame, what changes during a flyby?", o:["Speed increases","Only the direction; speed in equals speed out","Speed decreases","Nothing"], a:1, x:"Seen from the planet it's a symmetric swing-past. The speed change appears only in the Sun's frame."},
+ {s:"flyby", q:"Where does the extra speed from a gravity assist come from?", o:["The Sun","The spacecraft's engines","The planet, which slows down by an unmeasurable amount","Nowhere, it's free energy"], a:2, x:"Energy is conserved. The planet pays, but it's so massive the loss is nothing you could measure."},
+ {s:"flyby", q:"How do you make a flyby SLOW you down?", o:["Fire the engine backwards","Pass in front of the planet instead of behind it","Go faster on approach","You can't"], a:1, x:"That's how missions to Mercury and the Sun brake."},
+ {s:"flyby", q:"Why did Rosetta take 10 years to reach its comet?", o:["It got lost","It used four flybys to build speed for free instead of carrying fuel; time was the price","Comets are far beyond Pluto","Its engine was broken"], a:1, x:"Launch 2004, Earth, Mars, Earth, Earth flybys, comet 2014."},
+ {s:"flyby", q:"Why couldn't New Horizons go into orbit at Pluto?", o:["Pluto has no gravity","It arrived far too fast after the fastest launch ever plus a Jupiter boost; no fuel could brake it","It ran out of power","Pluto was on the other side of the Sun"], a:1, x:"Speed bought the 9.5-year trip. Speed cost the orbit. Hence a flyby."},
+ {s:"flyby", q:"More speed at the same distance from the Sun means…", o:["A smaller orbit","A bigger orbit, reaching farther out","The same orbit","Escape from the galaxy"], a:1, x:"More energy, bigger semi-major axis. That's how a few flybys reach the outer planets."},
+ {s:"flyby", q:"The 'moving truck' analogy for a flyby: what is the truck?", o:["The spacecraft","The Sun","The planet, moving along its orbit","The rocket"], a:2, x:"A ball bouncing off the front of a moving truck comes back faster. The planet is the truck."},
+];
+
+// Explain-why prompts: think, reveal, self-grade.
+const WHY = [
+ {s:"fall", q:"Explain to a friend in two sentences why the ISS doesn't fall down.", a:"It is falling. It's also moving sideways at 7.7 km/s, so the ground curves away under it as fast as it drops. Falling and missing, forever."},
+ {s:"shelf", q:"Why is 35,786 km not a round number?", a:"It's the one altitude where a lap takes exactly one Earth rotation. It's calculated from gravity, not chosen. Lower is too fast, higher is too slow."},
+ {s:"shelf", q:"Why does GEO have to be over the equator?", a:"Every orbit's plane passes through Earth's center. The equator is the only ground circle centered the same way, so it's the only place a satellite can keep pace with the ground."},
+ {s:"hoop", q:"Walk through the six parameters using the hula hoop.", a:"Size (a), squish (e), tilt (i), swivel of the tilt (Ω), spin of the squished end within the plane (ω), and where the bead is now (ν). Five describe the hoop, one describes the ball."},
+ {s:"hoop", q:"Why do you fire the engine at perigee to go higher?", a:"A speed-up at the low point raises the opposite side of the orbit, the apogee. The orbit stretches away from where you pushed. A second burn at apogee then rounds it off."},
+ {s:"vac", q:"Name the five free services and what goes wrong without each.", a:"Sunscreen → UV snaps plastics. Pressure → trapped gas outgasses and fogs sensors. Damper → vibrations never die. Fan → hot spots stay hot. Ground wire → charge builds and sparks."},
+ {s:"vac", q:"Why does the ISS need radiators if space can't heat it up?", a:"The station makes its own heat: electronics, people, sunlight. With no air to blow it away, radiating it from big panels into cold space is the only way out."},
+ {s:"air", q:"Explain 'hot but not heat' for the thermosphere.", a:"Temperature is how fast molecules move; the few up there move very fast. Heat is how much energy actually gets delivered, which needs many molecules. There are almost none, so nothing cooks."},
+ {s:"air", q:"How is atomic oxygen made and why is it dangerous?", a:"UV splits O₂ into single O atoms up high. They're desperate to bond. A spacecraft at 7.5 km/s slams into them and each hit breaks bonds in plastics, eroding them."},
+ {s:"fuel", q:"Explain the Hohmann transfer like the lazy throw.", a:"Don't hurl the ball at your friend on the far merry-go-round; lob it gently so it drifts outward on a long curve and arrives as they come around. Least effort, longer wait. Half an ellipse, 180°, two burns, 8.5 months to Mars."},
+ {s:"fuel", q:"What does Lambert's problem do for a mission planner?", a:"Give it where you are, where you want to be, and how long you'll take; it returns the single orbit that works and therefore the Δv. It's the 'can I get there by then, and what will it cost' calculator."},
+ {s:"flyby", q:"Explain a gravity assist with the moving truck.", a:"A ball off a wall comes back at the same speed. Off the front of a moving truck it comes back faster because the truck is moving. The planet is the truck: in its frame your speed doesn't change, but in the Sun's frame you leave faster."},
+ {s:"flyby", q:"Why is the price of flybys time?", a:"Each assist needs the planets lined up, so you loop around the inner solar system for years collecting boosts instead of carrying fuel. Rosetta: 10 years, four flybys."},
+];
+
+// Flashcards: vocabulary and key numbers.
+const CARDS = [
+ ["Orbit","Falling and missing: moving sideways so fast the ground curves away","fall"],
+ ["LEO","Low Earth Orbit, 200–2,000 km, laps in 1.5–2 h; ISS, Starlink","shelf"],
+ ["MEO","Medium Earth Orbit, 2,000–35,786 km, 2–24 h laps; GPS at 20,200 km / 12 h","shelf"],
+ ["GEO","35,786 km altitude, one lap = one day, hangs over one spot on the equator","shelf"],
+ ["Geostationary vs geosynchronous","Geostationary: one-day lap AND over the equator. Geosynchronous: one-day lap, any tilt","shelf"],
+ ["Constellation","Many satellites in planned orbits acting as one system so one is always overhead","shelf"],
+ ["Footprint / coverage","The patch of Earth a satellite sees at one moment; bigger when higher","shelf"],
+ ["Sidereal day","One true rotation of Earth relative to the stars: 23 h 56 min","shelf"],
+ ["Semi-major axis (a)","Half the long way across the ellipse; the orbit's size; (r_p + r_a) ÷ 2","hoop"],
+ ["Eccentricity (e)","How squashed: 0 circle, near 1 cigar, over 1 open path","hoop"],
+ ["Inclination (i)","Tilt of the orbit vs the equator; 0° equatorial, 90° polar","hoop"],
+ ["Ω, longitude of ascending node","Swivel: angle from ♈ to where the orbit crosses the equator going north","hoop"],
+ ["ω, argument of periapsis","Spin in plane: angle from the ascending node to perigee","hoop"],
+ ["ν, true anomaly","Where the spacecraft is right now, measured from perigee; the only one that changes","hoop"],
+ ["Perigee / apogee","Closest and farthest points from Earth's center; fastest / slowest","hoop"],
+ ["Line of apsides","The line through perigee and apogee; the ellipse's major axis","hoop"],
+ ["Ascending node","Where a tilted orbit crosses the equator plane going north","hoop"],
+ ["Vernal equinox (♈)","The fixed reference direction for Earth orbits: where the Sun is on the first day of spring","hoop"],
+ ["Vacuum","Almost no gas at all; no pressure, no convection, no damping, no discharge path","vac"],
+ ["Outgassing","Trapped gas leaking out of materials in vacuum; fogs lenses and sensors","vac"],
+ ["Ozone layer","Earth's sunscreen in the stratosphere; absorbs UV below 0.3 µm (300 nm)","vac"],
+ ["Polymer","Plastics, rubbers, Kapton; long molecular chains that UV and atomic oxygen break","vac"],
+ ["Convection","Heat carried by moving air; impossible in vacuum","vac"],
+ ["Conduction / radiation","The two heat paths left in vacuum: through solids, and glowing it away","vac"],
+ ["Spacecraft charging","Static building up with no air to bleed it off, until it arcs","vac"],
+ ["Clean room","Filtered-air workspace so particles and voids never reach the spacecraft","vac"],
+ ["Troposphere","0–11 km; weather and planes; colder going up","air"],
+ ["Stratosphere","11–50 km; ozone lives here; warmer going up","air"],
+ ["Mesosphere","50–90 km; coldest layer; meteors burn","air"],
+ ["Thermosphere","90–500 km; 1000 °C by thermometer but almost no air; ISS lives here","air"],
+ ["Exosphere","500 km and up; fades into space","air"],
+ ["Atomic oxygen","Single O atoms from UV splitting O₂; dominant 200–600 km; erodes polymers","air"],
+ ["Temperature vs heat","Temperature = molecule speed; heat = energy actually delivered, needs numbers","air"],
+ ["Δv (delta-v)","Total speed change a trip needs; the fuel bill of spaceflight","fuel"],
+ ["Hohmann transfer","Half-ellipse touching both orbits, 180° apart, two burns, cheapest Δv; Mars ≈ 8.5 months","fuel"],
+ ["Lambert's problem","Two positions + a time in; the connecting orbit and its Δv out","fuel"],
+ ["Launch window","When planets line up for a Hohmann; Earth–Mars every 26 months","fuel"],
+ ["Flyby / gravity assist","Swing past a moving planet to gain (or lose) speed for free","flyby"],
+ ["Hyperbola","The open swing-past path of a flyby near a planet; e > 1","flyby"],
+ ["Rosetta","ESA comet mission: launched 2004, four flybys, arrived 2014, dropped Philae","flyby"],
+ ["New Horizons","NASA Pluto flyby: 2006 → 2015, 9.5 years, Jupiter assist, too fast to stop","flyby"],
+ ["Commitment ladder","Flyby → orbiter → atmospheric probe → lander → rover → penetrator","fuel"],
+ ["Laika","Dog aboard Sputnik 2 (1957), first animal to orbit; the classic biosatellite","shelf"],
+ ["Hubble","Bus-sized telescope orbiting at ~540 km since 1990; looks out, not down","shelf"],
+];
+
+const TEACH = [
+ {t:45, name:"Hook", color:"#ff6b1a", key:"An orbit is falling and missing.", draw:"Ball off a mountain, three throws.", hand:"So how high you go changes everything…"},
+ {t:60, name:"Three shelves", color:"#1e7cff", key:"One exact height hangs still, and it has to be over the equator.", draw:"Earth, three rings, flashlight cones.", hand:"But how do you even describe an orbit to someone?"},
+ {t:60, name:"Hula hoop", color:"#7b3fe4", key:"Six numbers: five freeze the hoop, one moves. Fastest low, slowest high.", draw:"Egg with Earth off-center.", hand:"Okay, you're up there. Now space tries to kill you."},
+ {t:60, name:"Five free services", color:"#19b36b", key:"The air does five jobs for you; space does none.", draw:"Box with five arrows in.", hand:"And the little air that IS up there is worse."},
+ {t:45, name:"Air bites back", color:"#d4a500", key:"Hot but empty, and the oxygen is hungry.", draw:"Layer cake with zigzag.", hand:"Now let's leave Earth entirely."},
+ {t:75, name:"The fuel bill", color:"#e5338f", key:"Fast is expensive, slow is cheap.", draw:"Two circles, dashed half-oval.", hand:"Unless you cheat."},
+ {t:45, name:"The free lunch", color:"#555555", key:"Free speed, but it costs years.", draw:"Planet with thick arrow, path bending around.", hand:"So here's the whole thing in one breath."},
+ {t:30, name:"Landing", color:"#0b1437", key:"Space gives you nothing for free. Then stop and let them ask.", draw:"", hand:""},
+];
+const INTERVALS=[1,3,7,14,30];
+
+// ---------------------------------------------------------------- STATE / STORAGE
+let state={ mc:{}, why:{}, cards:{}, scenes:{}, sessions:[], runs:[] };
+let store={mode:"local", doc:null};
+const LS_KEY="sxs_progress_v1";
+function todayKey(){ return new Date().toISOString().slice(0,10); }
+function loadLocal(){ try{ const s=localStorage.getItem(LS_KEY); if(s) state=Object.assign(state, JSON.parse(s)); }catch(e){} }
+function saveLocal(){ try{ localStorage.setItem(LS_KEY, JSON.stringify(state)); }catch(e){} }
+let saveTimer=null, saving=false, dirty=false;
+function persist(){
+  saveLocal();
+  if(store.mode==="db" && store.doc){ dirty=true; clearTimeout(saveTimer); saveTimer=setTimeout(flush,600); }
+}
+async function flush(){
+  if(saving||!dirty) return; saving=true; dirty=false;
+  try{ await store.doc.set({...state, updatedAt:new Date().toISOString()}); setBadge("Saved to your account","on"); }
+  catch(e){ setBadge("Saved on this device only",""); }
+  saving=false; if(dirty) flush();
+}
+function setBadge(t,cls){ const b=document.getElementById("syncBadge"); b.textContent=t; b.className="pill "+cls; }
+async function initStore(){
+  loadLocal(); setBadge("Saved on this device","");
+  try{
+    const [db,user]=await Promise.all([claude.use("db"), claude.use("user")]);
+    if(!db||!user) return;
+    const id=await user.id(); if(!id) return;
+    const doc=db.doc("data/users/"+id+"/progress");
+    const snap=await doc.get();
+    if(snap.exists){ const d=snap.data(); const merged=mergeState(state, d); state=merged; saveLocal(); }
+    store={mode:"db",doc};
+    setBadge("Saved to your account","on");
+    if(!snap.exists){ dirty=true; flush(); }
+    render();
+  }catch(e){ /* stay local */ }
+}
+function mergeState(a,b){ // prefer the record with more attempts per item
+  const out=JSON.parse(JSON.stringify(a));
+  for(const k of ["mc","why","cards"]){ out[k]=out[k]||{}; for(const id in (b[k]||{})){ const x=out[k][id], y=b[k][id]; if(!x||(y.seen||0)>(x.seen||0)) out[k][id]=y; } }
+  out.scenes=Object.assign({},a.scenes||{},b.scenes||{});
+  out.sessions=[...(a.sessions||[]),...(b.sessions||[])].slice(-60);
+  out.runs=[...(a.runs||[]),...(b.runs||[])].slice(-30);
+  return out;
+}
+function rec(kind,id,ok){
+  const r=state[kind][id]||{seen:0,right:0,wrong:0,streak:0,last:null,due:null};
+  r.seen++; if(ok){r.right++; r.streak++;} else {r.wrong++; r.streak=0;}
+  r.last=ok?"right":"wrong";
+  const days=ok?INTERVALS[Math.min(r.streak-1,INTERVALS.length-1)]:1;
+  const d=new Date(); d.setDate(d.getDate()+days); r.due=d.toISOString().slice(0,10);
+  state[kind][id]=r; persist();
+}
+function isDue(r){ return !r||!r.due||r.due<=todayKey(); }
+function sceneMastery(sid){
+  const ids=MC.map((q,i)=>["mc",String(i),q.s]).concat(WHY.map((q,i)=>["why",String(i),q.s])).concat(CARDS.map((c,i)=>["cards",String(i),c[2]])).filter(x=>x[2]===sid);
+  let pts=0,max=0; for(const [k,id] of ids){ const r=state[k][id]; max+=3; if(r){ pts+=Math.min(3,r.streak); } }
+  return max?Math.round(100*pts/max):0;
+}
+
+// ---------------------------------------------------------------- UI
+const view=document.getElementById("view");
+let tab="home"; try{ tab=localStorage.getItem("sxs_tab")||"home"; }catch(e){}
+document.getElementById("tabs").addEventListener("click",e=>{ const b=e.target.closest("button[data-tab]"); if(!b) return; tab=b.dataset.tab; try{localStorage.setItem("sxs_tab",tab)}catch(e){} stopTimer(); render(); });
+function esc(s){ return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+function render(){
+  document.querySelectorAll("#tabs button").forEach(b=>b.setAttribute("aria-selected",b.dataset.tab===tab));
+  ({home,learn,quiz,cards,teach,progress})[tab]();
+  window.scrollTo({top:0});
+}
+
+// ---- Today
+function home(){
+  const dueCards=CARDS.filter((c,i)=>isDue(state.cards[String(i)])).length;
+  const missed=MC.filter((q,i)=>state.mc[String(i)]&&state.mc[String(i)].last==="wrong").length;
+  const weak=SCENES.map(s=>[s,sceneMastery(s.id)]).sort((a,b)=>a[1]-b[1]);
+  const lastSession=(state.sessions||[]).slice(-1)[0];
+  view.innerHTML=`
+  <div class="card" style="border-color:var(--accent)">
+    <div class="tag">The story, in one breath</div>
+    <p style="margin:6px 0 0;font-size:1.05rem"><b>Space gives you nothing for free.</b> Getting there is falling and missing. Where you end up depends on how high you go. Describing an orbit is describing a hula hoop. Staying alive means doing the air's five jobs yourself. Going anywhere is a fuel bill, and the only free lunch is bouncing off a moving planet.</p>
+  </div>
+  <h2>Today's 10 minutes</h2>
+  <div class="grid two">
+    <div class="card"><h3>1 · Cards due</h3><div class="big">${dueCards}</div><p class="small muted">Flip, say the answer out loud, grade yourself.</p><button class="btn primary" data-go="cards">Review cards</button></div>
+    <div class="card"><h3>2 · Quiz</h3><div class="big">${missed}</div><p class="small muted">questions you missed last time. Start there, then the weakest scene.</p><button class="btn primary" data-go="quiz">Start quiz</button></div>
+    <div class="card"><h3>3 · Weakest scene</h3><p style="margin:6px 0"><span class="pill" style="border-color:${weak[0][0].color};color:${weak[0][0].color}">${weak[0][0].n} · ${esc(weak[0][0].name)}</span> <b>${weak[0][1]}%</b></p><p class="small muted">Re-read it like you're 5, then do its quiz.</p><button class="btn" data-go="learn" data-scene="${weak[0][0].id}">Open scene</button></div>
+    <div class="card"><h3>4 · Say it out loud</h3><p class="small muted">${lastSession?`Last quiz: ${lastSession.right}/${lastSession.total} on ${lastSession.date}.`:"No quiz yet."} The 7-minute teach-back has a timer.</p><button class="btn" data-go="teach">Open Teach</button></div>
+  </div>
+  <p class="note" style="margin-top:14px">Progress is saved per person. The badge at the top says whether it's on your account (syncs between phone and laptop) or just this device.</p>`;
+  view.querySelectorAll("[data-go]").forEach(b=>b.addEventListener("click",()=>{ tab=b.dataset.go; if(b.dataset.scene) openScene=b.dataset.scene; render(); }));
+}
+
+// ---- Learn
+let openScene=null;
+function learn(){
+  view.innerHTML=`<h2>Seven scenes, told like you're 5</h2><p class="muted small">Read one, then mark it. "Shaky" puts it at the top of Today.</p><div class="grid" id="scenes"></div>`;
+  const wrap=view.querySelector("#scenes");
+  SCENES.forEach(s=>{
+    const m=sceneMastery(s.id); const mark=(state.scenes||{})[s.id]||"";
+    const open=openScene===s.id;
+    const el=document.createElement("div"); el.className="card"; el.style.borderColor=s.color;
+    el.innerHTML=`<div class="row" style="justify-content:space-between"><div><span class="tag">Scene ${s.n} · ${s.sec}</span><h3 style="margin:2px 0 0">${esc(s.name)}</h3></div><div class="row"><span class="pill ${mark==="got"?"on":""}">${mark==="got"?"got it":mark==="shaky"?"shaky":"unmarked"}</span><span class="pill">${m}%</span></div></div>
+    <div ${open?"":"hidden"} class="body">
+      <p>${esc(s.story)}</p>
+      <div class="say">SAY: “${esc(s.say)}”</div>
+      <p class="small"><b>Napkin drawing:</b> ${esc(s.draw)}</p>
+      ${s.why.map(w=>`<details style="margin:6px 0"><summary><b>A friend asks:</b> “${esc(w[0])}”</summary><p class="small" style="margin:6px 0 0">${esc(w[1])}</p></details>`).join("")}
+      <div class="row" style="margin-top:10px"><button class="btn" data-mark="got">Got it</button><button class="btn ghost" data-mark="shaky">Still shaky</button><button class="btn ghost" data-quiz>Quiz this scene</button></div>
+    </div>
+    <button class="btn ghost small" style="margin-top:8px" data-toggle>${open?"Close":"Read"}</button>`;
+    el.querySelector("[data-toggle]").addEventListener("click",()=>{ openScene=open?null:s.id; render(); });
+    el.querySelectorAll("[data-mark]").forEach(b=>b.addEventListener("click",()=>{ state.scenes=state.scenes||{}; state.scenes[s.id]=b.dataset.mark; persist(); render(); }));
+    el.querySelector("[data-quiz]").addEventListener("click",()=>{ quizFilter=s.id; tab="quiz"; render(); });
+    wrap.appendChild(el);
+  });
+}
+
+// ---- Quiz
+let quizFilter="missed", quizSet=null, qi=0, qright=0, qwrongList=[];
+function buildQuiz(){
+  let pool=[];
+  MC.forEach((q,i)=>pool.push({kind:"mc",i,q}));
+  WHY.forEach((q,i)=>pool.push({kind:"why",i,q}));
+  if(quizFilter==="missed"){ pool=pool.filter(p=>{const r=state[p.kind][String(p.i)]; return r&&r.last==="wrong";}); if(!pool.length){ quizFilter="due"; return buildQuiz(); } }
+  else if(quizFilter==="due"){ pool=pool.filter(p=>isDue(state[p.kind][String(p.i)])); if(!pool.length){ quizFilter="all"; return buildQuiz(); } }
+  else if(quizFilter!=="all"){ pool=pool.filter(p=>p.q.s===quizFilter); }
+  for(let i=pool.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [pool[i],pool[j]]=[pool[j],pool[i]]; }
+  quizSet=pool.slice(0, quizFilter==="all"?15:12); qi=0; qright=0; qwrongList=[];
+}
+function quiz(){
+  if(!quizSet){ quizMenu(); return; }
+  if(qi>=quizSet.length){ quizDone(); return; }
+  const item=quizSet[qi]; const sc=SCENES.find(s=>s.id===item.q.s);
+  const head=`<div class="row" style="justify-content:space-between"><span class="pill" style="border-color:${sc.color};color:${sc.color}">Scene ${sc.n} · ${esc(sc.name)}</span><span class="muted small">${qi+1} / ${quizSet.length} · ${qright} right</span></div><div class="bar" style="margin:8px 0 14px"><i style="width:${Math.round(100*qi/quizSet.length)}%"></i></div>`;
+  if(item.kind==="mc"){
+    const q=item.q; const order=[0,1,2,3].sort(()=>Math.random()-.5);
+    view.innerHTML=`${head}<div class="card"><h3 style="font-size:1.15rem">${esc(q.q)}</h3><div id="opts">${order.map(k=>`<button class="opt" data-k="${k}">${esc(q.o[k])}</button>`).join("")}</div><div id="fb"></div></div>`;
+    view.querySelectorAll(".opt").forEach(b=>b.addEventListener("click",()=>{
+      const k=+b.dataset.k; const ok=k===q.a;
+      view.querySelectorAll(".opt").forEach(x=>{ x.disabled=true; if(+x.dataset.k===q.a) x.classList.add("right"); else if(x===b&&!ok) x.classList.add("wrong"); });
+      rec("mc",String(item.i),ok); if(ok) qright++; else qwrongList.push(item);
+      document.getElementById("fb").innerHTML=`<div class="explain"><b>${ok?"Right.":"Not quite."}</b> ${esc(q.x)}</div><div class="row" style="margin-top:10px"><button class="btn primary" id="next">Next</button></div>`;
+      document.getElementById("next").addEventListener("click",()=>{ qi++; render(); });
+    }));
+  } else {
+    const q=item.q;
+    view.innerHTML=`${head}<div class="card"><div class="tag">Explain it out loud</div><h3 style="font-size:1.15rem">${esc(q.q)}</h3><p class="muted small">Say your answer before you reveal. Then grade yourself honestly: could a friend have followed it?</p><div id="fb"><button class="btn primary" id="reveal">Reveal answer</button></div></div>`;
+    document.getElementById("reveal").addEventListener("click",()=>{
+      document.getElementById("fb").innerHTML=`<div class="explain">${esc(q.a)}</div><div class="row" style="margin-top:10px"><button class="btn primary" data-g="1">I had it</button><button class="btn" data-g="0">Not yet</button></div>`;
+      view.querySelectorAll("[data-g]").forEach(b=>b.addEventListener("click",()=>{ const ok=b.dataset.g==="1"; rec("why",String(item.i),ok); if(ok) qright++; else qwrongList.push(item); qi++; render(); }));
+    });
+  }
+}
+function quizMenu(){
+  const missed=MC.filter((q,i)=>state.mc[String(i)]&&state.mc[String(i)].last==="wrong").length+WHY.filter((q,i)=>state.why[String(i)]&&state.why[String(i)].last==="wrong").length;
+  const due=MC.filter((q,i)=>isDue(state.mc[String(i)])).length+WHY.filter((q,i)=>isDue(state.why[String(i)])).length;
+  view.innerHTML=`<h2>Quiz</h2><p class="muted small">Multiple choice with instant feedback, plus "explain it out loud" questions you grade yourself. Every answer feeds the spaced-review schedule.</p>
+  <div class="grid two">
+    <div class="card"><h3>Missed last time</h3><div class="big">${missed}</div><button class="btn primary" data-f="missed" ${missed?"":"disabled"}>Fix these</button></div>
+    <div class="card"><h3>Due for review</h3><div class="big">${due}</div><button class="btn primary" data-f="due">Review due</button></div>
+    <div class="card"><h3>Mixed set</h3><p class="small muted">15 random across all scenes. Closest to the real conversation.</p><button class="btn" data-f="all">Mixed 15</button></div>
+    <div class="card"><h3>One scene</h3><div class="row">${SCENES.map(s=>`<button class="pill" style="cursor:pointer;border-color:${s.color};color:${s.color}" data-f="${s.id}">${s.n} ${esc(s.name)}</button>`).join("")}</div></div>
+  </div>`;
+  view.querySelectorAll("[data-f]").forEach(b=>b.addEventListener("click",()=>{ quizFilter=b.dataset.f; buildQuiz(); render(); }));
+}
+function quizDone(){
+  const total=quizSet.length; state.sessions=(state.sessions||[]).concat([{date:todayKey(),right:qright,total,filter:quizFilter}]).slice(-60); persist();
+  const pct=Math.round(100*qright/total);
+  view.innerHTML=`<div class="card" style="text-align:center"><div class="tag">Set finished</div><div class="big" style="margin:8px 0">${qright} / ${total}</div><p class="muted">${pct>=85?"Solid. Rehearse it.":pct>=60?"Getting there. Redo the misses tomorrow.":"Weak spots found. Re-read those scenes, then retry."}</p>
+  ${qwrongList.length?`<div style="text-align:left;margin-top:10px"><b>Missed:</b><ul class="clean small">${qwrongList.map(p=>`<li>${esc(p.q.q)}</li>`).join("")}</ul></div>`:""}
+  <div class="row" style="justify-content:center;margin-top:14px"><button class="btn primary" id="again">${qwrongList.length?"Retry the misses":"Another set"}</button><button class="btn ghost" id="menu">Back to quiz menu</button></div></div>`;
+  document.getElementById("again").addEventListener("click",()=>{ if(qwrongList.length){ quizSet=qwrongList.slice(); qi=0; qright=0; qwrongList=[]; } else { quizFilter="all"; buildQuiz(); } render(); });
+  document.getElementById("menu").addEventListener("click",()=>{ quizSet=null; render(); });
+}
+
+// ---- Cards
+let cardQueue=null, ci=0, flipped=false, cardMode="due";
+function buildCards(){
+  let idx=CARDS.map((c,i)=>i);
+  if(cardMode==="due") idx=idx.filter(i=>isDue(state.cards[String(i)]));
+  if(!idx.length){ cardMode="all"; idx=CARDS.map((c,i)=>i); }
+  idx.sort(()=>Math.random()-.5); cardQueue=idx.slice(0,20); ci=0; flipped=false;
+}
+function cards(){
+  if(!cardQueue) buildCards();
+  if(ci>=cardQueue.length){
+    view.innerHTML=`<div class="card" style="text-align:center"><div class="tag">Cards done</div><div class="big" style="margin:8px 0">${cardQueue.length}</div><p class="muted">Cards you nailed come back in 1, 3, 7, 14, then 30 days. Misses come back tomorrow.</p><div class="row" style="justify-content:center"><button class="btn primary" id="more">More cards</button></div></div>`;
+    document.getElementById("more").addEventListener("click",()=>{ cardMode="all"; buildCards(); render(); }); return;
+  }
+  const i=cardQueue[ci]; const c=CARDS[i]; const sc=SCENES.find(s=>s.id===c[2]); const r=state.cards[String(i)];
+  view.innerHTML=`<div class="row" style="justify-content:space-between"><span class="pill" style="border-color:${sc.color};color:${sc.color}">Scene ${sc.n}</span><span class="muted small">${ci+1} / ${cardQueue.length} · ${cardMode==="due"?"due today":"all cards"}${r?` · streak ${r.streak}`:""}</span></div>
+  <div class="card flash" id="flash" role="button" tabindex="0" aria-label="Flip card">${flipped?`<div><div class="tag">${esc(c[0])}</div><div class="back" style="margin-top:8px">${esc(c[1])}</div></div>`:`<div><div class="tag">Term</div><div style="font-family:var(--f-head);font-weight:700;font-size:1.5rem;margin-top:6px">${esc(c[0])}</div><div class="note" style="margin-top:10px">Say the meaning out loud, then tap to flip</div></div>`}</div>
+  <div class="row" style="justify-content:center;margin-top:12px">${flipped?`<button class="btn" data-g="0">Missed it</button><button class="btn primary" data-g="1">Got it</button>`:`<button class="btn primary" id="flip">Flip</button>`}</div>
+  <p class="note" style="text-align:center;margin-top:10px">Grade honestly. "Sort of" counts as missed. <kbd>space</kbd> flips, <kbd>1</kbd> missed, <kbd>2</kbd> got it.</p>`;
+  const flip=()=>{ flipped=!flipped; render(); };
+  document.getElementById("flash").addEventListener("click",flip);
+  const fb=document.getElementById("flip"); if(fb) fb.addEventListener("click",flip);
+  view.querySelectorAll("[data-g]").forEach(b=>b.addEventListener("click",()=>{ rec("cards",String(i),b.dataset.g==="1"); ci++; flipped=false; render(); }));
+}
+document.addEventListener("keydown",e=>{ if(tab!=="cards"||!cardQueue||ci>=cardQueue.length) return; if(e.key===" "){ e.preventDefault(); flipped=!flipped; render(); } if(flipped&&(e.key==="1"||e.key==="2")){ rec("cards",String(cardQueue[ci]),e.key==="2"); ci++; flipped=false; render(); } });
+
+// ---- Teach (timer)
+let tmr=null, tStart=null, tElapsed=0, tRunning=false;
+function stopTimer(){ if(tmr){ clearInterval(tmr); tmr=null; } tRunning=false; }
+function fmt(s){ s=Math.max(0,Math.floor(s)); return Math.floor(s/60)+":"+String(s%60).padStart(2,"0"); }
+function teach(){
+  const total=TEACH.reduce((a,b)=>a+b.t,0);
+  let acc=0, cur=TEACH.length-1, blockStart=0; for(let i=0;i<TEACH.length;i++){ if(tElapsed<acc+TEACH[i].t){ cur=i; blockStart=acc; break; } acc+=TEACH[i].t; }
+  const b=TEACH[cur]; const left=Math.max(0,blockStart+b.t-tElapsed);
+  view.innerHTML=`<h2>The 7-minute teach-back</h2><p class="muted small">Press start and talk. The screen shows which block you're in, its key line, and what to draw. When the color changes, hand off.</p>
+  <div class="card" style="border-color:${b.color}"><div class="row" style="justify-content:space-between"><span class="pill on" style="background:${b.color};border-color:${b.color};color:#fff">Block ${cur+1} of ${TEACH.length} · ${esc(b.name)}</span><span class="muted small">${fmt(left)} left in block</span></div>
+    <div class="timer" style="margin:10px 0">${fmt(tElapsed)} <span class="muted" style="font-size:1.2rem">/ ${fmt(total)}</span></div>
+    <div class="bar"><i style="width:${Math.min(100,100*tElapsed/total)}%;background:${b.color}"></i></div>
+    <div class="say" style="border-color:${b.color};font-size:1.15rem;margin-top:14px">${esc(b.key)}</div>
+    ${b.draw?`<p class="small"><b>Draw:</b> ${esc(b.draw)}</p>`:""}
+    ${b.hand?`<p class="small"><b>Hand-off:</b> “${esc(b.hand)}”</p>`:""}
+    <div class="row" style="margin-top:10px"><button class="btn primary" id="startstop">${tRunning?"Pause":tElapsed?"Resume":"Start"}</button><button class="btn ghost" id="reset">Reset</button>${tElapsed>=total?`<button class="btn" id="log">Log this run</button>`:""}</div>
+  </div>
+  <h2>Cue card</h2>
+  <div class="cue">1 · FALL &amp; MISS — ball off a mountain<br>2 · 3 SHELVES — 90 min / 12 h / 1 day · 35,786 · equator · swarm<br>3 · HULA HOOP — size squash tilt swivel spin bead · fast low, slow high · burn there<br>4 · 5 FREE JOBS — sunscreen pressure damper fan ground wire · clean room<br>5 · AIR BITES — layer cake zigzag · 1000° sparkler · hungry oxygen 7.5 km/s<br>6 · FUEL BILL — ladder · lazy throw 8.5 mo · every 26 mo · fast = $$$<br>7 · FREE LUNCH — moving truck · Rosetta 10 yr · NH 9.5 yr<br>LAND — “space gives you nothing for free”</div>
+  <h2>Rehearsal plan</h2>
+  <ul class="clean small"><li><b>Run 1:</b> with the Learn tab open. Feel the order.</li><li><b>Run 2:</b> cue card only, timer on. Note which block ate the time.</li><li><b>Run 3:</b> nothing in front of you, phone recording, timer on. Listen back for "um", unexplained words, and facts that weren't there.</li><li>Stuck? Pivot to the picture: "The way I think about it is…"</li></ul>
+  ${(state.runs||[]).length?`<h2>Logged runs</h2><div class="card small">${state.runs.slice(-5).reverse().map(r=>`<div class="stat"><span>${r.date}</span><span>${fmt(r.seconds)}</span></div>`).join("")}</div>`:""}`;
+  document.getElementById("startstop").addEventListener("click",()=>{ if(tRunning){ stopTimer(); } else { tRunning=true; tStart=Date.now()-tElapsed*1000; tmr=setInterval(()=>{ tElapsed=(Date.now()-tStart)/1000; if(tElapsed>=total){ tElapsed=total; stopTimer(); } teach(); },500); } teach(); });
+  document.getElementById("reset").addEventListener("click",()=>{ stopTimer(); tElapsed=0; teach(); });
+  const lg=document.getElementById("log"); if(lg) lg.addEventListener("click",()=>{ state.runs=(state.runs||[]).concat([{date:todayKey(),seconds:Math.round(tElapsed)}]).slice(-30); persist(); stopTimer(); tElapsed=0; teach(); });
+}
+
+// ---- Progress
+function progress(){
+  const rows=SCENES.map(s=>{ const m=sceneMastery(s.id); return `<div class="stat"><span><span class="pill" style="border-color:${s.color};color:${s.color}">${s.n}</span> ${esc(s.name)}</span><span style="flex:1;max-width:220px"><span class="bar"><i style="width:${m}%;background:${m>=80?"var(--good)":m>=50?"var(--warn)":"var(--bad)"}"></i></span></span><b style="min-width:3ch;text-align:right">${m}%</b></div>`; }).join("");
+  const missed=MC.map((q,i)=>[q,state.mc[String(i)]]).filter(x=>x[1]&&x[1].last==="wrong").map(x=>x[0]);
+  const sessions=(state.sessions||[]).slice(-7).reverse();
+  const dueCards=CARDS.filter((c,i)=>isDue(state.cards[String(i)])).length;
+  const totalAttempts=Object.values(state.mc).concat(Object.values(state.why),Object.values(state.cards)).reduce((a,r)=>a+(r.seen||0),0);
+  view.innerHTML=`<h2>Where you stand</h2><p class="muted small">Mastery = how many items in each scene you've gotten right three times running. 80% in a scene means you can hold that part of the conversation.</p>
+  <div class="card">${rows}</div>
+  <div class="grid two" style="margin-top:12px">
+    <div class="card"><h3>Still missing</h3>${missed.length?`<ul class="clean small">${missed.map(q=>`<li>${esc(q.q)}</li>`).join("")}</ul>`:`<p class="muted small">Nothing marked wrong right now.</p>`}</div>
+    <div class="card"><h3>Recent quiz sets</h3>${sessions.length?sessions.map(s=>`<div class="stat small"><span>${s.date} · ${esc(s.filter)}</span><b>${s.right}/${s.total}</b></div>`).join(""):`<p class="muted small">No sets yet.</p>`}<p class="note" style="margin-top:8px">${totalAttempts} answers recorded · ${dueCards} cards due</p></div>
+  </div>
+  <div class="card" style="margin-top:12px"><h3>Reset</h3><p class="small muted">Wipes all progress on this account. There is no undo.</p><button class="btn ghost" id="reset1">Reset progress…</button><span id="confirm" hidden> <button class="btn" id="reset2" style="border-color:var(--bad);color:var(--bad)">Yes, wipe it</button></span></div>`;
+  document.getElementById("reset1").addEventListener("click",()=>{ document.getElementById("confirm").hidden=false; });
+  document.getElementById("reset2").addEventListener("click",()=>{ state={mc:{},why:{},cards:{},scenes:{},sessions:[],runs:[]}; persist(); render(); });
+}
+
+render();
+initStore();
+</script>
