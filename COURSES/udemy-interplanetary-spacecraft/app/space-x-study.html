@@ -65,6 +65,9 @@ kbd{font:600 .8rem var(--f-body);border:1px solid var(--line);border-radius:6px;
 ul.clean{margin:6px 0 0 18px;padding:0}
 ul.clean li{margin:4px 0}
 .sr{position:absolute;left:-9999px}
+table.deep{border-collapse:collapse;width:100%;font-size:.86rem;min-width:560px}
+table.deep th,table.deep td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+table.deep th{background:var(--paper2)}
 @media (prefers-reduced-motion: no-preference){ .opt,.btn,nav.tabs button{transition:background .15s,border-color .15s} }
 </style>
 
@@ -111,7 +114,19 @@ const SCENES = [
   story:"The air is a layer cake. Troposphere (0–11 km): weather, planes, colder going up. Stratosphere (to 50 km): warmer going up, because the ozone here soaks up UV and turns it into heat. Mesosphere (to 90 km): coldest, meteors burn. Thermosphere (to 500 km): the thermometer says 1000 °C but there's almost no air, so nothing can hand that heat to you. The ISS flies through it and doesn't melt. Up there UV also splits oxygen pairs into single oxygen atoms, which grab onto anything. The spacecraft plows into them at 7.5 km/s and they eat its plastics.",
   say:"The top of the atmosphere is 1000 degrees but can't burn you, because there's nothing there. What is there is loose oxygen atoms that eat plastic.",
   draw:"A stack of five bands with a zigzag temperature line beside it.",
-  why:[["1000 degrees and nothing melts?","Temperature is how fast the molecules move; heat is how many there are to hit you. One sparkler is 1000 °C and won't warm a room."],["Who's moving at 7.5 km/s, the atom or the spacecraft?","The spacecraft. The atoms are nearly still. It plows into them, so each hit carries enough energy to break a chemical bond."]]},
+  why:[["1000 degrees and nothing melts?","Temperature is how fast the molecules move; heat is how many there are to hit you. One sparkler is 1000 °C and won't warm a room."],["Who's moving at 7.5 km/s, the atom or the spacecraft?","The spacecraft. The atoms are nearly still. It plows into them, so each hit carries enough energy to break a chemical bond."],["What's actually IN the air at each height?","See 'Go deeper' below: a stirred mix of nitrogen and oxygen pairs near the ground, then single oxygen atoms, then helium, then hydrogen, lightest on top."]],
+  deep:{title:"What the air is made of, floor by floor",
+   intro:"Think of the atmosphere as a smoothie at the bottom and a layered drink at the top. Below about 100 km everything is stirred together, so the recipe is the same everywhere. Above about 100 km the stirring stops and the gases sort themselves by weight: heavy ones low, light ones high. Sunlight also starts breaking molecules apart up there.",
+   rows:[["0–100 km","the stirred mix (homosphere)","N₂ 78% · O₂ 21% · Ar 0.9% · CO₂ 0.04% · water vapor 0–4% (mostly below 11 km) · trace neon, helium, methane · ozone O₃ is a few parts per million, peaking at 15–35 km","Same recipe at every height here. This is the air you breathe and the air planes fly in."],
+    ["100–200 km","the breakup zone","N₂ still the main gas, but UV is now splitting O₂ into single O atoms; atomic O climbs fast","Where the atmosphere stops being 'air' as you know it. Meteors have already burned up below this."],
+    ["200–600 km","atomic oxygen country","atomic O is the number-one gas; N₂ fading; a little N and He","LEO. The ISS, Hubble and Starlink fly here. Atomic O erodes polymers; what's left of the density causes drag."],
+    ["600–1,500 km","helium shell","He takes over from O (the boundary moves up and down with the Sun's activity)","Too thin to matter much for drag; GPS and GEO are far above this."],
+    ["1,500 km and up","hydrogen fringe (exosphere / geocorona)","mostly single H atoms, so thin they can escape Earth entirely","A faint hydrogen halo glows in UV out to tens of thousands of km."]],
+   notes:["Why the order: nitrogen pairs and oxygen pairs are heavy, single oxygen atoms are half an O₂, helium is lighter still, hydrogen is the lightest thing there is. Once the stirring stops, each gas settles at the height its weight allows, like oil over water.",
+    "Where ozone fits: ozone is just three oxygen atoms stuck together. It forms in the stratosphere when UV hits O₂ and the loose atoms grab onto other O₂. It's rare (a few molecules per million) but it absorbs so well that it blocks most harmful UV. Above the stratosphere there isn't enough air for it to form, so UV comes through raw.",
+    "The ionosphere overlaps all of this, roughly 60–1,000 km: sunlight knocks electrons off atoms, leaving charged particles. It bends and reflects radio, which is why AM radio travels far at night and why GPS signals get slightly delayed. It also grows and shrinks between day and night.",
+    "'Anomalous O' on the lecture's chart: a small population of extra-hot oxygen atoms the model adds above ~300 km. Still oxygen; not a separate thing to memorize.",
+    "Why a spacecraft cares, in one line each: atomic O eats plastics (LEO); the thin air causes drag that the Sun's activity can double or triple; the ionosphere messes with radio and GPS; helium and hydrogen are too thin to matter."]}},
  {id:"fuel", n:6, name:"The fuel bill", color:"#e5338f", sec:"S1 · S3",
   story:"First, the ladder of ways to visit a planet: fly past, orbit, drop a probe into its air, land, drive, or crash on purpose. Each rung costs more fuel to slow down and brings back more science. Now, getting there. You don't aim at Mars; you aim at where Mars will be. The cheapest route is a lazy half-ellipse that meets Mars halfway around the Sun: the Hohmann transfer, about 8.5 months, two burns. Faster costs wildly more fuel. Lambert's problem is the calculator: two points plus a time in, orbit and fuel bill out. And you can only launch when Earth and Mars line up, every 26 months.",
   say:"Fast is expensive, slow is cheap. The lazy throw takes eight and a half months and you can only do it every two years.",
@@ -163,6 +178,14 @@ const MC = [
  {s:"air", q:"What is atomic oxygen?", o:["Ozone, O₃","Single oxygen atoms, made when UV splits O₂","Liquid oxygen for rockets","Oxygen dissolved in metal"], a:1, x:"Highly reactive. The main gas from about 200 to 600 km, exactly where LEO satellites fly."},
  {s:"air", q:"In an atomic-oxygen hit at 7.5 km/s, what is moving that fast?", o:["The oxygen atom","The spacecraft","The Sun's light","The Earth"], a:1, x:"The atoms are nearly still. The spacecraft plows into them, and each hit carries enough energy to break a bond."},
  {s:"air", q:"Which layer is the coldest?", o:["Troposphere","Stratosphere","Mesosphere","Thermosphere"], a:2, x:"The mesosphere, around −90 °C. Meteors burn up here."},
+ {s:"air", q:"What are the two main gases in the air you breathe, and roughly how much of each?", o:["Oxygen 78%, nitrogen 21%","Nitrogen 78%, oxygen 21%","Carbon dioxide 50%, oxygen 50%","Hydrogen 70%, helium 30%"], a:1, x:"Nitrogen pairs 78%, oxygen pairs 21%, argon about 1%. Carbon dioxide is only 0.04%."},
+ {s:"air", q:"Why is the air the same mix everywhere below about 100 km?", o:["Gravity is weaker there","It's constantly stirred by weather and turbulence (the homosphere)","Plants keep it balanced","The ozone layer mixes it"], a:1, x:"Below the turbopause, mixing wins. Above it, gases separate by weight."},
+ {s:"air", q:"Above about 100 km, how do the gases arrange themselves?", o:["Randomly","Heaviest highest","By weight: heavy ones low, light ones high","All the same mix"], a:2, x:"N₂ and O₂ lowest, then single O, then helium, then hydrogen on top. Like oil floating on water."},
+ {s:"air", q:"Which gas dominates at 600–1,500 km?", o:["Nitrogen","Atomic oxygen","Helium","Carbon dioxide"], a:2, x:"Helium takes over from atomic oxygen there; hydrogen takes over above that."},
+ {s:"air", q:"What is the outermost gas in Earth's atmosphere, in the exosphere?", o:["Atomic oxygen","Nitrogen","Helium","Hydrogen"], a:3, x:"Single hydrogen atoms, the lightest thing there is, so thin they can escape Earth. They glow faintly in UV as the geocorona."},
+ {s:"air", q:"What is ozone?", o:["A single oxygen atom","Two oxygen atoms, O₂","Three oxygen atoms stuck together, O₃","Oxygen bonded to nitrogen"], a:2, x:"Made in the stratosphere when UV splits O₂ and the loose atoms join other O₂. Rare, but it soaks up UV."},
+ {s:"air", q:"What is the ionosphere?", o:["The layer where ozone lives","A region (~60–1,000 km) where sunlight knocks electrons off atoms, leaving charged particles that bend radio","The frozen top of the clouds","Another name for the exosphere"], a:1, x:"It overlaps the thermosphere. It reflects AM radio and slightly delays GPS signals."},
+ {s:"air", q:"How much carbon dioxide is in normal air?", o:["About 21%","About 4%","About 0.04%","About 50%"], a:2, x:"Tiny by volume, big for climate. Argon, at 0.9%, is 20 times more common."},
  {s:"air", q:"Which materials does atomic oxygen hurt most?", o:["Steel","Polymers like Kapton","Glass","Gold"], a:1, x:"Metals form a thin oxide skin and mostly stop. Polymers erode like sandblasted glass."},
  {s:"fuel", q:"Rank these visit types from least to most committed.", o:["Lander, flyby, orbiter","Flyby, orbiter, atmospheric probe, lander, rover, penetrator","Rover, lander, orbiter, flyby","Penetrator, flyby, rover"], a:1, x:"Each rung costs more fuel to slow down and more risk, and returns more science."},
  {s:"fuel", q:"Which spacecraft type needs NO braking burn at its target?", o:["Orbiter","Lander","Flyby","Rover"], a:2, x:"It passes once and keeps going. That's why Voyager could visit four planets."},
@@ -233,6 +256,14 @@ const CARDS = [
  ["Exosphere","500 km and up; fades into space","air"],
  ["Atomic oxygen","Single O atoms from UV splitting O₂; dominant 200–600 km; erodes polymers","air"],
  ["Temperature vs heat","Temperature = molecule speed; heat = energy actually delivered, needs numbers","air"],
+ ["Air recipe (ground level)","N₂ 78% · O₂ 21% · Ar 0.9% · CO₂ 0.04% · water vapor 0–4%","air"],
+ ["Homosphere vs heterosphere","Below ~100 km: stirred, same mix. Above: gases sort by weight, light on top","air"],
+ ["Gas order going up (above 100 km)","N₂ + O₂ → atomic O (200–600 km) → helium (600–1,500) → hydrogen (exosphere)","air"],
+ ["Ozone (O₃)","Three oxygen atoms; made by UV in the stratosphere; rare but blocks most harmful UV","air"],
+ ["Ionosphere","~60–1,000 km; sunlight knocks electrons off atoms; bends radio, delays GPS","air"],
+ ["Helium shell","Dominant gas 600–1,500 km; too thin to matter for drag","air"],
+ ["Geocorona","Faint hydrogen halo in the exosphere, glowing in UV out to tens of thousands of km","air"],
+ ["Argon","0.9% of air; a do-nothing gas, 20× more common than CO₂","air"],
  ["Δv (delta-v)","Total speed change a trip needs; the fuel bill of spaceflight","fuel"],
  ["Hohmann transfer","Half-ellipse touching both orbits, 180° apart, two burns, cheapest Δv; Mars ≈ 8.5 months","fuel"],
  ["Lambert's problem","Two positions + a time in; the connecting orbit and its Δv out","fuel"],
@@ -363,6 +394,7 @@ function learn(){
       <div class="say">SAY: “${esc(s.say)}”</div>
       <p class="small"><b>Napkin drawing:</b> ${esc(s.draw)}</p>
       ${s.why.map(w=>`<details style="margin:6px 0"><summary><b>A friend asks:</b> “${esc(w[0])}”</summary><p class="small" style="margin:6px 0 0">${esc(w[1])}</p></details>`).join("")}
+      ${s.deep?`<details style="margin:10px 0;border-top:1px solid var(--line);padding-top:8px"><summary><b>Go deeper:</b> ${esc(s.deep.title)}</summary><p class="small" style="margin:8px 0">${esc(s.deep.intro)}</p><div style="overflow-x:auto"><table class="deep"><thead><tr><th>Height</th><th>Zone</th><th>What's there</th><th>Why it matters</th></tr></thead><tbody>${s.deep.rows.map(r=>`<tr><td><b>${esc(r[0])}</b></td><td>${esc(r[1])}</td><td>${esc(r[2])}</td><td class="muted">${esc(r[3])}</td></tr>`).join("")}</tbody></table></div><ul class="clean small">${s.deep.notes.map(n=>`<li>${esc(n)}</li>`).join("")}</ul></details>`:""}
       <div class="row" style="margin-top:10px"><button class="btn" data-mark="got">Got it</button><button class="btn ghost" data-mark="shaky">Still shaky</button><button class="btn ghost" data-quiz>Quiz this scene</button></div>
     </div>
     <button class="btn ghost small" style="margin-top:8px" data-toggle>${open?"Close":"Read"}</button>`;

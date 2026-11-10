@@ -27,8 +27,8 @@
 > - **Space X Study app (added 2026-11-10):** a separate published
 >   Artifact for this course, https://claude.ai/artifact/CnDfEEJHGhs76GMZNu7BSM
 >   (source mirrored at `COURSES/udemy-interplanetary-spacecraft/app/space-x-study.html`).
->   Tabs: Today · Learn (7 scenes, ELI5) · Quiz (53 multiple-choice +
->   13 explain-out-loud, instant feedback, spaced review) · Cards (44
+>   Tabs: Today · Learn (7 scenes, ELI5) · Quiz (61 multiple-choice +
+>   13 explain-out-loud, instant feedback, spaced review) · Cards (52
 >   flashcards, 1/3/7/14/30-day intervals) · Teach (timed 7-minute
 >   teach-back + cue card) · Progress. Progress is stored per viewer in
 >   the artifact db at `data/users/<id>/progress` (private to the
