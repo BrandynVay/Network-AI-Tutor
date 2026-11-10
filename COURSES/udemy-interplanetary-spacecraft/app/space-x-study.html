@@ -277,16 +277,49 @@ const CARDS = [
  ["Hubble","Bus-sized telescope orbiting at ~540 km since 1990; looks out, not down","shelf"],
 ];
 
-const TEACH = [
- {t:45, name:"Hook", color:"#ff6b1a", key:"An orbit is falling and missing.", draw:"Ball off a mountain, three throws.", hand:"So how high you go changes everything…"},
- {t:60, name:"Three shelves", color:"#1e7cff", key:"One exact height hangs still, and it has to be over the equator.", draw:"Earth, three rings, flashlight cones.", hand:"But how do you even describe an orbit to someone?"},
- {t:60, name:"Hula hoop", color:"#7b3fe4", key:"Six numbers: five freeze the hoop, one moves. Fastest low, slowest high.", draw:"Egg with Earth off-center.", hand:"Okay, you're up there. Now space tries to kill you."},
- {t:60, name:"Five free services", color:"#19b36b", key:"The air does five jobs for you; space does none.", draw:"Box with five arrows in.", hand:"And the little air that IS up there is worse."},
- {t:45, name:"Air bites back", color:"#d4a500", key:"Hot but empty, and the oxygen is hungry.", draw:"Layer cake with zigzag.", hand:"Now let's leave Earth entirely."},
- {t:75, name:"The fuel bill", color:"#e5338f", key:"Fast is expensive, slow is cheap.", draw:"Two circles, dashed half-oval.", hand:"Unless you cheat."},
- {t:45, name:"The free lunch", color:"#555555", key:"Free speed, but it costs years.", draw:"Planet with thick arrow, path bending around.", hand:"So here's the whole thing in one breath."},
- {t:30, name:"Landing", color:"#0b1437", key:"Space gives you nothing for free. Then stop and let them ask.", draw:"", hand:""},
-];
+const PROGRAMS = {
+ s1:{name:"Section 1 · Intro & mission design", short:"Section 1", mins:"3¼ min", opener:"\"So what even is a satellite, and why are there different kinds?\"",
+  blocks:[
+   {t:45, name:"Hook", color:"#ff6b1a", key:"An orbit is falling and missing.", draw:"Ball off a mountain, three throws.", hand:"So once something's up there, what is it FOR?"},
+   {t:45, name:"Four jobs", color:"#19b36b", key:"Every satellite looks out, looks down, relays, or carries something alive.", draw:"Four boxes: telescope, camera pointing down, radio dish, a little dog.", hand:"And where it lives depends on the job…"},
+   {t:60, name:"Three shelves", color:"#1e7cff", key:"Low is fast and sharp, high sees everything, one exact height hangs still over the equator.", draw:"Earth, three rings, flashlight cones.", hand:"Now leave Earth. How do you visit another planet?"},
+   {t:45, name:"The ladder", color:"#e5338f", key:"Fly past, orbit, probe, land, drive, crash. Each rung costs more fuel and gives more science.", draw:"A planet with six paths, numbered.", hand:"And the whole course is about what each rung costs."},
+  ],
+  cue:["1 · FALL & MISS — ball off a mountain","2 · 4 JOBS — look out / look down / relay / live","3 · 3 SHELVES — 90 min / 12 h / 1 day · 35,786 · equator · swarm","4 · LADDER — flyby → orbiter → probe → lander → rover → penetrator","LAND — \"every rung costs more and gives more\""],
+  land:"Every spacecraft is a different answer to one question: how close do you dare get, and what will it cost?"},
+ s2:{name:"Section 2 · Space environment", short:"Section 2", mins:"3 min", opener:"\"What's actually so dangerous about space? There's nothing there.\"",
+  blocks:[
+   {t:75, name:"Five free services", color:"#19b36b", key:"The air does five jobs for you: sunscreen, pressure, damper, fan, ground wire. Space does none.", draw:"Box with five arrows in, each labeled.", hand:"And the little bit of air that IS up there is worse."},
+   {t:60, name:"Air bites back", color:"#d4a500", key:"The top of the atmosphere is 1000 degrees but empty, and the loose oxygen atoms eat plastic.", draw:"Layer cake with a zigzag temperature line.", hand:"So what's actually floating around up there?"},
+   {t:45, name:"What's in the air", color:"#7b3fe4", key:"Stirred nitrogen and oxygen near the ground, then single oxygen, then helium, then hydrogen on top.", draw:"Five bands labeled with the gas that rules each.", hand:"So here's the point of all of it."},
+  ],
+  cue:["1 · 5 FREE JOBS — sunscreen pressure damper fan ground wire · clean room","2 · AIR BITES — layer cake zigzag · 1000° sparkler · hungry oxygen 7.5 km/s","3 · WHAT'S IN IT — N₂/O₂ → atomic O (200–600) → He → H · ozone · ionosphere","LAND — \"space does nothing for you; build all five\""],
+  land:"Space isn't dangerous because something's there. It's dangerous because nothing is, and you have to bring all five of the air's jobs with you."},
+ s3:{name:"Section 3 · Orbital mechanics", short:"Section 3", mins:"4¼ min", opener:"\"How do you even steer something in space? Isn't it just floating?\"",
+  blocks:[
+   {t:60, name:"Hula hoop", color:"#7b3fe4", key:"Six numbers describe any orbit: size, squash, tilt, swivel, spin, and where you are. Fastest low, slowest high.", draw:"Egg with Earth off-center, then a tilted hoop over a flat disk.", hand:"Pick the right hoop and you get the three shelves…"},
+   {t:45, name:"Earth orbits", color:"#1e7cff", key:"Higher sees more but moves slower; 35,786 km is the one height that hangs still; low orbits need swarms.", draw:"Three rings with periods written on them.", hand:"Now leave Earth entirely."},
+   {t:75, name:"The fuel bill", color:"#e5338f", key:"You aim at where Mars will be. Fast is expensive, the lazy half-ellipse is cheap, and you can only go every 26 months.", draw:"Two circles, dashed half-oval, a burn at each end.", hand:"Unless you cheat."},
+   {t:45, name:"The free lunch", color:"#555555", key:"Bounce off a moving planet and you leave faster than you came. Free, but it costs years.", draw:"Planet with a thick arrow, dashed path bending around it.", hand:"So here's the whole thing in one breath."},
+   {t:30, name:"Landing", color:"#0b1437", key:"Going anywhere is a trade between time and fuel, unless you can borrow a planet. Then stop and let them ask.", draw:"", hand:""},
+  ],
+  cue:["1 · HULA HOOP — size squash tilt swivel spin bead · fast low, slow high · burn there","2 · 3 SHELVES — 90 min / 12 h / 1 day · 35,786 · equator · swarm","3 · FUEL BILL — lazy throw 8.5 mo · every 26 mo · Lambert = by-Tuesday calculator · fast = $$$","4 · FREE LUNCH — moving truck · Rosetta 10 yr · NH 9.5 yr","LAND — \"time vs fuel, unless you borrow a planet\""],
+  land:"Going anywhere is a trade between time and fuel, unless you can borrow a planet."},
+ full:{name:"Full talk · all three sections", short:"Full 7 min", mins:"7 min", opener:"\"You're taking a spacecraft course? What's it about?\"",
+  blocks:[
+   {t:45, name:"Hook", color:"#ff6b1a", key:"An orbit is falling and missing.", draw:"Ball off a mountain, three throws.", hand:"So how high you go changes everything…"},
+   {t:60, name:"Three shelves", color:"#1e7cff", key:"One exact height hangs still, and it has to be over the equator.", draw:"Earth, three rings, flashlight cones.", hand:"But how do you even describe an orbit to someone?"},
+   {t:60, name:"Hula hoop", color:"#7b3fe4", key:"Six numbers: five freeze the hoop, one moves. Fastest low, slowest high.", draw:"Egg with Earth off-center.", hand:"Okay, you're up there. Now space tries to kill you."},
+   {t:60, name:"Five free services", color:"#19b36b", key:"The air does five jobs for you; space does none.", draw:"Box with five arrows in.", hand:"And the little air that IS up there is worse."},
+   {t:45, name:"Air bites back", color:"#d4a500", key:"Hot but empty, and the oxygen is hungry.", draw:"Layer cake with zigzag.", hand:"Now let's leave Earth entirely."},
+   {t:75, name:"The fuel bill", color:"#e5338f", key:"Fast is expensive, slow is cheap.", draw:"Two circles, dashed half-oval.", hand:"Unless you cheat."},
+   {t:45, name:"The free lunch", color:"#555555", key:"Free speed, but it costs years.", draw:"Planet with thick arrow, path bending around.", hand:"So here's the whole thing in one breath."},
+   {t:30, name:"Landing", color:"#0b1437", key:"Space gives you nothing for free. Then stop and let them ask.", draw:"", hand:""},
+  ],
+  cue:["1 · FALL & MISS — ball off a mountain","2 · 3 SHELVES — 90 min / 12 h / 1 day · 35,786 · equator · swarm","3 · HULA HOOP — size squash tilt swivel spin bead · fast low, slow high · burn there","4 · 5 FREE JOBS — sunscreen pressure damper fan ground wire · clean room","5 · AIR BITES — layer cake zigzag · 1000° sparkler · hungry oxygen 7.5 km/s","6 · FUEL BILL — ladder · lazy throw 8.5 mo · every 26 mo · fast = $$$","7 · FREE LUNCH — moving truck · Rosetta 10 yr · NH 9.5 yr","LAND — \"space gives you nothing for free\""],
+  land:"Space gives you nothing for free. Getting there is falling and missing. Staying alive is doing the air's five jobs yourself. Going anywhere is time versus fuel, unless you borrow a planet."},
+};
+const PROGRAM_ORDER=["s1","s2","s3","full"];
 const INTERVALS=[1,3,7,14,30];
 
 // ---------------------------------------------------------------- STATE / STORAGE
@@ -373,7 +406,7 @@ function home(){
     <div class="card"><h3>1 · Cards due</h3><div class="big">${dueCards}</div><p class="small muted">Flip, say the answer out loud, grade yourself.</p><button class="btn primary" data-go="cards">Review cards</button></div>
     <div class="card"><h3>2 · Quiz</h3><div class="big">${missed}</div><p class="small muted">questions you missed last time. Start there, then the weakest scene.</p><button class="btn primary" data-go="quiz">Start quiz</button></div>
     <div class="card"><h3>3 · Weakest scene</h3><p style="margin:6px 0"><span class="pill" style="border-color:${weak[0][0].color};color:${weak[0][0].color}">${weak[0][0].n} · ${esc(weak[0][0].name)}</span> <b>${weak[0][1]}%</b></p><p class="small muted">Re-read it like you're 5, then do its quiz.</p><button class="btn" data-go="learn" data-scene="${weak[0][0].id}">Open scene</button></div>
-    <div class="card"><h3>4 · Say it out loud</h3><p class="small muted">${lastSession?`Last quiz: ${lastSession.right}/${lastSession.total} on ${lastSession.date}.`:"No quiz yet."} The 7-minute teach-back has a timer.</p><button class="btn" data-go="teach">Open Teach</button></div>
+    <div class="card"><h3>4 · Say it out loud</h3><p class="small muted">${lastSession?`Last quiz: ${lastSession.right}/${lastSession.total} on ${lastSession.date}.`:"No quiz yet."} Teach-back talks, one per section, each with a timer.</p><button class="btn" data-go="teach">Open Teach</button></div>
   </div>
   <p class="note" style="margin-top:14px">Progress is saved per person. The badge at the top says whether it's on your account (syncs between phone and laptop) or just this device.</p>`;
   view.querySelectorAll("[data-go]").forEach(b=>b.addEventListener("click",()=>{ tab=b.dataset.go; if(b.dataset.scene) openScene=b.dataset.scene; render(); }));
@@ -491,14 +524,19 @@ document.addEventListener("keydown",e=>{ if(tab!=="cards"||!cardQueue||ci>=cardQ
 
 // ---- Teach (timer)
 let tmr=null, tStart=null, tElapsed=0, tRunning=false;
+let program="s1"; try{ program=localStorage.getItem("sxs_program")||"s1"; if(!PROGRAMS[program]) program="s1"; }catch(e){}
 function stopTimer(){ if(tmr){ clearInterval(tmr); tmr=null; } tRunning=false; }
 function fmt(s){ s=Math.max(0,Math.floor(s)); return Math.floor(s/60)+":"+String(s%60).padStart(2,"0"); }
 function teach(){
+  const P=PROGRAMS[program]; const TEACH=P.blocks;
   const total=TEACH.reduce((a,b)=>a+b.t,0);
   let acc=0, cur=TEACH.length-1, blockStart=0; for(let i=0;i<TEACH.length;i++){ if(tElapsed<acc+TEACH[i].t){ cur=i; blockStart=acc; break; } acc+=TEACH[i].t; }
   const b=TEACH[cur]; const left=Math.max(0,blockStart+b.t-tElapsed);
-  view.innerHTML=`<h2>The 7-minute teach-back</h2><p class="muted small">Press start and talk. The screen shows which block you're in, its key line, and what to draw. When the color changes, hand off.</p>
-  <div class="card" style="border-color:${b.color}"><div class="row" style="justify-content:space-between"><span class="pill on" style="background:${b.color};border-color:${b.color};color:#fff">Block ${cur+1} of ${TEACH.length} · ${esc(b.name)}</span><span class="muted small">${fmt(left)} left in block</span></div>
+  const runs=(state.runs||[]).filter(r=>(r.program||"full")===program);
+  view.innerHTML=`<h2>Teach it back</h2><p class="muted small">Practice one section at a time, then the full talk. Press start and talk; the screen shows the block you're in, its key line, and what to draw. When the color changes, hand off.</p>
+  <div class="row" id="progs">${PROGRAM_ORDER.map(k=>`<button class="pill ${k===program?"on":""}" style="cursor:pointer" data-p="${k}">${esc(PROGRAMS[k].short)} · ${esc(PROGRAMS[k].mins)}</button>`).join("")}</div>
+  <div class="card" style="margin-top:10px;border-color:${b.color}"><div class="tag">${esc(P.name)}</div><p class="small" style="margin:4px 0 8px"><b>Friend opens with:</b> ${esc(P.opener)}</p>
+    <div class="row" style="justify-content:space-between"><span class="pill on" style="background:${b.color};border-color:${b.color};color:#fff">Block ${cur+1} of ${TEACH.length} · ${esc(b.name)}</span><span class="muted small">${fmt(left)} left in block</span></div>
     <div class="timer" style="margin:10px 0">${fmt(tElapsed)} <span class="muted" style="font-size:1.2rem">/ ${fmt(total)}</span></div>
     <div class="bar"><i style="width:${Math.min(100,100*tElapsed/total)}%;background:${b.color}"></i></div>
     <div class="say" style="border-color:${b.color};font-size:1.15rem;margin-top:14px">${esc(b.key)}</div>
@@ -506,14 +544,18 @@ function teach(){
     ${b.hand?`<p class="small"><b>Hand-off:</b> “${esc(b.hand)}”</p>`:""}
     <div class="row" style="margin-top:10px"><button class="btn primary" id="startstop">${tRunning?"Pause":tElapsed?"Resume":"Start"}</button><button class="btn ghost" id="reset">Reset</button>${tElapsed>=total?`<button class="btn" id="log">Log this run</button>`:""}</div>
   </div>
-  <h2>Cue card</h2>
-  <div class="cue">1 · FALL &amp; MISS — ball off a mountain<br>2 · 3 SHELVES — 90 min / 12 h / 1 day · 35,786 · equator · swarm<br>3 · HULA HOOP — size squash tilt swivel spin bead · fast low, slow high · burn there<br>4 · 5 FREE JOBS — sunscreen pressure damper fan ground wire · clean room<br>5 · AIR BITES — layer cake zigzag · 1000° sparkler · hungry oxygen 7.5 km/s<br>6 · FUEL BILL — ladder · lazy throw 8.5 mo · every 26 mo · fast = $$$<br>7 · FREE LUNCH — moving truck · Rosetta 10 yr · NH 9.5 yr<br>LAND — “space gives you nothing for free”</div>
+  <h2>Blocks in this talk</h2>
+  <div class="card small">${TEACH.map((x,i)=>`<div class="stat"><span><span class="pill on" style="background:${x.color};border-color:${x.color};color:#fff">${i+1}</span> <b>${esc(x.name)}</b> <span class="muted">· ${fmt(x.t)}</span><br><span class="muted">${esc(x.key)}</span></span></div>`).join("")}</div>
+  <h2>Cue card · ${esc(P.short)}</h2>
+  <div class="cue">${P.cue.map(esc).join("<br>")}</div>
+  <p class="small" style="margin-top:8px"><b>Landing line:</b> “${esc(P.land)}”</p>
   <h2>Rehearsal plan</h2>
-  <ul class="clean small"><li><b>Run 1:</b> with the Learn tab open. Feel the order.</li><li><b>Run 2:</b> cue card only, timer on. Note which block ate the time.</li><li><b>Run 3:</b> nothing in front of you, phone recording, timer on. Listen back for "um", unexplained words, and facts that weren't there.</li><li>Stuck? Pivot to the picture: "The way I think about it is…"</li></ul>
-  ${(state.runs||[]).length?`<h2>Logged runs</h2><div class="card small">${state.runs.slice(-5).reverse().map(r=>`<div class="stat"><span>${r.date}</span><span>${fmt(r.seconds)}</span></div>`).join("")}</div>`:""}`;
+  <ul class="clean small"><li><b>Run 1:</b> with the Learn tab open. Feel the order.</li><li><b>Run 2:</b> cue card only, timer on. Note which block ate the time.</li><li><b>Run 3:</b> nothing in front of you, phone recording, timer on. Listen back for "um", unexplained words, and facts that weren't there.</li><li>Do Section 1, 2, 3 each to a clean run 3 before you attempt the full talk.</li><li>Stuck? Pivot to the picture: "The way I think about it is…"</li></ul>
+  ${runs.length?`<h2>Logged runs · ${esc(P.short)}</h2><div class="card small">${runs.slice(-5).reverse().map(r=>`<div class="stat"><span>${r.date}</span><span>${fmt(r.seconds)}</span></div>`).join("")}</div>`:""}`;
+  view.querySelectorAll("#progs [data-p]").forEach(x=>x.addEventListener("click",()=>{ stopTimer(); tElapsed=0; program=x.dataset.p; try{localStorage.setItem("sxs_program",program)}catch(e){} teach(); }));
   document.getElementById("startstop").addEventListener("click",()=>{ if(tRunning){ stopTimer(); } else { tRunning=true; tStart=Date.now()-tElapsed*1000; tmr=setInterval(()=>{ tElapsed=(Date.now()-tStart)/1000; if(tElapsed>=total){ tElapsed=total; stopTimer(); } teach(); },500); } teach(); });
   document.getElementById("reset").addEventListener("click",()=>{ stopTimer(); tElapsed=0; teach(); });
-  const lg=document.getElementById("log"); if(lg) lg.addEventListener("click",()=>{ state.runs=(state.runs||[]).concat([{date:todayKey(),seconds:Math.round(tElapsed)}]).slice(-30); persist(); stopTimer(); tElapsed=0; teach(); });
+  const lg=document.getElementById("log"); if(lg) lg.addEventListener("click",()=>{ state.runs=(state.runs||[]).concat([{date:todayKey(),seconds:Math.round(tElapsed),program}]).slice(-30); persist(); stopTimer(); tElapsed=0; teach(); });
 }
 
 // ---- Progress
