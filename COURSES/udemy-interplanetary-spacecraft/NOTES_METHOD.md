@@ -326,7 +326,7 @@ bank → 10, word bank → 8, lectures take the rest.
 Student's instruction: the word bank must hold **every** word the
 lectures used, and every word needs a full definition they can reach.
 Deliverables: `Word-Bank-COMPLETE-S1-S3-v1.pdf` (161 one-line entries
-to copy into the back pages) and `Glossary-COMPLETE-S1-S3-v1.pdf`
+to copy into the back pages) and `Glossary-COMPLETE-S1-S3-v2.pdf`
 (the same 161 terms with full definitions and analogies, same order,
 8 pages, read on screen). The app's Terms tab was brought up to 178
 entries so it matches. **For every new lecture from here on:** the
