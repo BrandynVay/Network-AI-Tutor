@@ -27,9 +27,12 @@
 > - **Space X Study app (added 2026-11-10):** a separate published
 >   Artifact for this course, https://claude.ai/artifact/CnDfEEJHGhs76GMZNu7BSM
 >   (source mirrored at `COURSES/udemy-interplanetary-spacecraft/app/space-x-study.html`).
->   Tabs: Today · Learn (7 scenes, ELI5) · Quiz (61 multiple-choice +
->   13 explain-out-loud, instant feedback, spaced review) · Cards (52
->   flashcards, 1/3/7/14/30-day intervals) · Terms (178-entry
+>   Tabs: Today (with a "how this app helps you" card) · Learn (7 scenes,
+>   each with a 🧒 simple version AND a 🛠 "how it actually works"
+>   engineer section with worked numbers; a header toggle sets which
+>   comes first) · Quiz (72 multiple-choice +
+>   13 explain-out-loud, instant feedback, spaced review) · Cards (63
+>   flashcards, 1/3/7/14/30-day intervals) · Terms (193-entry
 >   searchable glossary of OFFICIAL terminology: name · also-called ·
 >   plain meaning · scene) · Teach (timed talks: Section 1
 >   3¼ min · Section 2 3 min · Section 3 4¼ min · full 7 min, each with
@@ -48,6 +51,14 @@
 >   **official term in bold first**, then its other names, then the
 >   plain-English version and the analogy. Add every new official term
 >   to `TERMS` in the app.
+> - **Mechanism level for everything (rule since 2026-11-11):** the
+>   student asked "how does the spacecraft actually stay up / stabilize"
+>   and said "everything needs to be like that." Every scene in the app
+>   now has a `deep` block: numbered mechanism rows with checkable
+>   numbers (e.g. ISS falls 4.3 m/s and the ground curves 4.3 m/s; GTO
+>   burns 2.42 + 1.47 km/s; rocket-equation mass ratios; flyby turning
+>   angle). Every new lecture gets the same three layers: simple story,
+>   official terms, and a worked mechanism with numbers.
 > - When Network+ resumes, delete this block, and resume from
 >   "Project status" below (Day 01 was never started in the app).
 

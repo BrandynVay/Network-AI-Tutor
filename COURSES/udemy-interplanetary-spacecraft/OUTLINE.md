@@ -50,6 +50,7 @@ the Done column and date it when a section's quiz is graded.
 |------|---------|---------------|
 | 2026-11-07 | — | Course adopted; Network+ paused. Scaffold written. |
 | 2026-11-07 | 1 | Lec 3 slide "Types of interplanetary spacecraft" (flyby → orbiter → atmospheric → lander → rover → penetrator, + observatory, comms). PDF: `feedback/S1-L3-types-of-interplanetary-spacecraft.pdf` (the "commitment ladder" diagram, examples, Q-bank cards). |
+| 2026-11-11 | 1-3 | Mechanism pass: "how it actually works" rows with worked numbers added to all 7 scenes in the app (+11 MC, +11 cards, +15 terms → 72 / 63 / 193). Header toggle 🧒/🛠 added; Terms tab mode-aware; "How this app helps you" card on Today. Complete word bank (161 lines) + complete glossary v2 (10 pp) issued; notebook map v2 (30 back pages). |
 | 2026-11-10 | 1-3 | Student flagged missing official terminology (saw "Classical Keplerian Elements" on Google). Added a **Terms** tab to the app: 115 official terms with also-called names and plain meanings, searchable, filter by scene. New standing rule: name it, then explain it. |
 | 2026-11-10 | 1-3 | Teach-back split into per-section talks (S1 3¼ min, S2 3 min, S3 4¼ min) + full 7 min, in the app Teach tab and in `review/Teach-It-Back-Kit-S1-S3-v2.pdf` (pages 5-6). Student will use the PDF on a call. |
 | 2026-11-10 | 2 | Added atmospheric composition to the app at student request ("need to know everything"): Go-deeper table on the air scene (gas mix by height: N₂/O₂/Ar/CO₂ → atomic O → He → H; ozone; ionosphere; anomalous O), +8 MC, +8 cards. |

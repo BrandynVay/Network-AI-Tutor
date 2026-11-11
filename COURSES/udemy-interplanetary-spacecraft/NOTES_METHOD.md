@@ -333,3 +333,15 @@ entries so it matches. **For every new lecture from here on:** the
 lecture PDF's vocabulary page feeds (1) new lines appended to the
 word-bank sheet, (2) new entries in the glossary PDF, and (3) new
 `TERMS` entries in the app, all three in the same pass.
+
+## Three layers, always (2026-11-11)
+
+The student's standard is now explicit: for every concept, (1) the
+simple picture ("like I'm 5"), (2) the official name and what else it's
+called, and (3) the mechanism with real, checkable numbers ("how does
+it actually stay up?"). The app's Learn tab carries all three per scene
+and a header toggle (🧒 Like I'm 5 / 🛠 Engineer) sets which comes
+first; Terms shows the plain first sentence in 🧒 mode and the full
+entry in 🛠 mode. Every lecture PDF from here on gets a "How it actually
+works" block with worked numbers on page 2, and the same content goes
+into the scene's `deep` rows in the app.
