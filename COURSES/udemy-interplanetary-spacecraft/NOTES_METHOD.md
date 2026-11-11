@@ -304,3 +304,17 @@ bank with page numbers. ~35 terms across the six S1-S3 spreads. Then
 deepen with retrieval (quiz "due"), naming, and explaining (Teach tab
 run 2, then send a run for grading). No new content until the Section 1
 talk is clean.
+
+## Final notebook map (2026-11-11)
+
+The student asked for the whole notebook laid out once. `Notebook-Map-v1.pdf`
+is the authority. Front: inside cover = tracker + highlighter key; p1-2
+index; p3-4 equations & key numbers; p5 abbreviation key; p6 onward =
+lecture spreads in course order with a from-memory **section map page**
+after each section's last lecture. Back (counted from the last page):
+question bank = last 14 pages (Q left / A facing right); word bank =
+the 6 pages before that, by section; talk cards (cue cards per section
+talk) = the 2 pages before that; 2-page buffer before the back section.
+~89 pages total. Every page numbered in pencil first; sticky tabs at 24,
+22 and 14 from the end. Shrink order if the notebook is short: question
+bank → 10, word bank → 4, lectures take the rest.
