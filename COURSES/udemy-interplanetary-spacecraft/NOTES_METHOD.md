@@ -355,3 +355,36 @@ numbers → equations & key numbers page; (B) one mechanism sentence per
 scene → the section map pages; (C) new terms → word bank; (D) "but
 how?" Q/A cards → question bank. Every future lecture PDF gets the same
 four-way routing block.
+
+## Concept cards in the notebook (2026-11-11, supersedes the back-section part of "Final notebook map")
+
+The student wants the concept-level word bank (meaning + why it exists +
+numbers + don't-confuse + connects) **handwritten in the notebook**, not
+just in the app. `Word-Bank-CONCEPT-CARDS-notebook-S1-S3-v1.pdf` is the
+copy sheet: 32 core terms, **two cards per 22-line page, 16 pages
+numbered C1–C16**, each card 7–11 ruled lines in a fixed shorthand:
+boxed `NAME = also called`, then `=` meaning, `WHY`, `#`, `≠`, `→`.
+Source: `app/concept-cards/` (`entries.py` holds the card text,
+`count.py` enforces the line budget, `build.py` makes the HTML).
+
+- **Placement:** the 16 pages start 44 pages from the end, directly in
+  front of the 2 talk-card pages. Talk cards, the 12 one-line word-bank
+  pages and the 14-page question bank do not move. The 2-page buffer is
+  gone; the lecture block now ends ~p51 (end of Section 6).
+- **Capacity is exceeded and the student has been told so:** whole-course
+  word bank ≈ 45 pages (16 + ~14 more concept pages for S4–S7 + ~15
+  one-line pages) vs. the 12 originally mapped. A second small notebook
+  is needed before Section 7: it takes S7 lecture spreads, concept cards
+  C17 onward and one-line overflow. Alternative offered: put C1–C16 in
+  the second notebook now and leave map v2 untouched.
+- **Rule going forward:** every new core term gets a card in the same
+  shorthand, ≤ 11 lines, two per page; each lecture PDF's routing block
+  gains (E) concept cards → next free C-page. One-line bank entries for
+  carded terms get a `→ C#` pointer.
+- Copy routine: one spread per sitting, read the card and say the WHY
+  line aloud before writing, then cover all but the boxed names and say
+  each WHY from memory. Suggested order C3–C7, C11–C15, then the rest.
+- Corrected the same day (app + PDFs): ISS gravity-gradient torque is
+  several N·m, not 10⁻³ (10⁻⁵ is a small satellite); Kapton erosion is
+  tens of µm/yr; New Horizons v∞ ≈ 12.6 km/s. The screen word bank was
+  reissued as `Word-Bank-CONCEPTS-S1-S3-v4.pdf` (v3 removed).

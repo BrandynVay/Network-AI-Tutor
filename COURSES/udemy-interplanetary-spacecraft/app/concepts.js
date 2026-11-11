@@ -17,7 +17,7 @@ ${t[1]&&t[1]!=="—"?`<div class="al">Also called: ${esc(t[1])}</div>`:""}
 <div class="row"><span class="lb">Connects</span><span>${esc(e.l)}</span></div></div>`;};
 // 4 entries per page, 2x2
 let pages=[]; for(let i=0;i<items.length;i+=4) pages.push(items.slice(i,i+4));
-const intro=`<div class="page"><div class="top"><span class="badge">SPACE X · WORD BANK</span><h1>Word bank, <span>concept level</span> — S1–S3 (v3)</h1></div>
+const intro=`<div class="page"><div class="top"><span class="badge">SPACE X · WORD BANK</span><h1>Word bank, <span>concept level</span> — S1–S3 (v4)</h1></div>
 <div class="sub">32 core terms. Each one answers five questions, in this order, every time.</div>
 <div class="card" style="font-size:13px;line-height:1.5"><h3>How to read an entry (and how to write it in your notebook)</h3>
 <ul class="r" style="font-size:13px">

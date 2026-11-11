@@ -50,9 +50,15 @@
 >   questions/cards/terms to the arrays at the top of the HTML (`SCENES`,
 >   `MC`, `WHY`, `CARDS`, `TERMS`, `ENRICH`, `MECH`, `NUMBERS`) and
 >   republish to the same URL. Every new core term gets an `ENRICH`
->   entry, not just a definition; `Word-Bank-CONCEPTS-S1-S3-v3.pdf` is
+>   entry, not just a definition; `Word-Bank-CONCEPTS-S1-S3-v4.pdf` is
 >   generated from those arrays by `app/concepts.js` (rebuild it with a
 >   new version suffix when terms change).
+> - **Concept cards on paper (2026-11-11):** the same 32 terms are also
+>   handwritten in the notebook as pages C1-C16 (two cards per 22-line
+>   page), from `Word-Bank-CONCEPT-CARDS-notebook-S1-S3-v1.pdf`; source
+>   and line-budget checker in `app/concept-cards/`. One notebook can no
+>   longer hold the whole course: see NOTES_METHOD.md § Concept cards in
+>   the notebook before telling the student where anything goes.
 > - **Name it, then explain it (rule since 2026-11-10):** the student
 >   flagged feeling like they were "missing so much" because explanations
 >   led with analogies and never gave the official term (e.g. the six

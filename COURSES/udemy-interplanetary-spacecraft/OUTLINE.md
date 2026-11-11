@@ -71,6 +71,14 @@ the Done column and date it when a section's quiz is graded.
   a per-scene "when they ask but how?" mechanism line on every Learn
   card, and 32 core terms given a concept layer (why it exists · example
   with numbers · don't confuse with · connects to) in the Terms tab.
-  `Word-Bank-CONCEPTS-S1-S3-v3.pdf` (9 pp) is the same 32 entries on
+  `Word-Bank-CONCEPTS-S1-S3-v4.pdf` (9 pp; v3 withdrawn for a wrong torque number) is the same 32 entries on
   paper, with a note on what to copy into the notebook (name/also/meaning
   only; concept + numbers go in the lecture-page margin).
+
+- **2026-11-11 (later still)** — Student wants the concept word bank
+  handwritten. Issued `Word-Bank-CONCEPT-CARDS-notebook-S1-S3-v1.pdf`
+  (10 pp): 8 full-size spreads = notebook pages C1–C16, two cards a
+  page, plus a map page. Told the student plainly that the whole-course
+  word bank (~45 pp) no longer fits one ~95-page notebook; plan is cards
+  at 44-from-the-end now, second notebook before Section 7. Notebook's
+  real page count still unconfirmed. App v9: three number corrections.
