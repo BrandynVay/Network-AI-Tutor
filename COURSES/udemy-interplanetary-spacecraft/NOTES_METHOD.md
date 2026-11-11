@@ -345,3 +345,13 @@ first; Terms shows the plain first sentence in 🧒 mode and the full
 entry in 🛠 mode. Every lecture PDF from here on gets a "How it actually
 works" block with worked numbers on page 2, and the same content goes
 into the scene's `deep` rows in the app.
+
+## Engineer level → notebook routing (2026-11-11)
+
+Engineer-level content never goes on the full lecture spreads. It is
+routed to reserved pages via a "copy into notes" sheet
+(`Copy-Into-Notes-Engineer-S1-S3-v1.pdf`): (A) formulas + worked
+numbers → equations & key numbers page; (B) one mechanism sentence per
+scene → the section map pages; (C) new terms → word bank; (D) "but
+how?" Q/A cards → question bank. Every future lecture PDF gets the same
+four-way routing block.
