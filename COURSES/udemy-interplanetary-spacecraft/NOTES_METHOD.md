@@ -313,8 +313,10 @@ index; p3-4 equations & key numbers; p5 abbreviation key; p6 onward =
 lecture spreads in course order with a from-memory **section map page**
 after each section's last lecture. Back (counted from the last page):
 question bank = last 14 pages (Q left / A facing right); word bank =
-the 6 pages before that, by section; talk cards (cue cards per section
+the 12 pages before that, by section and lecture, EVERY word the
+lectures used (student's instruction 2026-11-11; "only new words" is
+retired) — `Word-Bank-COMPLETE-S1-S3-v1.pdf` has the 161 S1-S3 lines; talk cards (cue cards per section
 talk) = the 2 pages before that; 2-page buffer before the back section.
-~89 pages total. Every page numbered in pencil first; sticky tabs at 24,
-22 and 14 from the end. Shrink order if the notebook is short: question
-bank → 10, word bank → 4, lectures take the rest.
+~95 pages total (`Notebook-Map-v2.pdf`). Every page numbered in pencil
+first; sticky tabs at 30, 28 and 14 from the end. Shrink order if the notebook is short: question
+bank → 10, word bank → 8, lectures take the rest.
