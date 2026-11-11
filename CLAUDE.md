@@ -29,7 +29,7 @@
 >   (source mirrored at `COURSES/udemy-interplanetary-spacecraft/app/space-x-study.html`).
 >   Tabs: Today · Learn (7 scenes, ELI5) · Quiz (61 multiple-choice +
 >   13 explain-out-loud, instant feedback, spaced review) · Cards (52
->   flashcards, 1/3/7/14/30-day intervals) · Terms (115-entry
+>   flashcards, 1/3/7/14/30-day intervals) · Terms (178-entry
 >   searchable glossary of OFFICIAL terminology: name · also-called ·
 >   plain meaning · scene) · Teach (timed talks: Section 1
 >   3¼ min · Section 2 3 min · Section 3 4¼ min · full 7 min, each with

@@ -320,3 +320,16 @@ talk) = the 2 pages before that; 2-page buffer before the back section.
 ~95 pages total (`Notebook-Map-v2.pdf`). Every page numbered in pencil
 first; sticky tabs at 30, 28 and 14 from the end. Shrink order if the notebook is short: question
 bank → 10, word bank → 8, lectures take the rest.
+
+## Complete glossary (2026-11-11)
+
+Student's instruction: the word bank must hold **every** word the
+lectures used, and every word needs a full definition they can reach.
+Deliverables: `Word-Bank-COMPLETE-S1-S3-v1.pdf` (161 one-line entries
+to copy into the back pages) and `Glossary-COMPLETE-S1-S3-v1.pdf`
+(the same 161 terms with full definitions and analogies, same order,
+8 pages, read on screen). The app's Terms tab was brought up to 178
+entries so it matches. **For every new lecture from here on:** the
+lecture PDF's vocabulary page feeds (1) new lines appended to the
+word-bank sheet, (2) new entries in the glossary PDF, and (3) new
+`TERMS` entries in the app, all three in the same pass.
