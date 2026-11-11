@@ -29,12 +29,18 @@
 >   (source mirrored at `COURSES/udemy-interplanetary-spacecraft/app/space-x-study.html`).
 >   Tabs: Today (with a "how this app helps you" card) · Learn (7 scenes,
 >   each with a 🧒 simple version AND a 🛠 "how it actually works"
->   engineer section with worked numbers; a header toggle sets which
->   comes first) · Quiz (72 multiple-choice +
->   13 explain-out-loud, instant feedback, spaced review) · Cards (63
->   flashcards, 1/3/7/14/30-day intervals) · Terms (193-entry
->   searchable glossary of OFFICIAL terminology: name · also-called ·
->   plain meaning · scene) · Teach (timed talks: Section 1
+>   engineer section with worked numbers, plus a one-line "when they
+>   ask but how?" mechanism sentence (`MECH`); a header toggle sets
+>   which comes first) · Quiz (72 multiple-choice +
+>   28 explain-out-loud incl. the 15 "but how?" cards, instant feedback,
+>   spaced review) · Cards (63 flashcards, 1/3/7/14/30-day intervals) ·
+>   Terms (193-entry searchable glossary of OFFICIAL terminology: name ·
+>   also-called · plain meaning · scene; 32 core terms also carry an
+>   `ENRICH` entry = concept/why-it-exists · example with numbers ·
+>   don't-confuse-with · connects-to, added 2026-11-11 after the student
+>   said definitions alone weren't enough) · Numbers (`NUMBERS`: 12
+>   formulas each with a worked value, constants, mission numbers;
+>   mirrors notebook pp. 3-4) · Teach (timed talks: Section 1
 >   3¼ min · Section 2 3 min · Section 3 4¼ min · full 7 min, each with
 >   cue card) · Progress. Progress is stored per viewer in
 >   the artifact db at `data/users/<id>/progress` (private to the
@@ -42,7 +48,11 @@
 >   Network+ Ops Console was deliberately NOT modified: its structure is
 >   cert-blueprint-specific. When new lectures are done, add their
 >   questions/cards/terms to the arrays at the top of the HTML (`SCENES`,
->   `MC`, `WHY`, `CARDS`, `TERMS`) and republish to the same URL.
+>   `MC`, `WHY`, `CARDS`, `TERMS`, `ENRICH`, `MECH`, `NUMBERS`) and
+>   republish to the same URL. Every new core term gets an `ENRICH`
+>   entry, not just a definition; `Word-Bank-CONCEPTS-S1-S3-v3.pdf` is
+>   generated from those arrays by `app/concepts.js` (rebuild it with a
+>   new version suffix when terms change).
 > - **Name it, then explain it (rule since 2026-11-10):** the student
 >   flagged feeling like they were "missing so much" because explanations
 >   led with analogies and never gave the official term (e.g. the six

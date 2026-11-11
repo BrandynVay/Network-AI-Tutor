@@ -62,3 +62,15 @@ the Done column and date it when a section's quiz is graded.
 | 2026-11-08 | 2 | Lec 5 "Earth Atmosphere": transcript + 3 slides. PDF: `feedback/S2-L5-earth-atmosphere.pdf` (layer stack + temperature zigzag drawing; 8 caption errors tabled; instructor loose on "AO appears at 320-340 km" (dominant from ~200 km per his own chart) and on atomic N; drag not covered by the lecture, flagged). Section 2 = 2/3 lectures done. |
 | 2026-11-07 | 2 | Lec 4 "Space Vacuum Conditions": transcript + all 6 slides received. PDF: `feedback/S2-L4-space-vacuum.pdf` (5 "free services" diagram, fact checks: 0.3 µm not mm, corrosion vs UV bond-breaking, "no dissipation" overstated; vocabulary page added at student request). Section 1 complete (4/4). |
 | 2026-11-07 | 1 | Student sent a photo of their first Cornell page (satellite types, LEO/MEO/GEO altitudes — all correct). Feedback PDF: `feedback/S1-satellite-types-and-orbits.pdf` (geosync vs geostationary, why 35,786 km, harder cues, group the 8 types by job, draw the left page). |
+
+- **2026-11-11 (later)** — Student: "add these to the app too and I need
+  the word bank to explain these words better… understand the meaning and
+  concept around the word completely." App v8: new **Numbers** tab
+  (equations with a worked value each, constants, mission numbers), the
+  15 "but how?" Q/A cards added to the explain-out-loud quiz (WHY now 28),
+  a per-scene "when they ask but how?" mechanism line on every Learn
+  card, and 32 core terms given a concept layer (why it exists · example
+  with numbers · don't confuse with · connects to) in the Terms tab.
+  `Word-Bank-CONCEPTS-S1-S3-v3.pdf` (9 pp) is the same 32 entries on
+  paper, with a note on what to copy into the notebook (name/also/meaning
+  only; concept + numbers go in the lecture-page margin).
