@@ -292,3 +292,15 @@ the analogy.** The app's Terms tab (115 entries) is the living glossary;
 every new lecture adds its official vocabulary there and in the lecture
 PDF's vocabulary page. The depth target is "could read a real article or
 NASA page and recognize every term," not just "can follow the course."
+
+## Terms pass, not a rewrite (2026-11-11)
+
+When the student feels their notes are "not the best" after learning
+official terminology: **do not rewrite the notebook** (copying). Do a
+terms pass per spread: (1) PDFs and app closed, guess the official name
+for each cue in light pencil; (2) check against the Terms tab, correct
+in dark pencil, keep the wrong guess; (3) add new words to the word
+bank with page numbers. ~35 terms across the six S1-S3 spreads. Then
+deepen with retrieval (quiz "due"), naming, and explaining (Teach tab
+run 2, then send a run for grading). No new content until the Section 1
+talk is clean.
