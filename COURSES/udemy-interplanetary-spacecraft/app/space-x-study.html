@@ -73,7 +73,7 @@ table.deep th{background:var(--paper2)}
 
 <div class="wrap">
   <header class="top">
-    <div><div class="tag">Interplanetary Spacecraft & Satellite Engineering · Sections 1–4</div><h1>Space <span>X</span> Study</h1></div>
+    <div><div class="tag">Interplanetary Spacecraft & Satellite Engineering · Sections 1–5</div><h1>Space <span>X</span> Study</h1></div>
     <div class="row" style="gap:6px"><button id="modeBtn" class="pill" style="cursor:pointer" title="Switch how things are explained">…</button><div id="syncBadge" class="pill" title="Where your progress is saved">…</div></div>
   </header>
   <nav class="tabs" role="tablist" id="tabs">
@@ -226,6 +226,12 @@ const SCENES = [
   draw:"A round tank, a pump, a hatched box (the reactor), a bell. Next to it a big circle marked 18 and a small one marked 2.",
   why:[["So it's a bomb going off behind the ship?", "No. A reactor is a controlled, steady heat source; it cannot explode like a bomb. The design that did use bombs was Project Orion (1958–1965), a different idea that was never built."], ["Is it better because it's hotter?", "No, it actually runs cooler than a chemical flame, about 2,700 K against 3,500 K. It wins because its exhaust is plain hydrogen, seven times lighter than steam."], ["Could one take us to another star?", "No. It gives perhaps 10–20 km/s. The nearest star is 40 trillion km away: about 75,000 years at Voyager's speed. It is an engine for Mars."]],
   deep:{"title": "Nuclear thermal rocket: why cooler and lighter beats hotter and heavier", "intro": "Same nozzle as a chemical rocket, a different heat source, and one rule that explains the result: exhaust speed goes as the square root of temperature divided by molecular mass.", "rows": [["1 · The heat source", "fission, 6 million × chemistry", "Splitting 1 kg of uranium-235 releases about 80 million MJ. Burning 1 kg of hydrogen and oxygen releases 13 MJ. Energy is never the limit in a nuclear engine.", "Nuclear fission; reactor core; fuel elements. The uranium is nuclear fuel, not propellant: it stays on board."], ["2 · Flow path", "tank → pump → nozzle wall → core → throat → bell", "Liquid hydrogen at 20 K is pumped first through channels in the nozzle wall, cooling it, then down through hundreds of holes in the hot core. It leaves as gas at about 2,700 K.", "Working fluid = propellant = hydrogen. Turbopump and regenerative cooling, same as a chemical engine."], ["3 · The rule", "vₑ ∝ √(T ÷ M)", "Chemical: 3,500 K ÷ 13.6 (steam with spare hydrogen). Nuclear: 2,700 K ÷ 2. The ratio of the square roots is about 2.3. Real engines manage about 2.", "Molecular mass (M). The lecture's 'because temperatures are higher' is wrong: the reactor is cooler and still wins."], ["4 · The two numbers", "Isp ≈ 850 s · 246,000 N", "NERVA: vₑ ≈ 8.3 km/s, so Isp = 8,300 ÷ 9.81 ≈ 850 s (841 s measured). Thrust 246,000 N, about 25 tonnes of push.", "High thrust AND high Isp: the combination neither chemical nor electric offers."], ["5 · Check it", "30 kg/s · 1,000 MW", "ṁ = F ÷ vₑ = 246,000 ÷ 8,300 ≈ 30 kg of hydrogen per second. Jet power = ½ṁvₑ² ≈ 1,000 MW. The reactor was rated 1,100 MW.", "The same F = ṁ × vₑ and ½ṁvₑ² as every other engine."], ["6 · What it buys", "36% propellant, not 60%", "Leaving Earth orbit for Mars takes about 4 km/s. Rocket equation: at Isp 450 s the ship is 60% propellant; at 900 s it is 36%. Spend the difference on payload or on a faster trip.", "Payload and payload fraction. The slide's 'lift-off mass is half' really means mass placed in Earth orbit."], ["7 · Why Mars crews want it", "shorter trip, less radiation", "More Δv for the same mass can cut the transit from roughly 6–9 months to 3–4. Less time in deep space means a smaller dose from cosmic rays and solar storms.", "Radiation exposure (dose). A shadow shield protects the crew from the reactor itself."], ["8 · The limits", "solid core, heavy engine, bulky tanks", "The core must stay solid: 2,700–2,900 K at most. Hot hydrogen attacks the fuel rods. Liquid hydrogen is 14 times less dense than water. Thrust is only 3–4 times the engine's weight, against 70–180 for chemical, so it is never a lift-off engine.", "Liquid-core and gas-core designs (the slide's 'mixing fuel and fluid') would lift the temperature cap. Paper only."], ["9 · History", "tested 1959–1972, never flown", "US Project Rover and NERVA ran about 20 reactors in Nevada; in 1969 one engine was started 28 times. Cancelled in 1973. A NASA and DARPA flight demo (DRACO) was started in 2023 and cancelled in 2025, as far as known.", "Low-enriched uranium (under 20% U-235) is the modern choice: fewer security rules, cheaper, slower to object to."]], "notes": ["Project Orion on the lecture's last slide is not a nuclear thermal rocket. It is nuclear pulse propulsion: small bombs exploded behind a pusher plate. Studied 1958–1965, ended by the 1963 test-ban treaty.", "Bimodal means one reactor doing two jobs: thrust during burns, electricity the rest of the time.", "An RTG, nuclear electric propulsion and a nuclear thermal rocket are three different things: electricity from decay heat, a reactor powering ion engines, and a reactor heating hydrogen."]}},
+ {id:"comm", n:11, name:"The radio flashlight", color:"#c0392b", sec:"S5",
+  story:"Drop a stone in a pond and ripples spread out. A radio wave is a ripple too, but in electricity and magnetism, and it needs no water and no air, so it crosses empty space at the speed of light. An antenna is a metal stick. When the ripple washes over it, it pushes the electricity in the stick back and forth and the radio reads that bobbing. To send, do the reverse. The stick works best when it is half as long as one ripple. Voice ripples would be 3,000 km long, so the stick would be longer than Texas. So we cheat: take a fast, short ripple, the carrier, and make it carry the voice by changing its height (AM) or its spacing (FM). Last trick: a bare bulb lights a room dimly, but the same bulb in a flashlight throws a bright spot far away. A dish antenna is a flashlight for radio. Cassini talked to Earth from Saturn with 20 watts, a fridge bulb, because its 4-metre dish squeezed everything into one thin beam aimed exactly at us.",
+  say:"Radio is a ripple you can write on, and a dish is a flashlight that aims it.",
+  draw:"A wavy line with one wavelength marked, a rod half that long, and a dish with a narrow beam.",
+  why:[["How can a probe at Saturn reach us with 20 watts?", "Its 4-metre dish concentrates the power about 50,000 times in our direction, and a 70-metre dish on Earth listens. The signal arrives at about 10⁻¹⁶ watts and is still readable."], ["Why can't you just transmit the voice itself?", "A 100 Hz signal sent as a radio wave has a wavelength of 3,000 km, and an antenna has to be about half a wavelength. So the voice is written onto a fast carrier wave instead."], ["Does a dish make the signal more powerful?", "No. It adds nothing. It takes the power that would go in every direction and aims it one way, like the reflector in a flashlight."]],
+  deep:{"title": "From wave to beam: c = λ × f, the half-wave rod, modulation and gain", "intro": "Four ideas, each with a number you can check on something you own: what a radio wave is, why antenna size follows frequency, how a slow signal rides a fast carrier, and how a dish buys range without power.", "rows": [["1 · The wave", "electric and magnetic fields keeping each other going", "A changing electric field makes a changing magnetic field, which makes a changing electric field. The pair travels at 299,792 km/s, at right angles to each other and to the direction of travel, with no medium.", "Electromagnetic wave. Radio, light, UV and X-rays are the same thing at different frequencies: the electromagnetic spectrum."], ["2 · c = λ × f", "speed is fixed, so wavelength and frequency trade", "FM radio at 100 MHz: 3 m. Wi-Fi at 2.4 GHz: 12.5 cm. Deep-space link at 8.4 GHz: 3.6 cm. Visible light: half a thousandth of a millimetre.", "Wavelength (λ), frequency (f, in hertz), speed of light (c). Higher frequency means shorter wavelength."], ["3 · Receive", "the wave shakes the rod's electrons", "Metal is full of loose electrons. The wave's electric field pushes them one way and then the other, so a tiny alternating voltage appears along the rod at the wave's frequency: millionths of a volt.", "Antenna as receiver. The receiver electronics amplify and decode that voltage."], ["4 · Transmit", "the reverse", "Drive an alternating voltage into the rod and the electrons shaken back and forth radiate a wave at that frequency. The same antenna does both jobs.", "Antenna as transmitter. The symmetry is called reciprocity."], ["5 · Size", "rod ≈ λ ÷ 2", "A rod half a wavelength long resonates, like a guitar string that fits its note. 100 MHz → 1.5 m. 2.4 GHz → 6 cm. A 100 Hz voice signal → 1,500 km.", "Half-wave dipole; a monopole is a quarter-wave (car aerial, Wi-Fi router stub)."], ["6 · Modulate", "write the slow signal on a fast carrier", "AM radio: a 1 MHz carrier whose height follows the voice. FM radio: a 100 MHz carrier whose frequency swings ±75 kHz. Spacecraft and Wi-Fi send bits by shifting the carrier's phase.", "Modulation; carrier signal; information signal. AM, FM, and phase-shift keying (PSK)."], ["7 · Patterns", "isotropic, omnidirectional, directional", "Isotropic: equal in every direction, an ideal yardstick that cannot be built. A dipole is omnidirectional: equal all round the rod, nothing off its ends. A dish puts nearly everything into one main lobe with small side lobes.", "Radiation pattern; directivity; main lobe and side lobes; half-power (3 dB) beamwidth."], ["8 · Gain", "≈ ½ × (π × D ÷ λ)²", "Cassini's 4 m dish at 3.6 cm: about 50,000 times stronger than isotropic in the beam (47 dBi), and the beam is only about 0.6° wide (70 × λ ÷ D).", "Antenna gain, in dBi. It concentrates power; it never adds any. The price is pointing accuracy."], ["9 · What it buys", "20 W looks like a megawatt", "Cassini transmitted 20 W. Through the dish that looked like 1,000,000 W toward Earth. After 1.4 billion km a 70 m dish collected about 10⁻¹⁶ W.", "High-gain antenna (HGA) for data; low-gain antenna (LGA) with a wide beam for when the spacecraft cannot point."]], "notes": ["Your voice is a sound wave, not a radio wave. A microphone turns it into a voltage at the same frequency; the lecture's 3,000 km is what a radio wave at that frequency would measure.", "Modulation has three payoffs: small antennas, many users sharing the air on separate carrier frequencies, and more data per second on a faster carrier.", "This is the same physics as Wi-Fi: 2.4 GHz is a 12.5 cm wave, and a router's stub antennas are a quarter of that."]}},
 ];
 
 // Multiple-choice questions. a = index of correct option. x = explanation.
@@ -342,6 +348,22 @@ const MC = [
  {s:"nuke", q:"Project Orion (1958–1965) was…", o:["A nuclear thermal rocket", "Nuclear pulse propulsion: small bombs behind a pusher plate", "An ion engine", "NASA's crew capsule"], a:1, x:"It rode nuclear explosions. The lecture mislabels it; the capsule named Orion is unrelated."},
  {s:"nuke", q:"Could a nuclear thermal rocket reach the nearest star in a human lifetime?", o:["Yes, in about 10 years", "Yes, in about 50 years", "No: tens of thousands of years", "Only with a gravity assist"], a:2, x:"At 17 km/s the 40 trillion km takes about 75,000 years."},
  {s:"nuke", q:"A 'bimodal' nuclear thermal rocket uses its reactor for…", o:["Two kinds of propellant", "Thrust and electricity", "Launch and landing", "Two crews"], a:1, x:"Thrust during burns, electrical power the rest of the time."},
+ {s:"comm", q:"Which formula links wavelength, frequency and the speed of light?", o:["c = λ ÷ f", "c = λ × f", "c = λ + f", "f = c × λ"], a:1, x:"Speed = wavelength × frequency. c is fixed, so raising one lowers the other."},
+ {s:"comm", q:"FM radio is about 100 MHz. Its wavelength is about…", o:["3 cm", "3 m", "300 m", "3 km"], a:1, x:"300,000,000 m/s ÷ 100,000,000 Hz = 3 m."},
+ {s:"comm", q:"If the frequency goes up, the wavelength…", o:["Goes up", "Stays the same", "Goes down", "Depends on the antenna"], a:2, x:"c is constant, so they are inversely related."},
+ {s:"comm", q:"How does an antenna pick up a radio wave?", o:["It reflects the wave into a lens", "The wave's electric field pushes electrons in the metal, making a voltage", "It absorbs heat from the wave", "It ionizes the air"], a:1, x:"The alternating field makes an alternating voltage at the same frequency."},
+ {s:"comm", q:"A basic dipole antenna is about how long?", o:["One wavelength", "Half a wavelength", "Ten wavelengths", "It doesn't matter"], a:1, x:"The half-wave dipole resonates with the wave."},
+ {s:"comm", q:"Why can't a 100 Hz voice signal be transmitted directly?", o:["It is too quiet", "The antenna would have to be about 1,500 km long", "100 Hz waves can't cross space", "It would be illegal"], a:1, x:"λ = 3,000 km, so a half-wave antenna is 1,500 km."},
+ {s:"comm", q:"Modulation means…", o:["Making the signal louder", "Changing a carrier wave so it carries the information", "Filtering out noise", "Aiming the antenna"], a:1, x:"The slow information signal is written onto a fast carrier."},
+ {s:"comm", q:"In AM, what follows the information signal?", o:["The carrier's frequency", "The carrier's height (amplitude)", "The antenna's length", "The speed of the wave"], a:1, x:"Amplitude modulation: the envelope of the carrier traces the signal."},
+ {s:"comm", q:"In FM, what follows the information signal?", o:["The carrier's amplitude", "The carrier's frequency", "The polarization", "The beamwidth"], a:1, x:"Frequency modulation: the spacing of the carrier's waves changes."},
+ {s:"comm", q:"An isotropic antenna…", o:["Radiates equally in every direction and is only an ideal reference", "Is the same as a dish", "Has the highest gain possible", "Only receives"], a:0, x:"It cannot be built; gain is measured against it."},
+ {s:"comm", q:"A dipole's radiation pattern is…", o:["A narrow beam", "A sphere", "A donut: equal all around the rod, none off the ends", "Random"], a:2, x:"That is what omnidirectional means: equal in one plane."},
+ {s:"comm", q:"Antenna gain is…", o:["Extra power the antenna adds", "How much stronger the signal is in the best direction than from an isotropic antenna", "The transmitter's wattage", "The antenna's weight"], a:1, x:"The antenna concentrates power; it creates none."},
+ {s:"comm", q:"What is the price of a high-gain antenna?", o:["It uses more power", "Its narrow beam must be pointed accurately", "It only works near Earth", "It can't receive"], a:1, x:"Narrow beam means precise attitude control."},
+ {s:"comm", q:"Cassini's 4 m dish must point at Earth because…", o:["It is solar powered", "Its beam is less than a degree wide", "Earth's gravity steers it", "The dish is fragile"], a:1, x:"About 0.6° at 8.4 GHz. Miss by more and Earth hears nothing."},
+ {s:"comm", q:"Why does a CubeSat use crossed dipoles and not a dish?", o:["Dipoles have higher gain", "They work whichever way the satellite faces", "Dishes don't work in orbit", "Dipoles need no transmitter"], a:1, x:"Near-omnidirectional coverage with no pointing, at the cost of a weak signal."},
+ {s:"comm", q:"Is your voice an electromagnetic wave?", o:["Yes, at 100 Hz", "No: it is a sound wave in air; a microphone turns it into an electrical signal", "Only when you shout", "Yes, but only in vacuum"], a:1, x:"Sound is air pressure at 343 m/s and cannot cross a vacuum."},
 ];
 
 // Explain-why prompts: think, reveal, self-grade.
@@ -388,6 +410,11 @@ const WHY = [
  {s:"nuke", q:"Trace the hydrogen through a nuclear thermal rocket.", a:"Liquid hydrogen at 20 K, turbopump, cooling channels in the nozzle wall, down through holes in the hot reactor core where it becomes gas at about 2,700 K, throat, bell nozzle, out at about 8–9 km/s."},
  {s:"nuke", q:"Compare all three engine families on thrust, Isp and flight status.", a:"Chemical: huge thrust, 250–450 s, flown on everything. Electric: fraction of a newton, 3,000+ s, flown since 1964. Nuclear thermal: high thrust, about 900 s, ground-tested only. The difference is where the energy comes from: the propellant, solar panels, or a reactor."},
  {s:"nuke", q:"What was Project Orion, and what did the instructor get wrong about it?", a:"A 1958–1965 US study of nuclear pulse propulsion: small nuclear bombs exploded behind a pusher plate with shock absorbers. He called it a NASA nuclear thermal project from 1986. It was neither NASA's, nor thermal, nor from the 1980s."},
+ {s:"comm", q:"Explain how a metal rod turns a radio wave into a signal, and why its length matters.", a:"The wave's electric field pushes the rod's free electrons back and forth, producing an alternating voltage at the wave's frequency. A rod half a wavelength long resonates with the wave, so it gives the strongest voltage. That ties antenna size to frequency."},
+ {s:"comm", q:"Why is modulation needed? Give the antenna reason and one more.", a:"A voice-frequency signal sent directly would need an antenna about 1,500 km long. Writing it onto a fast carrier lets a small antenna do the job. It also lets many users share the air, each on its own carrier frequency."},
+ {s:"comm", q:"AM versus FM in one sentence each.", a:"AM: the carrier's height rises and falls with the signal. FM: the carrier's height stays constant and its frequency speeds up and slows down with the signal. FM resists static better; spacecraft use a third kind, phase modulation, for bits."},
+ {s:"comm", q:"How does a dish antenna make a signal stronger without adding power?", a:"It takes the power an isotropic antenna would spread over a whole sphere and concentrates it into a narrow main lobe, like a flashlight reflector. Cassini's 4 m dish gave about 50,000 times. The cost is that the beam is under a degree wide and must be aimed."},
+ {s:"comm", q:"When would a spacecraft use its low-gain antenna?", a:"When it cannot point the dish at Earth: right after launch, during maneuvers, or in safe mode after a fault. The wide beam always reaches Earth, but only at a very low data rate."},
 ];
 
 // Flashcards: vocabulary and key numbers.
@@ -495,6 +522,22 @@ const CARDS = [
  ["Bimodal NTR","One reactor, two jobs: thrust and electricity","nuke"],
  ["NTR limits","Solid core caps temperature; heavy engine; bulky hydrogen tanks; radioactive testing","nuke"],
  ["NTR for Mars","About half the mass in Earth orbit, or a shorter trip and less crew radiation","nuke"],
+ ["Electromagnetic wave","A travelling ripple of electric and magnetic field; needs no medium; speed c","comm"],
+ ["c = λ × f","Speed of light = wavelength × frequency. 100 MHz → 3 m","comm"],
+ ["Wavelength (λ)","Distance from one crest to the next, in metres","comm"],
+ ["Frequency (f)","Waves per second, in hertz (Hz, kHz, MHz, GHz)","comm"],
+ ["Half-wave dipole","Two rods end to end, λ ÷ 2 long. The basic antenna; omnidirectional","comm"],
+ ["Modulation","Changing a carrier wave so it carries an information signal","comm"],
+ ["AM vs FM","AM: carrier's height follows the signal. FM: carrier's frequency follows it","comm"],
+ ["Carrier signal","The fast, steady wave that the information is written onto","comm"],
+ ["Isotropic antenna","Imaginary antenna radiating equally in every direction; the yardstick for gain","comm"],
+ ["Omnidirectional antenna","Equal all around in one plane (a donut). Example: a dipole","comm"],
+ ["Antenna gain (dBi)","How many times stronger than isotropic in the best direction. Aims power, adds none","comm"],
+ ["Beamwidth","Angle of the main lobe, measured where power falls to half (3 dB)","comm"],
+ ["High-gain antenna (HGA)","Narrow-beam dish: fast data, must be pointed. Cassini: 4 m, ~0.6°","comm"],
+ ["Low-gain antenna (LGA)","Wide beam: slow data, works in any attitude. Backup and CubeSats","comm"],
+ ["Cassini's radio link","20 W through a 4 m dish looks like 1 MW; about 10⁻¹⁶ W reaches Earth","comm"],
+ ["Dish gain formula","≈ ½ × (π × D ÷ λ)²; beamwidth ≈ 70 × λ ÷ D degrees","comm"],
 ];
 
 const PROGRAMS = {
@@ -823,6 +866,40 @@ const TERMS = [
  ["Shadow shield","—","A slab of dense material between a reactor and the rest of the spacecraft, casting a 'shadow' free of its radiation.","nuke"],
  ["Project Rover / NERVA","Nuclear Engine for Rocket Vehicle Application","The US nuclear thermal rocket programme, 1955–1973. About 20 reactors ground-tested in Nevada; none flown.","nuke"],
  ["Interstellar","—","Between stars. The nearest is 4.2 light years, about 40 trillion km, far beyond any engine in this course.","nuke"],
+ // --- Section 5 · communications (added 2026-11-12)
+ ["Telecommunications","comms · TT&C when it includes tracking and commanding","Sending information over a distance. For a spacecraft: radio links to and from the ground.","comm"],
+ ["Electromagnetic wave","EM wave · electromagnetic radiation","A travelling ripple of electric and magnetic field. Needs no medium and moves at the speed of light.","comm"],
+ ["Electromagnetic spectrum","—","All electromagnetic waves ordered by frequency: radio, microwave, infrared, visible light, ultraviolet, X-rays, gamma rays.","comm"],
+ ["Frequency (f)","—","How many waves pass a point each second, measured in hertz.","comm"],
+ ["Hertz (Hz)","kHz · MHz · GHz","One cycle per second. Kilo-, mega- and gigahertz are a thousand, a million and a billion per second.","comm"],
+ ["Speed of light (c)","—","299,792 km/s. The speed of every electromagnetic wave in vacuum. c = λ × f.","comm"],
+ ["Sinusoid","sine wave","The smooth, endlessly repeating wave shape that a pure single-frequency signal has.","comm"],
+ ["Amplitude","—","The height of a wave; how strong the signal is at its peak.","comm"],
+ ["Antenna","aerial","A conductor that turns an electrical signal into a radio wave and a radio wave back into an electrical signal.","comm"],
+ ["Transmitter / receiver","TX / RX","The electronics that drive the antenna with a signal, and the electronics that amplify and decode what it picks up.","comm"],
+ ["Half-wave dipole","dipole antenna","Two rods end to end, half a wavelength long in total. The basic antenna; radiates all around itself.","comm"],
+ ["Monopole","quarter-wave antenna · whip","Half of a dipole, a quarter-wavelength rod over a metal surface. Car aerials and Wi-Fi router stubs.","comm"],
+ ["Modulation","—","Changing some property of a carrier wave in step with an information signal so the carrier carries it.","comm"],
+ ["Carrier signal","carrier wave","The fast, steady wave that is modulated. Its frequency is what you tune to.","comm"],
+ ["Information signal","baseband · message signal","The slow signal you actually want to send: voice, picture, data.","comm"],
+ ["Amplitude modulation (AM)","—","The carrier's height follows the information signal. Simple, but noise changes height too.","comm"],
+ ["Frequency modulation (FM)","—","The carrier's frequency follows the information signal while its height stays constant. Resists static.","comm"],
+ ["Phase-shift keying (PSK)","phase modulation · BPSK / QPSK","Sending digital bits by shifting the carrier's timing. What deep-space links and Wi-Fi are built on.","comm"],
+ ["Radiation pattern","antenna pattern","The three-dimensional shape of where an antenna sends, or hears from, most strongly.","comm"],
+ ["Isotropic antenna","isotropic radiator","An ideal antenna that radiates equally in every direction. Cannot be built; it is the reference for gain.","comm"],
+ ["Omnidirectional antenna","omni","Radiates equally in all directions around one axis: a donut pattern. A dipole is one.","comm"],
+ ["Directional antenna","—","Sends most of its power one way. Dishes and rooftop TV (Yagi) antennas.","comm"],
+ ["Directivity","—","How strongly an antenna concentrates its radiation in its best direction.","comm"],
+ ["Antenna gain","gain · dBi","How many times stronger the signal is in the best direction than from an isotropic antenna with the same power.","comm"],
+ ["Decibel (dB)","dBi when relative to isotropic","A way of counting multiplications: 3 dB is ×2, 10 dB is ×10, 20 dB is ×100, 30 dB is ×1,000.","comm"],
+ ["Main lobe / side lobes","—","The big beam where most of the power goes, and the small unwanted beams beside it.","comm"],
+ ["Beamwidth","half-power beamwidth · 3 dB beamwidth","The angle across the main lobe between the points where power has fallen to half.","comm"],
+ ["Aperture","—","An antenna's collecting area. The bigger it is in wavelengths, the narrower the beam and the higher the gain.","comm"],
+ ["Parabolic antenna","dish · parabolic reflector","A curved reflector that focuses radio waves into a narrow beam, or collects them onto a feed.","comm"],
+ ["High-gain antenna (HGA)","—","A spacecraft's narrow-beam dish for high data rates. Must be pointed at Earth.","comm"],
+ ["Low-gain antenna (LGA)","—","A wide-beam antenna that works in almost any attitude at a low data rate. Used for backup and safe mode.","comm"],
+ ["Polarization","—","The direction in which a wave's electric field swings. The receiving antenna must match it.","comm"],
+ ["CubeSat","—","A very small satellite built from 10 cm cubes, typically with deployable rod antennas.","comm"],
 ];
 
 
@@ -880,6 +957,12 @@ const ENRICH = {
  "Payload":{c:"Everything on a spacecraft except the payload is overhead: engines, tanks and propellant exist only to deliver it. So engine efficiency is judged by how much payload it leaves room for.",e:"Mars departure, 4 km/s: 60% propellant at Isp 450 s, 36% at 900 s.",x:"The whole spacecraft, or the propellant load.",l:"Rocket equation, payload fraction, mission requirements."},
  "Enrichment":{c:"Only U-235 splits easily, and natural uranium is 99.3% the other kind. Enriching raises the U-235 share so a reactor can be small. Go too far and the material could be used for a bomb, which brings heavy security.",e:"Natural 0.7%. Power stations 3–5%. LEU limit 20%. 1960s rocket engines 93%.",x:"How radioactive something is. Enrichment is about composition, not radiation level.",l:"Fission, reactor core, programme cost and schedule."},
  "Nuclear pulse propulsion":{c:"If the limit of a nuclear thermal rocket is that the core must not melt, one way round it is to have no core: let the nuclear energy be released outside the ship and catch the blast on a plate.",e:"Project Orion, 1958–1965: paper Isp of 2,000–6,000 s with enormous thrust. Ended by the 1963 treaty banning nuclear explosions in space.",x:"A nuclear thermal rocket (the lecture mixes them up) and NASA's Orion crew capsule.",l:"Pusher plate, shock absorbers, test-ban treaty."},
+ "Electromagnetic wave":{c:"Sound needs air and wires need to be connected. An electromagnetic wave needs neither, so it is the only practical way to move information across space.",e:"Speed 299,792 km/s. Earth to Moon 1.3 s; Earth to Mars 3 to 22 minutes.",x:"Sound: a pressure wave in air at 343 m/s that cannot cross a vacuum.",l:"c = λ × f, electromagnetic spectrum, antenna."},
+ "Frequency (f)":{c:"Because the speed is fixed, choosing a frequency fixes the wavelength, and the wavelength decides how big the antenna is and how tightly a dish can focus. Frequency is the first design choice of any radio link.",e:"FM 100 MHz → 3 m. Wi-Fi 2.4 GHz → 12.5 cm. Deep space 8.4 GHz → 3.6 cm.",x:"Amplitude (the wave's height) and data rate (bits per second).",l:"c = λ × f, hertz, half-wave dipole, bands (S, X, Ka)."},
+ "Half-wave dipole":{c:"A rod that is exactly half a wave long resonates with the wave, like a guitar string that fits its note, so it gives the strongest voltage for that frequency. That is the link between frequency and antenna size.",e:"100 MHz → 1.5 m. 2.4 GHz → 6 cm. 100 Hz → 1,500 km.",x:"A dish, which is a reflector many wavelengths wide and behaves differently.",l:"Omnidirectional pattern, monopole (λ ÷ 4), gain 1.6×."},
+ "Modulation":{c:"The information you want to send is slow, and slow waves need impossibly large antennas. Modulation lets a fast wave, which fits a small antenna, carry the slow message. It also lets many users share the air on different carriers.",e:"AM radio: 1 MHz carrier. FM radio: 100 MHz carrier swinging ±75 kHz.",x:"Amplification, which only makes a signal stronger.",l:"Carrier signal, AM, FM, phase-shift keying."},
+ "Antenna gain":{c:"A transmitter's power spread over a whole sphere is mostly wasted. Shape the antenna so the power goes one way and the receiver at that end gets far more, for no extra power.",e:"Dipole 1.6×. Cassini's 4 m dish about 50,000× (47 dBi). Dish gain ≈ ½ × (π × D ÷ λ)².",x:"Added power. An antenna is passive; it only redistributes.",l:"Directivity, beamwidth ≈ 70 × λ ÷ D, pointing accuracy, attitude control."},
+ "High-gain antenna (HGA)":{c:"From deep space the signal is so weak that only a tightly focused beam can carry useful data. A big dish provides it, at the price of having to aim the whole spacecraft.",e:"Cassini: 4 m, about 0.6° beam, 20 W looks like 1 MW toward Earth.",x:"A more powerful transmitter. The power is the same; the dish aims it.",l:"Low-gain antenna for backup, attitude control, Deep Space Network."},
 };
 
 
@@ -903,6 +986,10 @@ const NUMBERS = {
   ["v = √(2qV / m)","ion speed from grid voltage","xenon through 1,100 V → 40 km/s","ion"],
   ["F ≈ 2·η·P / vₑ","electric thrust from power","2,300 W → 0.092 N · about 40 mN per kW","ion"],
   ["vₑ ∝ √(T / M)","exhaust speed: hot and LIGHT is fast","chemical 3,500 K ÷ 13.6 vs nuclear 2,700 K ÷ 2 → about 2×","nuke"],
+  ["c = λ × f","speed of light = wavelength × frequency","100 MHz → 3 m · 2.4 GHz → 12.5 cm · 8.4 GHz → 3.6 cm","comm"],
+  ["L = λ / 2","half-wave dipole length","100 MHz → 1.5 m · 100 Hz → 1,500 km","comm"],
+  ["G ≈ ½·(π·D / λ)²","dish gain","4 m at 3.6 cm → about 50,000× (47 dBi)","comm"],
+  ["θ ≈ 70·λ / D","dish beamwidth in degrees","4 m at 3.6 cm → 0.6°","comm"],
  ],
  constants:[
   ["μ Earth","398,600 km³/s²"],["R Earth","6,371 km (6,378 at the equator)"],["g at 400 km","8.7 m/s² (90% of surface)"],
@@ -922,6 +1009,7 @@ const NUMBERS = {
   ["NEXT ion thruster","6.9 kW in, 0.236 N out, Isp 4,190 s, exhaust 41 km/s"],
   ["Deep Space 1 ion engine","2.3 kW, 0.092 N, Isp 3,100 s, 3 mg/s xenon; 678 days of thrust, 74 kg, Δv 4.3 km/s"],
   ["NERVA nuclear engine (1960s, ground only)","1,100 MW reactor, 246 kN, Isp 841 s, 30 kg/s of hydrogen"],
+  ["Cassini radio link","4 m dish, 8.4 GHz, 20 W transmitter; about 10⁻¹⁶ W arrives at a 70 m dish on Earth"],
   ["Engine families","chemical 250–450 s · nuclear thermal ~900 s · electric 1,500–4,000+ s"],
  ]
 };
@@ -939,6 +1027,7 @@ const MECH = {
  prop:"Throw mass back and you go forward: F = ṁ × vₑ. Chemical throws tonnes per second at 3–4 km/s (big push, low Isp). Electric throws milligrams at 40 km/s (tiny push, high Isp). The nozzle turns pressure into speed.",
  ion:"Knock an electron off each xenon atom, let 1,100 volts fling the ions out at 40 km/s, and add electrons back so the ship stays neutral. Power limits the push to grams, but it runs for years.",
  nuke:"A reactor heats hydrogen and a nozzle throws it. Exhaust speed goes as √(T ÷ M): the core is cooler than a flame, but hydrogen is seven times lighter than steam, so Isp doubles to about 900 s. Tested in the 1960s, never flown.",
+ comm:"Radio is an electromagnetic wave: c = λ × f. An antenna is a rod about half a wavelength long, so slow signals are written onto a fast carrier (modulation). A dish adds no power; it aims it, about 50,000 times for Cassini, and must be pointed.",
 };
 
 const INTERVALS=[1,3,7,14,30];

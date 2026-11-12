@@ -29,7 +29,7 @@ track for now — see root `CLAUDE.md` § Current focus.
 | 2 | Space Environment | 3 | 11 min | `sections/02-space-environment.md` | [ ] |
 | 3 | Orbital Mechanics | 3 | 34 min | `sections/03-orbital-mechanics.md` | [ ] |
 | 4 | Space Propulsion Systems | 5 | 27 min | `sections/04-space-propulsion.md` | [x] 2026-11-12, 4 lectures (the panel's 5th item is unconfirmed, probably a quiz) |
-| 5 | Communications from Space to Earth | 3 | 44 min | `sections/05-communications.md` | [ ] |
+| 5 | Communications from Space to Earth | 3 | 44 min | `sections/05-communications.md` | [ ] 1 of 3 lectures (2026-11-12) |
 | 6 | Attitude Determination and Control | 4 | 36 min | `sections/06-attitude-determination-and-control.md` | [ ] |
 | 7 | Space Power Systems | 4 | 33 min | `sections/07-space-power-systems.md` | [ ] |
 | 8+ | *(not visible in the course panel yet — add when known)* | | | | |
@@ -141,3 +141,21 @@ the Done column and date it when a section's quiz is graded.
   corrected to cooler-but-lighter). Who's Who v4. Due from the student:
   Section 4 map page from memory, one Section 4 talk run; still
   outstanding: Section 1 talk run and Section 3 conversation test.
+
+- **2026-11-12 (night)** — **Section 5 started.** Lec 1
+  "Communications: antennas": transcript + slides 2-7 of 8 (slide 8,
+  the Cassini / Apollo 17 examples, reconstructed from the transcript).
+  PDF: `feedback/S5-L1-communications-antennas-v1.pdf` (9 pp). **Two
+  spreads** for this lecture (it holds two separate ideas and would not
+  fit one): (1) waves, c = lambda x f, half-wave antenna, modulation;
+  (2) isotropic / omni / directional, gain, HGA vs LGA. Concept cards
+  C24-C26. Instructor loose: "wavelength of my voice" (voice is sound;
+  his 3,000 km is a radio wave at 100 Hz); modulation justified only by
+  antenna size (also channel sharing and data rate); AM/FM presented as
+  if spacecraft use them (they use phase modulation); "higher frequency
+  = smaller antenna" holds for rods, not dishes; gain described as
+  "more information"; Apollo 17 HGA/LGA explanation muddled. Worst
+  captions so far (14 tabled). App v13: scene 11 "The radio flashlight"
+  (16 MC, 5 explain, 16 cards, 33 terms, 6 concept entries, 4
+  formulas). Who's Who v5 (page 4 = Section 5 names). Tied explicitly to
+  the student's networking background (Wi-Fi 2.4 GHz = 12.5 cm, dBi).

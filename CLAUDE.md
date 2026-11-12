@@ -27,21 +27,22 @@
 > - **Space X Study app (added 2026-11-10):** a separate published
 >   Artifact for this course, https://claude.ai/artifact/CnDfEEJHGhs76GMZNu7BSM
 >   (source mirrored at `COURSES/udemy-interplanetary-spacecraft/app/space-x-study.html`).
->   Tabs: Today (with a "how this app helps you" card) · Learn (10 scenes;
+>   Tabs: Today (with a "how this app helps you" card) · Learn (11 scenes;
 >   scene 8 "Throw it backward" = S4 propulsion basics + chemical engines,
 >   scene 9 "The tortoise engine" = S4 electric propulsion / ion thruster,
->   scene 10 "The kettle with no fire" = S4 nuclear thermal rockets;
+>   scene 10 "The kettle with no fire" = S4 nuclear thermal rockets,
+>   scene 11 "The radio flashlight" = S5 antennas, modulation, gain;
 >   each with a 🧒 simple version AND a 🛠 "how it actually works"
 >   engineer section with worked numbers, plus a one-line "when they
 >   ask but how?" mechanism sentence (`MECH`); a header toggle sets
->   which comes first) · Quiz (112 multiple-choice +
->   42 explain-out-loud incl. the 15 "but how?" cards, instant feedback,
->   spaced review) · Cards (103 flashcards, 1/3/7/14/30-day intervals) ·
->   Terms (267-entry searchable glossary of OFFICIAL terminology: name ·
->   also-called · plain meaning · scene; 51 core terms also carry an
+>   which comes first) · Quiz (128 multiple-choice +
+>   47 explain-out-loud incl. the 15 "but how?" cards, instant feedback,
+>   spaced review) · Cards (119 flashcards, 1/3/7/14/30-day intervals) ·
+>   Terms (300-entry searchable glossary of OFFICIAL terminology: name ·
+>   also-called · plain meaning · scene; 57 core terms also carry an
 >   `ENRICH` entry = concept/why-it-exists · example with numbers ·
 >   don't-confuse-with · connects-to, added 2026-11-11 after the student
->   said definitions alone weren't enough) · Numbers (`NUMBERS`: 18
+>   said definitions alone weren't enough) · Numbers (`NUMBERS`: 22
 >   formulas each with a worked value, constants, mission numbers;
 >   mirrors notebook pp. 3-4) · Teach (timed talks: Section 1
 >   3¼ min · Section 2 3 min · Section 3 4¼ min · Section 4 4 min · full
@@ -87,7 +88,10 @@
 >   (C17-C23 so far); format in NOTES_METHOD.md §
 >   Lecture PDF format from Section 4 on. Still owed by the student: Section 4 map page +
 >   one Section 4 talk run, the Section 1 talk run, and the Section 3
->   conversation test. Next up: Section 5 (communications).
+>   conversation test. **Section 5 in progress:** lecture 1 of 3 done
+>   (`feedback/S5-L1-communications-antennas-v1.pdf`, two spreads, cards
+>   C24-C26; source `feedback/src/s5l1.py`). A long lecture with two
+>   separate ideas gets two spreads, per the student's never-shrink rule.
 > - When Network+ resumes, delete this block, and resume from
 >   "Project status" below (Day 01 was never started in the app).
 
