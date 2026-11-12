@@ -29,7 +29,7 @@ track for now — see root `CLAUDE.md` § Current focus.
 | 2 | Space Environment | 3 | 11 min | `sections/02-space-environment.md` | [ ] |
 | 3 | Orbital Mechanics | 3 | 34 min | `sections/03-orbital-mechanics.md` | [ ] |
 | 4 | Space Propulsion Systems | 5 | 27 min | `sections/04-space-propulsion.md` | [x] 2026-11-12, 4 lectures (the panel's 5th item is unconfirmed, probably a quiz) |
-| 5 | Communications from Space to Earth | 3 | 44 min | `sections/05-communications.md` | [ ] 2 of 3 lectures (2026-11-12) |
+| 5 | Communications from Space to Earth | 3 | 44 min | `sections/05-communications.md` | [x] 2026-11-12, 3 lectures |
 | 6 | Attitude Determination and Control | 4 | 36 min | `sections/06-attitude-determination-and-control.md` | [ ] |
 | 7 | Space Power Systems | 4 | 33 min | `sections/07-space-power-systems.md` | [ ] |
 | 8+ | *(not visible in the course panel yet — add when known)* | | | | |
@@ -177,3 +177,24 @@ the Done column and date it when a section's quiz is graded.
   v14: scene 12 "Two windows in the wall" (14 MC, 4 explain, 12 cards,
   23 terms, 4 concept entries, 2 formulas). Who's Who v6. One Section 5
   lecture left (satellite links).
+
+- **2026-11-12 (last of the day)** — S5 Lec 3 "Satellite and
+  spacecraft links": transcript + slides 2, 3, 5, 6 of 6. PDF:
+  `feedback/S5-L3-satellite-and-spacecraft-links-v1.pdf` (9 pp): chain
+  diagram + power zigzag + link equation; a full worked link budget
+  (Cassini to a 70 m dish: +13 dBW, +47 dB, -294 dB, +74 dB = -160 dBW;
+  N0 at 20 K; S/N0 about 56 dB-Hz, about 100 kbit/s) with a decibel
+  primer tied to Wi-Fi dBm; concept cards C29-C31. Instructor wrong or
+  loose: called 1/k "a relation for wavelength" (k is the Boltzmann
+  constant, N0 = kT); LNA "avoids mistaking signal for noise" (no
+  amplifier can; it adds little noise of its own and is first in the
+  chain); free-space loss not explained as spreading; "encoder" given
+  as voice-to-electrical (that is a microphone; encoding = compression
+  + error correction); up-conversion blurred with modulation; gain
+  mixed with power; diagram is a relay (comsat) link. **Section 5
+  complete:** app v15 has scene 13 "Shouting across a stadium" (14 MC,
+  5 explain, 14 cards, 26 terms, 6 concept entries, 3 formulas) and a
+  Section 5 timed talk (`PROGRAMS.s5`, 4 min). Who's Who v7. Owed by
+  the student now: Section 5 map page + talk, Section 4 map page +
+  talk, Section 1 talk, Section 3 conversation test. Nothing has been
+  explained back since Section 3; flagged to the student.

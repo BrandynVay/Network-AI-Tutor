@@ -1,0 +1,308 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Interplanetary transfers</title>
+<style>
+@page { size: letter landscape; margin: 0; }
+* { box-sizing:border-box; }
+:root { --navy:#0b1437; --orange:#ff6b1a; --blue:#1e7cff; --green:#19b36b; --pink:#e5338f; --purple:#7b3fe4; --yellow:#ffd23f; --paper:#fffdf5; }
+body { margin:0; font-family: Verdana, "DejaVu Sans", Arial, sans-serif; color:#111; }
+.page { width:11in; height:8.5in; padding:0.35in 0.45in; page-break-after:always; position:relative; background:#fff; overflow:hidden; }
+.page:last-child { page-break-after:auto; }
+.top { display:flex; align-items:center; gap:14px; margin-bottom:6px; }
+.badge { background:var(--navy); color:#fff; font-weight:900; font-size:11px; letter-spacing:2px; padding:6px 12px; border-radius:999px; }
+h1 { font-size:22px; margin:0; font-weight:900; }
+h1 span { color:var(--orange); }
+.sub { color:#555; font-size:11.5px; margin-bottom:8px; }
+.spread { display:flex; gap:16px; height:6.9in; }
+.np { flex:1; border:3px solid #111; border-radius:14px; background:var(--paper); position:relative; padding:12px 14px; font-size:12px;
+  background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 23px, #e3e8f2 23px, #e3e8f2 24px); background-position:0 40px; }
+.np.o{border-color:var(--orange);} .np.b{border-color:var(--blue);}
+.tag { position:absolute; top:-14px; left:14px; color:#fff; font-weight:900; font-size:12px; padding:4px 12px; border-radius:999px; letter-spacing:1px; }
+.o .tag{background:var(--orange);} .b .tag{background:var(--blue);}
+.hdr { font-weight:900; font-size:13px; border-bottom:3px solid #111; margin:4px 0 8px; padding-bottom:5px; display:flex; justify-content:space-between; }
+.ink { color:#1a3fb0; font-family:"Comic Sans MS","Segoe Print","Bradley Hand",cursive; }
+.pencil { color:#8a8a8a; font-family:"Comic Sans MS","Segoe Print",cursive; }
+.cornell { display:flex; height:calc(100% - 44px); }
+.cue { width:36%; border-right:3px solid var(--blue); padding-right:8px; }
+.notes { flex:1; padding-left:12px; }
+.summary { position:absolute; left:12px; right:12px; bottom:12px; height:108px; border:3px solid var(--green); border-radius:10px; padding:6px 10px; background:#f2fff7; }
+.summary b { color:var(--green); font-size:12px; }
+.q { margin:0 0 10px; line-height:1.25; }
+.hl { padding:0 3px; border-radius:3px; }
+.hl.y{background:#fff176;} .hl.k{background:#ffb3d9;} .hl.b{background:#9fd3ff;} .hl.g{background:#a8f0c6;} .hl.o{background:#ffcf9e;}
+.banner { border:2.5px solid #111; border-radius:10px; padding:3px 10px; font-weight:900; font-size:13px; display:inline-block; background:#fff176; box-shadow:3px 3px 0 #111; }
+.mini { border:2px solid #111; border-radius:8px; padding:5px 8px; background:#fff; font-size:11px; margin-top:6px; box-shadow:2px 2px 0 #111; }
+table.t { border-collapse:collapse; width:100%; font-size:11px; }
+table.t th, table.t td { border:2px solid #111; padding:3px 5px; text-align:left; vertical-align:top; }
+table.t th { background:var(--navy); color:#fff; }
+.card { border:3px solid #111; border-radius:14px; padding:12px 16px; font-size:12.5px; background:var(--paper); }
+.card h3 { margin:0 0 6px; font-size:15px; font-weight:900; }
+.two { display:flex; gap:16px; }
+.two > div { flex:1; }
+ul.r { margin:4px 0 0; padding-left:18px; line-height:1.45; font-size:12px; }
+.ok { color:var(--green); font-weight:900; } .fix { color:var(--orange); font-weight:900; }
+.callout { background:var(--yellow); border:3px solid #111; border-radius:12px; padding:10px 14px; font-weight:700; font-size:12.5px; margin-top:12px; }
+</style>
+<style>
+.sm { width:3.6in; height:5.4in; border:3px solid #111; border-radius:10px; background:var(--paper); position:relative; padding:8px 9px; font-size:9.5px;
+  background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 15px, #dfe5ef 15px, #dfe5ef 16px); background-position:0 26px; }
+.sm.o{border-color:var(--orange);} .sm.b{border-color:var(--blue);}
+.sm .tag { font-size:10px; padding:3px 9px; top:-12px; left:10px; }
+.sm .hdr { font-size:10px; margin:2px 0 5px; padding-bottom:3px; border-width:2px; }
+.zone { border:2px dashed #999; border-radius:6px; padding:4px 6px; margin-top:5px; font-size:9px; color:#333; background:rgba(255,255,255,.75); }
+.zone b { color:#111; }
+.lines { color:#b0582c; font-weight:700; font-size:8.5px; }
+.smwrap { display:flex; gap:10px; justify-content:center; }
+</style>
+
+<style>
+.bg { width:4.95in; height:7.35in; border:3px solid #111; border-radius:12px; background:var(--paper); position:relative; padding:12px 14px; font-size:12px;
+  background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 21px, #dfe5ef 21px, #dfe5ef 22px); background-position:0 44px; }
+.bg.o{border-color:var(--orange);} .bg.b{border-color:var(--blue);}
+.bg .tag { position:absolute; top:-14px; left:14px; color:#fff; font-weight:900; font-size:12px; padding:4px 12px; border-radius:999px; letter-spacing:1px; }
+.bg.o .tag{background:var(--orange);} .bg.b .tag{background:var(--blue);}
+.bg .hdr { font-weight:900; font-size:13px; border-bottom:3px solid #111; margin:4px 0 8px; padding-bottom:5px; display:flex; justify-content:space-between; }
+.bg .ink { font-size:12px; line-height:1.45; }
+.bg .q { margin:0 0 10px; line-height:1.3; }
+.bz { border:2px dashed #999; border-radius:8px; padding:6px 9px; margin-top:8px; font-size:11.5px; background:rgba(255,255,255,.8); }
+.bz b { color:#111; }
+.lb { color:#b0582c; font-weight:700; font-size:10px; }
+</style>
+<style>
+.gl2{columns:2;column-gap:22px;font-size:10.6px;line-height:1.38}
+.gl2 div{break-inside:avoid;margin-bottom:4px}
+.gl2 i{color:#555}
+.mech{border-collapse:collapse;width:100%;font-size:10.4px}
+.mech th,.mech td{border:1.5px solid #111;padding:3px 6px;text-align:left;vertical-align:top}
+.mech th{background:#0b1437;color:#fff}
+.eli{background:#fff8d6;border:3px solid #111;border-radius:14px;padding:9px 15px;margin-bottom:10px;font-size:12.2px;line-height:1.48}
+.names{font-size:11px;line-height:1.45;margin:0;padding-left:16px}
+.nb{width:4.3in;height:6.4in;border:3px solid #111;border-radius:10px;background:#fff;position:relative;padding:0 10px;overflow:hidden;flex:none}
+.nbh{height:.42in;display:flex;justify-content:space-between;align-items:flex-end;padding-bottom:4px;font-size:9.5px;font-weight:900;letter-spacing:.5px;color:#333;border-bottom:2px solid #111}
+.nbh span.pg{border:2px solid #111;border-radius:6px;padding:1px 7px;font-size:12px}
+.ln{height:.262in;border-bottom:1px solid #c9d1de;display:flex;align-items:flex-end;padding-bottom:2px;font-size:12.6px;white-space:nowrap;color:#222}
+.ln .s{flex:none;width:42px;font-weight:900;font-size:11.5px;color:#000}
+.ln.n{font-weight:900;font-size:12.4px;color:#000}
+.ln.n .nmbox{border:2px solid #111;border-radius:5px;padding:0 5px;margin-left:-3px;background:#eee}
+.ln.n2{font-weight:700}
+.ln .num{flex:none;width:14px;font-size:7.5px;color:#9aa3b2;margin-left:-8px}
+.ln.gap{background:repeating-linear-gradient(90deg,#999 0 6px,transparent 6px 12px) center/100% 1.5px no-repeat}
+.route{font-size:11px;line-height:1.45}
+.route h3{margin:0 0 3px;font-size:13px}
+.route .copy{font-family:"DejaVu Sans Mono",monospace;font-size:10.2px;background:#f4f4f4;border:1.5px dashed #777;border-radius:6px;padding:5px 8px;margin:3px 0 8px;white-space:pre-wrap;line-height:1.5}
+</style></head><body><div class="page"><div class="top"><div class="badge">SEC 5 · LEC 3 · SATELLITE + SPACECRAFT LINKS</div><h1>A chain, a loss, <span>and a ratio</span></h1></div><div class="sub">Left = your left notebook page. Right = your right page. Copy the drawing in pencil first, then the cues and notes. The summary box stays empty until the video and this PDF are closed.</div>
+<div style="display:flex; gap:18px; justify-content:center">
+  <div class="bg o"><span class="tag">🖍 LEFT PAGE · DRAW</span>
+    <div class="hdr"><span>S5 / L3 — Satellite links</span><span>date · pg __</span></div>
+    <svg width="100%" height="428" viewBox="0 0 330 412" style="display:block" font-family="Verdana, sans-serif">
+<defs><marker id="ar" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#111"/></marker></defs>
+<text x="8" y="13" font-size="10" font-weight="bold" fill="#111">1 · THE LINK IS A CHAIN</text>
+<rect x="115" y="22" width="100" height="32" rx="5" fill="#ddd" stroke="#111" stroke-width="1.8"/>
+<text x="165" y="35" text-anchor="middle" font-size="9" font-weight="bold" fill="#111">SATELLITE</text>
+<text x="165" y="47" text-anchor="middle" font-size="8" fill="#111">repeater: boost + resend</text>
+<rect x="8" y="92" width="84" height="15" rx="3" fill="#fff" stroke="#111" stroke-width="1.4"/><text x="50" y="102" text-anchor="middle" font-size="7.5" font-weight="bold" fill="#111">HIGH-POWER AMP</text><rect x="8" y="111" width="84" height="15" rx="3" fill="#fff" stroke="#111" stroke-width="1.4"/><text x="50" y="121" text-anchor="middle" font-size="7.5" font-weight="bold" fill="#111">UP-CONVERTER</text><rect x="8" y="130" width="84" height="15" rx="3" fill="#fff" stroke="#111" stroke-width="1.4"/><text x="50" y="140" text-anchor="middle" font-size="7.5" font-weight="bold" fill="#111">MODULATOR</text><rect x="8" y="149" width="84" height="15" rx="3" fill="#fff" stroke="#111" stroke-width="1.4"/><text x="50" y="159" text-anchor="middle" font-size="7.5" font-weight="bold" fill="#111">ENCODER</text><rect x="238" y="92" width="84" height="15" rx="3" fill="#fff" stroke="#111" stroke-width="1.4"/><text x="280" y="102" text-anchor="middle" font-size="7.5" font-weight="bold" fill="#111">LOW-NOISE AMP</text><rect x="238" y="111" width="84" height="15" rx="3" fill="#fff" stroke="#111" stroke-width="1.4"/><text x="280" y="121" text-anchor="middle" font-size="7.5" font-weight="bold" fill="#111">DOWN-CONVERTER</text><rect x="238" y="130" width="84" height="15" rx="3" fill="#fff" stroke="#111" stroke-width="1.4"/><text x="280" y="140" text-anchor="middle" font-size="7.5" font-weight="bold" fill="#111">DEMODULATOR</text><rect x="238" y="149" width="84" height="15" rx="3" fill="#fff" stroke="#111" stroke-width="1.4"/><text x="280" y="159" text-anchor="middle" font-size="7.5" font-weight="bold" fill="#111">DECODER</text>
+<path d="M34,86 Q50,68 66,86" fill="none" stroke="#111" stroke-width="2.4"/><line x1="50" y1="78" x2="50" y2="92" stroke="#111" stroke-width="1.4"/>
+<path d="M264,86 Q280,68 296,86" fill="none" stroke="#111" stroke-width="2.4"/><line x1="280" y1="78" x2="280" y2="92" stroke="#111" stroke-width="1.4"/>
+<line x1="60" y1="70" x2="113" y2="52" stroke="#111" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="217" y1="52" x2="270" y2="70" stroke="#111" stroke-width="1.6" stroke-dasharray="5 3" marker-end="url(#ar)"/>
+<text x="8" y="60" font-size="8.5" font-weight="bold" fill="#111">UPLINK</text>
+<text x="322" y="60" text-anchor="end" font-size="8.5" font-weight="bold" fill="#111">DOWNLINK</text>
+<line x1="98" y1="164" x2="98" y2="94" stroke="#111" stroke-width="1.3" marker-end="url(#ar)"/>
+<line x1="232" y1="94" x2="232" y2="164" stroke="#111" stroke-width="1.3" marker-end="url(#ar)"/>
+<g font-size="8" fill="#111" text-anchor="middle"><text x="165" y="112">each box on the right</text><text x="165" y="123">undoes its partner</text><text x="165" y="134">on the left</text></g>
+<text x="8" y="177" font-size="8" fill="#111">information in ↑</text>
+<text x="322" y="177" text-anchor="end" font-size="8" fill="#111">↓ information out</text>
+<line x1="8" y1="186" x2="322" y2="186" stroke="#bbb" stroke-width="1"/>
+<text x="8" y="200" font-size="10" font-weight="bold" fill="#111">2 · POWER ALONG THE LINK</text>
+<line x1="30" y1="292" x2="30" y2="208" stroke="#111" stroke-width="1.3" marker-end="url(#ar)"/>
+<line x1="30" y1="292" x2="320" y2="292" stroke="#111" stroke-width="1.3" marker-end="url(#ar)"/>
+<line x1="30" y1="248" x2="312" y2="248" stroke="#777" stroke-width="0.8" stroke-dasharray="3 3"/>
+<polyline points="30,248 70,216 140,280 175,228 255,286 300,248" fill="none" stroke="#111" stroke-width="2.4"/>
+<g font-size="8.5" font-weight="bold" fill="#111"><text x="74" y="214">HPA</text><text x="108" y="240">space loss</text><text x="180" y="224">repeater</text><text x="176" y="286">space loss</text><text x="304" y="270">LNA</text></g>
+<text x="36" y="211" font-size="8" fill="#111">power</text>
+<text x="322" y="304" text-anchor="end" font-size="8" fill="#111">along the link →</text>
+<line x1="8" y1="310" x2="322" y2="310" stroke="#bbb" stroke-width="1"/>
+<text x="8" y="324" font-size="10" font-weight="bold" fill="#111">3 · THE LINK EQUATION</text>
+<rect x="24" y="331" width="282" height="24" rx="6" fill="#fff" stroke="#111" stroke-width="1.6"/>
+<text x="165" y="347" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#111">S ÷ N₀ = P × Gₜ × (Gᵣ ÷ T)  ÷  (k × Lₛ × Lₐ)</text>
+<g font-size="8.5" fill="#111">
+<text x="8" y="370"><tspan font-weight="bold">helps:</tspan> power P · transmit gain Gₜ · receive gain Gᵣ</text>
+<text x="8" y="383"><tspan font-weight="bold">hurts:</tspan> space loss Lₛ · air loss Lₐ · noise k × T</text>
+<text x="8" y="396">S ÷ N₀ = signal compared with noise</text>
+</g>
+<text x="165" y="409" text-anchor="middle" font-size="9" font-weight="bold" fill="#111">bigger S ÷ N₀ = more bits per second</text>
+</svg><div class="bz" style="margin-top:4px; font-size:10.5px"><b>✏️ PENCIL KEY</b> · solid arrow = uplink · dashed arrow = downlink · curved line = dish · zigzag = signal power · dotted line = starting level</div>
+    <div class="bz"><b>⭐ 3 TAKEAWAYS</b> <span class="lb">3 lines</span><br><span class="ink">1. A link is a chain: every receive box undoes one transmit box.<br>2. Space loss is spreading, not soaking up: twice as far = a quarter the power.<br>3. What counts is signal ÷ noise: more power, bigger dishes, colder receiver.</span></div>
+    <div class="bz" style="border-color:var(--green); background:#f2fff7"><b>🧠 SUMMARY · video + PDF closed</b> <span class="lb">3 lines</span><br>
+      <span class="pencil" style="font-size:12px">1. ______________________________________<br>2. ______________________________________<br>3. ______________________________________</span></div>
+  </div>
+  <div class="bg b"><span class="tag">❓ RIGHT PAGE · CORNELL</span>
+    <div class="hdr"><span>CUES (questions)</span><span>NOTES (keywords)</span></div>
+    <div style="display:flex; height:6.5in">
+      <div style="width:37%; border-right:3px solid var(--blue); padding-right:8px" class="ink"><p class="q">What do encoders and decoders do?</p><p class="q">Up-converter: what, and why after modulation?</p><p class="q">HPA: where, and what for?</p><p class="q">What two losses hit the signal in flight?</p><p class="q">What does a satellite repeater do?</p><p class="q">LNA: where, and why "low noise"?</p><p class="q">The whole chain, in order?</p><p class="q">S ÷ N₀: what is it? High or low is good?</p><p class="q">Link equation: what helps, what hurts?</p><p class="q">Why does the power graph zigzag?</p><p class="q"><span class="hl b">? what is k really</span></p></div>
+      <div style="flex:1; padding-left:10px" class="ink"><div style="margin-bottom:5px"><span class="hl y">encoder / decoder</span>: convert information from one format or code to another (compress it, protect it) and back</div><div style="margin-bottom:5px"><span class="hl y">modulator / demodulator</span>: put the signal on a carrier / take it off</div><div style="margin-bottom:5px"><span class="hl y">up-converter</span>: raises the frequency (MHz or a few GHz → up to <span class="hl k">30 GHz</span>) · <span class="hl y">down-converter</span> reverses it</div><div style="margin-bottom:5px"><span class="hl y">HPA</span> (high-power amplifier): boosts the signal just before the antenna</div><div style="margin-bottom:5px">in flight: <span class="hl o">free-space loss</span> Lₛ (distance) + <span class="hl o">atmospheric loss</span> Lₐ</div><div style="margin-bottom:5px"><span class="hl y">satellite repeater</span>: boosts the signal on board and sends it back down</div><div style="margin-bottom:5px"><span class="hl y">LNA</span> (low-noise amplifier): boosts the weak received signal while adding as little noise as possible</div><div style="margin-bottom:5px">chain: encode → modulate → up-convert → HPA → antenna ⇒ LNA → down-convert → demodulate → decode</div><div style="margin-bottom:5px"><span class="hl y">S ÷ N₀</span> = signal over noise · high = <span class="hl g">lots of information</span></div><div style="margin-bottom:5px">S ÷ N₀ = P × Gₜ × (Gᵣ ÷ T) ÷ (k × Lₛ × Lₐ)</div><div style="margin-bottom:5px">P power · Gₜ Gᵣ antenna gains · T noise temperature · k <span class="hl y">Boltzmann constant</span></div></div>
+    </div>
+  </div>
+</div></div><div class="page"><div class="top"><div class="badge">SEC 5 · LEC 3 · TEACH</div><h1>Shouting across <span>a stadium</span></h1></div><div class="sub">Simple story first, then the official names, then how it actually works with numbers you can check.</div>
+<div class="eli"><b style="font-size:14px">🧒 Like you're 5</b><br>
+You want to tell a friend a secret across a huge, noisy stadium. First you pack the message small and add a few spare words so a missed word can be guessed (<b>encode</b>). You put it on a whistle note that carries (<b>modulate</b>), move that note up to the pitch you were told to use (<b>up-convert</b>), and blow as hard as you can (<b>high-power amplifier</b>) through a megaphone (the <b>antenna</b>).<br>
+On the way, your shout does not get eaten. It <b>spreads out</b>. Twice as far away, it covers four times the area, so each ear gets a quarter of it. A helper halfway hears you faintly and shouts it on again (the <b>repeater</b>). Your friend cups a big ear (a dish) and uses a hearing aid that adds almost no hiss of its own (the <b>low-noise amplifier</b>), then undoes every step in reverse. Whether the secret arrives depends on one thing only: how loud your shout is <b>compared with the crowd noise</b> at your friend's ear. That comparison is the whole link equation.</div>
+<div class="two">
+<div class="card" style="padding:9px 13px"><h3>🏷 The official names (name first, then what it means)</h3>
+<ul class="names" style="font-size:10.6px">
+<li><b>Communications link</b>: one complete radio path, transmitter to receiver. <b>Uplink</b>, <b>downlink</b>. The <b>space segment</b> is the satellite; the <b>ground segment</b> is the Earth stations.</li>
+<li><b>Source coding</b> (compression) and <b>channel coding</b> (forward error correction, FEC): the two jobs the lecture's "encoder" does. One removes waste; the other adds protective spare bits. <b>Codec</b> = coder + decoder.</li>
+<li><b>Modem</b>: modulator + demodulator.</li>
+<li><b>Up-converter / down-converter</b> (frequency converter, mixer): shifts a modulated signal to a different frequency without changing what it carries. The low starting frequency is the <b>intermediate frequency, IF</b>; the on-air one is the <b>radio frequency, RF</b>.</li>
+<li><b>High-power amplifier, HPA</b> (power amplifier): the last stage before the transmit antenna.</li>
+<li><b>Free-space path loss, Lₛ</b> (spreading loss; the slide's "free space loss"). <b>Atmospheric loss, Lₐ</b> (atmospheric attenuation).</li>
+<li><b>Transponder</b> (the lecture's "satellite repeater"): receives, shifts frequency, amplifies, retransmits. A satellite that only does this is a <b>bent-pipe</b> relay.</li>
+<li><b>Low-noise amplifier, LNA</b>: the first stage after the receive antenna.</li>
+<li><b>Thermal noise</b>; <b>noise power density, N₀</b> = k × T. <b>Boltzmann constant, k</b>. <b>System noise temperature, T</b>.</li>
+<li><b>EIRP</b>, effective isotropic radiated power: P × Gₜ. <b>G/T</b> ("G over T"): receive gain ÷ noise temperature, a station's figure of merit.</li>
+<li><b>Signal-to-noise ratio</b>; here <b>S/N₀</b>. <b>Link budget</b>: the gains-and-losses ledger. <b>Decibel, dB</b>. <b>Link margin</b>.</li>
+</ul></div>
+<div class="card" style="padding:9px 13px"><h3>🛠 How it actually works</h3>
+<table class="mech" style="font-size:10.1px"><tr><th style="width:68px">Step</th><th>The mechanism, with numbers</th></tr>
+<tr><td><b>1 · Encode</b></td><td>Squeeze out the waste (compression), then add structured spare bits so the far end can repair errors. Good codes let you send about 5 times more data over the same link.</td></tr>
+<tr><td><b>2 · Modulate, then move</b></td><td>Write the bits onto a carrier at an easy fixed frequency, say 70 MHz. Then mix it with a 7,100 MHz tone: out comes the same signal at <b>7,170 MHz</b>, in the X-band uplink slot. Two steps, because precise modulators are easy to build low and one design then serves any band.</td></tr>
+<tr><td><b>3 · Amplify out</b></td><td>The signal is strong and clean here, so noise is no worry. Only watts matter: 20 W on Cassini, 20,000 W on a Deep Space Network dish.</td></tr>
+<tr><td><b>4 · Space loss</b></td><td>Nothing absorbs the wave. It spreads over a sphere of area 4πd². <b>Twice the distance, a quarter of the power.</b> In the standard form Lₛ = (4πd ÷ λ)². To a GEO satellite: 10²⁰. Saturn to Earth: 2.5 × 10²⁹.</td></tr>
+<tr><td><b>5 · Repeat</b></td><td>A relay satellite hears perhaps 10⁻¹⁰ W, moves it to the downlink frequency so it cannot jam its own receiver, amplifies it about 10¹¹ times and sends it down.</td></tr>
+<tr><td><b>6 · Amplify in</b></td><td>Everything warm hisses with radio noise: N₀ = k × T watts in every hertz, with k = 1.38 × 10⁻²³. Whatever noise the <i>first</i> amplifier adds is amplified by all the stages after it, so that one stage must be the quietest thing in the station. NASA chills its to about 15 K. Then down-convert, demodulate, decode.</td></tr>
+<tr><td><b>7 · The ratio</b></td><td>An amplifier cannot tell signal from noise; it lifts both. So the ratio fixed at the first amplifier is all you ever get. Data rate ≈ S/N₀ ÷ (a factor of about 2 to 4 that the code needs).</td></tr></table></div>
+</div></div><div class="page"><div class="top"><div class="badge">SEC 5 · LEC 3 · THE LINK BUDGET</div><h1>Cassini to Earth, <span>line by line</span></h1></div><div class="sub">The link equation with real numbers. Multiply the middle column, or add the right-hand column: decibels turn the whole thing into addition.</div>
+<div class="two">
+<div class="card" style="padding:8px 13px"><h3>🧾 The ledger: Saturn to a 70 m dish, 8.4 GHz</h3>
+<table class="mech" style="font-size:10.6px"><tr><th>Item</th><th>As a number</th><th>In decibels</th></tr>
+<tr><td><b>P</b> · transmitter power</td><td>20 W</td><td>+13 dBW</td></tr>
+<tr><td><b>Gₜ</b> · Cassini's 4 m dish</td><td>× 50,000</td><td>+47 dB</td></tr>
+<tr><td><i>EIRP = P × Gₜ</i></td><td><i>1,000,000 W</i></td><td><i>+60 dBW</i></td></tr>
+<tr><td><b>Lₛ</b> · space loss, 1.4 billion km</td><td>÷ 2.5 × 10²⁹</td><td>−294 dB</td></tr>
+<tr><td><b>Lₐ</b> · air, clear sky</td><td>÷ 1.05</td><td>−0.2 dB</td></tr>
+<tr><td><b>Gᵣ</b> · 70 m dish on Earth</td><td>× 25,000,000</td><td>+74 dB</td></tr>
+<tr><td><b>S</b> · signal received</td><td><b>10⁻¹⁶ W</b></td><td><b>−160 dBW</b></td></tr>
+<tr><td><b>N₀</b> = k × T, with T = 20 K</td><td>2.8 × 10⁻²² W per Hz</td><td>−216 dBW/Hz</td></tr>
+<tr><td><b>S ÷ N₀</b></td><td><b>about 400,000</b></td><td><b>56 dB-Hz</b></td></tr></table>
+<div style="font-size:10.6px;margin-top:5px;line-height:1.45"><b>Reading the answer.</b> The signal is as strong as the noise in a 400,000 Hz slice. Divide by about 4 for the code's needs and a safety margin: roughly <b>100,000 bits per second</b>. Cassini's real top rate was 166,000.<br>
+<b>Why rates collapse with distance.</b> Voyager 1 is 17 times farther than Saturn, so its space loss is 17² ≈ 300 times worse. It sends 160 bits per second. New Horizons needed 15 months to return its Pluto data.</div></div>
+<div><div class="card" style="padding:8px 13px"><h3>📐 Decibels in one minute</h3>
+<div style="font-size:10.8px;line-height:1.5">A decibel counts multiplications. <b>+3 dB = ×2 · +10 dB = ×10 · +20 dB = ×100 · −30 dB = ÷1,000.</b> Multiplying numbers means adding their decibels, which is why the right-hand column simply adds up: 13 + 47 − 294 − 0.2 + 74 = −160.<br>
+<b>dBW</b> means "compared with 1 watt". <b>dBm</b> means "compared with 1 milliwatt". You have seen this already: a Wi-Fi router sends about +20 dBm (0.1 W), your laptop reports the signal as about −60 dBm, and its noise floor is near −95 dBm. That is a link budget. Cassini's is the same sum with bigger numbers.</div></div>
+<div class="card" style="margin-top:9px;padding:8px 13px"><h3>🎚 The only knobs there are</h3>
+<ul class="r" style="font-size:10.7px">
+<li><b>More power</b> (P): costs solar panels and heat.</li>
+<li><b>Bigger or higher-frequency dish</b> (Gₜ): costs mass and pointing accuracy.</li>
+<li><b>Bigger ground dish, or several combined</b> (Gᵣ): 70 m is about the limit.</li>
+<li><b>Colder receiver</b> (T): halve the noise temperature, double the data.</li>
+<li><b>Better codes</b>: free decibels from mathematics.</li>
+<li><b>Distance</b> (Lₛ): the one you cannot touch, and by far the largest term.</li></ul>
+<div style="font-size:10.4px;margin-top:3px">A decibel gained anywhere is worth the same as a decibel gained anywhere else.</div></div></div>
+</div></div><div class="page"><div class="top"><div class="badge">SEC 5 · LEC 3 · FACT CHECK</div><h1>What the captions mangled, <span>and what he blurred</span></h1></div><div class="sub">The caption errors, then where the instructor was loose or wrong.</div>
+<div class="two">
+<div class="card" style="padding:8px 13px"><h3>🔎 Caption errors</h3>
+<table class="t" style="font-size:10px"><tr><th>Captions said</th><th>Instructor meant</th></tr>
+<tr><td>"a few competence"</td><td>a few <b>components</b></td></tr>
+<tr><td>"upconvert as… not that process to modulation"</td><td><b>up-converters</b>… an <b>added</b> process to modulation</td></tr>
+<tr><td>"few geophones… 30 g of hurts"</td><td>few <b>gigahertz</b>… 30 <b>gigahertz</b></td></tr>
+<tr><td>"de-code us" · "compress as"</td><td><b>decoders</b> · <b>compressors</b></td></tr>
+<tr><td>"analogous signal"</td><td><b>analog</b> signal</td></tr>
+<tr><td>"a much fake a twin ration", "a fake translation"</td><td><b>atmospheric attenuation</b></td></tr>
+<tr><td>"low noise and profiles", "high power for fires"</td><td>low-noise <b>amplifiers</b>, high-power <b>amplifiers</b></td></tr>
+<tr><td>"and blink" · "turns meets" · "gametes"</td><td>an <b>uplink</b> · <b>transmits</b> · <b>emits</b></td></tr>
+<tr><td>"inverse Procida" · "Mody elaters"</td><td>inverse <b>process</b> · <b>modulators</b></td></tr>
+<tr><td>"mathematically rented"</td><td>mathematically <b>oriented</b></td></tr>
+<tr><td>"divided by zero and zero"</td><td>divided by <b>N-zero (N₀)</b></td></tr>
+<tr><td>"the balsam and constant"</td><td>the <b>Boltzmann</b> constant</td></tr>
+<tr><td>"PTZ t" · "gang transmitted"</td><td><b>P_T G_T</b> · <b>gain</b> transmitted</td></tr>
+<tr><td>"less and y divided by L.A."</td><td><b>L_S</b> and 1 divided by <b>L_A</b></td></tr>
+<tr><td>"space for the losses gave their names"</td><td><b>free-space</b> losses</td></tr></table></div>
+<div class="card" style="padding:8px 13px"><h3>▲ Where the instructor was loose</h3>
+<ul class="r" style="font-size:10.6px">
+<li><b>"1/k… is just a relation for wavelength and other parameters."</b> Wrong. k is the <b>Boltzmann constant</b>, 1.38 × 10⁻²³ joules per kelvin. It turns the receiver's temperature into noise power: N₀ = k × T. It has nothing to do with wavelength.</li>
+<li><b>The low-noise amplifier must "avoid mistaking the signal for noise".</b> No amplifier can tell them apart. It lifts both. The point is that it adds very little noise <i>of its own</i>, because anything the first stage adds is magnified by every stage after it.</li>
+<li><b>"High-power amplifiers know the signal, so it's safe and they can amplify more."</b> The real reason is simpler: at the transmitter the signal is enormous compared with any noise, so only output power matters.</li>
+<li><b>"Free-space losses."</b> Right that they grow with distance. Not said: nothing is lost to anything. The wave spreads, and the receiver catches a smaller share.</li>
+<li><b>"Encoders… convert my voice into an electrical signal."</b> That is a microphone. Encoding means compressing the data and adding error-correcting bits. The second job is what makes deep-space links work at all.</li>
+<li><b>"Up-conversion is similar to modulation."</b> Different jobs. Modulation writes the message on a carrier. Up-conversion moves the finished signal to another frequency and changes nothing in it.</li>
+<li><b>"Gain is related to the high power and the directivity."</b> Antenna gain is directivity only. Power is its own term.</li>
+<li><b>His diagram is a relay link:</b> ground to satellite to ground. That is a communications satellite, the "relay" type from Section 1. A science probe is one end of the link, not the middle.</li>
+<li><b>Not said: what the ratio buys.</b> Bits per second. That is the reason anyone computes it.</li></ul></div>
+</div></div><div class="page"><div class="top"><div class="badge">SEC 5 · LEC 3 · VOCABULARY</div><h1>Every word used, <span>in plain English</span></h1></div><div class="sub">40 entries. "Repeat" = you have met it before.</div>
+<div class="gl2" style="font-size:10.2px;line-height:1.34"><div><b>Link</b> — one radio connection from a transmitter to a receiver.</div><div><b>Component</b> — one part of a system.</div><div><b>Modulator / demodulator (modem)</b> — writes the signal onto a carrier / takes it off again. <i>Repeat, L1.</i></div><div><b>Up-converter / down-converter</b> — moves a signal to a higher / lower frequency without changing what it carries. <i>Changing lanes, not changing the cargo.</i></div><div><b>Encoder / decoder (codec)</b> — turns information into a compact, protected code / turns it back.</div><div><b>Format / code</b> — an agreed way of writing information as symbols.</div><div><b>Compressor / compression</b> — squeezing data into fewer bits by removing what is repeated or unneeded.</div><div><b>Error-correcting code</b> — spare bits added in a pattern so the receiver can find and fix mistakes.</div><div><b>Analog signal</b> — a smoothly varying signal, like a voice.</div><div><b>Electric pulses / digital signal</b> — information as a string of 1s and 0s.</div><div><b>Bit / bits per second</b> — one 1-or-0 / how many are sent each second: the data rate.</div><div><b>Satellite repeater = transponder</b> — equipment on a satellite that receives a signal, boosts it and sends it on. <i>The helper halfway across the stadium.</i></div><div><b>Attenuation</b> — weakening.</div><div><b>Atmospheric attenuation = atmospheric loss (Lₐ)</b> — the weakening caused by the air and rain. <i>Repeat, L2.</i></div><div><b>Free-space loss (Lₛ)</b> — the weakening caused by the wave spreading out over distance. <i>Twice as far, a quarter as strong.</i></div><div><b>Amplifier / amplify</b> — a device that makes a signal stronger / to do so.</div><div><b>High-power amplifier (HPA)</b> — the amplifier that feeds the transmitting antenna. <i>Blowing hard.</i></div><div><b>Low-noise amplifier (LNA)</b> — the first amplifier after the receiving antenna, built to add almost no noise. <i>A hearing aid with no hiss.</i></div><div><b>Noise</b> — random electrical hiss that is always present and hides weak signals.</div><div><b>Thermal noise</b> — noise caused by heat: every warm object and circuit makes it.</div><div><b>Signal (S)</b> — the power of the wanted signal at the receiver.</div><div><b>N₀ (N-zero)</b> — noise power in each hertz of bandwidth. N₀ = k × T.</div><div><b>Signal-to-noise ratio (S/N₀)</b> — how strong the signal is compared with the noise. Sets the data rate.</div><div><b>Boltzmann constant (k)</b> — 1.38 × 10⁻²³ joules per kelvin. Converts temperature into noise power.</div><div><b>Kelvin (K)</b> — temperature counted from absolute zero. 20 K is −253 °C. <i>Repeat.</i></div><div><b>System temperature (T)</b> — a single number for all the noise in a receiving station, as if it came from an object that warm.</div><div><b>Transmitted power (P)</b> — watts fed to the transmitting antenna.</div><div><b>Gain (Gₜ, Gᵣ)</b> — how much the transmit / receive antenna concentrates the signal. <i>Repeat, L1.</i></div><div><b>EIRP</b> — power × transmit gain: how strong the transmitter looks from far away.</div><div><b>G/T</b> — receive gain ÷ noise temperature: how good a listening station is.</div><div><b>Link budget</b> — the list of every gain and loss between transmitter and receiver, added up. <i>A bank statement for the signal.</i></div><div><b>Decibel (dB) / dBW / dBm</b> — a scale that counts multiplications / relative to 1 watt / to 1 milliwatt. <i>Repeat, L1.</i></div><div><b>Margin</b> — the safety allowance left over after the sum.</div><div><b>Transmitting / receiving Earth station</b> — the ground end that sends / listens.</div><div><b>Space segment / ground segment</b> — the satellite part / the Earth part of a system.</div><div><b>Uplink / downlink</b> — ground to satellite / satellite to ground. <i>Repeat, L2.</i></div><div><b>Input / output information</b> — what goes into the chain / what comes out the far end.</div><div><b>Distorted</b> — changed in shape on the way.</div><div><b>Relay / bent pipe</b> — a satellite that only passes signals on. <i>Repeat, Section 1.</i></div><div><b>Voyager 1 / New Horizons / Deep Space Network</b> — the farthest probe / the Pluto probe / NASA&#x27;s 70 m dishes. <i>Who&#x27;s Who.</i></div></div></div><div class="page"><div class="top"><div class="badge">SEC 5 · LEC 3 · COPY INTO NOTES</div><h1>Where each piece goes <span>in the notebook</span></h1></div><div class="sub">Routes A to D. Section 5 ends here, so route B is the full set of lines for the Section 5 map page.</div>
+<div class="two route">
+<div class="card" style="padding:9px 13px"><h3>A · Equations &amp; key numbers page (p3–4)</h3>
+<div class="copy">S/N₀ = P·Gₜ·(Gᵣ/T) ÷ (k·Lₛ·Lₐ)   the link equation
+Lₛ = (4πd ÷ λ)²    space loss · 2× distance = ¼ power
+N₀ = k × T         k = 1.38×10⁻²³ J/K · 20 K → 2.8×10⁻²² W/Hz
+dB                 +3 = ×2 · +10 = ×10 · add, don't multiply
+Cassini            13 + 47 − 294 + 74 = −160 dBW = 10⁻¹⁶ W
+                   S/N₀ ≈ 56 dB-Hz → ~100,000 bits/s
+Voyager 1          160 bits per second</div>
+<h3>B · Section 5 map page (write it now, from memory first)</h3>
+<div class="copy">S5 · antennas: radio = EM wave, c = λ × f; rod = λ ÷ 2;
+     modulation = signal on a fast carrier; dish gain = aim
+S5 · atmosphere: wall with 2 windows (visible, radio);
+     links use S / X / Ka; uplink ≠ downlink
+S5 · links: encode → modulate → up-convert → HPA ⇒ space
+     loss (spreading) ⇒ LNA → down-convert → demod → decode
+S5 · the point: signal ÷ noise sets bits per second</div>
+<h3>D · Question bank ("but how?" cards)</h3>
+<div class="copy">Q: Where does the signal's power go on the way?
+A: Nowhere. It spreads over a sphere 4πd². 2× far = ¼ power.
+Q: Why must the FIRST receive amplifier be low-noise?
+A: Its added noise is amplified by every later stage.
+Q: Why can't you just amplify a weak signal more?
+A: Amplifiers lift signal and noise together. The ratio stays.
+Q: What is k in the link equation?
+A: Boltzmann constant: noise per hertz = k × temperature.</div></div>
+<div class="card" style="padding:9px 13px"><h3>C · One-line word bank (new lines)</h3>
+<div class="copy">p__ · link · one radio path, transmitter to receiver
+p__ · encoder / decoder = codec · code the data / decode it
+p__ · compression · fewer bits, same message
+p__ · error-correcting code = FEC · spare bits fix errors → C31
+p__ · up- / down-converter · shift frequency up / down
+p__ · IF / RF · easy low frequency / the on-air one
+p__ · HPA · high-power amp, before transmit antenna
+p__ · LNA · low-noise amp, first after receive antenna → C30
+p__ · free-space loss (Lₛ) · spreading; ∝ distance² → C29
+p__ · atmospheric loss (Lₐ) · air + rain weakening
+p__ · transponder = repeater · receive, shift, boost, resend → C31
+p__ · bent pipe · satellite that only relays
+p__ · thermal noise · hiss from anything warm
+p__ · N₀ · noise per hertz = k × T
+p__ · Boltzmann constant (k) · 1.38×10⁻²³ J/K
+p__ · system noise temperature (T) · all noise as one temp
+p__ · S/N₀ = signal-to-noise · sets data rate → C29
+p__ · EIRP · power × transmit gain
+p__ · G/T · receive gain ÷ noise temp
+p__ · link budget · ledger of gains and losses → C30
+p__ · dBW / dBm · dB vs 1 watt / vs 1 milliwatt
+p__ · bit rate · bits per second</div></div>
+</div></div><div class="page"><div class="top"><div class="badge">SEC 5 · LEC 3 · CONCEPT CARDS</div><h1>Route E: <span>pages C29 and C30</span></h1></div><div class="sub">Two notebook pages, two cards each. Copy line for line; the faint numbers are your ruled lines.</div>
+<div style="display:flex;gap:16px;justify-content:center"><div class="nb"><div class="nbh"><span>WORD BANK · CONCEPT CARDS · scene 13</span><span class="pg">C29</span></div><div class="ln n"><span class="num">1</span><span class="nmbox">FREE-SPACE LOSS (Lₛ)  = spreading loss</span></div><div class="ln"><span class="num">2</span><span class="s">=</span>weakening from the wave spreading out</div><div class="ln"><span class="num">3</span><span class="s">WHY</span>nothing eats the signal. It covers a</div><div class="ln"><span class="num">4</span><span class="s"></span>bigger sphere, so each dish catches a</div><div class="ln"><span class="num">5</span><span class="s"></span>smaller share</div><div class="ln"><span class="num">6</span><span class="s">#</span>2× distance = ¼ power · GEO 10²⁰ ·</div><div class="ln"><span class="num">7</span><span class="s"></span>Saturn 2.5×10²⁹ (294 dB)</div><div class="ln"><span class="num">8</span><span class="s">≠</span>absorption (that is Lₐ, the air)</div><div class="ln"><span class="num">9</span><span class="s">→</span>Lₛ = (4πd ÷ λ)² · inverse square ·</div><div class="ln"><span class="num">10</span><span class="s"></span>link budget</div><div class="ln gap"><span class="num">11</span></div><div class="ln n"><span class="num">12</span><span class="nmbox">SIGNAL-TO-NOISE RATIO  = S ÷ N₀</span></div><div class="ln"><span class="num">13</span><span class="s">=</span>signal power compared with noise</div><div class="ln"><span class="num">14</span><span class="s">WHY</span>a receiver can amplify forever, but</div><div class="ln"><span class="num">15</span><span class="s"></span>it lifts noise too. Only the ratio</div><div class="ln"><span class="num">16</span><span class="s"></span>decides what can be read</div><div class="ln"><span class="num">17</span><span class="s">#</span>Cassini: 10⁻¹⁶ W ÷ 2.8×10⁻²² W/Hz ≈</div><div class="ln"><span class="num">18</span><span class="s"></span>400,000 (56 dB-Hz)</div><div class="ln"><span class="num">19</span><span class="s">≠</span>signal strength alone</div><div class="ln"><span class="num">20</span><span class="s">→</span>N₀ = k × T · bits per second · coding</div><div class="ln"><span class="num">21</span></div><div class="ln"><span class="num">22</span></div></div><div class="nb"><div class="nbh"><span>WORD BANK · CONCEPT CARDS · scene 13</span><span class="pg">C30</span></div><div class="ln n"><span class="num">1</span><span class="nmbox">LINK BUDGET</span></div><div class="ln"><span class="num">2</span><span class="s">=</span>ledger of every gain and loss on a</div><div class="ln"><span class="num">3</span><span class="s"></span>link</div><div class="ln"><span class="num">4</span><span class="s">WHY</span>it shows before launch whether the</div><div class="ln"><span class="num">5</span><span class="s"></span>far end will hear you, and how fast</div><div class="ln"><span class="num">6</span><span class="s"></span>you can talk</div><div class="ln"><span class="num">7</span><span class="s">#</span>13 + 47 − 294 + 74 = −160 dBW</div><div class="ln"><span class="num">8</span><span class="s"></span>(Cassini)</div><div class="ln"><span class="num">9</span><span class="s">≠</span>data budget (how much to send)</div><div class="ln"><span class="num">10</span><span class="s">→</span>decibels add · EIRP · G/T · margin</div><div class="ln gap"><span class="num">11</span></div><div class="ln n"><span class="num">12</span><span class="nmbox">LOW-NOISE AMPLIFIER  = LNA</span></div><div class="ln"><span class="num">13</span><span class="s">=</span>first amplifier after the receive</div><div class="ln"><span class="num">14</span><span class="s"></span>antenna</div><div class="ln"><span class="num">15</span><span class="s">WHY</span>noise added by the first stage is</div><div class="ln"><span class="num">16</span><span class="s"></span>magnified by all the rest, so it must</div><div class="ln"><span class="num">17</span><span class="s"></span>be the quietest</div><div class="ln"><span class="num">18</span><span class="s">#</span>DSN: cooled to ~15 K · system noise</div><div class="ln"><span class="num">19</span><span class="s"></span>~20 K</div><div class="ln"><span class="num">20</span><span class="s">≠</span>HPA (transmit side: watts matter)</div><div class="ln"><span class="num">21</span><span class="s">→</span>thermal noise · k × T · S ÷ N₀</div><div class="ln"><span class="num">22</span></div></div></div>
+<div style="text-align:center;font-size:10.5px;color:#444;margin-top:6px">C29: 10 + 9 lines of 22 · C30: 10 + 10 lines of 22</div></div><div class="page"><div class="top"><div class="badge">SEC 5 · LEC 3 · CONCEPT CARDS</div><h1>Route E: <span>page C31</span></h1></div><div class="sub">The third card page for this lecture.</div>
+<div style="display:flex;gap:22px;justify-content:center;align-items:flex-start"><div class="nb"><div class="nbh"><span>WORD BANK · CONCEPT CARDS · scene 13</span><span class="pg">C31</span></div><div class="ln n"><span class="num">1</span><span class="nmbox">TRANSPONDER  = satellite repeater</span></div><div class="ln"><span class="num">2</span><span class="s">=</span>receives, shifts frequency,</div><div class="ln"><span class="num">3</span><span class="s"></span>amplifies, resends</div><div class="ln"><span class="num">4</span><span class="s">WHY</span>after 36,000 km the signal is too</div><div class="ln"><span class="num">5</span><span class="s"></span>weak to bounce. Boost it, and move it</div><div class="ln"><span class="num">6</span><span class="s"></span>off the uplink frequency</div><div class="ln"><span class="num">7</span><span class="s">#</span>hears ~10⁻¹⁰ W · gain ~10¹¹ (110 dB)</div><div class="ln"><span class="num">8</span><span class="s">≠</span>a science probe (an END of the link)</div><div class="ln"><span class="num">9</span><span class="s">→</span>relay satellite · uplink / downlink ·</div><div class="ln"><span class="num">10</span><span class="s"></span>bent pipe</div><div class="ln gap"><span class="num">11</span></div><div class="ln n"><span class="num">12</span><span class="nmbox">ERROR-CORRECTING CODE  = FEC</span></div><div class="ln"><span class="num">13</span><span class="s">=</span>spare bits that let the receiver fix</div><div class="ln"><span class="num">14</span><span class="s"></span>errors</div><div class="ln"><span class="num">15</span><span class="s">WHY</span>weak signals arrive with mistakes.</div><div class="ln"><span class="num">16</span><span class="s"></span>Patterned spare bits repair them, no</div><div class="ln"><span class="num">17</span><span class="s"></span>resend needed</div><div class="ln"><span class="num">18</span><span class="s">#</span>good codes ≈ 5× more data on the same</div><div class="ln"><span class="num">19</span><span class="s"></span>link</div><div class="ln"><span class="num">20</span><span class="s">≠</span>compression (removes bits)</div><div class="ln"><span class="num">21</span><span class="s">→</span>encoder / decoder · S ÷ N₀ · data</div><div class="ln"><span class="num">22</span><span class="s"></span>rate</div></div>
+<div class="card" style="width:4.3in;padding:12px 16px;font-size:12px;line-height:1.5"><h3>Section 5 is complete</h3>
+Three lectures, four spreads, eight card pages (C24–C31).<br><br>
+<b>Before Section 6</b><br>
+1. Write the Section 5 map page from memory, then check it against route B on the previous page.<br>
+2. Do one timed Section 5 talk from the app's Teach tab. It is four minutes.<br><br>
+<b>The thread through all three lectures</b><br>
+Lecture 1: how a wave carries a message and how a dish aims it. Lecture 2: which waves can get through the air. Lecture 3: adding it all up to see whether the far end can hear you. Every number in today's ledger came from one of the first two lectures.<br><br>
+<b>For Network+ later</b><br>
+The decibel ledger on page 3 is the same arithmetic as a Wi-Fi link: transmit power in dBm, antenna gain in dBi, path loss, receiver sensitivity. You have now done it once with Saturn.<br><br>
+C31: 10 + 11 lines of 22.</div></div></div><div class="page"><div class="top"><div class="badge">SEC 5 · LEC 3 · SAY IT OUT LOUD</div><h1>Last page: <span>prove it by talking</span></h1></div><div class="sub">After the spread and the 3-line summary, with everything closed. Send me what you said and I will grade it like a friend would.</div>
+<div class="two"><div>
+<div class="card"><h3>🗣 The friend's opening question</h3><div style="font-size:13px;line-height:1.5">"Why does it take so long to get pictures back from far-away probes? Radio moves at the speed of light."</div></div>
+<div class="card" style="margin-top:12px"><h3>✅ Three sentences you should be able to say</h3><ul class="r" style="font-size:12px">
+<li>The radio is fast, but the signal arrives unbelievably faint. Nothing absorbs it; it just spreads out, so twice as far away you catch a quarter as much.</li>
+<li>At the receiver it has to be picked out of the electrical hiss that everything warm makes. What matters is the signal compared with that noise, and that ratio sets how many bits per second you can send.</li>
+<li>So engineers add up a budget: transmitter power, both dishes, the distance, the receiver's noise. From Saturn that gives about a hundred thousand bits a second. From Voyager it is 160.</li></ul></div>
+<div class="card" style="margin-top:12px"><h3>❓ Follow-ups a friend might ask</h3><ul class="r" style="font-size:12px">
+<li>"Can't they just amplify it more?" (an amplifier boosts the noise by the same amount; the ratio doesn't change)</li>
+<li>"So how do you improve it?" (more power, bigger dishes, a colder receiver, cleverer codes)</li>
+<li>"What's a low-noise amplifier?" (the first amplifier at the receiver, chilled so it adds almost no hiss of its own)</li>
+<li>"What does a relay satellite do?" (hears the faint uplink, moves it to another frequency, boosts it and sends it back down)</li>
+<li>"What are decibels for?" (they turn all those multiplications into one column you can add)</li></ul></div></div>
+<div><div class="card" style="min-height:3.2in"><h3>📝 Your explanation (paste or dictate)</h3><div style="border:2px dashed #999;border-radius:8px;height:2.5in;padding:8px;color:#999;font-size:11px">_ send it to me in chat; I'll put it here _</div></div>
+<div class="card" style="margin-top:12px;min-height:2.2in;border-color:var(--green)"><h3 style="color:var(--green)">🎯 My read</h3><div style="border:2px dashed #999;border-radius:8px;height:1.5in;padding:8px;color:#999;font-size:11px">solid on: _<br>fuzzy on: _<br>fix: _<br>→ question-bank cards: _</div></div>
+<div class="callout" style="margin-top:12px;font-size:11.5px">⚡ Section 5 done. Next is Section 6: attitude determination and control.</div></div></div></div></body></html>
