@@ -422,3 +422,16 @@ copy-ready one-line word-bank lines (page 5, route C, with `→ C#`
 pointers) and the full plain-English vocabulary (page 4), and the app's
 Terms tab holds everything. Rebuild a combined sheet only if the
 student asks for one.
+
+## Lean mode until the deadline (2026-11-12 → night of 2026-11-13)
+
+The student has until the night of 2026-11-13 to understand Sections
+6-7 and is sending lectures as they listen. Until then each lecture PDF
+is cut to what serves understanding fastest: (1) the spread(s) to copy,
+(2) TEACH (like-you're-5, official names, how it works with numbers),
+(3) FACT CHECK with caption errors and a short say-it-out-loud script,
+(4) vocabulary. Paused: copy-into-notes routing (A-D), concept-card
+pages (E, would have been C32 onward), Who's Who updates, combined
+word-bank sheets. After the deadline, ask whether to backfill them for
+Sections 6-7. Do not nag about the outstanding talk runs during the
+push; offer a compact review plan once the last lecture is in.

@@ -1,0 +1,246 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Interplanetary transfers</title>
+<style>
+@page { size: letter landscape; margin: 0; }
+* { box-sizing:border-box; }
+:root { --navy:#0b1437; --orange:#ff6b1a; --blue:#1e7cff; --green:#19b36b; --pink:#e5338f; --purple:#7b3fe4; --yellow:#ffd23f; --paper:#fffdf5; }
+body { margin:0; font-family: Verdana, "DejaVu Sans", Arial, sans-serif; color:#111; }
+.page { width:11in; height:8.5in; padding:0.35in 0.45in; page-break-after:always; position:relative; background:#fff; overflow:hidden; }
+.page:last-child { page-break-after:auto; }
+.top { display:flex; align-items:center; gap:14px; margin-bottom:6px; }
+.badge { background:var(--navy); color:#fff; font-weight:900; font-size:11px; letter-spacing:2px; padding:6px 12px; border-radius:999px; }
+h1 { font-size:22px; margin:0; font-weight:900; }
+h1 span { color:var(--orange); }
+.sub { color:#555; font-size:11.5px; margin-bottom:8px; }
+.spread { display:flex; gap:16px; height:6.9in; }
+.np { flex:1; border:3px solid #111; border-radius:14px; background:var(--paper); position:relative; padding:12px 14px; font-size:12px;
+  background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 23px, #e3e8f2 23px, #e3e8f2 24px); background-position:0 40px; }
+.np.o{border-color:var(--orange);} .np.b{border-color:var(--blue);}
+.tag { position:absolute; top:-14px; left:14px; color:#fff; font-weight:900; font-size:12px; padding:4px 12px; border-radius:999px; letter-spacing:1px; }
+.o .tag{background:var(--orange);} .b .tag{background:var(--blue);}
+.hdr { font-weight:900; font-size:13px; border-bottom:3px solid #111; margin:4px 0 8px; padding-bottom:5px; display:flex; justify-content:space-between; }
+.ink { color:#1a3fb0; font-family:"Comic Sans MS","Segoe Print","Bradley Hand",cursive; }
+.pencil { color:#8a8a8a; font-family:"Comic Sans MS","Segoe Print",cursive; }
+.cornell { display:flex; height:calc(100% - 44px); }
+.cue { width:36%; border-right:3px solid var(--blue); padding-right:8px; }
+.notes { flex:1; padding-left:12px; }
+.summary { position:absolute; left:12px; right:12px; bottom:12px; height:108px; border:3px solid var(--green); border-radius:10px; padding:6px 10px; background:#f2fff7; }
+.summary b { color:var(--green); font-size:12px; }
+.q { margin:0 0 10px; line-height:1.25; }
+.hl { padding:0 3px; border-radius:3px; }
+.hl.y{background:#fff176;} .hl.k{background:#ffb3d9;} .hl.b{background:#9fd3ff;} .hl.g{background:#a8f0c6;} .hl.o{background:#ffcf9e;}
+.banner { border:2.5px solid #111; border-radius:10px; padding:3px 10px; font-weight:900; font-size:13px; display:inline-block; background:#fff176; box-shadow:3px 3px 0 #111; }
+.mini { border:2px solid #111; border-radius:8px; padding:5px 8px; background:#fff; font-size:11px; margin-top:6px; box-shadow:2px 2px 0 #111; }
+table.t { border-collapse:collapse; width:100%; font-size:11px; }
+table.t th, table.t td { border:2px solid #111; padding:3px 5px; text-align:left; vertical-align:top; }
+table.t th { background:var(--navy); color:#fff; }
+.card { border:3px solid #111; border-radius:14px; padding:12px 16px; font-size:12.5px; background:var(--paper); }
+.card h3 { margin:0 0 6px; font-size:15px; font-weight:900; }
+.two { display:flex; gap:16px; }
+.two > div { flex:1; }
+ul.r { margin:4px 0 0; padding-left:18px; line-height:1.45; font-size:12px; }
+.ok { color:var(--green); font-weight:900; } .fix { color:var(--orange); font-weight:900; }
+.callout { background:var(--yellow); border:3px solid #111; border-radius:12px; padding:10px 14px; font-weight:700; font-size:12.5px; margin-top:12px; }
+</style>
+<style>
+.sm { width:3.6in; height:5.4in; border:3px solid #111; border-radius:10px; background:var(--paper); position:relative; padding:8px 9px; font-size:9.5px;
+  background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 15px, #dfe5ef 15px, #dfe5ef 16px); background-position:0 26px; }
+.sm.o{border-color:var(--orange);} .sm.b{border-color:var(--blue);}
+.sm .tag { font-size:10px; padding:3px 9px; top:-12px; left:10px; }
+.sm .hdr { font-size:10px; margin:2px 0 5px; padding-bottom:3px; border-width:2px; }
+.zone { border:2px dashed #999; border-radius:6px; padding:4px 6px; margin-top:5px; font-size:9px; color:#333; background:rgba(255,255,255,.75); }
+.zone b { color:#111; }
+.lines { color:#b0582c; font-weight:700; font-size:8.5px; }
+.smwrap { display:flex; gap:10px; justify-content:center; }
+</style>
+
+<style>
+.bg { width:4.95in; height:7.35in; border:3px solid #111; border-radius:12px; background:var(--paper); position:relative; padding:12px 14px; font-size:12px;
+  background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 21px, #dfe5ef 21px, #dfe5ef 22px); background-position:0 44px; }
+.bg.o{border-color:var(--orange);} .bg.b{border-color:var(--blue);}
+.bg .tag { position:absolute; top:-14px; left:14px; color:#fff; font-weight:900; font-size:12px; padding:4px 12px; border-radius:999px; letter-spacing:1px; }
+.bg.o .tag{background:var(--orange);} .bg.b .tag{background:var(--blue);}
+.bg .hdr { font-weight:900; font-size:13px; border-bottom:3px solid #111; margin:4px 0 8px; padding-bottom:5px; display:flex; justify-content:space-between; }
+.bg .ink { font-size:12px; line-height:1.45; }
+.bg .q { margin:0 0 10px; line-height:1.3; }
+.bz { border:2px dashed #999; border-radius:8px; padding:6px 9px; margin-top:8px; font-size:11.5px; background:rgba(255,255,255,.8); }
+.bz b { color:#111; }
+.lb { color:#b0582c; font-weight:700; font-size:10px; }
+</style>
+<style>
+.gl2{columns:2;column-gap:22px;font-size:10.6px;line-height:1.38}
+.gl2 div{break-inside:avoid;margin-bottom:4px}
+.gl2 i{color:#555}
+.mech{border-collapse:collapse;width:100%;font-size:10.4px}
+.mech th,.mech td{border:1.5px solid #111;padding:3px 6px;text-align:left;vertical-align:top}
+.mech th{background:#0b1437;color:#fff}
+.eli{background:#fff8d6;border:3px solid #111;border-radius:14px;padding:9px 15px;margin-bottom:10px;font-size:12.2px;line-height:1.48}
+.names{font-size:11px;line-height:1.45;margin:0;padding-left:16px}
+.nb{width:4.3in;height:6.4in;border:3px solid #111;border-radius:10px;background:#fff;position:relative;padding:0 10px;overflow:hidden;flex:none}
+.nbh{height:.42in;display:flex;justify-content:space-between;align-items:flex-end;padding-bottom:4px;font-size:9.5px;font-weight:900;letter-spacing:.5px;color:#333;border-bottom:2px solid #111}
+.nbh span.pg{border:2px solid #111;border-radius:6px;padding:1px 7px;font-size:12px}
+.ln{height:.262in;border-bottom:1px solid #c9d1de;display:flex;align-items:flex-end;padding-bottom:2px;font-size:12.6px;white-space:nowrap;color:#222}
+.ln .s{flex:none;width:42px;font-weight:900;font-size:11.5px;color:#000}
+.ln.n{font-weight:900;font-size:12.4px;color:#000}
+.ln.n .nmbox{border:2px solid #111;border-radius:5px;padding:0 5px;margin-left:-3px;background:#eee}
+.ln.n2{font-weight:700}
+.ln .num{flex:none;width:14px;font-size:7.5px;color:#9aa3b2;margin-left:-8px}
+.ln.gap{background:repeating-linear-gradient(90deg,#999 0 6px,transparent 6px 12px) center/100% 1.5px no-repeat}
+.route{font-size:11px;line-height:1.45}
+.route h3{margin:0 0 3px;font-size:13px}
+.route .copy{font-family:"DejaVu Sans Mono",monospace;font-size:10.2px;background:#f4f4f4;border:1.5px dashed #777;border-radius:6px;padding:5px 8px;margin:3px 0 8px;white-space:pre-wrap;line-height:1.5}
+</style></head><body><div class="page"><div class="top"><div class="badge">SEC 6 · LEC 1 · ATTITUDE: DEFINITIONS + PHYSICS</div><h1>Point, check, <span>nudge</span></h1></div><div class="sub">Left = your left notebook page. Right = your right page. Copy the drawing in pencil first, then the cues and notes. The summary box stays empty until the video and this PDF are closed.</div>
+<div style="display:flex; gap:18px; justify-content:center">
+  <div class="bg o"><span class="tag">🖍 LEFT PAGE · DRAW</span>
+    <div class="hdr"><span>S6 / L1 (1/2) — Attitude + the loop</span><span>date · pg __</span></div>
+    <svg width="100%" height="428" viewBox="0 0 330 412" style="display:block" font-family="Verdana, sans-serif"><defs><marker id="ar" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#111"/></marker></defs>
+<text x="8" y="13" font-size="10" font-weight="bold" fill="#111">1 · ATTITUDE = which way it points</text>
+<rect x="152" y="58" width="26" height="22" fill="#ddd" stroke="#111" stroke-width="1.8"/>
+<line x1="150" y1="69" x2="50" y2="69" stroke="#111" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="178" y1="62" x2="262" y2="34" stroke="#111" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="165" y1="80" x2="165" y2="124" stroke="#111" stroke-width="1.6" marker-end="url(#ar)"/>
+<circle cx="165" cy="142" r="14" fill="#fff" stroke="#111" stroke-width="1.6"/><text x="165" y="145" text-anchor="middle" font-size="7" fill="#111">Earth</text>
+<text x="8" y="58" font-size="9" font-weight="bold" fill="#111">ROLL axis</text><text x="8" y="84" font-size="8" fill="#111">the direction of travel</text>
+<text x="322" y="26" text-anchor="end" font-size="9" font-weight="bold" fill="#111">PITCH axis</text><text x="322" y="54" text-anchor="end" font-size="8" fill="#111">across the orbit</text>
+<text x="176" y="100" font-size="9" font-weight="bold" fill="#111">YAW axis</text><text x="176" y="112" font-size="8" fill="#111">the line to the planet</text>
+<text x="8" y="168" font-size="8" fill="#111">like a plane: roll = tilt the wings · pitch = nose up or down</text>
+<text x="8" y="179" font-size="8" fill="#111">yaw = nose left or right</text>
+<line x1="8" y1="186" x2="322" y2="186" stroke="#bbb" stroke-width="1"/>
+<text x="8" y="199" font-size="10" font-weight="bold" fill="#111">2 · THE CONTROL LOOP (ADCS)</text>
+<rect x="126" y="204" width="78" height="20" rx="4" fill="#fff" stroke="#111" stroke-width="1.6"/><text x="165" y="217" text-anchor="middle" font-size="8.5" font-weight="bold" fill="#111">SPACECRAFT</text><rect x="14" y="238" width="78" height="20" rx="4" fill="#fff" stroke="#111" stroke-width="1.6"/><text x="53" y="251" text-anchor="middle" font-size="8.5" font-weight="bold" fill="#111">SENSORS</text><rect x="238" y="238" width="78" height="20" rx="4" fill="#fff" stroke="#111" stroke-width="1.6"/><text x="277" y="251" text-anchor="middle" font-size="8.5" font-weight="bold" fill="#111">ACTUATORS</text><rect x="126" y="272" width="78" height="20" rx="4" fill="#fff" stroke="#111" stroke-width="1.6"/><text x="165" y="285" text-anchor="middle" font-size="8.5" font-weight="bold" fill="#111">COMPUTER</text>
+<g stroke="#111" stroke-width="1.5"><line x1="126" y1="214" x2="57" y2="236" marker-end="url(#ar)"/><line x1="53" y1="258" x2="123" y2="281" marker-end="url(#ar)"/><line x1="204" y1="282" x2="273" y2="260" marker-end="url(#ar)"/><line x1="277" y1="238" x2="207" y2="215" marker-end="url(#ar)"/></g>
+<g font-size="8" fill="#111"><text x="14" y="226">measure</text><text x="14" y="280">attitude error</text><text x="322" y="280" text-anchor="end">torque command</text><text x="322" y="226" text-anchor="end">torque</text>
+<text x="165" y="244" text-anchor="middle">a closed loop:</text><text x="165" y="255" text-anchor="middle">it never stops</text></g>
+<line x1="8" y1="300" x2="322" y2="300" stroke="#bbb" stroke-width="1"/>
+<text x="8" y="313" font-size="10" font-weight="bold" fill="#111">3 · JITTER: it never sits perfectly still</text>
+<line x1="30" y1="356" x2="320" y2="356" stroke="#777" stroke-width="0.8" stroke-dasharray="3 3"/>
+<line x1="30" y1="386" x2="30" y2="324" stroke="#111" stroke-width="1.2" marker-end="url(#ar)"/>
+<polyline points="34.0,356.0 34.5,353.4 35.0,351.3 35.5,350.1 36.0,350.0 36.5,350.8 37.0,352.5 37.5,354.4 38.0,356.3 38.5,357.5 39.0,357.8 39.5,357.1 40.0,355.3 40.5,352.9 41.0,350.3 41.5,347.9 42.0,346.3 42.5,345.7 43.0,346.2 43.5,347.5 44.0,349.4 44.5,351.4 45.0,353.0 45.5,353.7 46.0,353.4 46.5,352.1 47.0,350.0 47.5,347.4 48.0,344.9 48.5,342.9 49.0,341.9 49.5,341.9 50.0,343.0 50.5,344.7 51.0,346.8 51.5,348.6 52.0,349.8 52.5,350.0 53.0,349.1 53.5,347.3 54.0,344.9 54.5,342.3 55.0,340.1 55.5,338.7 56.0,338.3 56.5,339.0 57.0,340.5 57.5,342.6 58.0,344.6 58.5,346.1 59.0,346.8 59.5,346.5 60.0,345.1 60.5,342.9 61.0,340.4 61.5,338.1 62.0,336.3 62.5,335.5 63.0,335.8 63.5,337.1 64.0,339.0 64.5,341.1 65.0,343.0 65.5,344.2 66.0,344.3 66.5,343.4 67.0,341.6 67.5,339.2 68.0,336.8 68.5,334.8 69.0,333.6 69.5,333.5 70.0,334.5 70.5,336.2 71.0,338.4 71.5,340.5 72.0,342.1 72.5,342.7 73.0,342.3 73.5,340.9 74.0,338.8 74.5,336.5 75.0,334.3 75.5,332.8 76.0,332.3 76.5,332.8 77.0,334.3 77.5,336.5 78.0,338.7 78.5,340.7 79.0,341.8 79.5,342.0 80.0,341.0 80.5,339.3 81.0,337.0 81.5,334.7 82.0,333.0 82.5,332.1 83.0,332.3 83.5,333.5 84.0,335.5 84.5,337.8 85.0,340.0 85.5,341.6 86.0,342.3 86.5,341.9 87.0,340.5 87.5,338.4 88.0,336.2 88.5,334.2 89.0,333.0 89.5,332.8 90.0,333.6 90.5,335.4 91.0,337.7 91.5,340.1 92.0,342.1 92.5,343.2 93.0,343.4 93.5,342.5 94.0,340.7 94.5,338.6 95.0,336.5 95.5,335.0 96.0,334.4 96.5,334.8 97.0,336.3 97.5,338.5 98.0,341.0 98.5,343.3 99.0,344.9 99.5,345.5 100.0,345.1 100.5,343.7 101.0,341.8 101.5,339.6 102.0,337.9 102.5,336.9 103.0,337.0 103.5,338.1 104.0,340.1 104.5,342.6 105.0,345.0 105.5,347.0 106.0,348.2 106.5,348.3 107.0,347.3 107.5,345.6 108.0,343.6 108.5,341.6 109.0,340.3 109.5,340.0 110.0,340.7 110.5,342.4 111.0,344.8 111.5,347.4 112.0,349.7 112.5,351.3 113.0,351.8 113.5,351.4 114.0,350.0 114.5,348.0 115.0,346.1 115.5,344.5 116.0,343.7 116.5,344.0 117.0,345.4 117.5,347.5 118.0,350.1 118.5,352.6 119.0,354.6 119.5,355.6 120.0,355.6 120.5,354.6 121.0,352.9 121.5,350.9 122.0,349.1 122.5,348.0 123.0,347.8 123.5,348.8 124.0,350.6 124.5,353.1 125.0,355.7 125.5,358.0 126.0,359.5 126.5,360.0 127.0,359.4 127.5,357.9 128.0,356.0 128.5,354.1 129.0,352.6 129.5,352.0 130.0,352.5 130.5,354.0 131.0,356.3 131.5,358.9 132.0,361.4 132.5,363.2 133.0,364.2 133.5,364.0 134.0,362.9 134.5,361.1 135.0,359.1 135.5,357.4 136.0,356.4 136.5,356.4 137.0,357.4 137.5,359.4 138.0,361.9 138.5,364.5 139.0,366.6 139.5,368.0 140.0,368.3 140.5,367.5 141.0,365.9 141.5,364.0 142.0,362.0 142.5,360.6 143.0,360.2 143.5,360.7 144.0,362.3 144.5,364.6 145.0,367.2 145.5,369.6 146.0,371.3 146.5,372.0 147.0,371.7 147.5,370.4 148.0,368.4 148.5,366.4 149.0,364.7 149.5,363.7 150.0,363.8 150.5,365.0 151.0,367.0 151.5,369.4 152.0,371.9 152.5,373.9 153.0,375.0 153.5,375.1 154.0,374.1 154.5,372.4 155.0,370.2 155.5,368.3 156.0,366.9 156.5,366.5 157.0,367.1 157.5,368.7 158.0,371.0 158.5,373.5 159.0,375.7 159.5,377.2 160.0,377.6 160.5,377.0 161.0,375.5 161.5,373.4 162.0,371.3 162.5,369.5 163.0,368.6 163.5,368.8 164.0,369.9 164.5,371.9 165.0,374.3 165.5,376.6 166.0,378.4 166.5,379.2 167.0,379.0 167.5,377.8 168.0,375.8 168.5,373.6 169.0,371.5 169.5,370.1 170.0,369.7 170.5,370.4 171.0,372.0 171.5,374.2 172.0,376.5 172.5,378.5 173.0,379.7 173.5,379.9 174.0,379.0 174.5,377.3 175.0,375.0 175.5,372.7 176.0,371.0 176.5,370.0 177.0,370.2 177.5,371.3 178.0,373.3 178.5,375.5 179.0,377.7 179.5,379.2 180.0,379.7 180.5,379.2 181.0,377.7 181.5,375.5 182.0,373.2 182.5,371.1 183.0,369.7 183.5,369.3 184.0,369.9 184.5,371.5 185.0,373.6 185.5,375.8 186.0,377.5 186.5,378.5 187.0,378.4 187.5,377.2 188.0,375.2 188.5,372.8 189.0,370.4 189.5,368.6 190.0,367.7 190.5,367.8 191.0,369.0 191.5,370.9 192.0,373.0 192.5,374.9 193.0,376.2 193.5,376.5 194.0,375.7 194.5,373.9 195.0,371.6 195.5,369.1 196.0,366.9 196.5,365.5 197.0,365.2 197.5,365.9 198.0,367.4 198.5,369.4 199.0,371.5 199.5,373.0 200.0,373.7 200.5,373.3 201.0,371.9 201.5,369.7 202.0,367.1 202.5,364.7 203.0,362.9 203.5,362.0 204.0,362.2 204.5,363.4 205.0,365.2 205.5,367.3 206.0,369.0 206.5,370.1 207.0,370.1 207.5,369.1 208.0,367.1 208.5,364.6 209.0,362.0 209.5,359.9 210.0,358.6 210.5,358.3 211.0,359.0 211.5,360.6 212.0,362.6 212.5,364.5 213.0,365.8 213.5,366.3 214.0,365.7 214.5,364.1 215.0,361.7 215.5,359.1 216.0,356.7 216.5,354.9 217.0,354.2 217.5,354.5 218.0,355.7 218.5,357.6 219.0,359.5 219.5,361.2 220.0,362.0 220.5,361.9 221.0,360.7 221.5,358.6 222.0,356.0 222.5,353.4 223.0,351.3 223.5,350.1 224.0,350.0 224.5,350.8 225.0,352.5 225.5,354.4 226.0,356.3 226.5,357.5 227.0,357.8 227.5,357.1 228.0,355.3 228.5,352.9 229.0,350.3 229.5,347.9 230.0,346.3 230.5,345.7 231.0,346.2 231.5,347.5 232.0,349.4 232.5,351.4 233.0,353.0 233.5,353.7 234.0,353.4 234.5,352.1 235.0,350.0 235.5,347.4 236.0,344.9 236.5,342.9 237.0,341.9 237.5,341.9 238.0,343.0 238.5,344.7 239.0,346.8 239.5,348.6 240.0,349.8 240.5,350.0 241.0,349.1 241.5,347.3 242.0,344.9 242.5,342.3 243.0,340.1 243.5,338.7 244.0,338.3 244.5,339.0 245.0,340.5 245.5,342.6 246.0,344.6 246.5,346.1 247.0,346.8 247.5,346.5 248.0,345.1 248.5,342.9 249.0,340.4 249.5,338.1 250.0,336.3 250.5,335.5 251.0,335.8 251.5,337.1 252.0,339.0 252.5,341.1 253.0,343.0 253.5,344.2 254.0,344.3 254.5,343.4 255.0,341.6 255.5,339.2 256.0,336.8 256.5,334.8 257.0,333.6 257.5,333.5 258.0,334.5 258.5,336.2 259.0,338.4 259.5,340.5 260.0,342.1 260.5,342.7 261.0,342.3 261.5,340.9 262.0,338.8 262.5,336.5 263.0,334.3 263.5,332.8 264.0,332.3 264.5,332.8 265.0,334.3 265.5,336.5 266.0,338.7 266.5,340.7 267.0,341.8 267.5,342.0 268.0,341.0 268.5,339.3 269.0,337.0 269.5,334.7 270.0,333.0 270.5,332.1 271.0,332.3 271.5,333.5 272.0,335.5 272.5,337.8 273.0,340.0 273.5,341.6 274.0,342.3 274.5,341.9 275.0,340.5 275.5,338.4 276.0,336.2 276.5,334.2 277.0,333.0 277.5,332.8 278.0,333.6 278.5,335.4 279.0,337.7 279.5,340.1 280.0,342.1 280.5,343.2 281.0,343.4 281.5,342.5 282.0,340.7 282.5,338.6 283.0,336.5 283.5,335.0 284.0,334.4 284.5,334.8 285.0,336.3 285.5,338.5 286.0,341.0 286.5,343.3 287.0,344.9 287.5,345.5 288.0,345.1 288.5,343.7 289.0,341.8 289.5,339.6 290.0,337.9 290.5,336.9 291.0,337.0 291.5,338.1 292.0,340.1 292.5,342.6 293.0,345.0 293.5,347.0 294.0,348.2 294.5,348.3 295.0,347.3 295.5,345.6 296.0,343.6 296.5,341.6 297.0,340.3 297.5,340.0 298.0,340.7 298.5,342.4 299.0,344.8 299.5,347.4 300.0,349.7 300.5,351.3 301.0,351.8 301.5,351.4 302.0,350.0 302.5,348.0 303.0,346.1 303.5,344.5 304.0,343.7 304.5,344.0 305.0,345.4 305.5,347.5 306.0,350.1 306.5,352.6 307.0,354.6 307.5,355.6 308.0,355.6 308.5,354.6 309.0,352.9 309.5,350.9 310.0,349.1 310.5,348.0 311.0,347.8 311.5,348.8 312.0,350.6 312.5,353.1 313.0,355.7 313.5,358.0 314.0,359.5 314.5,360.0 315.0,359.4 315.5,357.9 316.0,356.0" fill="none" stroke="#111" stroke-width="1.3"/>
+<text x="36" y="328" font-size="8" fill="#111">pointing angle</text>
+<text x="8" y="398" font-size="8.5" fill="#111"><tspan font-weight="bold">slow swing</tspan> = the loop correcting itself</text>
+<text x="8" y="410" font-size="8.5" fill="#111"><tspan font-weight="bold">fast fuzz</tspan> = jitter: vibration from wheels and pumps</text>
+</svg><div class="bz" style="margin-top:4px; font-size:10.5px"><b>✏️ PENCIL KEY</b> · box = spacecraft · three arrows = the three axes · four boxes = the loop · wavy line = pointing angle · dotted = target</div>
+    <div class="bz"><b>⭐ 3 TAKEAWAYS</b> <span class="lb">3 lines</span><br><span class="ink">1. Attitude = which way it points. Roll, pitch, yaw are the three ways to turn.<br>2. ADCS is a loop: measure, compare, command, twist, repeat.<br>3. Pointing always shakes a little (jitter). Keep it inside the requirement.</span></div>
+    <div class="bz" style="border-color:var(--green); background:#f2fff7"><b>🧠 SUMMARY · video + PDF closed</b> <span class="lb">3 lines</span><br>
+      <span class="pencil" style="font-size:12px">1. ______________________________________<br>2. ______________________________________<br>3. ______________________________________</span></div>
+  </div>
+  <div class="bg b"><span class="tag">❓ RIGHT PAGE · CORNELL</span>
+    <div class="hdr"><span>CUES (questions)</span><span>NOTES (keywords)</span></div>
+    <div style="display:flex; height:6.5in">
+      <div style="width:37%; border-right:3px solid var(--blue); padding-right:8px" class="ink"><p class="q">What is attitude? How is it different from orbit?</p><p class="q">Roll, pitch, yaw: which axis is each?</p><p class="q">Attitude determination vs attitude control?</p><p class="q">What does ADCS stand for?</p><p class="q">The four boxes of the loop?</p><p class="q">What travels along each arrow?</p><p class="q">Why is it a "closed" loop?</p><p class="q">What is attitude jitter?</p><p class="q">Can jitter be zero?</p><p class="q"><span class="hl b">? measured against what</span></p></div>
+      <div style="flex:1; padding-left:10px" class="ink"><div style="margin-bottom:5px"><span class="hl y">attitude</span> = orientation of the spacecraft: which way it points (orbit = where it is)</div><div style="margin-bottom:5px"><span class="hl y">roll</span>: turning about the direction of travel · <span class="hl y">pitch</span>: about the axis across the orbit · <span class="hl y">yaw</span>: about the line to the central body</div><div style="margin-bottom:5px"><span class="hl y">attitude determination</span> = measuring the orientation</div><div style="margin-bottom:5px"><span class="hl y">attitude control</span> = returning the spacecraft to the desired attitude</div><div style="margin-bottom:5px"><span class="hl y">ADCS</span> = attitude determination and control system</div><div style="margin-bottom:5px"><span class="hl y">closed feedback loop</span>: sensors → attitude error → on-board computer → torque commands → actuators → torque → spacecraft → sensors…</div><div style="margin-bottom:5px">attitude error = where it points − where it should point</div><div style="margin-bottom:5px"><span class="hl y">torque</span> = a twist: the turning version of a force</div><div style="margin-bottom:5px"><span class="hl y">attitude jitter</span>: small shaking of the pointing angle that never fully goes away</div><div style="margin-bottom:5px">jitter must stay <span class="hl o">inside the mission's requirement</span></div></div>
+    </div>
+  </div>
+</div></div><div class="page"><div class="top"><div class="badge">SEC 6 · LEC 1 · ATTITUDE: DEFINITIONS + PHYSICS</div><h1>Pencils tumble, <span>coins spin</span></h1></div><div class="sub">Left = your left notebook page. Right = your right page. Copy the drawing in pencil first, then the cues and notes. The summary box stays empty until the video and this PDF are closed.</div>
+<div style="display:flex; gap:18px; justify-content:center">
+  <div class="bg o"><span class="tag">🖍 LEFT PAGE · DRAW</span>
+    <div class="hdr"><span>S6 / L1 (2/2) — Spin stability</span><span>date · pg __</span></div>
+    <svg width="100%" height="428" viewBox="0 0 330 412" style="display:block" font-family="Verdana, sans-serif"><defs><marker id="ar" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#111"/></marker></defs>
+<text x="8" y="13" font-size="10" font-weight="bold" fill="#111">1 · MOMENT OF INERTIA: three shapes</text>
+<circle cx="56" cy="66" r="22" fill="#ddd" stroke="#111" stroke-width="1.6"/>
+<g stroke="#111" stroke-width="1.3"><line x1="56" y1="66" x2="56" y2="34" marker-end="url(#ar)"/><line x1="56" y1="66" x2="90" y2="66" marker-end="url(#ar)"/><line x1="56" y1="66" x2="36" y2="90" marker-end="url(#ar)"/></g>
+<rect x="158" y="34" width="14" height="64" fill="#ddd" stroke="#111" stroke-width="1.6"/>
+<line x1="165" y1="24" x2="165" y2="108" stroke="#111" stroke-width="1" stroke-dasharray="4 3"/>
+<line x1="128" y1="66" x2="204" y2="66" stroke="#111" stroke-width="3.2" marker-end="url(#ar)"/>
+<ellipse cx="274" cy="70" rx="36" ry="9" fill="#ddd" stroke="#111" stroke-width="1.6"/>
+<line x1="228" y1="70" x2="322" y2="70" stroke="#111" stroke-width="1" stroke-dasharray="4 3"/>
+<line x1="274" y1="98" x2="274" y2="36" stroke="#111" stroke-width="3.2" marker-end="url(#ar)"/>
+<g font-size="8.5" fill="#111" text-anchor="middle"><text x="56" y="120" font-weight="bold">SPHERE</text><text x="56" y="132">same about</text><text x="56" y="144">every axis</text>
+<text x="165" y="120" font-weight="bold">ROD (pencil)</text><text x="165" y="132">biggest: across it</text><text x="165" y="144">smallest: along it</text>
+<text x="274" y="120" font-weight="bold">DISK (coin)</text><text x="274" y="132">biggest: through</text><text x="274" y="144">the face</text></g>
+<text x="165" y="159" text-anchor="middle" font-size="8.5" fill="#111">thick arrow = axis of MAXIMUM moment of inertia · dashed = minimum</text>
+<line x1="8" y1="167" x2="322" y2="167" stroke="#bbb" stroke-width="1"/>
+<text x="8" y="181" font-size="10" font-weight="bold" fill="#111">2 · THE RULE</text>
+<rect x="14" y="188" width="302" height="46" rx="6" fill="#fff" stroke="#111" stroke-width="1.6"/>
+<g font-size="9" fill="#111" text-anchor="middle"><text x="165" y="202">no outside torque, and a little energy leaking away</text><text x="165" y="214">→ the body ends up spinning about its axis of</text><text x="165" y="227" font-weight="bold">MAXIMUM moment of inertia</text></g>
+<text x="8" y="248" font-size="8.5" fill="#111">why: its spin can't change, but its energy drains away, and</text>
+<text x="8" y="260" font-size="8.5" fill="#111">spinning about the biggest axis takes the least energy</text>
+<line x1="8" y1="268" x2="322" y2="268" stroke="#bbb" stroke-width="1"/>
+<text x="8" y="282" font-size="10" font-weight="bold" fill="#111">3 · EXPLORER 1 (1958) vs SPUTNIK 1 (1957)</text>
+<rect x="26" y="300" width="92" height="10" rx="5" fill="#ddd" stroke="#111" stroke-width="1.6"/>
+<g stroke="#111" stroke-width="0.9"><line x1="72" y1="300" x2="56" y2="290"/><line x1="72" y1="300" x2="88" y2="290"/><line x1="72" y1="310" x2="56" y2="320"/><line x1="72" y1="310" x2="88" y2="320"/></g>
+<ellipse cx="128" cy="305" rx="4" ry="11" fill="none" stroke="#111" stroke-width="1.1" stroke-dasharray="3 2"/>
+<text x="136" y="300" font-size="7.5" fill="#111">planned</text><text x="136" y="310" font-size="7.5" fill="#111">spin</text>
+<path d="M22,326 Q72,350 122,326" fill="none" stroke="#111" stroke-width="1.6" marker-end="url(#ar)"/>
+<text x="72" y="352" text-anchor="middle" font-size="8" font-weight="bold" fill="#111">ended up: end over end</text>
+<circle cx="262" cy="308" r="16" fill="#ddd" stroke="#111" stroke-width="1.6"/>
+<g stroke="#111" stroke-width="0.9"><line x1="250" y1="298" x2="206" y2="290"/><line x1="248" y1="304" x2="204" y2="304"/><line x1="250" y1="318" x2="206" y2="326"/><line x1="254" y1="322" x2="214" y2="340"/></g>
+<text x="262" y="352" text-anchor="middle" font-size="8" font-weight="bold" fill="#111">any way up is fine</text>
+<g font-size="8" fill="#111"><text x="8" y="368">a pencil, spun on its SMALLEST axis</text><text x="8" y="379">whip antennas flexed, energy leaked</text><text x="8" y="390">→ tumbled within hours</text><text x="8" y="401">still found the radiation belts</text>
+<text x="322" y="368" text-anchor="end">a ball: no favorite axis</text><text x="322" y="379" text-anchor="end">antennas radiate all round</text><text x="322" y="390" text-anchor="end">so no pointing was needed</text></g>
+</svg><div class="bz" style="margin-top:4px; font-size:10.5px"><b>✏️ PENCIL KEY</b> · thick arrow = biggest moment of inertia · dashed = smallest · dashed loop = planned spin · curved arrow = what happened</div>
+    <div class="bz"><b>⭐ 3 TAKEAWAYS</b> <span class="lb">3 lines</span><br><span class="ink">1. Moment of inertia = how far the mass sits from the axis.<br>2. Left alone, a real body ends up spinning about its biggest-inertia axis.<br>3. Explorer 1 was a pencil spun the wrong way. Sputnik 1 was a ball.</span></div>
+    <div class="bz" style="border-color:var(--green); background:#f2fff7"><b>🧠 SUMMARY · video + PDF closed</b> <span class="lb">3 lines</span><br>
+      <span class="pencil" style="font-size:12px">1. ______________________________________<br>2. ______________________________________<br>3. ______________________________________</span></div>
+  </div>
+  <div class="bg b"><span class="tag">❓ RIGHT PAGE · CORNELL</span>
+    <div class="hdr"><span>CUES (questions)</span><span>NOTES (keywords)</span></div>
+    <div style="display:flex; height:6.5in">
+      <div style="width:37%; border-right:3px solid var(--blue); padding-right:8px" class="ink"><p class="q">What does torque-free mean?</p><p class="q">What is moment of inertia?</p><p class="q">Biggest axis for a sphere? A rod? A disk?</p><p class="q">The stable-spin rule?</p><p class="q">How was Explorer 1 meant to spin?</p><p class="q">What happened instead, and why?</p><p class="q">Why didn't Sputnik 1 care?</p><p class="q">So what shape should a spinning satellite be?</p><p class="q"><span class="hl b">? why only the maximum axis</span></p></div>
+      <div style="flex:1; padding-left:10px" class="ink"><div style="margin-bottom:5px"><span class="hl y">torque-free</span> = no outside twist acting on the body</div><div style="margin-bottom:5px"><span class="hl y">moment of inertia</span> = how hard a body is to spin about an axis · big when the mass is <span class="hl g">far from that axis</span></div><div style="margin-bottom:5px">sphere: the same about every axis · no favorite</div><div style="margin-bottom:5px">cylinder (rod): <span class="hl k">maximum</span> about any axis across it · minimum about its own long axis</div><div style="margin-bottom:5px">disk: maximum about the axis through its face</div><div style="margin-bottom:5px">rule: with no outside torque, a body spins stably only about its axis of <span class="hl y">maximum moment of inertia</span></div><div style="margin-bottom:5px"><span class="hl y">Explorer 1</span> (USA, 1958): pencil shape, meant to spin about its long axis → <span class="hl o">tumbled</span></div><div style="margin-bottom:5px"><span class="hl y">Sputnik 1</span> (USSR, 1957): sphere → no preferred axis, nothing to go wrong</div><div style="margin-bottom:5px">lesson: spinning satellites are built like <span class="hl g">drums</span>, not pencils</div></div>
+    </div>
+  </div>
+</div></div><div class="page"><div class="top"><div class="badge">SEC 6 · LEC 1 · TEACH</div><h1>A thermostat for <span>pointing</span></h1></div><div class="sub">Simple story first, then the official names, then how it actually works with numbers you can check.</div>
+<div class="eli"><b style="font-size:14px">🧒 Like you're 5</b><br>
+A spacecraft has two different problems: where it <i>is</i> (its orbit) and which way it <i>faces</i> (its <b>attitude</b>). The dish has to face Earth and the panels have to face the Sun, and nothing in space holds it steady. So it works like the thermostat in your house. A thermostat feels the temperature, compares it with what you asked for and switches the heater. The spacecraft <b>looks</b> at the stars to see which way it is facing, <b>compares</b> that with where it should face, and <b>nudges</b> itself with a small twist. Then it looks again. Forever. That loop is the whole system.<br>
+The second half is about spinning. Toss a coin spinning flat like a frisbee and it stays steady. Toss a pencil spinning around its length and it soon starts to wobble and ends up tumbling end over end. Things like to spin the "fat" way, with their weight as far from the spin line as possible. The first American satellite was a pencil spun around its length. Within hours it was tumbling. The first Soviet one was a ball, which has no fat way, so nothing could go wrong.</div>
+<div class="two">
+<div class="card" style="padding:9px 13px"><h3>🏷 The official names (name first, then what it means)</h3>
+<ul class="names" style="font-size:10.6px">
+<li><b>Attitude</b>: the orientation of a spacecraft relative to a reference frame. <b>ADCS</b>, attitude determination and control system (also <b>AOCS</b> when orbit control is included).</li>
+<li><b>Roll, pitch, yaw</b>: rotations about the three body axes. Together they are a set of <b>Euler angles</b>.</li>
+<li><b>Reference frame</b>: what you measure against. An <b>inertial frame</b> is fixed to the distant stars. The <b>orbital frame</b> (LVLH, local vertical / local horizontal) turns with the orbit: one axis to the planet, one along the track, one across. The slide's picture is the orbital frame. <b>Nadir</b>: straight down to the planet.</li>
+<li><b>Attitude determination</b> (measuring) and <b>attitude control</b> (correcting). <b>Attitude error</b>: measured minus wanted.</li>
+<li><b>Closed-loop control</b> (feedback control). The rule the computer uses is the <b>control law</b>.</li>
+<li><b>Sensor</b> and <b>actuator</b>: the parts that measure and the parts that push. Details next lecture.</li>
+<li><b>Torque</b> (moment): force × lever arm, in newton-metres. The turning version of force.</li>
+<li><b>Pointing accuracy</b> (how close to the target) and <b>pointing stability</b> (how steady). <b>Jitter</b>: fast pointing vibration. <b>Arcsecond</b>: 1/3600 of a degree.</li>
+<li><b>Moment of inertia, I</b>: the turning version of mass. <b>Principal axes</b>: the <b>major axis</b> (maximum I), <b>minor axis</b> (minimum), and the <b>intermediate axis</b>.</li>
+<li><b>Angular momentum, L</b> = I × spin rate. Conserved when no torque acts.</li>
+<li><b>Torque-free motion</b>. The <b>major-axis rule</b>. <b>Flat spin</b>: tumbling about the major axis. <b>Spin stabilization</b> versus <b>three-axis stabilization</b>.</li>
+</ul></div>
+<div class="card" style="padding:9px 13px"><h3>🛠 How it actually works</h3>
+<table class="mech" style="font-size:10.1px"><tr><th style="width:70px">Step</th><th>The mechanism, with numbers</th></tr>
+<tr><td><b>1 · Torque</b></td><td>Torque = force × lever arm. Angular speed-up = torque ÷ moment of inertia, the twin of a = F ÷ m.</td></tr>
+<tr><td><b>2 · One turn of the loop</b></td><td>A spacecraft with I = 100 kg·m² is 1° off target. Its wheel can twist with 0.05 N·m. Speed-up = 0.05 ÷ 100 = 0.0005 rad/s². Twist one way for 6 s, the other way for 6 s: 1° corrected in about <b>12 seconds</b>. Measure again.</td></tr>
+<tr><td><b>3 · Jitter</b></td><td>Wheels are never perfectly balanced, pumps hum, panels creak as they warm. The result is a fast tremble on top of the slow correction. Hubble holds <b>0.007 arcseconds</b>: the width of a hair seen from 3 km.</td></tr>
+<tr><td><b>4 · Moment of inertia</b></td><td>I = sum of (mass × distance from the axis²). A 14 kg pencil 2 m long and 16 cm wide: about its long axis ½MR² = <b>0.044</b>; about an axis across its middle <b>4.9</b> kg·m². 110 times bigger, because the ends are a metre from that axis.</td></tr>
+<tr><td><b>5 · What is kept</b></td><td>With no outside torque, angular momentum L = I × spin rate cannot change. The spin <i>energy</i> is L² ÷ (2 × I): for the same L, a bigger I means less energy.</td></tr>
+<tr><td><b>6 · The leak</b></td><td>Real spacecraft are not rigid. Antennas flex, fuel sloshes, and each wobble turns a little spin energy into heat. L stays, energy falls, so the body slides toward the lowest-energy spin: about the <b>biggest</b> I.</td></tr>
+<tr><td><b>7 · Explorer 1</b></td><td>Spun at 750 turns a minute about its long axis: 135 joules. Its four whip antennas flexed. After the slide: 750 ÷ 110 ≈ <b>7 turns a minute</b>, end over end, with about 1 joule. The other 99% went into bending wire.</td></tr>
+<tr><td><b>8 · The fix</b></td><td>Make the spin axis the fat one: build spinning satellites as squat drums. Or don't spin at all and run the loop on three axes.</td></tr></table></div>
+</div></div><div class="page"><div class="top"><div class="badge">SEC 6 · LEC 1 · FACT CHECK</div><h1>Right conclusions, <span>shaky reasons</span></h1></div><div class="sub">Where the instructor was wrong or loose, the caption errors, and the question a friend would ask.</div>
+<div class="two">
+<div><div class="card" style="padding:8px 13px;border-color:var(--orange)"><h3>⛔ Wrong, and worth getting right</h3>
+<ul class="r" style="font-size:10.7px">
+<li><b>"Moment of inertia is the amount of mass in one direction."</b> It is about how far the mass is from the spin axis. Along a pencil's length the mass hugs the axis, so that moment is small. Across the middle the ends are far away, so it is large. His conclusions for all three shapes are right; the reason he gives is not.</li>
+<li><b>"Explorer 1 was completely unstable… difficult to recover data."</b> It did tumble, and nobody expected it. But it kept working for four months and made the first great discovery of the space age: the radiation belts around the Earth.</li>
+<li><b>"The Russians understood this… the US goes for marketing style."</b> Nobody understood it yet. Explorer 1's tumble is how engineers <i>learned</i> the rule. Its pencil shape came from the rocket: the satellite was the top stage's casing with instruments in the nose.</li>
+<li><b>"The sphere would move completely random."</b> A sphere keeps whatever spin it starts with. It has no preferred axis, so it is neither stable nor unstable. Sputnik 1 did not care because its four antennas radiated in every direction, like the omnidirectional antennas in Section 5.</li></ul></div>
+<div class="card" style="margin-top:9px;padding:8px 13px"><h3>▲ Looser points</h3>
+<ul class="r" style="font-size:10.6px">
+<li><b>The rule needs a leak.</b> For a perfectly rigid body, spin about the smallest axis is stable too. Only the in-between axis is unstable. Try it: flip your phone over a bed about each of its three axes. One of them always wobbles.</li>
+<li><b>"The sensors determine the difference."</b> Sensors only measure. The computer compares with the target.</li>
+<li><b>Jitter "cannot really be corrected".</b> It can be reduced a great deal with balanced wheels and vibration isolators. It can't be made zero.</li>
+<li><b>"An inertial reference frame."</b> The slide's axes (to the planet, along the velocity) turn with the orbit. That is the orbital frame. Both are used.</li></ul></div></div>
+<div><div class="card" style="padding:8px 13px"><h3>🔎 Caption errors</h3>
+<table class="t" style="font-size:10px"><tr><th>Captions said</th><th>Instructor meant</th></tr>
+<tr><td>"A.D.C. s"</td><td><b>ADCS</b></td></tr>
+<tr><td>"odorant itself"</td><td><b>orient</b> itself</td></tr>
+<tr><td>"attitude areas", "area of altitude"</td><td>attitude <b>errors</b></td></tr>
+<tr><td>"commands some talks", "actuating talks"</td><td>commands some <b>torques</b></td></tr>
+<tr><td>"de-activate is able"</td><td><b>the actuator</b> is able</td></tr>
+<tr><td>"the attitude cheater", "altitude data"</td><td>the attitude <b>jitter</b></td></tr>
+<tr><td>"talk free rotational dynamics"</td><td><b>torque-free</b> rotational dynamics</td></tr>
+<tr><td>"spin Stavely", "staple all spin"</td><td>spin <b>stably</b>, <b>stable</b> spin</td></tr>
+<tr><td>"momentum of inertia", "moment to finish"</td><td><b>moment of inertia</b></td></tr>
+<tr><td>"Selinda" · "the bass playing"</td><td><b>cylinder</b> · the <b>base plane</b></td></tr>
+<tr><td>"this poor Nick", "this public"</td><td><b>Sputnik</b></td></tr>
+<tr><td>"Ferric spacecraft"</td><td><b>spherical</b> spacecraft</td></tr>
+<tr><td>"the exposure from 1958"</td><td>the <b>Explorer</b> from 1958</td></tr></table></div>
+<div class="card" style="margin-top:9px;padding:8px 13px"><h3>🗣 Say it out loud</h3>
+<div style="font-size:11.5px;line-height:1.5"><b>Friend:</b> "How does a spacecraft know which way it's facing, and how does it turn with nothing to push on?"<br>
+<b>You:</b> It runs a loop, like a thermostat. Sensors look at the stars or the Sun to measure which way it points. The computer compares that with where it should point. Then it twists itself a little, usually by spinning a wheel inside, and checks again. It never stops, and the pointing always trembles a tiny bit.<br>
+<b>Friend:</b> "Why not just spin it like a top?"<br>
+<b>You:</b> You can, but only the fat way. Things end up spinning with their weight as far from the axis as possible. America's first satellite was a pencil spun lengthwise and it was tumbling within hours.</div></div></div>
+</div></div><div class="page"><div class="top"><div class="badge">SEC 6 · LEC 1 · VOCABULARY</div><h1>Every word used, <span>in plain English</span></h1></div><div class="sub">40 entries. "Repeat" = you have met it before.</div>
+<div class="gl2" style="font-size:10.3px;line-height:1.35"><div><b>Attitude</b> — which way a spacecraft is pointing. Not its height: that is altitude. <i>Repeat.</i></div><div><b>Orientation</b> — the direction something faces.</div><div><b>ADCS</b> — attitude determination and control system: the parts that measure pointing and correct it.</div><div><b>Axis / axes</b> — an imaginary line something turns around. Three of them, at right angles.</div><div><b>Roll / pitch / yaw</b> — turning about the direction of travel / about the across-orbit axis / about the line to the planet. <i>Wings tilt / nose up-down / nose left-right.</i></div><div><b>Central body</b> — the planet being orbited. <i>Repeat.</i></div><div><b>Velocity direction</b> — the way the spacecraft is travelling.</div><div><b>Angle of attack</b> — aircraft term: how far the nose points above the airflow. A pitch angle.</div><div><b>Reference frame / inertial frame</b> — the set of directions you measure against / one fixed to the distant stars.</div><div><b>Attitude determination</b> — measuring the orientation.</div><div><b>Attitude control</b> — turning the spacecraft back to the wanted orientation.</div><div><b>Closed feedback loop</b> — a system that measures its own result and keeps correcting it. <i>A thermostat.</i></div><div><b>Dynamics</b> — how something moves under the pushes and twists on it.</div><div><b>Sensor</b> — a device that measures: a star camera, a Sun detector, a spin meter. <i>Repeat; next lecture.</i></div><div><b>On-board computer</b> — the spacecraft&#x27;s processor. Compares measured with wanted.</div><div><b>Attitude error</b> — the difference between where it points and where it should.</div><div><b>Command</b> — an instruction sent to a device.</div><div><b>Actuator</b> — a device that pushes or twists: a wheel, a thruster, a magnetic coil. <i>Next lecture.</i></div><div><b>Torque</b> — a twisting push: force × lever arm. Captions write &#x27;talk&#x27;. <i>A wrench on a bolt.</i></div><div><b>Jitter</b> — fast, small trembling of the pointing direction.</div><div><b>Phenomenon / phenomena</b> — something that happens and can be observed.</div><div><b>Imprecision</b> — not being exact.</div><div><b>Requirement / constraint</b> — what the mission needs / a limit that must not be broken. <i>Repeat.</i></div><div><b>Torque-free</b> — with no outside twist acting.</div><div><b>Rotational dynamics</b> — the physics of spinning things.</div><div><b>Spin</b> — to turn about an axis through yourself.</div><div><b>Stable / unstable</b> — returns after a nudge / runs away after a nudge.</div><div><b>Moment of inertia</b> — how hard a body is to spin about a given axis. Depends on how far its mass is from that axis. <i>The turning version of mass.</i></div><div><b>Maximum moment of inertia axis</b> — the axis the mass is, on average, farthest from. <i>The &#x27;fat way&#x27; to spin.</i></div><div><b>Homogeneous</b> — the same all the way through. <i>Repeat.</i></div><div><b>Rigid</b> — does not bend or flex.</div><div><b>Sphere / cylinder / disk</b> — ball / tube or rod / flat round plate.</div><div><b>Center of mass</b> — the balance point of a body.</div><div><b>Mass distribution</b> — where the mass is placed inside a body.</div><div><b>Plane</b> — a flat sheet. <i>Repeat.</i></div><div><b>Angular momentum</b> — amount of spin: moment of inertia × spin rate. Kept unless a torque acts. <i>A skater pulling in her arms.</i></div><div><b>Flat spin</b> — a tumble about the biggest-inertia axis.</div><div><b>Explorer 1</b> — the first US satellite, 1958. A 2 m pencil that found the radiation belts. <i>Who&#x27;s Who.</i></div><div><b>Sputnik 1</b> — the first satellite of all, USSR, 1957. A 58 cm ball that beeped for three weeks. <i>Who&#x27;s Who.</i></div><div><b>Radiation belts (Van Allen belts)</b> — rings of trapped high-energy particles around the Earth. <i>Who&#x27;s Who.</i></div></div></div></body></html>

@@ -30,7 +30,7 @@ track for now — see root `CLAUDE.md` § Current focus.
 | 3 | Orbital Mechanics | 3 | 34 min | `sections/03-orbital-mechanics.md` | [ ] |
 | 4 | Space Propulsion Systems | 5 | 27 min | `sections/04-space-propulsion.md` | [x] 2026-11-12, 4 lectures (the panel's 5th item is unconfirmed, probably a quiz) |
 | 5 | Communications from Space to Earth | 3 | 44 min | `sections/05-communications.md` | [x] 2026-11-12, 3 lectures |
-| 6 | Attitude Determination and Control | 4 | 36 min | `sections/06-attitude-determination-and-control.md` | [ ] |
+| 6 | Attitude Determination and Control | 4 | 36 min | `sections/06-attitude-determination-and-control.md` | [ ] 1 of 4 lectures (2026-11-12) |
 | 7 | Space Power Systems | 4 | 33 min | `sections/07-space-power-systems.md` | [ ] |
 | 8+ | *(not visible in the course panel yet — add when known)* | | | | |
 
@@ -198,3 +198,26 @@ the Done column and date it when a section's quiz is graded.
   the student now: Section 5 map page + talk, Section 4 map page +
   talk, Section 1 talk, Section 3 conversation test. Nothing has been
   explained back since Section 3; flagged to the student.
+
+- **2026-11-12 (after midnight push)** — **DEADLINE disclosed by the
+  student: they must understand the rest of the course by the night of
+  2026-11-13.** They are sending lectures while listening and said "we
+  will review all this later" about the outstanding talk runs. What the
+  deadline event is (call, test, presentation) is not yet known; asked.
+  **Lean mode from here until the deadline:** lecture PDFs are spread(s)
+  + TEACH + FACT CHECK (with a short say-it-out-loud box) + VOCABULARY
+  only; the copy-into-notes page and concept-card pages are paused, as
+  is Who's Who. App scenes are still added per lecture.
+  S6 Lec 1 "Attitude: definitions and physics" (16:51): transcript + 5
+  slides. PDF `feedback/S6-L1-attitude-definitions-and-physics-v1.pdf`
+  (5 pp, two spreads: attitude + loop + jitter; spin stability).
+  Instructor wrong/loose: moment of inertia described as "amount of
+  mass in a direction" (it is distance from the axis; his conclusions
+  are right); Explorer 1 called a failure (it tumbled but worked four
+  months and found the radiation belts); "Russians understood it, US
+  marketing style" (nobody knew the rule; Explorer's tumble taught it);
+  sphere "moves randomly"; major-axis rule stated without the energy
+  loss it depends on; sensors said to compute the error; jitter "cannot
+  be corrected"; slide says inertial frame but draws the orbital frame.
+  App v16: scene 14 "Point, check, nudge" (14 MC, 4 explain, 12 cards,
+  23 terms, 4 concept entries, 3 formulas).
