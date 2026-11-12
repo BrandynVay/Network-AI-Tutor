@@ -1,0 +1,276 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Interplanetary transfers</title>
+<style>
+@page { size: letter landscape; margin: 0; }
+* { box-sizing:border-box; }
+:root { --navy:#0b1437; --orange:#ff6b1a; --blue:#1e7cff; --green:#19b36b; --pink:#e5338f; --purple:#7b3fe4; --yellow:#ffd23f; --paper:#fffdf5; }
+body { margin:0; font-family: Verdana, "DejaVu Sans", Arial, sans-serif; color:#111; }
+.page { width:11in; height:8.5in; padding:0.35in 0.45in; page-break-after:always; position:relative; background:#fff; overflow:hidden; }
+.page:last-child { page-break-after:auto; }
+.top { display:flex; align-items:center; gap:14px; margin-bottom:6px; }
+.badge { background:var(--navy); color:#fff; font-weight:900; font-size:11px; letter-spacing:2px; padding:6px 12px; border-radius:999px; }
+h1 { font-size:22px; margin:0; font-weight:900; }
+h1 span { color:var(--orange); }
+.sub { color:#555; font-size:11.5px; margin-bottom:8px; }
+.spread { display:flex; gap:16px; height:6.9in; }
+.np { flex:1; border:3px solid #111; border-radius:14px; background:var(--paper); position:relative; padding:12px 14px; font-size:12px;
+  background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 23px, #e3e8f2 23px, #e3e8f2 24px); background-position:0 40px; }
+.np.o{border-color:var(--orange);} .np.b{border-color:var(--blue);}
+.tag { position:absolute; top:-14px; left:14px; color:#fff; font-weight:900; font-size:12px; padding:4px 12px; border-radius:999px; letter-spacing:1px; }
+.o .tag{background:var(--orange);} .b .tag{background:var(--blue);}
+.hdr { font-weight:900; font-size:13px; border-bottom:3px solid #111; margin:4px 0 8px; padding-bottom:5px; display:flex; justify-content:space-between; }
+.ink { color:#1a3fb0; font-family:"Comic Sans MS","Segoe Print","Bradley Hand",cursive; }
+.pencil { color:#8a8a8a; font-family:"Comic Sans MS","Segoe Print",cursive; }
+.cornell { display:flex; height:calc(100% - 44px); }
+.cue { width:36%; border-right:3px solid var(--blue); padding-right:8px; }
+.notes { flex:1; padding-left:12px; }
+.summary { position:absolute; left:12px; right:12px; bottom:12px; height:108px; border:3px solid var(--green); border-radius:10px; padding:6px 10px; background:#f2fff7; }
+.summary b { color:var(--green); font-size:12px; }
+.q { margin:0 0 10px; line-height:1.25; }
+.hl { padding:0 3px; border-radius:3px; }
+.hl.y{background:#fff176;} .hl.k{background:#ffb3d9;} .hl.b{background:#9fd3ff;} .hl.g{background:#a8f0c6;} .hl.o{background:#ffcf9e;}
+.banner { border:2.5px solid #111; border-radius:10px; padding:3px 10px; font-weight:900; font-size:13px; display:inline-block; background:#fff176; box-shadow:3px 3px 0 #111; }
+.mini { border:2px solid #111; border-radius:8px; padding:5px 8px; background:#fff; font-size:11px; margin-top:6px; box-shadow:2px 2px 0 #111; }
+table.t { border-collapse:collapse; width:100%; font-size:11px; }
+table.t th, table.t td { border:2px solid #111; padding:3px 5px; text-align:left; vertical-align:top; }
+table.t th { background:var(--navy); color:#fff; }
+.card { border:3px solid #111; border-radius:14px; padding:12px 16px; font-size:12.5px; background:var(--paper); }
+.card h3 { margin:0 0 6px; font-size:15px; font-weight:900; }
+.two { display:flex; gap:16px; }
+.two > div { flex:1; }
+ul.r { margin:4px 0 0; padding-left:18px; line-height:1.45; font-size:12px; }
+.ok { color:var(--green); font-weight:900; } .fix { color:var(--orange); font-weight:900; }
+.callout { background:var(--yellow); border:3px solid #111; border-radius:12px; padding:10px 14px; font-weight:700; font-size:12.5px; margin-top:12px; }
+</style>
+<style>
+.sm { width:3.6in; height:5.4in; border:3px solid #111; border-radius:10px; background:var(--paper); position:relative; padding:8px 9px; font-size:9.5px;
+  background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 15px, #dfe5ef 15px, #dfe5ef 16px); background-position:0 26px; }
+.sm.o{border-color:var(--orange);} .sm.b{border-color:var(--blue);}
+.sm .tag { font-size:10px; padding:3px 9px; top:-12px; left:10px; }
+.sm .hdr { font-size:10px; margin:2px 0 5px; padding-bottom:3px; border-width:2px; }
+.zone { border:2px dashed #999; border-radius:6px; padding:4px 6px; margin-top:5px; font-size:9px; color:#333; background:rgba(255,255,255,.75); }
+.zone b { color:#111; }
+.lines { color:#b0582c; font-weight:700; font-size:8.5px; }
+.smwrap { display:flex; gap:10px; justify-content:center; }
+</style>
+
+<style>
+.bg { width:4.95in; height:7.35in; border:3px solid #111; border-radius:12px; background:var(--paper); position:relative; padding:12px 14px; font-size:12px;
+  background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 21px, #dfe5ef 21px, #dfe5ef 22px); background-position:0 44px; }
+.bg.o{border-color:var(--orange);} .bg.b{border-color:var(--blue);}
+.bg .tag { position:absolute; top:-14px; left:14px; color:#fff; font-weight:900; font-size:12px; padding:4px 12px; border-radius:999px; letter-spacing:1px; }
+.bg.o .tag{background:var(--orange);} .bg.b .tag{background:var(--blue);}
+.bg .hdr { font-weight:900; font-size:13px; border-bottom:3px solid #111; margin:4px 0 8px; padding-bottom:5px; display:flex; justify-content:space-between; }
+.bg .ink { font-size:12px; line-height:1.45; }
+.bg .q { margin:0 0 10px; line-height:1.3; }
+.bz { border:2px dashed #999; border-radius:8px; padding:6px 9px; margin-top:8px; font-size:11.5px; background:rgba(255,255,255,.8); }
+.bz b { color:#111; }
+.lb { color:#b0582c; font-weight:700; font-size:10px; }
+</style>
+<style>
+.gl2{columns:2;column-gap:22px;font-size:10.6px;line-height:1.38}
+.gl2 div{break-inside:avoid;margin-bottom:4px}
+.gl2 i{color:#555}
+.mech{border-collapse:collapse;width:100%;font-size:10.4px}
+.mech th,.mech td{border:1.5px solid #111;padding:3px 6px;text-align:left;vertical-align:top}
+.mech th{background:#0b1437;color:#fff}
+.eli{background:#fff8d6;border:3px solid #111;border-radius:14px;padding:9px 15px;margin-bottom:10px;font-size:12.2px;line-height:1.48}
+.names{font-size:11px;line-height:1.45;margin:0;padding-left:16px}
+.nb{width:4.3in;height:6.4in;border:3px solid #111;border-radius:10px;background:#fff;position:relative;padding:0 10px;overflow:hidden;flex:none}
+.nbh{height:.42in;display:flex;justify-content:space-between;align-items:flex-end;padding-bottom:4px;font-size:9.5px;font-weight:900;letter-spacing:.5px;color:#333;border-bottom:2px solid #111}
+.nbh span.pg{border:2px solid #111;border-radius:6px;padding:1px 7px;font-size:12px}
+.ln{height:.262in;border-bottom:1px solid #c9d1de;display:flex;align-items:flex-end;padding-bottom:2px;font-size:12.6px;white-space:nowrap;color:#222}
+.ln .s{flex:none;width:42px;font-weight:900;font-size:11.5px;color:#000}
+.ln.n{font-weight:900;font-size:12.4px;color:#000}
+.ln.n .nmbox{border:2px solid #111;border-radius:5px;padding:0 5px;margin-left:-3px;background:#eee}
+.ln.n2{font-weight:700}
+.ln .num{flex:none;width:14px;font-size:7.5px;color:#9aa3b2;margin-left:-8px}
+.ln.gap{background:repeating-linear-gradient(90deg,#999 0 6px,transparent 6px 12px) center/100% 1.5px no-repeat}
+.route{font-size:11px;line-height:1.45}
+.route h3{margin:0 0 3px;font-size:13px}
+.route .copy{font-family:"DejaVu Sans Mono",monospace;font-size:10.2px;background:#f4f4f4;border:1.5px dashed #777;border-radius:6px;padding:5px 8px;margin:3px 0 8px;white-space:pre-wrap;line-height:1.5}
+</style></head><body><div class="page"><div class="top"><div class="badge">SEC 5 · LEC 2 · ATMOSPHERE + FREQUENCY BANDS</div><h1>A wall with <span>two windows</span></h1></div><div class="sub">Left = your left notebook page. Right = your right page. Copy the drawing in pencil first, then the cues and notes. The summary box stays empty until the video and this PDF are closed.</div>
+<div style="display:flex; gap:18px; justify-content:center">
+  <div class="bg o"><span class="tag">🖍 LEFT PAGE · DRAW</span>
+    <div class="hdr"><span>S5 / L2 — Atmosphere + bands</span><span>date · pg __</span></div>
+    <svg width="100%" height="428" viewBox="0 0 330 412" style="display:block" font-family="Verdana, sans-serif">
+<defs><marker id="ar" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#111"/></marker>
+<pattern id="hat" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="5" stroke="#111" stroke-width="1"/></pattern></defs>
+<text x="8" y="13" font-size="10" font-weight="bold" fill="#111">1 · THE AIR IS A WALL WITH TWO WINDOWS</text>
+<g font-size="8" font-weight="bold" fill="#111" text-anchor="middle"><text x="52" y="40">GAMMA · X-RAY · UV</text><text x="154" y="40">INFRARED</text><text x="297" y="40">LONG RADIO</text></g>
+<rect x="10" y="46" width="85" height="48" fill="url(#hat)" stroke="#111" stroke-width="1.6"/>
+<rect x="118" y="46" width="72" height="48" fill="url(#hat)" stroke="#111" stroke-width="1.6"/>
+<rect x="275" y="46" width="45" height="48" fill="url(#hat)" stroke="#111" stroke-width="1.6"/>
+<line x1="95" y1="46" x2="118" y2="46" stroke="#111" stroke-width="0.8" stroke-dasharray="2 2"/><line x1="95" y1="94" x2="118" y2="94" stroke="#111" stroke-width="0.8" stroke-dasharray="2 2"/>
+<line x1="190" y1="46" x2="275" y2="46" stroke="#111" stroke-width="0.8" stroke-dasharray="2 2"/><line x1="190" y1="94" x2="275" y2="94" stroke="#111" stroke-width="0.8" stroke-dasharray="2 2"/>
+<line x1="106" y1="30" x2="106" y2="106" stroke="#111" stroke-width="1.6" marker-end="url(#ar)"/>
+<line x1="218" y1="30" x2="218" y2="106" stroke="#111" stroke-width="1.6" marker-end="url(#ar)"/><line x1="246" y1="30" x2="246" y2="106" stroke="#111" stroke-width="1.6" marker-end="url(#ar)"/>
+<g font-size="7.5" fill="#111" text-anchor="middle"><text x="52" y="106">absorbed up high</text><text x="154" y="106">absorbed</text><text x="297" y="106">bounced back</text></g>
+<g font-size="8.5" fill="#111" text-anchor="middle"><text x="106" y="121" font-weight="bold">VISIBLE</text><text x="106" y="132">eyes</text>
+<text x="232" y="121" font-weight="bold">RADIO WINDOW</text><text x="232" y="132">1 cm – 10 m · all space links</text></g>
+<text x="8" y="149" font-size="8" fill="#111">← short wavelength · high frequency · high energy</text>
+<text x="322" y="160" text-anchor="end" font-size="8" fill="#111">long wavelength · low frequency · low energy →</text>
+<line x1="8" y1="168" x2="322" y2="168" stroke="#bbb" stroke-width="1"/>
+<text x="8" y="183" font-size="10" font-weight="bold" fill="#111">2 · WHY: energy per packet = h × f</text>
+<g font-size="8.5" fill="#111">
+<text x="8" y="199"><tspan font-weight="bold">gamma, X, UV</tspan>  hit hard: rip electrons off air atoms → absorbed</text>
+<text x="8" y="213"><tspan font-weight="bold">visible</tspan>  too weak to break air, too strong to shake it → passes</text>
+<text x="8" y="227"><tspan font-weight="bold">infrared</tspan>  just right to shake water + CO₂ molecules → absorbed</text>
+<text x="8" y="241"><tspan font-weight="bold">radio</tspan>  far too gentle to do anything → passes</text>
+<text x="8" y="255"><tspan font-weight="bold">long radio</tspan>  the ionosphere's electrons bounce it back</text>
+</g>
+<text x="165" y="273" text-anchor="middle" font-size="9" font-weight="bold" fill="#111">higher frequency = more energy in each packet (photon)</text>
+<line x1="8" y1="282" x2="322" y2="282" stroke="#bbb" stroke-width="1"/>
+<text x="8" y="297" font-size="10" font-weight="bold" fill="#111">3 · BAND LETTERS (edges in GHz)</text>
+<text x="322" y="310" text-anchor="end" font-size="7.5" fill="#111">frequency rises →</text>
+<rect x="10" y="318" width="44" height="24" fill="#fff" stroke="#111" stroke-width="1.5"/><text x="32" y="334" text-anchor="middle" font-size="10" font-weight="bold" fill="#111">L</text><text x="10" y="352" text-anchor="middle" font-size="7.5" fill="#111">1</text><text x="32" y="365" text-anchor="middle" font-size="7.5" fill="#111">GPS</text><rect x="54" y="318" width="44" height="24" fill="#fff" stroke="#111" stroke-width="1.5"/><text x="76" y="334" text-anchor="middle" font-size="10" font-weight="bold" fill="#111">S</text><text x="54" y="352" text-anchor="middle" font-size="7.5" fill="#111">2</text><text x="76" y="365" text-anchor="middle" font-size="7.5" fill="#111">Wi-Fi 2.4</text><text x="76" y="375" text-anchor="middle" font-size="7.5" fill="#111">spacecraft</text><rect x="98" y="318" width="44" height="24" fill="#fff" stroke="#111" stroke-width="1.5"/><text x="120" y="334" text-anchor="middle" font-size="10" font-weight="bold" fill="#111">C</text><text x="98" y="352" text-anchor="middle" font-size="7.5" fill="#111">4</text><text x="120" y="365" text-anchor="middle" font-size="7.5" fill="#111">Wi-Fi 5</text><rect x="142" y="318" width="44" height="24" fill="#fff" stroke="#111" stroke-width="1.5"/><text x="164" y="334" text-anchor="middle" font-size="10" font-weight="bold" fill="#111">X</text><text x="142" y="352" text-anchor="middle" font-size="7.5" fill="#111">8</text><text x="164" y="365" text-anchor="middle" font-size="7.5" fill="#111">deep</text><text x="164" y="375" text-anchor="middle" font-size="7.5" fill="#111">space</text><rect x="186" y="318" width="44" height="24" fill="#fff" stroke="#111" stroke-width="1.5"/><text x="208" y="334" text-anchor="middle" font-size="10" font-weight="bold" fill="#111">Ku</text><text x="186" y="352" text-anchor="middle" font-size="7.5" fill="#111">12</text><text x="208" y="365" text-anchor="middle" font-size="7.5" fill="#111">sat TV</text><text x="208" y="375" text-anchor="middle" font-size="7.5" fill="#111">Starlink</text><rect x="230" y="318" width="44" height="24" fill="#fff" stroke="#111" stroke-width="1.5"/><text x="252" y="334" text-anchor="middle" font-size="10" font-weight="bold" fill="#111">K</text><text x="230" y="352" text-anchor="middle" font-size="7.5" fill="#111">18</text><rect x="274" y="318" width="44" height="24" fill="#fff" stroke="#111" stroke-width="1.5"/><text x="296" y="334" text-anchor="middle" font-size="10" font-weight="bold" fill="#111">Ka</text><text x="274" y="352" text-anchor="middle" font-size="7.5" fill="#111">27</text><text x="296" y="365" text-anchor="middle" font-size="7.5" fill="#111">deep</text><text x="296" y="375" text-anchor="middle" font-size="7.5" fill="#111">space</text><text x="318" y="352" text-anchor="middle" font-size="7.5" fill="#111">40</text>
+<text x="165" y="392" text-anchor="middle" font-size="8.5" font-weight="bold" fill="#111">UPLINK = Earth → space · DOWNLINK = space → Earth</text>
+<text x="165" y="405" text-anchor="middle" font-size="8.5" fill="#111">different frequencies, so they don't drown each other</text>
+</svg><div class="bz" style="margin-top:4px; font-size:10.5px"><b>✏️ PENCIL KEY</b> · hatched block = the air blocks it · gap + arrow = it gets through · boxes = band letters, numbers = GHz at each edge</div>
+    <div class="bz"><b>⭐ 3 TAKEAWAYS</b> <span class="lb">3 lines</span><br><span class="ink">1. The air is a wall with two windows: visible light and radio.<br>2. Higher frequency = more energy per photon. Radio is too gentle to absorb.<br>3. Spacecraft talk in the radio window: S, X, Ka. Uplink and downlink differ.</span></div>
+    <div class="bz" style="border-color:var(--green); background:#f2fff7"><b>🧠 SUMMARY · video + PDF closed</b> <span class="lb">3 lines</span><br>
+      <span class="pencil" style="font-size:12px">1. ______________________________________<br>2. ______________________________________<br>3. ______________________________________</span></div>
+  </div>
+  <div class="bg b"><span class="tag">❓ RIGHT PAGE · CORNELL</span>
+    <div class="hdr"><span>CUES (questions)</span><span>NOTES (keywords)</span></div>
+    <div style="display:flex; height:6.5in">
+      <div style="width:37%; border-right:3px solid var(--blue); padding-right:8px" class="ink"><p class="q">What is atmospheric opacity?</p><p class="q">Which waves does the air block?</p><p class="q">Which two get through?</p><p class="q">Why are gamma, X and UV stopped?</p><p class="q">Why can our eyes use visible light?</p><p class="q">What stops infrared? Long radio?</p><p class="q">Where do spacecraft links sit?</p><p class="q">The frequency-band names, low to high?</p><p class="q">Satellite letter bands in order?</p><p class="q">Uplink vs downlink?</p><p class="q"><span class="hl b">? why are space telescopes in space</span></p></div>
+      <div style="flex:1; padding-left:10px" class="ink"><div style="margin-bottom:5px"><span class="hl y">atmospheric opacity</span> = how much the air blocks at each wavelength (0% clear, 100% blocked)</div><div style="margin-bottom:5px">short wavelength = high frequency = <span class="hl y">high energy</span></div><div style="margin-bottom:5px"><span class="hl y">gamma, X-ray, UV</span>: <span class="hl o">blocked</span> by the upper atmosphere · protects us</div><div style="margin-bottom:5px"><span class="hl y">visible light</span>: gets through (a gap) · why eyes use it</div><div style="margin-bottom:5px"><span class="hl y">infrared</span>: mostly absorbed by gases (water, CO₂) → observe from space</div><div style="margin-bottom:5px"><span class="hl y">radio waves</span> <span class="hl k">~1 cm – 10 m</span>: <span class="hl g">get through</span> → telecommunications</div><div style="margin-bottom:5px">long-wavelength radio: blocked (bounced by the ionosphere)</div><div style="margin-bottom:5px">bands: VLF · LF · MF · HF · VHF · UHF · <span class="hl y">SHF</span> · EHF (each 10× the last)</div><div style="margin-bottom:5px">satellites: SHF <span class="hl k">3–30 GHz</span> · letter bands <span class="hl y">L S C X Ku K Ka</span> (1–40 GHz)</div><div style="margin-bottom:5px">deep space: S ~2.1 / 2.3 · <span class="hl y">X</span> 7.2 / 8.4 · Ka 34 / 32 GHz (up / down)</div><div style="margin-bottom:5px"><span class="hl y">uplink</span> = Earth → space · <span class="hl y">downlink</span> = space → Earth</div></div>
+    </div>
+  </div>
+</div></div><div class="page"><div class="top"><div class="badge">SEC 5 · LEC 2 · TEACH</div><h1>Hard hitters get stopped. <span>Radio slips through.</span></h1></div><div class="sub">Simple story first, then the official names, then how it actually works with numbers you can check.</div>
+<div class="eli"><b style="font-size:14px">🧒 Like you're 5</b><br>
+The air around the Earth is a wall with two windows in it. One window lets in ordinary light, the kind your eyes use. The other lets in radio. Everything else gets stopped. The dangerous rays (ultraviolet, X-rays, gamma rays) are soaked up high in the sky, which is what keeps us alive. Heat rays (infrared) are soaked up by the water and carbon dioxide in the air. And very long radio waves bounce off an electric layer near the top, like a ball off a ceiling.<br>
+Why? Light of every kind arrives in tiny packets, and the faster it wiggles, the harder each packet hits. Hard-hitting packets smash into air atoms and are used up. Gentle radio packets slip between them untouched. So if you want to talk to a spacecraft from the ground you <b>must</b> use the radio window. And if you want to see X-rays or infrared from the stars, you have to lift the telescope above the wall. That is why Hubble and Webb are in space.</div>
+<div class="two">
+<div class="card" style="padding:9px 13px"><h3>🏷 The official names (name first, then what it means)</h3>
+<ul class="names" style="font-size:10.8px">
+<li><b>Atmospheric opacity</b> (its opposite is <b>transmittance</b>): the share of radiation the air stops, as a function of wavelength.</li>
+<li><b>Atmospheric window</b>: a wavelength range the air lets through. The <b>optical window</b> (visible light) and the <b>radio window</b> (about 1 cm to 10 m, or 30 GHz down to 30 MHz).</li>
+<li><b>Photon</b>: one packet of electromagnetic energy. <b>Photon energy</b> E = h × f, where h is the <b>Planck constant</b>.</li>
+<li><b>Absorption</b>: a photon giving its energy to an atom or molecule and vanishing. <b>Ionization</b> when it knocks an electron off; <b>molecular vibration</b> when it sets a molecule shaking.</li>
+<li><b>Ionospheric reflection</b>: long radio waves being turned back by the ionosphere's free electrons. The cut-off is the <b>critical frequency</b>, around 10 MHz.</li>
+<li><b>Radio-frequency bands</b> (ITU bands): <b>VLF, LF, MF, HF, VHF, UHF, SHF, EHF</b>. Each covers ten times the frequency of the one before. <b>Microwaves</b> are roughly 1–100 GHz.</li>
+<li><b>Letter bands</b> (IEEE radar bands): <b>L, S, C, X, Ku, K, Ka</b>. Wartime radar code letters, deliberately meaningless. Ku and Ka mean "K-under" and "K-above".</li>
+<li><b>Uplink</b>: Earth to spacecraft. <b>Downlink</b>: spacecraft to Earth.</li>
+<li><b>Deep space</b>, in radio rules: farther than 2 million km from Earth. Its bands are protected because the signals are so faint.</li>
+<li><b>ITU</b>, the International Telecommunication Union: the UN body that decides who may use which frequency. <b>Frequency allocation</b>.</li>
+<li><b>Rain fade</b>: rain and water vapour weakening signals above about 10 GHz.</li>
+</ul></div>
+<div class="card" style="padding:9px 13px"><h3>🛠 How it actually works</h3>
+<table class="mech" style="font-size:10.2px"><tr><th style="width:70px">Step</th><th>The mechanism, with numbers</th></tr>
+<tr><td><b>1 · Photon energy</b></td><td>E = h × f. Handy form: energy in eV = 1,240 ÷ wavelength in nanometres. UV at 250 nm: <b>5 eV</b>. Green light, 550 nm: 2.3 eV. Infrared, 10,000 nm: 0.12 eV. X-band radio, 3.6 cm: <b>0.000035 eV</b>.</td></tr>
+<tr><td><b>2 · Gamma, X, UV</b></td><td>Splitting an oxygen molecule takes about 5 eV; tearing an electron off nitrogen takes 15. These photons have that, so they are used up 50–100 km overhead. That is what makes the ozone layer and the ionosphere (Section 2).</td></tr>
+<tr><td><b>3 · Visible</b></td><td>1.8 to 3.1 eV: not enough to break air molecules, far too much to match their vibrations. Nothing in clean air can take it, so it passes.</td></tr>
+<tr><td><b>4 · Infrared</b></td><td>About 0.1 eV is exactly what sets water and CO₂ molecules bending and stretching. Absorbed. This is the greenhouse effect, and why infrared telescopes fly.</td></tr>
+<tr><td><b>5 · Radio window</b></td><td>Millionths of an eV: too little to excite anything. Transparent from about 30 MHz to 30 GHz. Every spacecraft link lives here. Edges: water vapour absorbs near 22 GHz, oxygen near 60 GHz, and rain hurts above 10 GHz.</td></tr>
+<tr><td><b>6 · Long radio</b></td><td>Below a critical frequency ≈ 9 × √(electrons per m³) hertz, the ionosphere's electrons move fast enough to send the wave back. With 10¹² electrons per m³ that is <b>9 MHz</b>. So shortwave radio skips round the world, and can't reach a spacecraft.</td></tr>
+<tr><td><b>7 · Up ≠ down</b></td><td>Deep-space X-band: uplink 7.2 GHz, downlink 8.4 GHz. If both were the same, the craft's 20 W transmitter would deafen its own receiver, which is listening for a signal a billion billion times weaker.</td></tr>
+<tr><td><b>8 · Why go higher</b></td><td>Same dish, Ka (32 GHz) instead of X (8.4): the wavelength is 3.8 times shorter, so the gain is 3.8² ≈ <b>14 times</b> higher. Price: rain fade and a beam 3.8 times narrower to point.</td></tr></table></div>
+</div></div><div class="page"><div class="top"><div class="badge">SEC 5 · LEC 2 · BANDS + FACT CHECK</div><h1>The names on <span>the dial</span></h1></div><div class="sub">Both naming systems from the slides with what lives in each band, then the caption errors and where the instructor was loose.</div>
+<div class="two" style="margin-bottom:9px">
+<div class="card" style="padding:8px 13px"><h3>📻 The decade bands (each ×10)</h3>
+<table class="mech" style="font-size:10.2px"><tr><th>Band</th><th>Frequency</th><th>Wavelength</th><th>What lives there</th></tr>
+<tr><td><b>VLF</b> very low</td><td>3–30 kHz</td><td>100–10 km</td><td>submarine and maritime signals</td></tr>
+<tr><td><b>LF</b> low</td><td>30–300 kHz</td><td>10–1 km</td><td>old navigation beacons (Loran-C)</td></tr>
+<tr><td><b>MF</b> medium</td><td>0.3–3 MHz</td><td>1 km–100 m</td><td>AM radio</td></tr>
+<tr><td><b>HF</b> high</td><td>3–30 MHz</td><td>100–10 m</td><td>shortwave: bounces off the ionosphere</td></tr>
+<tr><td><b>VHF</b> very high</td><td>30–300 MHz</td><td>10–1 m</td><td>FM radio, TV, aircraft; small satellites</td></tr>
+<tr><td><b>UHF</b> ultra high</td><td>0.3–3 GHz</td><td>1 m–10 cm</td><td>phones, GPS, Wi-Fi 2.4, CubeSats</td></tr>
+<tr><td><b>SHF</b> super high</td><td>3–30 GHz</td><td>10–1 cm</td><td>satellites, deep space, Wi-Fi 5, radar</td></tr>
+<tr><td><b>EHF</b> extremely high</td><td>30–300 GHz</td><td>1 cm–1 mm</td><td>radio astronomy, newest links, 5G mmWave</td></tr></table></div>
+<div class="card" style="padding:8px 13px"><h3>🛰 The letter bands, and deep space's slices</h3>
+<table class="mech" style="font-size:10.2px"><tr><th>Letter</th><th>GHz</th><th>You know it as</th><th>Deep-space uplink / downlink</th></tr>
+<tr><td><b>L</b></td><td>1–2</td><td>GPS (1.575)</td><td>—</td></tr>
+<tr><td><b>S</b></td><td>2–4</td><td>Wi-Fi 2.4, Bluetooth, microwave ovens</td><td>2.110–2.120 / 2.290–2.300</td></tr>
+<tr><td><b>C</b></td><td>4–8</td><td>Wi-Fi 5 and 6 GHz, weather radar</td><td>—</td></tr>
+<tr><td><b>X</b></td><td>8–12</td><td>the deep-space workhorse</td><td>7.145–7.190 / 8.400–8.450</td></tr>
+<tr><td><b>Ku</b></td><td>12–18</td><td>satellite TV, Starlink to your dish</td><td>—</td></tr>
+<tr><td><b>K</b></td><td>18–27</td><td>water vapour absorbs here (22 GHz)</td><td>—</td></tr>
+<tr><td><b>Ka</b></td><td>27–40</td><td>Starlink gateways, newest probes</td><td>34.200–34.700 / 31.800–32.300</td></tr></table>
+<div style="font-size:10.2px;margin-top:3px">The X-band uplink sits just under 8 GHz, in C-band by the letters. Nobody minds: the pair is still called X-band. Edges differ a little between sources; the slide draws K/Ka at 26.</div></div></div>
+<div class="two">
+<div class="card" style="padding:8px 13px"><h3>🔎 Caption errors</h3>
+<table class="t" style="font-size:10px"><tr><th>Captions said</th><th>Instructor meant</th></tr>
+<tr><td>"Katis graphic"</td><td><b>this</b> graphic</td></tr>
+<tr><td>"an much Paik opacity", "atmospheric capacity"</td><td><b>atmospheric opacity</b></td></tr>
+<tr><td>"a lead to a wavelength"</td><td>a <b>little</b> (short) wavelength</td></tr>
+<tr><td>"very fine and energy"</td><td>very <b>high in</b> energy</td></tr>
+<tr><td>"ultraviolet night"</td><td>ultraviolet <b>light</b></td></tr>
+<tr><td>"merits in navigation"</td><td><b>maritime</b> navigation</td></tr>
+<tr><td>"satellite micro telecommunications"</td><td>satellite <b>microwave</b> telecommunications</td></tr>
+<tr><td>"3G Gerhard's… 30 Jihad's… ten to nine cuts"</td><td>3 <b>gigahertz</b>… 30 <b>gigahertz</b>… 10⁹ <b>hertz</b></td></tr>
+<tr><td>"L as see x. Ok Kasan"</td><td><b>L, S, C, X, Ku, K, Ka</b></td></tr>
+<tr><td>"nomenklatura"</td><td><b>nomenclature</b> (naming system)</td></tr></table></div>
+<div class="card" style="padding:8px 13px"><h3>▲ Where the instructor was loose</h3>
+<ul class="r" style="font-size:10.6px">
+<li><b>"High-energy radiation interacts with any particle, basically always."</b> Not quite. A photon is absorbed when its energy matches something a molecule can do with it. Gamma, X and UV have enough to rip atoms apart. Infrared matches molecular vibrations. Visible and radio match nothing, so they pass. It is about matching, not just "more energy".</li>
+<li><b>"Long-wavelength radio waves blocked."</b> By a different mechanism from the rest: the ionosphere <i>reflects</i> them. That is why shortwave radio reaches round the planet.</li>
+<li><b>Not said: why uplink and downlink differ.</b> So the spacecraft can transmit and listen at once without deafening itself.</li>
+<li><b>Not said: why anyone wants the higher bands.</b> The same dish gives more gain and there is more room for data. The cost is weather and tighter pointing.</li>
+<li><b>Not said: who hands out frequencies.</b> The ITU, by international treaty.</li>
+<li><b>The slide's table</b> lumps Ku, K and Ka together as "K, 12–40 GHz", and gives X-band's short end as 2.4 cm where 2.5 cm is correct.</li>
+<li><b>He was right</b> that it is no accident we see in visible light: it is the window where the Sun is brightest and the air is clear.</li></ul></div>
+</div></div><div class="page"><div class="top"><div class="badge">SEC 5 · LEC 2 · VOCABULARY</div><h1>Every word used, <span>in plain English</span></h1></div><div class="sub">39 entries. "Repeat" = you have met it before.</div>
+<div class="gl2" style="font-size:10.3px;line-height:1.35"><div><b>Atmospheric absorption</b> — the air taking in radiation and stopping it.</div><div><b>Atmospheric opacity</b> — how much of the incoming radiation the air blocks. 100% = nothing gets through. <i>The wall.</i></div><div><b>Atmospheric window</b> — a range of wavelengths the air lets through. <i>The window in the wall.</i></div><div><b>Wavelength / frequency</b> — crest-to-crest distance / waves per second. Short wavelength = high frequency. <i>Repeat, L1.</i></div><div><b>Energy (of radiation) / photon</b> — light arrives in packets; each packet is a photon and carries energy = h × f.</div><div><b>Planck constant (h)</b> — the tiny fixed number that turns frequency into energy.</div><div><b>Electron-volt (eV)</b> — a unit of energy the size of one chemical bond. <i>Repeat, Section 2.</i></div><div><b>Radiation</b> — energy travelling as waves or particles. Here: electromagnetic waves. <i>Repeat.</i></div><div><b>Gamma rays / X-rays</b> — the highest-energy electromagnetic waves. Stopped high in the atmosphere.</div><div><b>Ultraviolet (UV)</b> — just beyond violet light. Mostly stopped by oxygen and ozone. <i>Repeat, Section 2.</i></div><div><b>Visible light</b> — the narrow band our eyes detect: 400–700 nanometres.</div><div><b>Infrared (IR)</b> — just beyond red light; what warm things glow in. Mostly absorbed by water vapour and CO₂.</div><div><b>Radio waves / microwaves</b> — the longest electromagnetic waves / the short end of radio, about 1 mm to 30 cm.</div><div><b>Spectrum</b> — the whole range laid out in order. <i>Repeat, L1.</i></div><div><b>Atom / molecule / electron configuration</b> — what air is made of, and how the electrons are arranged in it. That arrangement decides which energies can be absorbed.</div><div><b>React / interact / collide</b> — here: a photon meeting an air particle and handing over its energy.</div><div><b>Ionization</b> — knocking an electron off an atom. <i>Repeat, ion engines.</i></div><div><b>Atmospheric gases</b> — here: mainly water vapour, carbon dioxide and ozone. <i>Repeat.</i></div><div><b>Distortion</b> — the twinkling and blurring that moving air adds to starlight.</div><div><b>Observable</b> — able to be seen or measured.</div><div><b>Ionosphere</b> — the electrically charged upper atmosphere. Reflects long radio waves. <i>Repeat, Section 2.</i></div><div><b>Reflect / critical frequency</b> — bounce back / the frequency below which the ionosphere reflects.</div><div><b>VLF, LF, MF, HF, VHF, UHF, SHF, EHF</b> — very low, low, medium, high, very high, ultra high, super high, extremely high frequency.</div><div><b>Kilohertz, megahertz, gigahertz</b> — thousand, million, billion waves per second. <i>Repeat, L1.</i></div><div><b>Shortwave radio</b> — HF radio, 3–30 MHz, which skips off the ionosphere.</div><div><b>Maritime / navigation aid</b> — to do with ships / a radio beacon for finding position.</div><div><b>Radio astronomy</b> — studying the sky by its radio waves.</div><div><b>Band</b> — a named slice of the spectrum.</div><div><b>L, S, C, X, Ku, K, Ka bands</b> — the letter names for slices between 1 and 40 GHz.</div><div><b>Nomenclature</b> — a naming system.</div><div><b>Uplink / downlink</b> — Earth to spacecraft / spacecraft to Earth.</div><div><b>Deep space / near-Earth</b> — in radio rules: farther / closer than 2 million km.</div><div><b>Telecommunications link</b> — one radio connection between two ends. <i>Next lecture.</i></div><div><b>ITU</b> — International Telecommunication Union: the body that allocates frequencies worldwide. <i>Who&#x27;s Who.</i></div><div><b>Frequency allocation</b> — the agreed assignment of a band to a use.</div><div><b>Rain fade</b> — signal loss in rain, worse at higher frequencies.</div><div><b>Greenhouse effect</b> — infrared from the ground being absorbed by water vapour and CO₂. <i>Same physics as the infrared wall.</i></div><div><b>Hubble / Webb (JWST)</b> — space telescopes: Hubble for visible and UV, Webb for infrared. <i>Repeat, Who&#x27;s Who.</i></div><div><b>Loran-C</b> — a retired long-range radio navigation system that used low frequencies. <i>Who&#x27;s Who.</i></div></div></div><div class="page"><div class="top"><div class="badge">SEC 5 · LEC 2 · COPY INTO NOTES</div><h1>Where each piece goes <span>in the notebook</span></h1></div><div class="sub">Routes A to D for this lecture. The concept cards (route E) are on the next page.</div>
+<div class="two route">
+<div class="card" style="padding:9px 13px"><h3>A · Equations &amp; key numbers page (p3–4)</h3>
+<div class="copy">E = h × f          photon energy · eV = 1,240 ÷ λ in nm
+                   UV 250 nm → 5 eV · radio 3.6 cm → 0.000035 eV
+radio window       ~30 MHz – 30 GHz (10 m – 1 cm)
+ionosphere cut-off f ≈ 9·√(electrons per m³) → ~9 MHz
+bands (GHz)        L 1–2 · S 2–4 · C 4–8 · X 8–12 · Ku 12–18
+                   K 18–27 · Ka 27–40
+deep space X       uplink 7.2 · downlink 8.4 GHz</div>
+<h3>B · Section 5 map page (second sentence)</h3>
+<div class="copy">S5 · atmosphere: wall with 2 windows (visible, radio);
+     hard photons absorbed, long radio bounced; space links
+     use S / X / Ka; uplink ≠ downlink frequency</div>
+<h3>D · Question bank ("but how?" cards)</h3>
+<div class="copy">Q: Why does the air stop UV but not radio?
+A: E = h × f. A UV photon (5 eV) can break air molecules, so it
+   is absorbed. A radio photon is a million times too weak.
+Q: Why does infrared get absorbed if it is weaker than light?
+A: Its energy matches how water and CO₂ molecules vibrate.
+Q: Why can't you talk to a spacecraft on shortwave?
+A: Below ~10 MHz the ionosphere reflects the wave back down.
+Q: Why are uplink and downlink on different frequencies?
+A: So the craft's transmitter doesn't deafen its own receiver.</div></div>
+<div class="card" style="padding:9px 13px"><h3>C · One-line word bank (new lines)</h3>
+<div class="copy">p__ · atmospheric opacity · how much the air blocks, per λ
+p__ · atmospheric window · λ range that gets through  → C27
+p__ · optical / radio window · visible / ~1 cm – 10 m
+p__ · photon · one packet of light
+p__ · photon energy · E = h × f; more f, more energy  → C27
+p__ · Planck constant (h) · turns frequency into energy
+p__ · absorption · photon gives its energy to a molecule
+p__ · gamma / X-ray / UV · high energy; stopped up high
+p__ · infrared (IR) · heat rays; absorbed by H₂O + CO₂
+p__ · microwave · short radio, ~1–100 GHz
+p__ · ionospheric reflection · long radio bounced back
+p__ · critical frequency · below it the ionosphere reflects
+p__ · VLF … EHF · decade bands, each 10× the last
+p__ · SHF · 3–30 GHz: where satellites talk
+p__ · letter bands · L S C X Ku K Ka (1–40 GHz)  → C28
+p__ · S / X / Ka-band · the deep-space trio
+p__ · uplink / downlink · Earth → s/c / s/c → Earth  → C28
+p__ · deep space (radio) · beyond 2 million km
+p__ · ITU · body that allocates frequencies
+p__ · rain fade · rain weakens signals above ~10 GHz</div></div>
+</div></div><div class="page"><div class="top"><div class="badge">SEC 5 · LEC 2 · CONCEPT CARDS</div><h1>Route E: <span>pages C27 and C28</span></h1></div><div class="sub">Two notebook pages, two cards each. Copy line for line; the faint numbers are your ruled lines.</div>
+<div style="display:flex;gap:16px;justify-content:center"><div class="nb"><div class="nbh"><span>WORD BANK · CONCEPT CARDS · scene 12</span><span class="pg">C27</span></div><div class="ln n"><span class="num">1</span><span class="nmbox">ATMOSPHERIC WINDOW  = optical + radio</span></div><div class="ln n2"><span class="num">2</span><span class="s"></span>window</div><div class="ln"><span class="num">3</span><span class="s">=</span>wavelengths the air lets through</div><div class="ln"><span class="num">4</span><span class="s">WHY</span>the air blocks most of the spectrum.</div><div class="ln"><span class="num">5</span><span class="s"></span>Ground links and ground telescopes</div><div class="ln"><span class="num">6</span><span class="s"></span>must use the gaps</div><div class="ln"><span class="num">7</span><span class="s">#</span>visible 400–700 nm · radio ~1 cm – 10</div><div class="ln"><span class="num">8</span><span class="s"></span>m (30 GHz – 30 MHz)</div><div class="ln"><span class="num">9</span><span class="s">≠</span>the ozone hole (a different thing)</div><div class="ln"><span class="num">10</span><span class="s">→</span>opacity · radio bands · space</div><div class="ln"><span class="num">11</span><span class="s"></span>telescopes</div><div class="ln gap"><span class="num">12</span></div><div class="ln n"><span class="num">13</span><span class="nmbox">PHOTON ENERGY  = E = h × f</span></div><div class="ln"><span class="num">14</span><span class="s">=</span>energy of one packet of light</div><div class="ln"><span class="num">15</span><span class="s">WHY</span>it decides what a wave can do to</div><div class="ln"><span class="num">16</span><span class="s"></span>matter: break it, shake it, or pass</div><div class="ln"><span class="num">17</span><span class="s"></span>through</div><div class="ln"><span class="num">18</span><span class="s">#</span>UV 5 eV · visible 2 eV · infrared 0.1</div><div class="ln"><span class="num">19</span><span class="s"></span>eV · X-band 0.000035 eV</div><div class="ln"><span class="num">20</span><span class="s">≠</span>total power (many weak photons)</div><div class="ln"><span class="num">21</span><span class="s">→</span>eV = 1,240 ÷ nm · ionization · UV</div><div class="ln"><span class="num">22</span><span class="s"></span>damage</div></div><div class="nb"><div class="nbh"><span>WORD BANK · CONCEPT CARDS · scene 12</span><span class="pg">C28</span></div><div class="ln n"><span class="num">1</span><span class="nmbox">FREQUENCY BANDS  = L S C X Ku K Ka</span></div><div class="ln"><span class="num">2</span><span class="s">=</span>named slices of the radio spectrum</div><div class="ln"><span class="num">3</span><span class="s">WHY</span>everyone shares one spectrum. Named,</div><div class="ln"><span class="num">4</span><span class="s"></span>allocated slices keep users from</div><div class="ln"><span class="num">5</span><span class="s"></span>jamming each other</div><div class="ln"><span class="num">6</span><span class="s">#</span>S 2–4 · X 8–12 · Ka 27–40 GHz · deep</div><div class="ln"><span class="num">7</span><span class="s"></span>space X: 8.4 down</div><div class="ln"><span class="num">8</span><span class="s">≠</span>channels (finer slices inside a band)</div><div class="ln"><span class="num">9</span><span class="s">→</span>ITU · SHF 3–30 GHz · Wi-Fi is S + C</div><div class="ln gap"><span class="num">10</span></div><div class="ln n"><span class="num">11</span><span class="nmbox">UPLINK / DOWNLINK</span></div><div class="ln"><span class="num">12</span><span class="s">=</span>Earth → spacecraft / spacecraft →</div><div class="ln"><span class="num">13</span><span class="s"></span>Earth</div><div class="ln"><span class="num">14</span><span class="s">WHY</span>the craft sends and listens at once.</div><div class="ln"><span class="num">15</span><span class="s"></span>Separate frequencies stop its</div><div class="ln"><span class="num">16</span><span class="s"></span>transmitter deafening its receiver</div><div class="ln"><span class="num">17</span><span class="s">#</span>X-band deep space: up 7.2 GHz, down</div><div class="ln"><span class="num">18</span><span class="s"></span>8.4 GHz</div><div class="ln"><span class="num">19</span><span class="s">≠</span>upload / download speed</div><div class="ln"><span class="num">20</span><span class="s">→</span>transponder · bands · link budget</div><div class="ln"><span class="num">21</span></div><div class="ln"><span class="num">22</span></div></div></div>
+<div style="text-align:center;font-size:10.5px;color:#444;margin-top:6px">C27: 11 + 10 lines of 22 · C28: 9 + 10 lines of 22</div></div><div class="page"><div class="top"><div class="badge">SEC 5 · LEC 2 · SAY IT OUT LOUD</div><h1>Last page: <span>prove it by talking</span></h1></div><div class="sub">After the spread and the 3-line summary, with everything closed. Send me what you said and I will grade it like a friend would.</div>
+<div class="two"><div>
+<div class="card"><h3>🗣 The friend's opening question</h3><div style="font-size:13px;line-height:1.5">"Why do they put telescopes in space? And why does everything in space use radio?"</div></div>
+<div class="card" style="margin-top:12px"><h3>✅ Three sentences you should be able to say</h3><ul class="r" style="font-size:12px">
+<li>Because the air is a wall with two windows. Ordinary light gets through one and radio gets through the other, and nearly everything else is stopped.</li>
+<li>It comes down to how hard each packet of light hits. X-rays and ultraviolet hit hard enough to break air molecules, so they are absorbed high up, and infrared gets soaked up by water and CO₂. Radio is too gentle to do anything, so it sails through.</li>
+<li>So telescopes for X-rays or infrared have to sit above the air, and anything you want to say to a spacecraft has to go through the radio window, in agreed bands like S, X and Ka.</li></ul></div>
+<div class="card" style="margin-top:12px"><h3>❓ Follow-ups a friend might ask</h3><ul class="r" style="font-size:12px">
+<li>"Why can we see, then?" (our eyes use exactly the window where the air is clear and the Sun is brightest)</li>
+<li>"Does all radio get through?" (no: very long waves bounce off the ionosphere, and rain hurts the highest bands)</li>
+<li>"What do the band letters mean?" (nothing: old radar code names; X is around 8 GHz)</li>
+<li>"Is Wi-Fi one of those?" (yes: 2.4 GHz is S-band, 5 GHz is C-band)</li>
+<li>"What's uplink and downlink?" (ground to spacecraft, spacecraft to ground, on different frequencies so they don't clash)</li></ul></div></div>
+<div><div class="card" style="min-height:3.2in"><h3>📝 Your explanation (paste or dictate)</h3><div style="border:2px dashed #999;border-radius:8px;height:2.5in;padding:8px;color:#999;font-size:11px">_ send it to me in chat; I'll put it here _</div></div>
+<div class="card" style="margin-top:12px;min-height:2.2in;border-color:var(--green)"><h3 style="color:var(--green)">🎯 My read</h3><div style="border:2px dashed #999;border-radius:8px;height:1.5in;padding:8px;color:#999;font-size:11px">solid on: _<br>fuzzy on: _<br>fix: _<br>→ question-bank cards: _</div></div>
+<div class="callout" style="margin-top:12px;font-size:11.5px">⚡ One lecture left in Section 5: satellite links. Send it the same way.</div></div></div></div></body></html>

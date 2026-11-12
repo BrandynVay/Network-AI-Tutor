@@ -29,7 +29,7 @@ track for now — see root `CLAUDE.md` § Current focus.
 | 2 | Space Environment | 3 | 11 min | `sections/02-space-environment.md` | [ ] |
 | 3 | Orbital Mechanics | 3 | 34 min | `sections/03-orbital-mechanics.md` | [ ] |
 | 4 | Space Propulsion Systems | 5 | 27 min | `sections/04-space-propulsion.md` | [x] 2026-11-12, 4 lectures (the panel's 5th item is unconfirmed, probably a quiz) |
-| 5 | Communications from Space to Earth | 3 | 44 min | `sections/05-communications.md` | [ ] 1 of 3 lectures (2026-11-12) |
+| 5 | Communications from Space to Earth | 3 | 44 min | `sections/05-communications.md` | [ ] 2 of 3 lectures (2026-11-12) |
 | 6 | Attitude Determination and Control | 4 | 36 min | `sections/06-attitude-determination-and-control.md` | [ ] |
 | 7 | Space Power Systems | 4 | 33 min | `sections/07-space-power-systems.md` | [ ] |
 | 8+ | *(not visible in the course panel yet — add when known)* | | | | |
@@ -159,3 +159,21 @@ the Done column and date it when a section's quiz is graded.
   (16 MC, 5 explain, 16 cards, 33 terms, 6 concept entries, 4
   formulas). Who's Who v5 (page 4 = Section 5 names). Tied explicitly to
   the student's networking background (Wi-Fi 2.4 GHz = 12.5 cm, dBi).
+
+- **2026-11-12 (late night)** — S5 Lec 2 "Atmospheric absorption +
+  typical telecom frequencies": transcript + all 3 content slides. PDF:
+  `feedback/S5-L2-atmosphere-and-frequency-bands-v1.pdf` (7 pp), one
+  spread (wall with two windows; why, by photon energy; band-letter
+  strip), concept cards C27-C28 (atmospheric window, photon energy,
+  frequency bands, uplink/downlink). Instructor loose: absorption
+  explained as "high energy interacts basically always" (it is about
+  the photon energy matching something the molecule can do, which is
+  why weaker infrared is absorbed and visible passes); long-wave radio
+  "blocked" without saying it is reflected by the ionosphere; no reason
+  given for separate uplink/downlink frequencies or for moving to
+  higher bands; slide table lumps Ku/K/Ka. He was right about eyes and
+  the visible window. Linked back to Section 1 (why "look out"
+  telescopes are in orbit) and Section 2 (ozone, ionosphere, eV). App
+  v14: scene 12 "Two windows in the wall" (14 MC, 4 explain, 12 cards,
+  23 terms, 4 concept entries, 2 formulas). Who's Who v6. One Section 5
+  lecture left (satellite links).
