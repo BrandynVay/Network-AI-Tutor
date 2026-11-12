@@ -28,7 +28,7 @@ track for now — see root `CLAUDE.md` § Current focus.
 | 1 | Presentation, intro to space engineering, mission design & objectives, Quiz 1 (time of flight) | 3 + quiz | 13 min | `sections/01-mission-design-and-time-of-flight.md` | [x] 2026-11-07 |
 | 2 | Space Environment | 3 | 11 min | `sections/02-space-environment.md` | [ ] |
 | 3 | Orbital Mechanics | 3 | 34 min | `sections/03-orbital-mechanics.md` | [ ] |
-| 4 | Space Propulsion Systems | 5 | 27 min | `sections/04-space-propulsion.md` | [ ] 3 of 5 lectures (2026-11-12) |
+| 4 | Space Propulsion Systems | 5 | 27 min | `sections/04-space-propulsion.md` | [x] 2026-11-12, 4 lectures (the panel's 5th item is unconfirmed, probably a quiz) |
 | 5 | Communications from Space to Earth | 3 | 44 min | `sections/05-communications.md` | [ ] |
 | 6 | Attitude Determination and Control | 4 | 36 min | `sections/06-attitude-determination-and-control.md` | [ ] |
 | 7 | Space Power Systems | 4 | 33 min | `sections/07-space-power-systems.md` | [ ] |
@@ -120,3 +120,24 @@ the Done column and date it when a section's quiz is graded.
   thruster never mentioned. 14 caption errors tabled. App v11: scene 9
   "The tortoise engine" (12 MC, 4 explain, 12 cards, 21 terms, 5
   concept entries, 2 formulas). Two S4 lectures remain.
+
+- **2026-11-12 (evening)** — S4 Lec 4 "Nuclear propulsion: nuclear
+  thermal rockets": transcript + 5 slides. PDF:
+  `feedback/S4-L4-nuclear-thermal-rockets-v1.pdf` (7 pp), concept cards
+  C22-C23 (NTR, molecular mass, payload, enrichment). **Most errors of
+  any lecture so far:** (1) "high Isp because working temperatures are
+  higher" (the core is cooler than a flame; Isp doubles because the
+  exhaust is H2, v_e goes as sqrt(T/M)); (2) Project Orion called a
+  1986 NASA nuclear thermal project (it was a 1958-65 nuclear PULSE
+  study, not NASA's); (3) "attractive for interstellar flight" (75,000
+  years to the nearest star); plus "sketched in the 1960s" (about 20
+  reactors were run), "lift-off mass is half" (in-orbit stage),
+  "high-velocity liquid" (it is gas), lecture dated 2018. Instructor
+  says this closes the section. **Section 4 complete on Claude's side:**
+  app v12 has scene 10 "The kettle with no fire" (12 MC, 4 explain, 12
+  cards, 17 terms, 4 concept entries) and a Section 4 timed talk
+  (`PROGRAMS.s4`, 4 min). Lecture 1 PDF reissued as v2 (it said nuclear
+  hydrogen is heated to "about the same" temperature as a flame;
+  corrected to cooler-but-lighter). Who's Who v4. Due from the student:
+  Section 4 map page from memory, one Section 4 talk run; still
+  outstanding: Section 1 talk run and Section 3 conversation test.

@@ -27,24 +27,25 @@
 > - **Space X Study app (added 2026-11-10):** a separate published
 >   Artifact for this course, https://claude.ai/artifact/CnDfEEJHGhs76GMZNu7BSM
 >   (source mirrored at `COURSES/udemy-interplanetary-spacecraft/app/space-x-study.html`).
->   Tabs: Today (with a "how this app helps you" card) · Learn (9 scenes;
+>   Tabs: Today (with a "how this app helps you" card) · Learn (10 scenes;
 >   scene 8 "Throw it backward" = S4 propulsion basics + chemical engines,
->   scene 9 "The tortoise engine" = S4 electric propulsion / ion thruster;
+>   scene 9 "The tortoise engine" = S4 electric propulsion / ion thruster,
+>   scene 10 "The kettle with no fire" = S4 nuclear thermal rockets;
 >   each with a 🧒 simple version AND a 🛠 "how it actually works"
 >   engineer section with worked numbers, plus a one-line "when they
 >   ask but how?" mechanism sentence (`MECH`); a header toggle sets
->   which comes first) · Quiz (100 multiple-choice +
->   38 explain-out-loud incl. the 15 "but how?" cards, instant feedback,
->   spaced review) · Cards (91 flashcards, 1/3/7/14/30-day intervals) ·
->   Terms (250-entry searchable glossary of OFFICIAL terminology: name ·
->   also-called · plain meaning · scene; 47 core terms also carry an
+>   which comes first) · Quiz (112 multiple-choice +
+>   42 explain-out-loud incl. the 15 "but how?" cards, instant feedback,
+>   spaced review) · Cards (103 flashcards, 1/3/7/14/30-day intervals) ·
+>   Terms (267-entry searchable glossary of OFFICIAL terminology: name ·
+>   also-called · plain meaning · scene; 51 core terms also carry an
 >   `ENRICH` entry = concept/why-it-exists · example with numbers ·
 >   don't-confuse-with · connects-to, added 2026-11-11 after the student
->   said definitions alone weren't enough) · Numbers (`NUMBERS`: 17
+>   said definitions alone weren't enough) · Numbers (`NUMBERS`: 18
 >   formulas each with a worked value, constants, mission numbers;
 >   mirrors notebook pp. 3-4) · Teach (timed talks: Section 1
->   3¼ min · Section 2 3 min · Section 3 4¼ min · full 7 min, each with
->   cue card) · Progress. Progress is stored per viewer in
+>   3¼ min · Section 2 3 min · Section 3 4¼ min · Section 4 4 min · full
+>   7 min covering S1-S3 only, each with cue card) · Progress. Progress is stored per viewer in
 >   the artifact db at `data/users/<id>/progress` (private to the
 >   viewer; Claude cannot read it), with a localStorage fallback. The
 >   Network+ Ops Console was deliberately NOT modified: its structure is
@@ -52,9 +53,8 @@
 >   questions/cards/terms to the arrays at the top of the HTML (`SCENES`,
 >   `MC`, `WHY`, `CARDS`, `TERMS`, `ENRICH`, `MECH`, `NUMBERS`) and
 >   republish to the same URL. **Append only: `MC`, `WHY` and `CARDS`
->   progress is keyed by array index, so never insert mid-array.** The
->   Teach tab has no Section 4 talk yet; add `PROGRAMS.s4` when the
->   section's five lectures are done. Every new core term gets an `ENRICH`
+>   progress is keyed by array index, so never insert mid-array.** Each
+>   finished section gets a `PROGRAMS.sN` talk added to `PROGRAM_ORDER`. Every new core term gets an `ENRICH`
 >   entry, not just a definition; `Word-Bank-CONCEPTS-S1-S3-v4.pdf` is
 >   generated from those arrays by `app/concepts.js` (rebuild it with a
 >   new version suffix when terms change).
@@ -80,12 +80,14 @@
 >   burns 2.42 + 1.47 km/s; rocket-equation mass ratios; flyby turning
 >   angle). Every new lecture gets the same three layers: simple story,
 >   official terms, and a worked mechanism with numbers.
-> - **Section 4 in progress (2026-11-12):** lectures 1-3 of 5 done
->   (`feedback/S4-L1-...pdf`, `S4-L2-...pdf`, `S4-L3-...pdf`, sources in
->   `feedback/src/`). Lecture PDFs now carry a copy-into-notes page and
->   concept-card pages (C17-C21 so far); format in NOTES_METHOD.md §
->   Lecture PDF format from Section 4 on. Still ungraded: the Section 1
->   talk run and the Section 3 conversation test.
+> - **Section 4 complete (2026-11-12):** four lectures (`feedback/S4-L1`
+>   v2, `S4-L2`, `S4-L3`, `S4-L4` PDFs, sources in `feedback/src/`); the
+>   course panel lists a 5th item that is unconfirmed, probably a quiz.
+>   Lecture PDFs now carry a copy-into-notes page and concept-card pages
+>   (C17-C23 so far); format in NOTES_METHOD.md §
+>   Lecture PDF format from Section 4 on. Still owed by the student: Section 4 map page +
+>   one Section 4 talk run, the Section 1 talk run, and the Section 3
+>   conversation test. Next up: Section 5 (communications).
 > - When Network+ resumes, delete this block, and resume from
 >   "Project status" below (Day 01 was never started in the app).
 

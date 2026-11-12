@@ -92,7 +92,7 @@ There are three kinds of thrower. <b>Chemical</b> is a fire hose: a huge amount 
 <tr><td><b>3 · Δv</b></td><td>a = F ÷ m = 300 ÷ 1,000 = 0.3 m/s². Burn 10 s: Δv = 3 m/s, using 1 kg. Same answer as step 1. Thrust and time build the Δv your orbit change needs.</td></tr>
 <tr><td><b>4 · Why electric is weak</b></td><td>Same 300 N from 0.01 kg/s at 30,000 m/s uses ten times less propellant. But the jet's power is ½ṁvₑ²: 0.45 MW for the first, <b>4.5 MW</b> for the second. A chemical engine gets that from the fire. An electric one needs solar panels, and the whole ISS makes about 0.1–0.2 MW. So real electric thrusters run at a few kW and push with a fraction of a newton.</td></tr>
 <tr><td><b>5 · Real electric</b></td><td>NASA's NEXT ion thruster (the slide photo): 6.9 kW in, <b>0.236 N</b> out (the weight of 5 sheets of paper), exhaust at 41 km/s, Isp 4,190 s. The Dawn probe took 4 days to go 0–100 km/h, then thrust for 5.9 years: total Δv <b>11.5 km/s</b> from 425 kg of xenon.</td></tr>
-<tr><td><b>6 · Why nuclear wins on speed</b></td><td>Exhaust speed goes as √(temperature ÷ molecule mass). Burning hydrogen and oxygen makes steam, mass 18. A reactor can heat plain hydrogen, mass 2, to about the same 2,700 K. Lighter molecules fly faster: Isp ≈ <b>900 s</b> against 450 s.</td></tr>
+<tr><td><b>6 · Why nuclear wins on speed</b></td><td>Exhaust speed goes as √(temperature ÷ molecule mass). Burning hydrogen and oxygen makes steam, mass 18. A reactor heats plain hydrogen, mass 2, to about 2,700 K. That is cooler than the flame (3,500 K), but far lighter molecules fly faster: Isp ≈ <b>900 s</b> against 450 s.</td></tr>
 <tr><td><b>7 · What mileage buys</b></td><td>For a 5 km/s Δv the rocket equation says: Isp 320 s needs <b>80%</b> of the ship to be propellant; Isp 3,000 s needs <b>16%</b>.</td></tr></table></div>
 </div></div>'''
 
@@ -209,7 +209,8 @@ A: Its own exhaust. Momentum is kept: gas goes back, ship goes forward.
 Q: Why is electric thrust tiny if it is so efficient?
 A: Jet power = ½ṁvₑ². Fast exhaust needs megawatts; panels give kilowatts.
 Q: Why does nuclear thermal get ~900 s?
-A: Same heat, lighter exhaust (H₂, mass 2, vs steam, mass 18) → faster.</div></div></div>
+A: Cooler than a flame, but far lighter exhaust (H₂, mass 2,
+   vs steam, mass 18) → about twice as fast.</div></div></div>
 <div style="flex:none"><div class="route"><h3>E · Concept cards: next page, C17</h3><div style="font-size:10.5px;color:#444;width:4.3in;margin-bottom:6px">C1–C16 filled the 16 pages in this notebook. C17 onward goes in the second notebook, or wherever you decided the cards live. {na} + {nb} lines of 22.</div></div>{card}</div>
 </div></div>'''
 

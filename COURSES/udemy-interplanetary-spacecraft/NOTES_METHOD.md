@@ -414,3 +414,11 @@ index (`MC`, `WHY`, `CARDS`), so new items go at the END of each array;
 inserting in the middle reassigns the student's history to different
 questions. (The 15 "but how?" WHY items added on 2026-11-11 were
 inserted before the last item; left as is rather than shifting again.)
+
+**Word bank and glossary from Section 4 on (2026-11-12):** the
+standalone `Word-Bank-COMPLETE` and `Glossary-COMPLETE` sheets are not
+regenerated per section any more. Each lecture PDF already carries the
+copy-ready one-line word-bank lines (page 5, route C, with `→ C#`
+pointers) and the full plain-English vocabulary (page 4), and the app's
+Terms tab holds everything. Rebuild a combined sheet only if the
+student asks for one.
