@@ -27,18 +27,19 @@
 > - **Space X Study app (added 2026-11-10):** a separate published
 >   Artifact for this course, https://claude.ai/artifact/CnDfEEJHGhs76GMZNu7BSM
 >   (source mirrored at `COURSES/udemy-interplanetary-spacecraft/app/space-x-study.html`).
->   Tabs: Today (with a "how this app helps you" card) · Learn (7 scenes,
+>   Tabs: Today (with a "how this app helps you" card) · Learn (8 scenes;
+>   scene 8 "Throw it backward" = Section 4 propulsion, lectures 1-2 so far;
 >   each with a 🧒 simple version AND a 🛠 "how it actually works"
 >   engineer section with worked numbers, plus a one-line "when they
 >   ask but how?" mechanism sentence (`MECH`); a header toggle sets
->   which comes first) · Quiz (72 multiple-choice +
->   28 explain-out-loud incl. the 15 "but how?" cards, instant feedback,
->   spaced review) · Cards (63 flashcards, 1/3/7/14/30-day intervals) ·
->   Terms (193-entry searchable glossary of OFFICIAL terminology: name ·
->   also-called · plain meaning · scene; 32 core terms also carry an
+>   which comes first) · Quiz (88 multiple-choice +
+>   34 explain-out-loud incl. the 15 "but how?" cards, instant feedback,
+>   spaced review) · Cards (79 flashcards, 1/3/7/14/30-day intervals) ·
+>   Terms (229-entry searchable glossary of OFFICIAL terminology: name ·
+>   also-called · plain meaning · scene; 42 core terms also carry an
 >   `ENRICH` entry = concept/why-it-exists · example with numbers ·
 >   don't-confuse-with · connects-to, added 2026-11-11 after the student
->   said definitions alone weren't enough) · Numbers (`NUMBERS`: 12
+>   said definitions alone weren't enough) · Numbers (`NUMBERS`: 15
 >   formulas each with a worked value, constants, mission numbers;
 >   mirrors notebook pp. 3-4) · Teach (timed talks: Section 1
 >   3¼ min · Section 2 3 min · Section 3 4¼ min · full 7 min, each with
@@ -49,7 +50,10 @@
 >   cert-blueprint-specific. When new lectures are done, add their
 >   questions/cards/terms to the arrays at the top of the HTML (`SCENES`,
 >   `MC`, `WHY`, `CARDS`, `TERMS`, `ENRICH`, `MECH`, `NUMBERS`) and
->   republish to the same URL. Every new core term gets an `ENRICH`
+>   republish to the same URL. **Append only: `MC`, `WHY` and `CARDS`
+>   progress is keyed by array index, so never insert mid-array.** The
+>   Teach tab has no Section 4 talk yet; add `PROGRAMS.s4` when the
+>   section's five lectures are done. Every new core term gets an `ENRICH`
 >   entry, not just a definition; `Word-Bank-CONCEPTS-S1-S3-v4.pdf` is
 >   generated from those arrays by `app/concepts.js` (rebuild it with a
 >   new version suffix when terms change).
@@ -75,6 +79,12 @@
 >   burns 2.42 + 1.47 km/s; rocket-equation mass ratios; flyby turning
 >   angle). Every new lecture gets the same three layers: simple story,
 >   official terms, and a worked mechanism with numbers.
+> - **Section 4 in progress (2026-11-12):** lectures 1-2 of 5 done
+>   (`feedback/S4-L1-...pdf`, `feedback/S4-L2-...pdf`, sources in
+>   `feedback/src/`). Lecture PDFs now carry a copy-into-notes page and
+>   concept-card pages (C17-C19 so far); format in NOTES_METHOD.md §
+>   Lecture PDF format from Section 4 on. Still ungraded: the Section 1
+>   talk run and the Section 3 conversation test.
 > - When Network+ resumes, delete this block, and resume from
 >   "Project status" below (Day 01 was never started in the app).
 

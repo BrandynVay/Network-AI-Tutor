@@ -1,0 +1,284 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Interplanetary transfers</title>
+<style>
+@page { size: letter landscape; margin: 0; }
+* { box-sizing:border-box; }
+:root { --navy:#0b1437; --orange:#ff6b1a; --blue:#1e7cff; --green:#19b36b; --pink:#e5338f; --purple:#7b3fe4; --yellow:#ffd23f; --paper:#fffdf5; }
+body { margin:0; font-family: Verdana, "DejaVu Sans", Arial, sans-serif; color:#111; }
+.page { width:11in; height:8.5in; padding:0.35in 0.45in; page-break-after:always; position:relative; background:#fff; overflow:hidden; }
+.page:last-child { page-break-after:auto; }
+.top { display:flex; align-items:center; gap:14px; margin-bottom:6px; }
+.badge { background:var(--navy); color:#fff; font-weight:900; font-size:11px; letter-spacing:2px; padding:6px 12px; border-radius:999px; }
+h1 { font-size:22px; margin:0; font-weight:900; }
+h1 span { color:var(--orange); }
+.sub { color:#555; font-size:11.5px; margin-bottom:8px; }
+.spread { display:flex; gap:16px; height:6.9in; }
+.np { flex:1; border:3px solid #111; border-radius:14px; background:var(--paper); position:relative; padding:12px 14px; font-size:12px;
+  background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 23px, #e3e8f2 23px, #e3e8f2 24px); background-position:0 40px; }
+.np.o{border-color:var(--orange);} .np.b{border-color:var(--blue);}
+.tag { position:absolute; top:-14px; left:14px; color:#fff; font-weight:900; font-size:12px; padding:4px 12px; border-radius:999px; letter-spacing:1px; }
+.o .tag{background:var(--orange);} .b .tag{background:var(--blue);}
+.hdr { font-weight:900; font-size:13px; border-bottom:3px solid #111; margin:4px 0 8px; padding-bottom:5px; display:flex; justify-content:space-between; }
+.ink { color:#1a3fb0; font-family:"Comic Sans MS","Segoe Print","Bradley Hand",cursive; }
+.pencil { color:#8a8a8a; font-family:"Comic Sans MS","Segoe Print",cursive; }
+.cornell { display:flex; height:calc(100% - 44px); }
+.cue { width:36%; border-right:3px solid var(--blue); padding-right:8px; }
+.notes { flex:1; padding-left:12px; }
+.summary { position:absolute; left:12px; right:12px; bottom:12px; height:108px; border:3px solid var(--green); border-radius:10px; padding:6px 10px; background:#f2fff7; }
+.summary b { color:var(--green); font-size:12px; }
+.q { margin:0 0 10px; line-height:1.25; }
+.hl { padding:0 3px; border-radius:3px; }
+.hl.y{background:#fff176;} .hl.k{background:#ffb3d9;} .hl.b{background:#9fd3ff;} .hl.g{background:#a8f0c6;} .hl.o{background:#ffcf9e;}
+.banner { border:2.5px solid #111; border-radius:10px; padding:3px 10px; font-weight:900; font-size:13px; display:inline-block; background:#fff176; box-shadow:3px 3px 0 #111; }
+.mini { border:2px solid #111; border-radius:8px; padding:5px 8px; background:#fff; font-size:11px; margin-top:6px; box-shadow:2px 2px 0 #111; }
+table.t { border-collapse:collapse; width:100%; font-size:11px; }
+table.t th, table.t td { border:2px solid #111; padding:3px 5px; text-align:left; vertical-align:top; }
+table.t th { background:var(--navy); color:#fff; }
+.card { border:3px solid #111; border-radius:14px; padding:12px 16px; font-size:12.5px; background:var(--paper); }
+.card h3 { margin:0 0 6px; font-size:15px; font-weight:900; }
+.two { display:flex; gap:16px; }
+.two > div { flex:1; }
+ul.r { margin:4px 0 0; padding-left:18px; line-height:1.45; font-size:12px; }
+.ok { color:var(--green); font-weight:900; } .fix { color:var(--orange); font-weight:900; }
+.callout { background:var(--yellow); border:3px solid #111; border-radius:12px; padding:10px 14px; font-weight:700; font-size:12.5px; margin-top:12px; }
+</style>
+<style>
+.sm { width:3.6in; height:5.4in; border:3px solid #111; border-radius:10px; background:var(--paper); position:relative; padding:8px 9px; font-size:9.5px;
+  background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 15px, #dfe5ef 15px, #dfe5ef 16px); background-position:0 26px; }
+.sm.o{border-color:var(--orange);} .sm.b{border-color:var(--blue);}
+.sm .tag { font-size:10px; padding:3px 9px; top:-12px; left:10px; }
+.sm .hdr { font-size:10px; margin:2px 0 5px; padding-bottom:3px; border-width:2px; }
+.zone { border:2px dashed #999; border-radius:6px; padding:4px 6px; margin-top:5px; font-size:9px; color:#333; background:rgba(255,255,255,.75); }
+.zone b { color:#111; }
+.lines { color:#b0582c; font-weight:700; font-size:8.5px; }
+.smwrap { display:flex; gap:10px; justify-content:center; }
+</style>
+
+<style>
+.bg { width:4.95in; height:7.35in; border:3px solid #111; border-radius:12px; background:var(--paper); position:relative; padding:12px 14px; font-size:12px;
+  background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 21px, #dfe5ef 21px, #dfe5ef 22px); background-position:0 44px; }
+.bg.o{border-color:var(--orange);} .bg.b{border-color:var(--blue);}
+.bg .tag { position:absolute; top:-14px; left:14px; color:#fff; font-weight:900; font-size:12px; padding:4px 12px; border-radius:999px; letter-spacing:1px; }
+.bg.o .tag{background:var(--orange);} .bg.b .tag{background:var(--blue);}
+.bg .hdr { font-weight:900; font-size:13px; border-bottom:3px solid #111; margin:4px 0 8px; padding-bottom:5px; display:flex; justify-content:space-between; }
+.bg .ink { font-size:12px; line-height:1.45; }
+.bg .q { margin:0 0 10px; line-height:1.3; }
+.bz { border:2px dashed #999; border-radius:8px; padding:6px 9px; margin-top:8px; font-size:11.5px; background:rgba(255,255,255,.8); }
+.bz b { color:#111; }
+.lb { color:#b0582c; font-weight:700; font-size:10px; }
+</style>
+</head><body>
+<div class="page">
+<div class="top"><div class="badge">SEC 3 · LEC 3 · INTERPLANETARY TRANSFERS + FLYBYS</div><h1>Lazy throws and <span>bouncing off moving planets</span></h1></div>
+<div class="sub">Left = your left notebook page. Right = your right page. Draw both panels before you look closely at mine.</div>
+<div style="display:flex; gap:18px; justify-content:center">
+  <div class="bg o"><span class="tag">🖍 LEFT PAGE · DRAW</span>
+    <div class="hdr"><span>S3 / L3 — Transfers &amp; flybys</span><span>date · pg __</span></div>
+    <svg width="100%" height="372" viewBox="0 0 330 412" style="display:block" font-family="Verdana, sans-serif">
+<defs><marker id="ar" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#111"/></marker></defs>
+<text x="8" y="14" font-size="10" font-weight="bold" fill="#111">1 · HOHMANN = the lazy throw</text>
+<circle cx="165" cy="105" r="70" fill="none" stroke="#111" stroke-width="3"/>
+<circle cx="165" cy="105" r="38" fill="none" stroke="#111" stroke-width="1.2"/>
+<circle cx="165" cy="105" r="7" fill="#fff" stroke="#111" stroke-width="1.5"/>
+<text x="165" y="108" text-anchor="middle" font-size="6" fill="#111">SUN</text>
+<path d="M127,105 A54,54 0 0 1 235,105" fill="none" stroke="#111" stroke-width="2.5" stroke-dasharray="6 4"/>
+<circle cx="127" cy="105" r="5" fill="#fff" stroke="#111" stroke-width="1.8"/>
+<circle cx="235" cy="105" r="5" fill="#111"/>
+<line x1="122" y1="105" x2="86" y2="105" stroke="#777" stroke-width="0.8"/>
+<text x="8" y="100" font-size="8.5" font-weight="bold" fill="#111">○ Earth</text>
+<text x="8" y="111" font-size="8.5" fill="#111">burn 1: leave</text>
+<line x1="240" y1="105" x2="250" y2="105" stroke="#777" stroke-width="0.8"/>
+<text x="254" y="100" font-size="8.5" font-weight="bold" fill="#111">● Mars</text>
+<text x="254" y="111" font-size="8.5" fill="#111">burn 2: match</text>
+<text x="165" y="40" text-anchor="middle" font-size="8.5" fill="#111">dashed = your path</text>
+<text x="8" y="192" font-size="8.5" fill="#111">Half an ellipse, 180° around the Sun. Cheapest Δv.</text>
+<text x="8" y="204" font-size="8.5" fill="#111">Earth → Mars ≈ 8.5 months = half the ellipse's period (your S1 quiz).</text>
+<line x1="8" y1="214" x2="322" y2="214" stroke="#bbb" stroke-width="1"/>
+<text x="8" y="228" font-size="9" font-weight="bold" fill="#111">LAMBERT'S PROBLEM = the "can I get there by then?" calculator</text>
+<text x="8" y="240" font-size="8.5" fill="#111">give: 2 positions + a travel time → get: the one orbit linking them → read off the Δv</text>
+<text x="8" y="252" font-size="8.5" fill="#111">Mars in 20 days? The orbit exists. The Δv is absurd. The rocket can't be built. → NO</text>
+<text x="8" y="264" font-size="8.5" font-weight="bold" fill="#111">fast = expensive · slow = cheap · more speed at the same spot → bigger orbit → reach farther</text>
+<line x1="8" y1="272" x2="322" y2="272" stroke="#bbb" stroke-width="1"/>
+<text x="8" y="286" font-size="10" font-weight="bold" fill="#111">2 · FLYBY = bounce off a moving planet</text>
+<text x="8" y="298" font-size="8.5" fill="#111">Mars's view: speed in = speed out, only the direction bends.</text>
+<circle cx="70" cy="362" r="20" fill="#ddd" stroke="#111" stroke-width="1.5"/>
+<text x="70" y="365" text-anchor="middle" font-size="8" font-weight="bold" fill="#111">MARS</text>
+<line x1="70" y1="340" x2="70" y2="318" stroke="#111" stroke-width="5" marker-end="url(#ar)"/>
+<text x="14" y="312" font-size="8" font-weight="bold" fill="#111">THICK = Mars moving</text>
+<path d="M10,404 C45,389 42,359 58,346 C75,334 110,326 140,322" fill="none" stroke="#111" stroke-width="2" stroke-dasharray="6 4"/>
+<line x1="120" y1="325" x2="142" y2="321" stroke="#111" stroke-width="2" marker-end="url(#ar)"/>
+<text x="4" y="388" font-size="8" fill="#111">in</text>
+<text x="146" y="326" font-size="8" fill="#111">out (bent)</text>
+<text x="190" y="310" font-size="8.5" font-weight="bold" fill="#111">Sun's view: add Mars's speed</text>
+<line x1="200" y1="398" x2="255" y2="368" stroke="#111" stroke-width="1.5" marker-end="url(#ar)"/>
+<line x1="255" y1="368" x2="255" y2="326" stroke="#111" stroke-width="5" marker-end="url(#ar)"/>
+<line x1="200" y1="398" x2="255" y2="326" stroke="#111" stroke-width="2" stroke-dasharray="2 3" marker-end="url(#ar)"/>
+<text x="206" y="410" font-size="8" fill="#111">out (thin)</text>
+<text x="262" y="352" font-size="8" fill="#111">+ Mars (THICK)</text>
+<text x="190" y="342" font-size="8.5" font-weight="bold" fill="#111">dotted =</text>
+<text x="190" y="353" font-size="8.5" font-weight="bold" fill="#111">FASTER</text>
+</svg><div class="bz" style="margin-top:4px; font-size:10.5px"><b>✏️ PENCIL KEY</b> · thin solid = Earth's orbit · thick solid = Mars's orbit · dashed = your path · ○ hollow dot = start · ● filled dot = target · THICK arrow = the planet moving · dotted arrow = the result</div>
+    <div class="bz"><b>⭐ 3 TAKEAWAYS</b> <span class="lb">3 lines</span><br>
+      <span class="ink">1. Getting there fast costs fuel; the Hohmann half-ellipse is the cheapest, slowest sensible path<br>2. A flyby bends your path around a planet and, because the planet is moving, hands you some of its speed<br>3. More speed at the same spot = bigger orbit = farther reach; the price of flybys is years of travel</span></div>
+    <div class="bz" style="border-color:var(--green); background:#f2fff7"><b>🧠 SUMMARY · video + PDF closed</b> <span class="lb">3 lines</span><br>
+      <span class="pencil" style="font-size:12px">1. ______________________________________<br>2. ______________________________________<br>3. ______________________________________</span></div>
+  </div>
+  <div class="bg b"><span class="tag">❓ RIGHT PAGE · CORNELL</span>
+    <div class="hdr"><span>CUES (questions)</span><span>NOTES (keywords)</span></div>
+    <div style="display:flex; height:6.5in">
+      <div style="width:37%; border-right:3px solid var(--blue); padding-right:8px" class="ink">
+        <p class="q">Lambert's problem: what do you give it, what does it give back?</p>
+        <p class="q">Why can't we fly to Mars in 20 days?</p>
+        <p class="q">Hohmann: what shape, what angle, how many burns, why cheapest?</p>
+        <p class="q">How long is a Hohmann to Mars? What's it got to do with the S1 quiz?</p>
+        <p class="q">Flyby: in Mars's eyes does the speed change? In the Sun's eyes? Where does the extra come from?</p>
+        <p class="q">More speed at the same spot → what happens to the orbit?</p>
+        <p class="q">Why did Rosetta take 10 years?</p>
+        <p class="q"><span class="hl b">? can a flyby SLOW you down</span></p>
+      </div>
+      <div style="flex:1; padding-left:10px" class="ink">
+        <div><span class="hl y">transfer</span> = move from one orbit around the Sun (Earth's) to another (Mars's)</div>
+        <div><span class="hl y">Lambert's problem</span>: give 2 positions + a travel time → math returns the ONE orbit linking them → tells you the <span class="hl y">Δv</span></div>
+        <div>fast = expensive: Mars in 20 days needs absurd Δv → rocket too big → <span class="hl o">not doable</span></div>
+        <div><span class="hl y">Hohmann</span> = half-ellipse touching both orbits · depart/arrive <span class="hl k">180° apart</span> · 2 burns · <span class="hl g">cheapest Δv</span> (= your perigee/apogee burn line, around the Sun)</div>
+        <div>Earth→Mars Hohmann ≈ <span class="hl k">8.5 months</span> · TOF = half the ellipse's period (S1 quiz) · window every 26 months</div>
+        <div>Hohmann isn't required, it's the cheapest · real choice = <span class="hl y">trade</span>: time vs fuel</div>
+        <div>far targets (Jupiter+): Hohmann Δv still too big → <span class="hl y">flyby</span> / <span class="hl y">gravity assist</span> instead</div>
+        <div>flyby: Mars's view → speed in = speed out, direction bends · Sun's view → add Mars's own speed → <span class="hl g">faster</span> (pass the other side → slower)</div>
+        <div>more speed at same spot → <span class="hl y">bigger a</span> → reach farther · energy stolen from the planet (it slows by nothing you could measure)</div>
+        <div><span class="hl y">Rosetta</span> (ESA): launch 2004 → Earth '05, Mars '07, Earth '07, Earth '09 → comet 2014 · <span class="hl o">cost of flybys = TIME</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="page">
+<div class="top"><div class="badge">SEC 3 · LEC 3 · TEACH + FACT CHECK</div><h1>You don't aim at Mars. <span>You aim at where Mars will be.</span></h1></div>
+<div class="sub">Start with the box. Then the three ideas, the caption errors, and where the instructor was loose.</div>
+<div style="background:#fff8d6; border:3px solid #111; border-radius:14px; padding:10px 16px; margin-bottom:12px; font-size:12.5px; line-height:1.5">
+  <b style="font-size:14px">🧒 Like you're 5</b><br>
+  You're on a merry-go-round and your friend is on a bigger one around the same pole, going slower. You want to throw them a ball. You could hurl it straight at them, hard, but you'd have to throw <i>really</i> hard and it'd arrive going way too fast to catch. Or you could lob it gently so it drifts outward on a long curve and arrives just as your friend comes around. The gentle lob takes longer but barely any effort. That lob is a <b>Hohmann transfer</b>, and it's how we send things to Mars.<br>
+  Now the second trick. If a ball bounces off a wall, it comes back at the same speed. But if it bounces off the <b>front of a moving truck</b>, it comes back faster, because the truck gave it a push. Planets are moving trucks. Swing a spacecraft close past one and it comes out faster than it went in. That's a <b>flyby</b>, and it's how we reach Jupiter and beyond without a rocket the size of a city.
+</div>
+<div class="two">
+  <div class="card">
+    <h3>🎯 The three ideas</h3>
+    <ul class="r">
+      <li><b>Lambert's problem</b> is the "can I get there by then?" calculator. You hand it where you are, where you want to be, and how long you're willing to take. It hands back the one orbit that connects those two points in that time, and from the orbit you read off how much speed change (Δv) you'd need. Ask it for Mars in 20 days and it happily gives you an orbit, but the Δv is tens of km/s, which no rocket can carry. The math works; the fuel doesn't exist. Fast is expensive. Slow is cheap.</li>
+      <li><b>The Hohmann transfer</b> is the cheapest answer: half an ellipse that just kisses Earth's orbit on the inside and Mars's orbit on the outside. You leave Earth at one end and arrive at Mars at the other, 180° around the Sun. Two burns: one to leave, one to match Mars. This is exactly your line from last lecture, scaled up to the Sun: burn at the low point to raise the high point. For Mars it takes about 8.5 months, which is half the period of that ellipse, which is the time-of-flight formula from your very first quiz. And because Mars has to be in the right place when you arrive, you can only launch every 26 months.</li>
+      <li><b>The flyby / gravity assist.</b> Seen from Mars, a passing spacecraft comes in at some speed and leaves at the same speed, just bent in a new direction. Seen from the Sun, though, Mars itself is moving at 24 km/s, and the bend lines the spacecraft up to carry some of that along. More speed at the same distance from the Sun means a bigger orbit (your semi-major axis grows), which means you can reach farther out. The energy comes from Mars, which slows down by an amount nobody could ever measure. Pass behind the planet to speed up; pass in front to slow down (that's how you brake at Mercury).</li>
+    </ul>
+    <div class="callout" style="font-size:11.5px">⚡ Say it as: <b>fast costs fuel, Hohmann is the lazy throw, flybys bounce you off moving planets.</b></div>
+  </div>
+  <div>
+    <div class="card">
+      <h3>🔎 Caption errors</h3>
+      <table class="t" style="font-size:10.3px"><tr><th>Captions said</th><th>Instructor meant</th></tr>
+        <tr><td>"human / home and / common / whole and transfer"</td><td><b>Hohmann</b> transfer (every time)</td></tr>
+        <tr><td>"their limits problem"</td><td><b>Lambert's</b> problem</td></tr>
+        <tr><td>"a connex approximation"</td><td>a <b>conic</b> approximation (ellipses, hyperbolas)</td></tr>
+        <tr><td>"velocity of rotation of mass"</td><td>velocity of <b>Mars</b></td></tr>
+        <tr><td>"destroying"</td><td>"this drawing"</td></tr>
+        <tr><td>"the opposite"</td><td>the <b>orbit</b></td></tr>
+        <tr><td>"flew to a comet in 2010"</td><td>launched 2004, arrived at the comet 2014 (2010 was an asteroid flyby on the way)</td></tr>
+        <tr><td>"get to an asteroid"</td><td>get to a <b>comet</b></td></tr></table>
+    </div>
+    <div class="card" style="margin-top:12px">
+      <h3>▲ Where the instructor was loose</h3>
+      <ul class="r">
+        <li><b>"Lambert's problem takes into account the Δv and the time."</b> Backwards. Time (and the two positions) go <i>in</i>; the orbit and its Δv come <i>out</i>. Small, but it's the difference between understanding the tool and just naming it.</li>
+        <li><b>"Hohmann is the most efficient transfer."</b> True for almost every real case. (For a target more than ~12× farther out, a three-burn path can beat it. You'll never need this; just know "almost always.")</li>
+        <li><b>"Velocity and semi-major axis are related directly."</b> Right idea, right conclusion. The precise statement is that orbital <i>energy</i> sets the size, and more speed at a given spot means more energy. Same thing in practice.</li>
+        <li><b>Not said: a flyby can slow you down too.</b> Pass in front of the planet instead of behind it. Missions to Mercury and the Sun use this to brake. That's the answer to your "?" cue.</li>
+        <li><b>Not said: why 26 months.</b> He said Hohmann needs 180°; he didn't say Mars has to be ~44° ahead of Earth at launch for that to work, and that lineup recurs every 26 months. It's on your S1 primer; worth a card.</li>
+      </ul>
+    </div>
+    <div class="card" style="margin-top:12px">
+      <h3>📒 Question bank cards</h3>
+      <ul class="r">
+        <li>Lambert's problem: three inputs, one output?</li>
+        <li>Why is a 20-day trip to Mars impossible even though the orbit exists?</li>
+        <li>Describe a Hohmann transfer in one sentence, including the angle and the number of burns.</li>
+        <li>In Mars's frame, what changes during a flyby? In the Sun's frame?</li>
+        <li>How do you make a flyby slow you down instead?</li>
+        <li>Rosetta launched in 2004 and arrived in 2014. Why so long, and what did it get for the wait?</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="page">
+<div class="top"><div class="badge">SEC 3 · LEC 3 · VOCABULARY</div><h1>Every word used, <span>in plain English</span></h1></div>
+<div class="sub">Two people's names are in here (Hohmann, Lambert). They're just labels on ideas. Copy only the new words into the word bank.</div>
+<div class="gl">
+  <div><b>Transfer / transfer orbit</b> — the path you fly to get from one orbit to another, like from Earth's orbit around the Sun to Mars's. <i>The highway between two parking lots.</i></div>
+  <div><b>Interplanetary</b> — between planets, orbiting the Sun rather than Earth. <i>Repeat.</i></div>
+  <div><b>Lambert's problem</b> — the classic "find the orbit" puzzle: given a start point, an end point, and a travel time, what orbit connects them? Named after Johann Lambert, an 18th-century mathematician. <i>The "can I get there by Tuesday?" calculator.</i></div>
+  <div><b>Δv (delta-v)</b> — the total speed change a trip requires, which is really the fuel bill. <i>Repeat. Still the currency of spaceflight.</i></div>
+  <div><b>Propulsion / propellant</b> — the engine, and the fuel it burns. "Not enough propulsion" means "can't carry enough fuel to make that Δv."</div>
+  <div><b>Input / constraint</b> — what you feed into a calculation / a limit you can't break (rocket size, fuel mass, time). <i>Repeat.</i></div>
+  <div><b>Conic / conic approximation</b> — treating every orbit as one of the shapes you get by slicing a cone: circle, ellipse, parabola, hyperbola. "Patched conics" = stitching an Earth-centered ellipse to a Sun-centered one to a Mars-centered hyperbola. <i>Lego bricks of orbit shapes.</i></div>
+  <div><b>Hohmann transfer</b> — the half-ellipse path that touches both the starting and ending orbit, with departure and arrival 180° apart and two burns. Cheapest in fuel. Worked out by Walter Hohmann, a German engineer, in 1925. <i>The lazy throw.</i></div>
+  <div><b>Tangent</b> — just touching, not crossing. The Hohmann ellipse is tangent to both circles, which is why the burns are small: you're already moving along the right line.</div>
+  <div><b>Optimal / efficient / most efficient</b> — in this lecture, always means "least Δv," i.e. least fuel. Not fastest.</div>
+  <div><b>Time of flight (TOF)</b> — how long the trip takes. For a Hohmann it's half the ellipse's period. <i>Your Section 1 quiz question.</i></div>
+  <div><b>Launch window / synodic period</b> — the stretch of days when the planets are lined up right for a Hohmann. Earth–Mars: about every 26 months. <i>Repeat from S1 primer.</i></div>
+  <div><b>Phase angle</b> — how far ahead the target planet must be when you launch so it's there when you arrive. Mars: ~44° ahead. Not on the slide; it's why the window exists.</div>
+  <div><b>Flyby / gravity assist / slingshot</b> — three names for one trick: swing close past a planet so its gravity bends your path and, because the planet is moving, changes your speed relative to the Sun. <i>Bouncing off the front of a moving truck.</i></div>
+  <div><b>Gravity field</b> — the region around a planet where its pull matters. It's what bends the flyby path.</div>
+  <div><b>Relative velocity</b> — your speed as seen from something else (Mars, say) rather than from the Sun. The flyby doesn't change your speed relative to Mars, only relative to the Sun. <i>Repeat.</i></div>
+  <div><b>Vector</b> — an arrow: a quantity with both a size and a direction. Velocity is a vector. The slide's arrow pictures are vector addition: spacecraft-relative-to-Mars plus Mars-relative-to-Sun equals spacecraft-relative-to-Sun. <i>Two pushes added tip to tail.</i></div>
+  <div><b>Magnitude / direction</b> — the length of the arrow / which way it points. A flyby changes the direction in Mars's frame and the magnitude in the Sun's frame.</div>
+  <div><b>Hyperbola</b> — the open, swing-past shape of a flyby path near a planet (e &gt; 1). <i>Repeat.</i></div>
+  <div><b>Semi-major axis (a) / "more energetic orbit"</b> — size of the orbit. More speed at the same spot = more energy = bigger a = reaches farther out. <i>Repeat.</i></div>
+  <div><b>Orbital energy</b> — the combined speed-plus-height "budget" of an orbit. Fixed unless you burn or do a flyby. Bigger budget = bigger orbit.</div>
+  <div><b>Deep space</b> — far beyond Earth and the Moon; the outer planets and beyond.</div>
+  <div><b>Rosetta / ESA / comet 67P</b> — the European Space Agency's comet mission: launched 2004, four flybys (Earth, Mars, Earth, Earth), arrived at comet 67P/Churyumov–Gerasimenko in 2014, dropped the Philae lander. <i>Rosetta and ESA are repeats; 67P is new.</i></div>
+  <div><b>Asteroid vs comet</b> — asteroid: a rock, mostly in the belt between Mars and Jupiter. Comet: ice and dust, grows a tail near the Sun. Rosetta flew past two asteroids (2008, 2010) on the way to its comet.</div>
+  <div><b>Voyager / Juno / Cassini</b> — missions named as flyby users: Voyager used Jupiter and Saturn, Cassini used Venus twice, Earth, and Jupiter, Juno used Earth. <i>All repeats; see Who's Who.</i></div>
+</div>
+</div>
+
+<div class="page">
+<div class="top"><div class="badge">SEC 3 · LEC 3 · SAY IT OUT LOUD</div><h1>Page 4: <span>prove it by talking</span></h1></div>
+<div class="sub">After the spread and the 3-line summary, with everything closed. Send me what you said and I fill the box.</div>
+<div class="two">
+  <div>
+    <div class="card">
+      <h3>🗣 The friend's opening question</h3>
+      <div style="font-size:13px; line-height:1.5">"How do we even get to Mars? Don't you just point the rocket at it and go?"</div>
+    </div>
+    <div class="card" style="margin-top:12px">
+      <h3>✅ Three sentences you should be able to say</h3>
+      <ul class="r" style="font-size:12px">
+        <li>No, you aim at where Mars is going to be. The cheapest way is a long lazy curve that drifts outward and meets Mars halfway around the Sun, about eight and a half months later.</li>
+        <li>You could go faster, but every bit faster costs a huge amount more fuel, and past a point the rocket just can't be built. Fast is expensive, slow is cheap.</li>
+        <li>For really far places like Jupiter, you cheat: you swing close past a planet and it slings you out faster, like bouncing a ball off the front of a moving truck. It costs no fuel, just years of travel.</li>
+      </ul>
+    </div>
+    <div class="card" style="margin-top:12px">
+      <h3>❓ Follow-ups a friend might ask</h3>
+      <ul class="r" style="font-size:12px">
+        <li>"Why can't you just go whenever?" (Mars has to be in the right spot when you arrive; the lineup comes every 26 months)</li>
+        <li>"Where does the extra speed from a flyby come from? Isn't that free energy?" (from the planet; it slows by an unmeasurable amount)</li>
+        <li>"Can a flyby slow you down?" (yes, pass in front of the planet instead of behind)</li>
+        <li>"So why did it take Rosetta ten years?" (four flybys to build up speed for free instead of carrying fuel; time was the price)</li>
+        <li>"What's Lambert's problem?" (a calculator: two points plus a time, gives you the orbit and the fuel)</li>
+      </ul>
+    </div>
+  </div>
+  <div>
+    <div class="card" style="min-height:3.2in">
+      <h3>📝 Your explanation (paste or dictate)</h3>
+      <div style="border:2px dashed #999; border-radius:8px; height:2.5in; padding:8px; color:#999; font-size:11px">_ send it to me in chat; I'll put it here _</div>
+    </div>
+    <div class="card" style="margin-top:12px; min-height:2.4in; border-color:var(--green)">
+      <h3 style="color:var(--green)">🎯 My read</h3>
+      <div style="border:2px dashed #999; border-radius:8px; height:1.7in; padding:8px; color:#999; font-size:11px">solid on: _<br>fuzzy on: _<br>fix: _<br>→ question-bank cards: _</div>
+    </div>
+    <div class="callout" style="margin-top:12px; font-size:11.5px">⚡ Section 3 is done after this. Next: the Section 3 conversation test, five questions from me, party-style.</div>
+  </div>
+</div>
+</div>
+</body></html>

@@ -28,7 +28,7 @@ track for now — see root `CLAUDE.md` § Current focus.
 | 1 | Presentation, intro to space engineering, mission design & objectives, Quiz 1 (time of flight) | 3 + quiz | 13 min | `sections/01-mission-design-and-time-of-flight.md` | [x] 2026-11-07 |
 | 2 | Space Environment | 3 | 11 min | `sections/02-space-environment.md` | [ ] |
 | 3 | Orbital Mechanics | 3 | 34 min | `sections/03-orbital-mechanics.md` | [ ] |
-| 4 | Space Propulsion Systems | 5 | 27 min | `sections/04-space-propulsion.md` | [ ] |
+| 4 | Space Propulsion Systems | 5 | 27 min | `sections/04-space-propulsion.md` | [ ] 2 of 5 lectures (2026-11-12) |
 | 5 | Communications from Space to Earth | 3 | 44 min | `sections/05-communications.md` | [ ] |
 | 6 | Attitude Determination and Control | 4 | 36 min | `sections/06-attitude-determination-and-control.md` | [ ] |
 | 7 | Space Power Systems | 4 | 33 min | `sections/07-space-power-systems.md` | [ ] |
@@ -82,3 +82,23 @@ the Done column and date it when a section's quiz is graded.
   word bank (~45 pp) no longer fits one ~95-page notebook; plan is cards
   at 44-from-the-end now, second notebook before Section 7. Notebook's
   real page count still unconfirmed. App v9: three number corrections.
+
+- **2026-11-12** — **Section 4 started** (student's decision; the S1 talk
+  run and the S3 conversation test are still ungraded). Lec 1 "Space
+  propulsion: definitions + types" and Lec 2 "Chemical engines
+  (rockets)": transcripts + all slides (3 + 4). PDFs:
+  `feedback/S4-L1-space-propulsion-definitions-and-types-v1.pdf` (6 pp)
+  and `feedback/S4-L2-chemical-engines-v1.pdf` (7 pp), now with a "copy
+  into notes" page (routes A-E) and concept-card pages C17-C19 in
+  notebook layout. Instructor wrong/loose: electric propulsion "from
+  the 1980s, kind of new" (first flown 1964, operational 1971); nuclear
+  "being developed by NASA right now" (NERVA ended 1972, DRACO
+  cancelled 2025 as far as known, nothing has flown); "lightest and
+  highest thrust" (best thrust-to-weight, heaviest system); nozzle
+  "maximizes pressure" (it spends pressure for speed); "commonly liquid
+  hydrogen" while both photographed engines burn kerosene. App v10:
+  scene 8 "Throw it backward" (16 MC, 6 explain, 16 cards, 36 terms,
+  10 concept entries, 3 formulas). Who's Who v3 (page 3 = S4 names).
+  Remaining S4 lectures (electric, nuclear, ...) to come from the
+  student; the Section 4 talk, word-bank sheet and glossary PDF get
+  rebuilt once the section is complete.

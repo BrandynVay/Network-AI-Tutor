@@ -73,7 +73,7 @@ table.deep th{background:var(--paper2)}
 
 <div class="wrap">
   <header class="top">
-    <div><div class="tag">Interplanetary Spacecraft & Satellite Engineering · Sections 1–3</div><h1>Space <span>X</span> Study</h1></div>
+    <div><div class="tag">Interplanetary Spacecraft & Satellite Engineering · Sections 1–4</div><h1>Space <span>X</span> Study</h1></div>
     <div class="row" style="gap:6px"><button id="modeBtn" class="pill" style="cursor:pointer" title="Switch how things are explained">…</button><div id="syncBadge" class="pill" title="Where your progress is saved">…</div></div>
   </header>
   <nav class="tabs" role="tablist" id="tabs">
@@ -208,6 +208,12 @@ const SCENES = [
    notes:["In Jupiter's eyes nothing changed but your direction. In the Sun's eyes your speed changed because Jupiter was moving. Both are true at once; that's what 'frame of reference' means.",
     "Design levers: approach speed, closest-approach distance, and which side you pass on. Those three set the bend and the sign of the gain.",
     "After the flyby you're on a new, bigger (or smaller) orbit around the Sun with a new semi-major axis; that's the 'more speed → bigger a' line from Section 3."]}},
+ {id:"prop", n:8, name:"Throw it backward", color:"#0e8f9c", sec:"S4",
+  story:"Sit on a skateboard holding a bowling ball. Throw the ball backward and you roll forward. You pushed on the ball and the ball pushed on you; the ground and the air had nothing to do with it. That is every rocket: the ball is the gas it throws out the back, and the push is called thrust. Throw faster, or throw more each second, and you push harder. A chemical rocket is a fire with one way out: fuel and the oxygen it brought along burn in a chamber, and a bell-shaped nozzle turns that hot, squeezed gas into a jet at 3 to 4 km/s. It pushes enormously hard and is empty in minutes. An electric engine uses electricity to fling its propellant ten times faster, so it sips, but its push is the weight of a few sheets of paper. A nuclear engine sits in between and has never flown.",
+  say:"A rocket pushes on its own exhaust. Chemical is strong and thirsty, electric is weak and efficient.",
+  draw:"A box with a bell on the back. Thin arrow for the gas going left, thick arrow for the ship going right.",
+  why:[["There's no air in space. What does a rocket push against?", "Its own exhaust. Throw mass backward and you are shoved forward: Newton's third law. Air is not part of it; rockets actually work better in vacuum."], ["If electric engines are so efficient, why not use them for everything?", "The push is a fraction of a newton. Fine for months of gentle cruising, useless for launching, landing or braking into orbit in half an hour."], ["Why is specific impulse measured in seconds?", "It is exhaust speed divided by 9.81. In words: how many seconds one kilo of propellant can hold up one kilo of weight. Higher means better mileage."]],
+  deep:{"title": "Thrust, worked: momentum, the nozzle, and the two numbers", "intro": "Every engine is a way of throwing mass backward. Here is the bookkeeping, then what happens inside a chemical engine, then why the three families differ.", "rows": [["1 · Momentum is kept", "mass × velocity never changes in total", "A 1,000 kg ship at rest throws 1 kg backward at 3,000 m/s. 1 × 3,000 = 999 × v, so the ship moves forward at 3 m/s. Air appears nowhere in that sum.", "Newton's third law (action–reaction); conservation of momentum. This is the reaction principle."], ["2 · Thrust", "F = ṁ × vₑ", "Thrust is how fast you throw momentum away: kilograms per second times exhaust speed. 0.1 kg/s at 3,000 m/s gives 300 N. On a 1,000 kg ship that is 0.3 m/s², so a 10 s burn gives 3 m/s of Δv using 1 kg. Same answer as row 1.", "Thrust (F), mass flow rate (ṁ), exhaust velocity (vₑ). Two levers: throw more, or throw faster."], ["3 · Two tanks", "fuel + oxidizer", "Burning is fuel joining with oxygen. There is no air in space, so a rocket carries its own oxidizer, and it is most of the load: about 6 kg of oxygen per kg of hydrogen. Hydrogen + oxygen releases about 13 MJ per kg of mix.", "Bipropellant. LH₂ / LOX are cryogenic; RP-1 is kerosene. Probes use storable hypergolics (hydrazine family)."], ["4 · Feed and burn", "pumps → chamber at ~3,300 K, 100+ bar", "The chamber is at 100 or more times air pressure, so propellant must be forced in. Each Saturn V F-1 engine had a 41 MW turbopump moving 2.6 tonnes per second. Inside, the gas is hot and squeezed but slow.", "Turbopump (or pressure-fed for small engines); combustion chamber. Walls survive by regenerative cooling: cold fuel flows through them first."], ["5 · Throat and bell", "pressure turns into speed", "The narrowing accelerates the gas to exactly the speed of sound at the throat. Past Mach 1 the rule flips: a widening pipe speeds the gas up. Pressure and temperature fall, speed climbs to 3–4 km/s at the exit.", "de Laval nozzle (converging–diverging, bell nozzle). The nozzle spends pressure to buy speed."], ["6 · Check it on a real engine", "287 kg/s × 3,414 m/s ≈ 981,000 N", "SpaceX's Merlin Vacuum: Isp 348 s, so vₑ = 348 × 9.81 = 3,414 m/s. It throws 287 kg every second. F = ṁ × vₑ ≈ 981 kN, enough to hold up 100 tonnes.", "Specific impulse Isp = vₑ ÷ g₀, with g₀ = 9.81 m/s². 348 s means 1 kg of propellant can give 9.81 N for 348 seconds."], ["7 · The chemical ceiling", "vₑ ≈ 4.5 km/s, Isp ≈ 460 s", "The energy in a kilo of propellant is fixed by chemistry. Even perfect conversion of 13 MJ/kg gives √(2 × 13,000,000) ≈ 5.2 km/s. Real best is 4.5 km/s. No chemical engine will ever reach 1,000 s.", "Why electric and nuclear engines exist: the energy has to come from somewhere other than the propellant."], ["8 · Electric: fast but feeble", "jet power = ½ ṁ vₑ²", "Getting 300 N at 30,000 m/s needs 4.5 MW of jet power. Solar panels give kilowatts. So NASA's NEXT ion thruster takes 6.9 kW and gives 0.236 N at 41 km/s (Isp 4,190 s). Dawn needed 4 days to go 0–100 km/h, then thrust for 5.9 years: 11.5 km/s of Δv from 425 kg of xenon.", "Electric propulsion (EP): ion thruster, Hall-effect thruster. Thrust is limited by electrical power, not by propellant."], ["9 · Nuclear thermal: hot and light", "vₑ ∝ √(T ÷ molecule mass)", "Burning hydrogen and oxygen makes steam, molecular mass 18. A reactor can heat plain hydrogen, mass 2, to about the same 2,700 K. Lighter molecules fly faster: Isp about 900 s against 450 s. Ground-tested as NERVA until 1972; never flown.", "Nuclear thermal propulsion (NTP). Not the same as an RTG, which only makes electricity."], ["10 · What mileage buys", "rocket equation", "For a 5 km/s Δv: at Isp 320 s the ship must be 80% propellant; at Isp 3,000 s only 16%. That is the whole trade: thrust now, or mass saved over years.", "Requirements pick the engine: launch, landing and capture need thrust (chemical); long cruises reward Isp (electric)."]], "notes": ["The three families differ in where the energy comes from: inside the propellant (chemical), from solar panels (electric), from a reactor (nuclear).", "Thrust and specific impulse pull against each other. Chemical engines have modest exhaust speed but throw tonnes per second; ion engines have enormous exhaust speed but throw milligrams per second.", "Both engines in the lecture's photos (Falcon 9 second stage, Saturn V first stage) burn kerosene with liquid oxygen, not hydrogen."]}},
 ];
 
 // Multiple-choice questions. a = index of correct option. x = explanation.
@@ -284,6 +290,22 @@ const MC = [
  {s:"flyby", q:"Why couldn't New Horizons go into orbit at Pluto?", o:["Pluto has no gravity","It arrived far too fast after the fastest launch ever plus a Jupiter boost; no fuel could brake it","It ran out of power","Pluto was on the other side of the Sun"], a:1, x:"Speed bought the 9.5-year trip. Speed cost the orbit. Hence a flyby."},
  {s:"flyby", q:"More speed at the same distance from the Sun means…", o:["A smaller orbit","A bigger orbit, reaching farther out","The same orbit","Escape from the galaxy"], a:1, x:"More energy, bigger semi-major axis. That's how a few flybys reach the outer planets."},
  {s:"flyby", q:"The 'moving truck' analogy for a flyby: what is the truck?", o:["The spacecraft","The Sun","The planet, moving along its orbit","The rocket"], a:2, x:"A ball bouncing off the front of a moving truck comes back faster. The planet is the truck."},
+ {s:"prop", q:"A rocket fires its engine in the vacuum of space. What is it pushing against?", o:["The air behind it", "The launch pad", "Its own exhaust", "Sunlight"], a:2, x:"Newton's third law: throw mass backward, get pushed forward. No air is involved; momentum is conserved between ship and exhaust."},
+ {s:"prop", q:"Which formula gives thrust?", o:["F = ṁ × vₑ", "F = vₑ ÷ g₀", "F = ½ m v²", "F = μ ÷ r²"], a:0, x:"Thrust is mass thrown per second times exhaust speed. vₑ ÷ g₀ is specific impulse."},
+ {s:"prop", q:"An engine throws 500 kg/s at 4,400 m/s. Thrust?", o:["8.8 N", "2,200 N", "2.2 million N", "4,900 N"], a:2, x:"500 × 4,400 = 2,200,000 N. That is roughly the Space Shuttle main engine."},
+ {s:"prop", q:"An engine has Isp = 300 s. Its exhaust velocity is about…", o:["30 m/s", "300 m/s", "2,900 m/s", "30,000 m/s"], a:2, x:"vₑ = Isp × g₀ = 300 × 9.81 ≈ 2,940 m/s."},
+ {s:"prop", q:"What does specific impulse measure?", o:["How hard the engine pushes", "How efficiently it uses propellant", "How hot the chamber is", "How heavy the engine is"], a:1, x:"Isp is mileage: push per kilogram of propellant. Thrust is the push itself."},
+ {s:"prop", q:"Why does a rocket carry an oxidizer?", o:["To cool the nozzle", "Because there is no air in space to burn the fuel with", "To make the exhaust heavier", "It doesn't; only jets do"], a:1, x:"Burning needs oxygen. A jet takes it from the air; a rocket has to bring its own."},
+ {s:"prop", q:"In a rocket nozzle, where does the gas reach exactly the speed of sound?", o:["In the combustion chamber", "At the throat", "At the bell exit", "It never does"], a:1, x:"The throat is the narrowest point; flow is Mach 1 there and supersonic in the bell."},
+ {s:"prop", q:"What does the bell-shaped nozzle do to the gas?", o:["Raises its pressure", "Turns pressure and heat into speed", "Burns leftover fuel", "Cools it so it is safe"], a:1, x:"The nozzle spends pressure to buy speed. Pressure is highest in the chamber and lowest at the exit."},
+ {s:"prop", q:"'Chemical rockets have low specific impulse but high thrust.' How can both be true?", o:["It can't; it's a mistake", "Thrust depends only on Isp", "They throw a huge mass per second at a modest speed", "They burn for a very long time"], a:2, x:"F = ṁ × vₑ. vₑ is modest (2.5–4.5 km/s) but ṁ is tonnes per second."},
+ {s:"prop", q:"Which engine family has the highest thrust?", o:["Chemical", "Electric", "Nuclear thermal", "Solar sail"], a:0, x:"Chemical: up to millions of newtons. Electric gives a fraction of a newton."},
+ {s:"prop", q:"Which has the highest specific impulse?", o:["Solid rocket", "Kerosene rocket", "Hydrogen rocket", "Ion thruster"], a:3, x:"Ion thrusters reach 3,000–4,000 s and more. The best chemical engine is about 460 s."},
+ {s:"prop", q:"Why is the thrust of an electric engine so small?", o:["Xenon is too light", "Fast exhaust needs huge power, and solar panels give only kilowatts", "There is no oxidizer", "The nozzle is too short"], a:1, x:"Jet power is ½ṁvₑ². At 30–40 km/s even a newton of thrust needs tens of kilowatts."},
+ {s:"prop", q:"Why does a nuclear thermal rocket beat a chemical one on Isp?", o:["It burns hotter", "Its exhaust is plain hydrogen, much lighter than steam", "It uses electricity", "It has a bigger nozzle"], a:1, x:"Exhaust speed goes as √(T ÷ molecular mass). Hydrogen (2) against steam (18) at similar temperature: about twice the Isp."},
+ {s:"prop", q:"Voyager's plutonium RTG is…", o:["A nuclear rocket engine", "An ion thruster", "A power source that makes electricity, not thrust", "A booster"], a:2, x:"An RTG turns decay heat into electricity. No nuclear rocket has ever flown."},
+ {s:"prop", q:"You must brake into Mars orbit in about 30 minutes. Which engine?", o:["Ion thruster", "Chemical rocket", "Solar sail", "Either works"], a:1, x:"Capture needs kilometres per second of Δv quickly. Only chemical thrust can do that today."},
+ {s:"prop", q:"Both engines pictured in the lecture (Falcon 9 second stage, Saturn V first stage) burn…", o:["Liquid hydrogen + liquid oxygen", "Kerosene + liquid oxygen", "Solid propellant", "Hydrazine"], a:1, x:"Merlin Vacuum and the F-1 are both kerosene (RP-1) + LOX engines. Hydrogen is common on other upper stages."},
 ];
 
 // Explain-why prompts: think, reveal, self-grade.
@@ -316,6 +338,12 @@ const WHY = [
  {s:"flyby", q:"In Jupiter's frame what changes during a flyby? In the Sun's frame?", a:"Jupiter's frame: speed unchanged, direction bent by the turning angle. Sun's frame: add Jupiter's 13 km/s; passing behind you come out faster, in front you come out slower."},
  {s:"flyby", q:"What three things set how much a flyby bends you?", a:"Approach speed v∞, closest-approach distance r_p, and the planet's mass μ: sin(δ/2) = 1/(1 + r_p·v∞²/μ). Slow, close and massive gives a big bend."},
  {s:"flyby", q:"Why is the price of flybys time?", a:"Each assist needs the planets lined up, so you loop around the inner solar system for years collecting boosts instead of carrying fuel. Rosetta: 10 years, four flybys."},
+ {s:"prop", q:"Explain to a friend how a rocket can accelerate in empty space.", a:"It throws mass out the back and gets shoved forward: Newton's third law, or conservation of momentum. It pushes on its own exhaust, not on air. A 1,000 kg ship that throws 1 kg at 3,000 m/s gains 3 m/s."},
+ {s:"prop", q:"Walk a kilo of propellant through a liquid rocket engine, tank to exhaust.", a:"Tank, pump, combustion chamber (burns at about 3,300 K and 100+ bar), throat (reaches the speed of sound), bell nozzle (expands, pressure drops, speed climbs to 3–4 km/s), out as exhaust."},
+ {s:"prop", q:"What does 'Isp = 348 s' mean, in formula and in words?", a:"Isp = vₑ ÷ g₀, so vₑ = 348 × 9.81 = 3,414 m/s. In words: one kilo of propellant can give 9.81 N of thrust for 348 seconds. It is the engine's mileage."},
+ {s:"prop", q:"Why can't we just build a chemical engine with Isp 1,000 s?", a:"The energy per kilo of propellant is fixed by chemistry. Hydrogen and oxygen give about 13 MJ/kg, which caps exhaust speed near 4.5–5 km/s, Isp about 460 s. More needs an outside energy source: electricity or a reactor."},
+ {s:"prop", q:"Compare chemical, electric and nuclear thermal engines in one breath.", a:"Chemical: huge thrust, Isp 250–450 s, burns for minutes. Electric: thrust of a few sheets of paper, Isp 3,000 s or more, runs for years on solar power. Nuclear thermal: big thrust, Isp about 900 s, ground-tested but never flown."},
+ {s:"prop", q:"The gas in the chamber is hotter than the melting point of steel. Why doesn't the engine melt?", a:"Regenerative cooling: the cold fuel is pumped through channels in the chamber and nozzle walls before it is burned, carrying the heat away."},
 ];
 
 // Flashcards: vocabulary and key numbers.
@@ -383,6 +411,22 @@ const CARDS = [
  ["Commitment ladder","Flyby → orbiter → atmospheric probe → lander → rover → penetrator","fuel"],
  ["Laika","Dog aboard Sputnik 2 (1957), first animal to orbit; the classic biosatellite","shelf"],
  ["Hubble","Bus-sized telescope orbiting at ~540 km since 1990; looks out, not down","shelf"],
+ ["Thrust (F)","The engine's push, in newtons. F = ṁ × vₑ","prop"],
+ ["Newton's third law","Every force has an equal and opposite partner: gas goes back, ship goes forward","prop"],
+ ["Propellant","The stuff thrown out to make thrust (fuel + oxidizer in a chemical rocket)","prop"],
+ ["Mass flow rate (ṁ)","Kilograms of propellant leaving per second; said 'm-dot'","prop"],
+ ["Exhaust velocity (vₑ)","How fast the gas leaves the nozzle. Chemical 2.5–4.5 km/s, ion engine ~40 km/s","prop"],
+ ["Isp formula","Isp = vₑ ÷ g₀, in seconds; g₀ = 9.81 m/s²","prop"],
+ ["Oxidizer","The oxygen supply a rocket carries because space has no air","prop"],
+ ["Combustion chamber","Where fuel and oxidizer burn: ~3,300 K, 100+ bar","prop"],
+ ["Throat","Narrowest point of the nozzle; the gas hits Mach 1 there","prop"],
+ ["de Laval nozzle","Converging–diverging 'bell' nozzle that turns pressure and heat into exhaust speed","prop"],
+ ["Chemical Isp range","About 250–450 s; ceiling near 460 s set by chemistry","prop"],
+ ["Ion thruster","Electric engine: fires xenon ions at 30–40 km/s; Isp 3,000+ s, thrust under 1 N","prop"],
+ ["Nuclear thermal propulsion (NTP)","Reactor heats hydrogen; Isp ~900 s; ground-tested (NERVA), never flown","prop"],
+ ["RTG","Plutonium power pack that makes electricity. Not an engine","prop"],
+ ["Regenerative cooling","Cold fuel runs through the engine walls before burning, so they don't melt","prop"],
+ ["Solid rocket motor","Fuel and oxidizer premixed in one block; lights once, can't shut off","prop"],
 ];
 
 const PROGRAMS = {
@@ -633,6 +677,43 @@ const TERMS = [
  ["Momentum dumping","desaturation · momentum unloading","Using thrusters or magnetorquers to let saturated reaction wheels spin back down.","vac"],
  ["Star tracker / sun sensor / magnetometer / gyroscope","attitude sensors","Instruments that determine pointing: star patterns, Sun direction, Earth's field, rotation rate.","vac"],
  ["Magnetorquer","torque rod","An electromagnet that pushes against Earth's magnetic field to produce small torques. LEO only, no propellant.","vac"],
+ // --- Section 4 · propulsion (added 2026-11-12)
+ ["Space propulsion","spacecraft propulsion · in-space propulsion","Any system that changes a spacecraft's velocity. Almost always by throwing mass backward to make thrust.","prop"],
+ ["Thrust (F)","—","The force an engine produces, in newtons. F = ṁ × vₑ: mass thrown per second times exhaust speed.","prop"],
+ ["Newton's third law","action–reaction · the reaction principle","Every force has an equal and opposite partner. Push gas backward and the gas pushes the ship forward. The reason rockets work in vacuum.","prop"],
+ ["Conservation of momentum","—","Mass × velocity, added up over ship and exhaust, never changes. The bookkeeping behind thrust.","prop"],
+ ["Propellant","reaction mass · working fluid","The material an engine throws out to make thrust. In a chemical rocket it is fuel plus oxidizer.","prop"],
+ ["Reaction engine","—","Any engine that works by throwing mass backward: rockets, ion thrusters, jets.","prop"],
+ ["Exhaust velocity (vₑ)","velocity of ejection · effective exhaust velocity","How fast the propellant leaves the engine, relative to the ship. The engine's quality in one number.","prop"],
+ ["Mass flow rate (ṁ)","m-dot · propellant flux","Kilograms of propellant leaving per second.","prop"],
+ ["Standard gravity (g₀)","g-zero · g-nought","9.80665 m/s², the pull of gravity at Earth's surface, used as a fixed constant to turn exhaust speed into seconds.","prop"],
+ ["Chemical propulsion","chemical rocket · 'chemical internal heat engine'","Engines whose energy comes from burning the propellant itself. Huge thrust, Isp 250–450 s.","prop"],
+ ["Bipropellant","biprop · fuel + oxidizer","An engine that burns two propellants together. Hydrogen + oxygen, kerosene + oxygen, hydrazine fuel + nitrogen tetroxide.","prop"],
+ ["Monopropellant","monoprop","One liquid that breaks down on a catalyst and makes hot gas with no burning partner. Hydrazine is the classic; Isp about 225 s.","prop"],
+ ["Fuel / oxidizer","oxidiser","The part that burns / the part that supplies the oxygen. Together they are the propellant.","prop"],
+ ["LH₂ / LOX","liquid hydrogen / liquid oxygen","The highest-performing common propellant pair (Isp ~450 s). Both cryogenic: −253 °C and −183 °C.","prop"],
+ ["RP-1","rocket-grade kerosene","Refined kerosene. Dense, room temperature, Isp around 300–350 s with LOX. Burned by Saturn V's first stage and Falcon 9.","prop"],
+ ["Cryogenic propellant","cryogen","A propellant that must be kept extremely cold to stay liquid. Boils off over days, so rarely used on long missions.","prop"],
+ ["Hypergolic propellants","storable propellants","Fuel and oxidizer that ignite on contact and keep for years in tanks. What most spacecraft carry for their main engine.","prop"],
+ ["Hydrazine","N₂H₄","The standard storable spacecraft propellant, used alone as a monopropellant or as the fuel half of a bipropellant. Toxic.","prop"],
+ ["Turbopump","the slide's 'pressure pump'","A turbine-driven pump that forces propellant into the high-pressure chamber. The F-1's was 41 MW.","prop"],
+ ["Pressure-fed","—","No pump: high-pressure gas in the tanks pushes the propellant into the engine. Simple; used on small engines.","prop"],
+ ["Combustion chamber","thrust chamber","Where the propellants mix and burn, at roughly 3,300 K and 100–300 bar.","prop"],
+ ["Throat","—","The narrowest point of the nozzle. The gas reaches exactly the speed of sound there.","prop"],
+ ["de Laval nozzle","converging–diverging nozzle · bell nozzle","Narrows to a throat, then widens into a bell. Turns the chamber's pressure and heat into exhaust speed.","prop"],
+ ["Regenerative cooling","regen cooling","Running the cold fuel through channels in the chamber and nozzle walls before burning it, so the walls survive.","prop"],
+ ["Solid rocket motor (SRM)","solid booster","Fuel and oxidizer cast together as one solid block (the grain). Simple and powerful; lights once and can't be shut off.","prop"],
+ ["Booster","strap-on","A rocket attached to help at liftoff. A job description, not a propellant type: boosters can be solid or liquid.","prop"],
+ ["Staging","stages","Dropping empty tanks and engines on the way up so the rest has less mass to push. A direct consequence of the rocket equation.","prop"],
+ ["Thrust-to-weight ratio","T/W","Thrust divided by weight. Above 1, a rocket can lift itself. Chemical engines win this by a wide margin.","prop"],
+ ["Electric propulsion (EP)","low-thrust propulsion · solar electric propulsion (SEP)","Engines that use electricity to accelerate propellant. Exhaust at tens of km/s, thrust under a newton, runs for years.","prop"],
+ ["Ion thruster","gridded ion engine","Ionizes xenon and fires the ions through charged grids at 30–40 km/s. Isp 3,000–4,000+ s.","prop"],
+ ["Hall-effect thruster","Hall thruster","The other main electric engine; uses a magnetic field instead of grids. More thrust than an ion engine, somewhat lower Isp. On Starlink and Psyche.","prop"],
+ ["Xenon","Xe","Heavy, non-reactive gas. The usual propellant for ion engines because it ionizes easily and stores densely.","prop"],
+ ["Nuclear thermal propulsion (NTP)","nuclear thermal rocket","A fission reactor heats hydrogen, which leaves through a nozzle. Isp about 900 s with high thrust. Ground-tested (NERVA), never flown.","prop"],
+ ["Nuclear electric propulsion (NEP)","—","A reactor makes electricity that runs ion or Hall thrusters. Useful far from the Sun, where solar panels fade.","prop"],
+ ["Radioisotope thermoelectric generator (RTG)","nuclear battery","Turns the decay heat of plutonium into electricity. Powers Voyager and New Horizons. It is not propulsion.","prop"],
+ ["Trade study","trade-off analysis","A formal comparison of design options against the mission's requirements. Here: thrust against specific impulse.","prop"],
 ];
 
 
@@ -671,6 +752,16 @@ const ENRICH = {
  "Homosphere / heterosphere":{c:"Weather stirs the lower air so thoroughly that its recipe is the same everywhere. Above about 100 km the stirring stops and each gas settles at the height its weight allows: heavy low, light high. That boundary explains why the gas list changes with altitude.",e:"Below 100 km: N₂ 78%, O₂ 21% everywhere. 200–600 km: atomic O. 600–1,500: He. Above: H.",x:"The temperature layers (troposphere etc.). Homo/heterosphere is about composition; those are about temperature.",l:"Turbopause, atomic oxygen, geocorona."},
  "Reaction wheel / momentum wheel / control moment gyro (CMG)":{c:"In vacuum there's nothing to push against to turn, so you push against yourself: spin a wheel inside and the spacecraft turns the other way. No fuel, very precise. The catch is that constant one-way pushes make the wheels spin ever faster until they saturate.",e:"Hubble uses four reaction wheels for pointing to 0.007 arcseconds. The ISS uses four CMGs. Kepler lost two wheels and had to be reinvented.",x:"Thrusters, which push on expelled gas and use fuel. Wheels only trade angular momentum internally.",l:"Momentum dumping, disturbance torques, attitude sensors."},
  "Disturbance torque":{c:"Even in 'empty' space tiny twists never stop: gravity pulls the near end harder, sunlight pushes on big panels, leftover air drags unevenly, Earth's magnetism tugs. Each is tiny, none ever stops, nothing damps them. Attitude control exists because of them.",e:"Small satellite: ~10⁻⁵ N·m. ISS: several N·m, enough to tumble it within hours if uncontrolled.",x:"Orbital perturbations, which change the path. Disturbance torques change the pointing.",l:"Reaction wheels counter them; momentum dumping resets the wheels."},
+ "Thrust (F)":{c:"An orbit only changes if a force acts on the spacecraft. Thrust is that force, made by throwing momentum away: every kilogram-metre-per-second the exhaust carries off backward, the ship gains forward.",e:"0.1 kg/s at 3,000 m/s = 300 N. NEXT ion thruster 0.236 N. Merlin Vacuum 981,000 N. One F-1: 6.77 million N.",x:"Δv. Thrust is the push; Δv is what the push adds up to over the burn. Also not Isp, which is efficiency.",l:"F = ṁ × vₑ; acceleration a = F ÷ m; rocket equation."},
+ "Newton's third law":{c:"It answers the oldest objection to spaceflight: there is nothing to push against. You don't need anything. Forces come in pairs, so pushing gas backward is being pushed forward. Rockets work better in vacuum than in air.",e:"A 1,000 kg ship throws 1 kg backward at 3,000 m/s and gains 3 m/s. A 1920 New York Times editorial mocked Goddard for not knowing this; the paper printed a correction in 1969.",x:"'Pushing on the air.' Also Newton's first law (things keep moving), which is why you don't need thrust to keep coasting.",l:"Conservation of momentum, thrust, reaction engine."},
+ "Propellant":{c:"A rocket can only push on what it brought, so 'what do I throw?' is the central design question. Propellant is the heaviest thing on almost every spacecraft, which is why efficiency (Isp) matters so much.",e:"Falling off a Saturn V at liftoff: 13 tonnes per second. An ion engine: a few milligrams per second.",x:"Fuel. Fuel is only the part that burns; propellant is everything thrown out, including the oxidizer, or xenon that never burns at all.",l:"Mass flow rate, rocket equation, specific impulse."},
+ "Exhaust velocity (vₑ)":{c:"It is the engine's quality in one number. Each kilogram you throw gives a push proportional to how fast you throw it, so faster exhaust means more Δv from the same tank.",e:"Solid motor 2.6 km/s. Kerosene 3.4. Hydrogen 4.4. Nuclear thermal ~9. Ion engine 41.",x:"The spacecraft's speed. vₑ is the gas relative to the engine, and a ship can end up moving faster than its own exhaust.",l:"Isp = vₑ ÷ g₀; F = ṁ × vₑ; Δv = vₑ × ln(m₀/m_f)."},
+ "Mass flow rate (ṁ)":{c:"Thrust needs both speed and amount. ṁ is the amount per second, and it is also how fast your tanks empty, so it sets burn time.",e:"Merlin Vacuum 287 kg/s. F-1 about 2,600 kg/s. NEXT ion thruster about 6 mg/s.",x:"Total propellant mass. ṁ is a rate; multiply by burn time to get the total.",l:"F = ṁ × vₑ; burn time = propellant mass ÷ ṁ; jet power = ½ṁvₑ²."},
+ "Chemical propulsion":{c:"The propellant is both the energy source and the thing thrown, so power is essentially unlimited: just burn faster. That gives enormous thrust. The price is that the energy per kilo is capped by chemistry.",e:"Isp 250–450 s, ceiling about 460 s. Thrust from 1 N thrusters to 35 million N for the Saturn V first stage.",x:"'Rockets' in general. Electric and nuclear engines are rockets too; chemical is one way to power them.",l:"Bipropellant, combustion chamber, de Laval nozzle, rocket equation."},
+ "Bipropellant":{c:"Fire needs fuel and oxygen, and space has no oxygen. So the rocket carries both and mixes them in the chamber. Which pair you choose sets the Isp and how hard the propellants are to store.",e:"LH₂ + LOX about 450 s. Kerosene + LOX about 350 s. Hydrazine-family + nitrogen tetroxide about 320 s. Hydrazine alone (monopropellant) 225 s.",x:"Monopropellant: one liquid, no combustion partner, simpler but lower Isp.",l:"Oxidizer, mixture ratio, hypergolic, combustion chamber."},
+ "de Laval nozzle":{c:"Gas in the chamber is hot and squeezed but slow, and thrust needs it fast. The nozzle is the converter: it narrows to push the gas to the speed of sound, then widens, and supersonic gas speeds up as it expands.",e:"Mach 1 at the throat. Merlin Vacuum exit: 3.4 km/s. Its bell is about 3 m wide because in vacuum the gas can keep expanding.",x:"A garden-hose nozzle, which only narrows. That works for slow flow; past the speed of sound the rule reverses.",l:"Throat, expansion ratio, exhaust velocity, regenerative cooling."},
+ "Electric propulsion (EP)":{c:"Chemistry caps exhaust speed near 4.5 km/s. Electricity has no such cap, so electric engines throw propellant ten times faster and use a tenth as much. But the power must come from solar panels, so the push is tiny.",e:"NEXT: 6.9 kW in, 0.236 N out, Isp 4,190 s. Dawn: 0–100 km/h in 4 days, yet 11.5 km/s total Δv from 425 kg of xenon.",x:"A weak engine in the sense of a bad one. It delivers more total Δv than chemical; it just takes months.",l:"Jet power ½ṁvₑ², ion thruster, Hall thruster, low-thrust trajectories."},
+ "Nuclear thermal propulsion (NTP)":{c:"To beat the chemical ceiling with high thrust, heat the lightest possible gas with something hotter per kilo than fire. A reactor heats plain hydrogen: same temperature as a chemical engine, far lighter exhaust, twice the speed.",e:"Isp about 850–900 s. NERVA: about 246 kN, 841 s, ground-tested in Nevada in the 1960s; program ended in 1972. Never flown.",x:"An RTG (electricity only) and nuclear electric propulsion (reactor powering ion engines).",l:"vₑ ∝ √(T ÷ molecular mass), rocket equation, crewed Mars transfer."},
 };
 
 
@@ -688,6 +779,9 @@ const NUMBERS = {
   ["drop = ½gt² · curve = d²/(2R)","falling and missing","ISS, 1 s: drop 4.3 m = curve 4.3 m","fall"],
   ["T_syn = 1/(1/T₁ − 1/T₂)","synodic period","Earth–Mars: 1/(1/365 − 1/687) = 780 days","fuel"],
   ["v_dep = √(v_esc² + v∞²) − v_circ","departure burn from LEO","Mars: √(11.0² + 2.9²) − 7.7 ≈ 3.6 km/s","fuel"],
+  ["F = ṁ × vₑ","thrust","Merlin Vacuum: 287 kg/s × 3,414 m/s ≈ 981,000 N","prop"],
+  ["Isp = vₑ / g₀","specific impulse (g₀ = 9.81 m/s²)","3,414 m/s ÷ 9.81 = 348 s · hydrogen 452 s → 4.4 km/s","prop"],
+  ["P = ½·ṁ·vₑ²","jet power","300 N at 3 km/s: 0.45 MW · at 30 km/s: 4.5 MW","prop"],
  ],
  constants:[
   ["μ Earth","398,600 km³/s²"],["R Earth","6,371 km (6,378 at the equator)"],["g at 400 km","8.7 m/s² (90% of surface)"],
@@ -702,6 +796,10 @@ const NUMBERS = {
   ["ISS","400 km, 7.67 km/s, 92 min, i = 51.6°, loses ~2 km/month, reboost monthly"],
   ["GPS","20,200 km, 12 h, 24+ sats in 6 planes, need 4 overhead"],
   ["GEO station-keeping","~50 m/s per year; ~15 years of fuel; graveyard orbit +300 km"],
+  ["Merlin Vacuum (Falcon 9 stage 2)","kerosene + LOX, 981 kN, Isp 348 s, 287 kg/s"],
+  ["F-1 (Saturn V stage 1, ×5)","kerosene + LOX, 6,770 kN each, Isp 263 s, 2.6 t/s each"],
+  ["NEXT ion thruster","6.9 kW in, 0.236 N out, Isp 4,190 s, exhaust 41 km/s"],
+  ["Engine families","chemical 250–450 s · nuclear thermal ~900 s · electric 1,500–4,000+ s"],
  ]
 };
 
@@ -715,6 +813,7 @@ const MECH = {
  air:"Stirred mix up to 100 km, then sorted by weight: N₂/O₂, then atomic O, then He, then H. UV splits O₂ into hungry single atoms at 200–600 km.",
  fuel:"Vis-viva gives the speeds, the difference is Δv, the rocket equation turns Δv into propellant, and that grows exponentially. A 20-day Mars trip is impossible, not just hard.",
  flyby:"In the planet's frame: same speed, direction bent by δ. In the Sun's frame: add the planet's 13 km/s, so you leave faster. The planet pays about 10⁻²⁴ m/s.",
+ prop:"Throw mass back and you go forward: F = ṁ × vₑ. Chemical throws tonnes per second at 3–4 km/s (big push, low Isp). Electric throws milligrams at 40 km/s (tiny push, high Isp). The nozzle turns pressure into speed.",
 };
 
 const INTERVALS=[1,3,7,14,30];
@@ -829,7 +928,7 @@ function home(){
 // ---- Learn
 let openScene=null;
 function learn(){
-  view.innerHTML=`<h2>Seven scenes, told like you're 5</h2><p class="muted small">Read one, then mark it. "Shaky" puts it at the top of Today.</p><div class="grid" id="scenes"></div>`;
+  view.innerHTML=`<h2>${SCENES.length} scenes, told like you're 5</h2><p class="muted small">Read one, then mark it. "Shaky" puts it at the top of Today.</p><div class="grid" id="scenes"></div>`;
   const wrap=view.querySelector("#scenes");
   SCENES.forEach(s=>{
     const m=sceneMastery(s.id); const mark=(state.scenes||{})[s.id]||"";

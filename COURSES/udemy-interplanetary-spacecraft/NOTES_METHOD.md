@@ -388,3 +388,29 @@ Source: `app/concept-cards/` (`entries.py` holds the card text,
   several N·m, not 10⁻³ (10⁻⁵ is a small satellite); Kapton erosion is
   tens of µm/yr; New Horizons v∞ ≈ 12.6 km/s. The screen word bank was
   reissued as `Word-Bank-CONCEPTS-S1-S3-v4.pdf` (v3 removed).
+
+## Lecture PDF format from Section 4 on (2026-11-12)
+
+Each lecture PDF is now 6-7 landscape pages, built from
+`feedback/src/` (`lib.py` + one `lN.py` per lecture):
+1. the spread (left DRAW with pencil key, 3 takeaways, 3-line summary;
+   right CORNELL cues + notes) at half-sheet size;
+2. TEACH: "Like you're 5" box, official names (name first), "How it
+   actually works" table with checkable numbers;
+3. comparison / real-numbers table, caption errors, where the
+   instructor was loose, question-bank cards;
+4. vocabulary: every word, including every term Claude used;
+5. COPY INTO NOTES: route A equations page lines, B section-map
+   sentence, C one-line word-bank lines, D "but how?" Q/A cards;
+6. route E: concept cards in notebook layout (two per 22-line page,
+   numbered on from C16; `lib.cardpage` asserts the 22-line budget);
+7. say it out loud.
+Keep the page-1 badge and title short: a two-line title pushes the
+summary box off the page. New proper names go into the Who's Who PDF
+(`Whos-Who-names-and-missions-v3.pdf` has a Section 4 page).
+
+**App arrays are append-only.** Progress in the app is keyed by array
+index (`MC`, `WHY`, `CARDS`), so new items go at the END of each array;
+inserting in the middle reassigns the student's history to different
+questions. (The 15 "but how?" WHY items added on 2026-11-11 were
+inserted before the last item; left as is rather than shifting again.)
