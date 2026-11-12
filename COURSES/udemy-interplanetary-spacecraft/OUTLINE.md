@@ -31,7 +31,7 @@ track for now — see root `CLAUDE.md` § Current focus.
 | 4 | Space Propulsion Systems | 5 | 27 min | `sections/04-space-propulsion.md` | [x] 2026-11-12, 4 lectures (the panel's 5th item is unconfirmed, probably a quiz) |
 | 5 | Communications from Space to Earth | 3 | 44 min | `sections/05-communications.md` | [x] 2026-11-12, 3 lectures |
 | 6 | Attitude Determination and Control | 4 | 36 min | `sections/06-attitude-determination-and-control.md` | [x] 2026-11-12, 3 lectures (the panel's 4th item is unconfirmed, probably a quiz) |
-| 7 | Space Power Systems | 4 | 33 min | `sections/07-space-power-systems.md` | [ ] |
+| 7 | Space Power Systems | 3 + Quiz 5 (designing a photovoltaic array) | 33 min | `sections/07-space-power-systems.md` | [ ] 1 of 3 lectures (2026-11-12) |
 | 8+ | *(not visible in the course panel yet — add when known)* | | | | |
 
 Visible sections sum to ~3.3 hours, so there is at most one short
@@ -253,3 +253,21 @@ the Done column and date it when a section's quiz is graded.
   scene 16 "Spin a wheel, turn the ship" (14 MC, 4 explain, 12 cards,
   15 terms, 4 concept entries, 4 formulas) and a Section 6 timed talk
   (`PROGRAMS.s6`, 4¼ min). Next: Section 7, space power systems.
+
+- **2026-11-12 (deadline push)** — **Section 7 started.** The course
+  panel (seen in a screenshot) lists: 19 Solar Array Technology
+  (14 min), 20 Batteries (10 min), 21 Radioisotope Thermal Generators
+  (9 min), Quiz 5 "Designing a Photovoltaic Array". S7 Lec 1 "Solar
+  arrays": transcript + all 6 content slides. Lean PDF
+  `feedback/S7-L1-solar-arrays-v1.pdf` (4 pp): flux bars by planet,
+  p-n junction with circuit, triple-junction stack, power formula; a
+  sizing table and three-step recipe aimed at Quiz 5 (1 kW needs 3.1 m2
+  at Earth, 7.1 at Mars, 83 at Jupiter with 30% cells and 0.8 losses).
+  Instructor loose: triple junction "multiplies efficiency by three"
+  (about 20% to 30%); photon gives the electron "inertia" (the junction
+  field drives it); electron/hole directions tangled; LEO "two hours,
+  12 cycles a day" (90-100 min, 15-16); slide equates thermal cycling
+  with low efficiency; clean-room photo credited to Rosetta (looks like
+  Juno). App v19: scene 17 "The sunlight sandwich" (14 MC, 4 explain,
+  12 cards, 18 terms, 3 concept entries, 3 formulas). App patches now
+  go through `app/applib.py` (dedupes terms automatically).

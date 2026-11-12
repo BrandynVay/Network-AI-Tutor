@@ -73,7 +73,7 @@ table.deep th{background:var(--paper2)}
 
 <div class="wrap">
   <header class="top">
-    <div><div class="tag">Interplanetary Spacecraft & Satellite Engineering · Sections 1–6</div><h1>Space <span>X</span> Study</h1></div>
+    <div><div class="tag">Interplanetary Spacecraft & Satellite Engineering · Sections 1–7</div><h1>Space <span>X</span> Study</h1></div>
     <div class="row" style="gap:6px"><button id="modeBtn" class="pill" style="cursor:pointer" title="Switch how things are explained">…</button><div id="syncBadge" class="pill" title="Where your progress is saved">…</div></div>
   </header>
   <nav class="tabs" role="tablist" id="tabs">
@@ -262,6 +262,12 @@ const SCENES = [
   draw:"A box with a wheel inside and opposite arrows; a tilted wheel; a coil on a dashed field line; a box with two opposite jets; a sawtooth that hits a ceiling.",
   why:[["How does it turn with nothing to push against?", "It pushes against part of itself. A motor spins a wheel one way and the rest of the spacecraft turns the other way, because the total spin cannot change. Stopping the wheel stops the turn."], ["If wheels need no fuel, why carry thrusters at all?", "Wheels only trade spin with the spacecraft. Steady outside nudges keep adding spin, the wheels absorb it by speeding up, and eventually they hit top speed. Only something that pushes on the outside, a thruster or a magnetic torquer, can remove it."], ["What steers the Space Station?", "Four control moment gyros: 98 kg wheels at 6,600 rpm on gimbals. Tilting a wheel's axis gives about 258 N·m, thousands of times more than a reaction wheel."]],
   deep:{"title": "Five actuators, two kinds: trading spin inside, pushing on something outside", "intro": "Wheels and CMGs are internal: they exchange angular momentum with the spacecraft. Thrusters and magnetorquers are external: they change the total. Every design pairs one of each.", "rows": [["1 · The swap", "wheel spin + craft spin = constant", "Wheel inertia 0.01 kg·m², spacecraft 100: a ratio of 10,000. Spin the wheel to 1,000 rpm and the craft turns at 0.1 rpm (0.6° per second) the other way. Brake the wheel and the craft stops.", "Reaction wheel; conservation of angular momentum. The helicopter tail rotor exists to cancel the same reaction."], ["2 · Momentum vs reaction wheel", "always spinning, or resting at zero", "A reaction wheel sits near zero and is spun either way; three give three-axis control, a slanted fourth is a spare. A momentum wheel keeps a large spin all the time, which also stiffens the craft against tipping.", "Bias momentum; gyroscopic stiffness. Kepler lost two of four wheels and could no longer point."], ["3 · Saturation", "full in days", "A steady disturbance of 0.00001 N·m for one day adds 0.86 N·m·s. A wheel that holds 4 N·m·s is at top speed in under 5 days.", "Saturation limit. Caused by persistent outside torques, not by 'instabilities'."], ["4 · Dumping", "push on the outside while the wheel slows", "A magnetorquer or thruster twists the craft one way; the wheel slows to cancel it. The extra angular momentum leaves the spacecraft.", "Momentum dumping (desaturation). Needs an external torque."], ["5 · Control moment gyro", "torque = angular momentum × gimbal rate", "The Space Station's: a 98 kg wheel at 6,600 rpm stores 4,760 N·m·s. Tilt its axis at 0.054 rad/s (3.1° per second): 4,760 × 0.054 ≈ 258 N·m. A reaction wheel gives about 0.1 N·m.", "CMG: constant speed, changing direction. High slew rates for heavy or agile spacecraft."], ["6 · Magnetorquer", "torque = dipole × field", "A coil of 10 A·m² in a 30 microtesla field gives 0.0003 N·m. Tiny, but it needs only electricity. No torque about the field line itself, and it needs a strong field.", "Magnetic torquer, torque rod. Low Earth orbit; used mostly to dump wheel momentum."], ["7 · Thrusters", "torque = force × arm", "Two 1 N jets, each 1 m from the centre of mass, firing opposite ways: 2 N·m with no net push. Each firing spends propellant for good.", "Reaction control system; a couple; cold-gas (nitrogen) or hydrazine thrusters."], ["8 · Why wheels are not spun faster", "stress = density × rim speed²", "A 20 cm wheel at 6,000 rpm has a rim speed of 63 m/s. At 65,000 rpm it would be 680 m/s and about 3.6 GPa of stress, beyond steel. Flight wheels run at a few thousand rpm.", "Centrifugal stress sets the speed limit, so angular momentum is bought with rim mass and radius."]], "notes": ["The lecture never states the internal versus external distinction, which is the reason spacecraft carry both wheels and thrusters or magnetorquers.", "A magnetorquer is an actuator, not a sensor, and it does not work like a CMG: it pushes against the planet's magnetic field.", "The slide's 'Reactor wheels' and '3 axis determination' are typos for reaction wheels and three-axis control."]}},
+ {id:"sun", n:17, name:"The sunlight sandwich", color:"#ef6c00", sec:"S7",
+  story:"Sunlight is a rain of tiny packets of energy, the photons from Section 5. A solar cell is a sandwich made of two slightly different slices of crystal. Where the slices touch there is a built-in one-way slope. A packet of light knocks an electron loose, like a ball knocked off a shelf. The slope rolls it to one side, and the only way back is the long way round, through a wire and through your equipment. That flow is electricity. Nothing moves and nothing burns. Two catches. Each crystal only uses packets of the right size: too small and they pass straight through, too big and the extra is wasted as heat. So the best cells stack three crystals, each tuned to a different colour, and catch about 30% of the light. And sunlight spreads out exactly like the radio signal did: twice as far from the Sun, a quarter as much. At Jupiter it is 27 times weaker than here, so the Juno probe needs three panels, each as long as a bus, to make what a hair dryer uses.",
+  say:"A solar cell is a crystal sandwich with a one-way slope: light frees an electron and it has to go round the wire to get back.",
+  draw:"Five bars shrinking from Mercury to Jupiter; a two-layer box with a photon, an electron and a wire loop; a three-layer stack with three arrows.",
+  why:[["How does a solar panel actually make electricity?", "A photon frees an electron inside a crystal made of two layers. An electric field built into the boundary pushes the electron to one layer and it can only return through the outside wire. That flow through the wire is the current."], ["Why are solar panels only about 30% efficient?", "Each material uses only photons near its own band gap. Weaker photons pass through and stronger ones waste their extra as heat. One layer manages about 20%; stacking three for three colour ranges reaches about 30%."], ["Why doesn't everything in space just use solar panels?", "Sunlight falls with the square of distance: 1,361 W/m² at Earth, 50 at Jupiter, 15 at Saturn. Beyond Jupiter the arrays would be impractically large. They also make nothing in shadow."]],
+  deep:{"title": "Solar arrays: flux, the p–n junction, three junctions, and sizing", "intro": "Four steps take you from the Sun to a number of watts: how much light arrives, how one cell turns a photon into current, why three layers beat one, and the sizing formula.", "rows": [["1 · Solar flux", "1,361 ÷ distance²", "Sunlight spreads over a growing sphere. In W/m²: Mercury (0.39 AU) 9,100; Venus 2,600; Earth 1,361; Mars 590; Jupiter (5.2 AU) 50; Saturn 15.", "Solar flux (irradiance); solar constant; inverse-square law. Same spreading as free-space loss in Section 5."], ["2 · Two layers", "n-type and p-type", "Silicon with a trace of phosphorus has spare electrons (n-type). With a trace of boron it has missing electrons, called holes (p-type). Where they meet, electrons drop into holes and leave a thin zone with a permanent electric field.", "Semiconductor; doping; p–n junction; depletion region; built-in field."], ["3 · A photon arrives", "it must beat the band gap", "A photon with at least the band-gap energy frees an electron and leaves a hole. Silicon: 1.1 eV, so wavelengths shorter than 1,240 ÷ 1.1 ≈ 1,100 nm.", "Photovoltaic effect; band gap. eV = 1,240 ÷ wavelength in nm."], ["4 · Sorting", "0.6 V per silicon cell", "The built-in field sweeps electrons to the n side and holes to the p side. Charge piles up as a voltage. Connect a wire and electrons flow from n through the load to p.", "The field, not the photon, drives the current. Cells are wired in strings to add their voltages."], ["5 · Losses", "one material tops out near 33%", "Photons below the gap pass through. Photons above it give up their extra as heat. Real silicon cells reach about 20%.", "Single-junction limit."], ["6 · Triple junction", "three band gaps, about 30%", "Top layer 1.9 eV (light to 650 nm), middle 1.4 eV (to 890 nm), bottom 0.67 eV (to 1,850 nm). Each uses its range well and passes the rest down. About 2.7 V per cell.", "Multi-junction cell: gallium indium phosphide / gallium arsenide / germanium."], ["7 · Sizing", "P = flux × area × efficiency × cos(tilt)", "1 m² at Earth: 1,361 × 0.30 ≈ 410 W. With 0.8 for wiring, gaps and ageing, 1,000 W needs 3.1 m² at Earth, 7.1 m² at Mars, 83 m² at Jupiter.", "Cosine loss; beginning-of-life versus end-of-life power. Juno: about 60 m², roughly 500 W at Jupiter."], ["8 · Temperature", "hotter = fewer volts", "Power falls about 0.2–0.4% per degree of warming. A panel leaving Earth's shadow at about −80 °C is at its best and loses output as it heats to +60 °C.", "I–V curve; maximum power point; thermal cycling, about 15 times a day in low orbit."], ["9 · Deployable or body-mounted", "area decides", "Deployable wings unfold after launch and give tens of square metres; a drive keeps them facing the Sun. Body-mounted cells are simple but only the sunlit faces work.", "Solar array drive; hold-down and release mechanisms. Juno and Rosetta versus CubeSats and Philae."]], "notes": ["A triple-junction cell does not triple the efficiency: about 20% becomes about 30%.", "The photon only frees the electron. The junction's built-in field is what pushes it round the circuit.", "Low Earth orbits take 90–100 minutes, not two hours, so a panel sees about 15 to 16 hot-cold cycles a day."]}},
 ];
 
 // Multiple-choice questions. a = index of correct option. x = explanation.
@@ -462,6 +468,20 @@ const MC = [
  {s:"act", q:"Why does the Space Station use control moment gyros and not reaction wheels?", o:["They are cheaper", "They give hundreds of N·m, enough for a 400-tonne structure", "They need no power", "They never saturate"], a:1, x:"About 258 N·m each, against roughly 0.1 N·m for a reaction wheel."},
  {s:"act", q:"'Slew rate' means…", o:["How fast a wheel spins", "How fast the spacecraft can turn to a new target", "Data rate", "Orbit speed"], a:1, x:"Degrees per second of deliberate turning."},
  {s:"act", q:"Which pair are 'internal' actuators that only trade spin with the spacecraft?", o:["Thrusters and magnetic torquers", "Reaction wheels and control moment gyros", "Star trackers and gyros", "Thrusters and reaction wheels"], a:1, x:"Wheels and CMGs exchange angular momentum; they cannot change the total."},
+ {s:"sun", q:"Solar flux is…", o:["The total power of the Sun", "Sunlight power per square metre", "The temperature of a panel", "The number of cells"], a:1, x:"Measured in W/m². At Earth's distance: 1,361."},
+ {s:"sun", q:"How does solar flux change if you go twice as far from the Sun?", o:["Halves", "Drops to a quarter", "Stays the same", "Drops to a tenth"], a:1, x:"Inverse-square law: flux = 1,361 ÷ distance²."},
+ {s:"sun", q:"Solar flux at Earth's distance is about…", o:["50 W/m²", "590 W/m²", "1,361 W/m²", "9,100 W/m²"], a:2, x:"The solar constant. Mars gets 590, Jupiter 50."},
+ {s:"sun", q:"At Jupiter (5.2 AU), sunlight is about how much weaker than at Earth?", o:["5 times", "10 times", "27 times", "100 times"], a:2, x:"5.2² ≈ 27. About 50 W/m²."},
+ {s:"sun", q:"Why use deployable arrays?", o:["They are lighter per cell", "They give far more area than the body's own surface", "They need no pointing", "They work in shadow"], a:1, x:"Area is power. Wings unfold to tens of square metres."},
+ {s:"sun", q:"In a solar cell, n-type and p-type are…", o:["Two kinds of photon", "Semiconductor layers with spare electrons and with holes", "Positive and negative wires", "North and south poles"], a:1, x:"Doped silicon: extra electrons in n, missing electrons (holes) in p."},
+ {s:"sun", q:"What does the photon do in a solar cell?", o:["Pushes electrons round the wire", "Frees an electron, creating an electron–hole pair", "Heats the wire", "Creates the junction"], a:1, x:"It only frees the charge. The junction's field does the pushing."},
+ {s:"sun", q:"What drives the freed electrons in one direction?", o:["Their inertia", "The electric field built into the p–n junction", "Gravity", "The Sun's magnetic field"], a:1, x:"The built-in field sweeps electrons to the n side and holes to the p side."},
+ {s:"sun", q:"Why can't a single-material cell use all the sunlight?", o:["It gets dirty", "Weak photons pass through and strong ones waste their extra energy as heat", "Sunlight is too dim", "The wire resists"], a:1, x:"Only photons near the band gap are used well. The limit is about 33%."},
+ {s:"sun", q:"A triple-junction cell is better because…", o:["It has three times the area", "Each layer is tuned to a different range of wavelengths", "It triples the efficiency", "It needs no sunlight"], a:1, x:"Short, medium and long wavelengths each get a matching layer: about 30% overall."},
+ {s:"sun", q:"Typical efficiency of a space triple-junction cell?", o:["About 5%", "About 30%", "About 60%", "About 90%"], a:1, x:"Flight cells are 30–32%. Silicon is about 20%."},
+ {s:"sun", q:"What happens to a solar cell's output as it gets hotter?", o:["It rises", "It falls, because the voltage drops", "Nothing", "It doubles"], a:1, x:"About 0.2–0.4% less power per degree."},
+ {s:"sun", q:"One square metre of 30% cells facing the Sun near Earth gives about…", o:["40 W", "400 W", "1,361 W", "4,000 W"], a:1, x:"1,361 × 0.30 ≈ 410 W."},
+ {s:"sun", q:"For 1,000 W at Mars (590 W/m², 30% cells, 0.8 for losses) you need about…", o:["0.7 m²", "3 m²", "7 m²", "70 m²"], a:2, x:"590 × 0.30 × 0.8 = 142 W/m²; 1,000 ÷ 142 ≈ 7.1 m²."},
 ];
 
 // Explain-why prompts: think, reveal, self-grade.
@@ -534,6 +554,10 @@ const WHY = [
  {s:"act", q:"What is saturation, what causes it, and how is it fixed?", a:"A wheel at its top speed can absorb no more. Steady outside disturbance torques keep adding angular momentum, which the wheel takes up by speeding up. It is fixed by momentum dumping: a thruster or magnetic torquer applies an outside torque while the wheel slows down."},
  {s:"act", q:"Reaction wheel versus control moment gyro: what does each change, and when would you choose a CMG?", a:"A reaction wheel changes its speed; a CMG keeps its speed and tilts its axis. Tilting a fast wheel gives far more torque, hundreds of N·m against about 0.1, so CMGs are used for very heavy or very agile spacecraft such as the Space Station."},
  {s:"act", q:"Sort the five actuators into inside and outside, and say why that matters.", a:"Inside: reaction wheels, momentum wheels, CMGs. They only exchange angular momentum with the spacecraft. Outside: thrusters and magnetic torquers. They push on exhaust or on the planet's field, so they can change the total. Wheels need an outside actuator to empty them."},
+ {s:"sun", q:"Explain how a solar cell turns light into current.", a:"Two semiconductor layers, n-type with spare electrons and p-type with holes, form a junction with a built-in electric field. A photon with at least the band-gap energy frees an electron. The field pushes it to the n side, and it returns to the p side through the external wire, delivering power on the way."},
+ {s:"sun", q:"Why stack three junctions, and what does it really gain?", a:"Each material uses only photons near its band gap. Three materials with gaps of about 1.9, 1.4 and 0.67 eV each take a different part of the spectrum. Efficiency rises from about 20% to about 30%. It does not triple."},
+ {s:"sun", q:"Give the recipe for sizing a solar array and work it for 1,000 W at Jupiter.", a:"Flux = 1,361 ÷ distance² = 1,361 ÷ 27 ≈ 50 W/m². Usable power per m² = 50 × 0.30 × 0.8 = 12 W. Area = 1,000 ÷ 12 ≈ 83 m²."},
+ {s:"sun", q:"Correct two things the lecture says about solar cells.", a:"A triple-junction cell does not multiply efficiency by three; it goes from about 20% to about 30%. And the photon does not give the electron inertia to go round the circuit; the junction's built-in field drives it."},
 ];
 
 // Flashcards: vocabulary and key numbers.
@@ -717,6 +741,18 @@ const CARDS = [
  ["Slew rate","How fast a spacecraft can turn to a new target, in degrees per second","act"],
  ["Why 3–4 wheels","One per axis for roll, pitch and yaw, plus a slanted spare","act"],
  ["CMG torque formula","Torque = angular momentum × gimbal rate","act"],
+ ["Solar flux","Sunlight power per square metre: 1,361 ÷ (distance in AU)² W/m²","sun"],
+ ["Solar flux at the planets","Mercury 9,100 · Venus 2,600 · Earth 1,361 · Mars 590 · Jupiter 50 W/m²","sun"],
+ ["Deployable vs body-mounted","Wings that unfold for lots of area vs cells on the body's own skin","sun"],
+ ["n-type / p-type","Semiconductor with spare electrons / with missing electrons (holes)","sun"],
+ ["p–n junction","Boundary of the two layers; its built-in field pushes electrons one way","sun"],
+ ["Photovoltaic effect","A photon frees an electron; the junction field sends it round the circuit","sun"],
+ ["Band gap","Energy a photon needs to free an electron in a material. Silicon 1.1 eV","sun"],
+ ["Triple-junction cell","Three stacked layers for short, medium and long wavelengths: about 30%","sun"],
+ ["Array power formula","P = flux × area × efficiency × cos(tilt)","sun"],
+ ["1 m² at Earth","1,361 × 0.30 ≈ 410 W","sun"],
+ ["Heat and solar cells","Hotter cell = lower voltage = less power; best just out of eclipse","sun"],
+ ["Juno's arrays","About 60 m²; roughly 500 W at Jupiter, where sunlight is 27× weaker","sun"],
 ];
 
 const PROGRAMS = {
@@ -1189,6 +1225,25 @@ const TERMS = [
  ["Couple","thruster pair","Two equal thrusters on opposite sides firing in opposite directions: a pure torque with no net push.","act"],
  ["Moment arm","lever arm","The distance from the centre of mass to the line of a force. Torque = force × moment arm.","act"],
  ["Internal torque / external torque","—","A torque exchanged between parts of the spacecraft, versus one from pushing on something outside it. Only external torques change the total angular momentum.","act"],
+ // --- Section 7 · solar arrays (added 2026-11-12)
+ ["Solar array","solar panel · photovoltaic array","Many solar cells wired together to supply a spacecraft's electrical power.","sun"],
+ ["Solar cell","photovoltaic cell · PV cell","A semiconductor device that turns light directly into electricity.","sun"],
+ ["Solar flux","solar irradiance · solar constant at 1 AU","Sunlight power per unit area. 1,361 W/m² at Earth's distance, falling with the square of distance.","sun"],
+ ["Astronomical unit (AU)","—","The average Earth–Sun distance, about 150 million km. The yardstick for distances in the solar system.","sun"],
+ ["Deployable array","solar wing","A solar array folded for launch and unfolded in space to give a large area.","sun"],
+ ["Body-mounted array","—","Solar cells fixed directly to the spacecraft's outer surface.","sun"],
+ ["Solar array drive","SADA","The motor that turns a solar wing to keep it facing the Sun.","sun"],
+ ["Photovoltaic effect","photovoltaics","The creation of a voltage and current in a material when light falls on it.","sun"],
+ ["Semiconductor","—","A material such as silicon or gallium arsenide whose conductivity lies between a metal's and an insulator's and can be tailored.","sun"],
+ ["Doping","—","Adding a trace of another element to a semiconductor to give it spare electrons or holes.","sun"],
+ ["n-type / p-type","—","Semiconductor doped to have spare electrons (n) or missing electrons, holes (p).","sun"],
+ ["Hole","electron hole","A place in a crystal where an electron is missing. It behaves like a moving positive charge.","sun"],
+ ["p–n junction","junction","The boundary between n-type and p-type material. Its built-in electric field separates freed electrons and holes.","sun"],
+ ["Band gap","—","The minimum energy needed to free an electron in a semiconductor. Silicon 1.1 eV, gallium arsenide 1.4 eV.","sun"],
+ ["Multi-junction solar cell","triple-junction · 3J cell","A cell with several junctions of different band gaps stacked so each uses a different part of the spectrum.","sun"],
+ ["Gallium arsenide (GaAs)","—","The semiconductor at the heart of high-efficiency space solar cells.","sun"],
+ ["Maximum power point","MPP","The point on a cell's current–voltage curve where volts × amps is greatest.","sun"],
+ ["Thermal cycling","—","Repeated heating and cooling as a spacecraft moves in and out of shadow, about 15 times a day in low orbit.","sun"],
 ];
 
 
@@ -1273,6 +1328,9 @@ const ENRICH = {
  "Control moment gyroscope (CMG)":{c:"A reaction wheel's torque is limited by its motor. Tilting an already fast wheel redirects a huge stored angular momentum, so a small gimbal motor produces a very large torque.",e:"ISS: 4,760 N·m·s tilted at 0.054 rad/s gives about 258 N·m.",x:"A gyroscope (sensor) and a reaction wheel (changes speed).",l:"Gimbal rate, slew rate, large and agile spacecraft."},
  "Saturation (wheel)":{c:"A wheel can only hold so much spin before it reaches its speed limit. Because outside disturbances keep adding in one direction, every wheel eventually fills.",e:"0.00001 N·m for a day is 0.86 N·m·s; a 4 N·m·s wheel is full in under 5 days.",x:"A wheel failure. Saturation is normal and routinely cleared.",l:"Disturbance torques, momentum dumping, thrusters, magnetorquers."},
  "Internal torque / external torque":{c:"Angular momentum of the whole spacecraft can only be changed by something outside it. That one rule sorts the actuators into those that redistribute spin and those that can add or remove it.",e:"Inside: reaction wheels, momentum wheels, CMGs. Outside: thrusters (push on exhaust), magnetorquers (push on the field).",x:"Strong versus weak. A CMG is strong and still internal.",l:"Why wheel systems always include thrusters or magnetorquers."},
+ "Solar flux":{c:"A solar array can only convert the light that lands on it. Flux is that supply, and because it falls with distance squared it decides whether solar power is easy, hard or impossible for a mission.",e:"1,361 W/m² at Earth. Mercury 9,100. Mars 590. Jupiter 50. Saturn 15.",x:"The Sun's total output, or the array's output. Flux is what arrives per square metre.",l:"Inverse-square law, array sizing, RTGs for the outer planets."},
+ "p–n junction":{c:"Freeing an electron with light is not enough; left alone it falls straight back. The junction supplies a permanent internal field that separates the charges, so the electron has to return through the outside circuit.",e:"About 0.6 V across a silicon junction; about 2.7 V for a triple-junction cell.",x:"The metal contacts or the wire. The junction is inside the crystal.",l:"Doping, n-type and p-type, band gap, photovoltaic effect."},
+ "Multi-junction solar cell":{c:"One material wastes every photon that does not match its band gap. Stacking materials with different gaps lets each layer handle the colours it converts best.",e:"Gaps of about 1.9, 1.4 and 0.67 eV; about 30% efficient against 20% for silicon.",x:"'Three times the efficiency'. The layers share the same light.",l:"Band gap, photon energy (eV = 1,240 ÷ nm), gallium arsenide."},
 };
 
 
@@ -1314,6 +1372,9 @@ const NUMBERS = {
   ["τ = h × gimbal rate","control moment gyro torque","ISS: 4,760 N·m·s × 0.054 rad/s ≈ 258 N·m","act"],
   ["τ = m × B","magnetorquer torque","10 A·m² × 30 µT = 0.0003 N·m","act"],
   ["τ = F × arm","thruster torque","two 1 N jets at 1 m: 2 N·m","act"],
+  ["S = 1,361 / d²  (W/m², d in AU)","solar flux","Mars 1.52 AU → 590 · Jupiter 5.2 AU → 50","sun"],
+  ["P = S · A · η · cos θ","solar array power","1 m² at Earth, 30%: ≈ 410 W · 1 kW at Mars: 7.1 m² (with 0.8 losses)","sun"],
+  ["λ_max = 1,240 / E_gap  (nm, eV)","longest wavelength a cell can use","silicon 1.1 eV → 1,100 nm · GaAs 1.4 eV → 890 nm","sun"],
  ],
  constants:[
   ["μ Earth","398,600 km³/s²"],["R Earth","6,371 km (6,378 at the equator)"],["g at 400 km","8.7 m/s² (90% of surface)"],
@@ -1339,6 +1400,7 @@ const NUMBERS = {
   ["Voyager 1 data rate","160 bits per second"],
   ["Explorer 1 (1958)","2 m pencil, 14 kg, spun at 750 rpm; flat spin within hours; found the radiation belts"],
   ["ISS control moment gyros","four; 98 kg wheel at 6,600 rpm; 4,760 N·m·s each; about 258 N·m"],
+  ["Juno solar arrays","about 60 m² of cells; ~14 kW near Earth, ~500 W at Jupiter"],
   ["Engine families","chemical 250–450 s · nuclear thermal ~900 s · electric 1,500–4,000+ s"],
  ]
 };
@@ -1362,6 +1424,7 @@ const MECH = {
  adcs:"Sensors measure the attitude, the computer subtracts the target to get the error, actuators apply a torque, and it repeats. Left alone, a body keeps its angular momentum but leaks energy, so it ends up spinning about its biggest moment of inertia: Explorer 1's pencil went end over end.",
  sens:"Gyros feel rotation and drift. Sun sensor, star tracker, horizon sensor and magnetometer each see one outside reference. One direction fixes only two angles, so they are combined, and the star tracker (0.001°) resets the gyros.",
  act:"Wheel spin plus craft spin is constant, so spinning a wheel turns the craft the other way. Outside nudges fill the wheels until they saturate. Only an external push, a thruster couple or a magnetorquer on the planet's field, can empty them. A CMG tilts a fast wheel for hundreds of N·m.",
+ sun:"Flux = 1,361 ÷ distance². A photon frees an electron in a two-layer crystal, the junction's built-in field pushes it to one side, and it returns through the wire. Three layers with three band gaps reach about 30%. Power = flux × area × efficiency.",
 };
 
 const INTERVALS=[1,3,7,14,30];
