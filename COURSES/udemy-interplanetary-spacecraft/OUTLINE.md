@@ -30,7 +30,7 @@ track for now — see root `CLAUDE.md` § Current focus.
 | 3 | Orbital Mechanics | 3 | 34 min | `sections/03-orbital-mechanics.md` | [ ] |
 | 4 | Space Propulsion Systems | 5 | 27 min | `sections/04-space-propulsion.md` | [x] 2026-11-12, 4 lectures (the panel's 5th item is unconfirmed, probably a quiz) |
 | 5 | Communications from Space to Earth | 3 | 44 min | `sections/05-communications.md` | [x] 2026-11-12, 3 lectures |
-| 6 | Attitude Determination and Control | 4 | 36 min | `sections/06-attitude-determination-and-control.md` | [ ] 1 of 4 lectures (2026-11-12) |
+| 6 | Attitude Determination and Control | 4 | 36 min | `sections/06-attitude-determination-and-control.md` | [ ] 2 of 4 lectures (2026-11-12) |
 | 7 | Space Power Systems | 4 | 33 min | `sections/07-space-power-systems.md` | [ ] |
 | 8+ | *(not visible in the course panel yet — add when known)* | | | | |
 
@@ -221,3 +221,17 @@ the Done column and date it when a section's quiz is graded.
   be corrected"; slide says inertial frame but draws the orbital frame.
   App v16: scene 14 "Point, check, nudge" (14 MC, 4 explain, 12 cards,
   23 terms, 4 concept entries, 3 formulas).
+
+- **2026-11-12 (deadline push)** — S6 Lec 2 "Sensors": transcript + all
+  7 content slides. Lean PDF `feedback/S6-L2-attitude-sensors-v1.pdf`
+  (4 pp): what each sensor looks at, gyro-drift sawtooth, accuracy
+  ladder; six-sensor comparison table. Added what the lecture never
+  says: one direction fixes only two angles, and gyros drift, which is
+  why sensors are combined. Instructor loose: gyroscope "determines
+  position and orientation" (rotation rate only); the Cubli called a
+  gyroscope (it is a reaction-wheel balancing cube = actuators); star
+  trackers justified by a dim Sun (they are chosen for accuracy and are
+  standard in Earth orbit); Earth "100-1000 K" (about 255 K); GPS
+  attitude explained by positions (it uses arrival-time differences).
+  App v17: scene 15 "Inner ear, eyes and a compass" (12 MC, 4 explain,
+  10 cards, 16 terms, 3 concept entries, 2 formulas).
