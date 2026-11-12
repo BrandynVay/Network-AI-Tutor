@@ -27,7 +27,7 @@
 > - **Space X Study app (added 2026-11-10):** a separate published
 >   Artifact for this course, https://claude.ai/artifact/CnDfEEJHGhs76GMZNu7BSM
 >   (source mirrored at `COURSES/udemy-interplanetary-spacecraft/app/space-x-study.html`).
->   Tabs: Today (with a "how this app helps you" card) · Learn (17 scenes;
+>   Tabs: Today (with a "how this app helps you" card) · Learn (18 scenes;
 >   scene 8 "Throw it backward" = S4 propulsion basics + chemical engines,
 >   scene 9 "The tortoise engine" = S4 electric propulsion / ion thruster,
 >   scene 10 "The kettle with no fire" = S4 nuclear thermal rockets,
@@ -37,18 +37,19 @@
 >   scene 14 "Point, check, nudge" = S6 attitude, control loop, spin stability,
 >   scene 15 "Inner ear, eyes and a compass" = S6 attitude sensors,
 >   scene 16 "Spin a wheel, turn the ship" = S6 actuators,
->   scene 17 "The sunlight sandwich" = S7 solar arrays;
+>   scene 17 "The sunlight sandwich" = S7 solar arrays,
+>   scene 18 "The bucket for the dark" = S7 batteries;
 >   each with a 🧒 simple version AND a 🛠 "how it actually works"
 >   engineer section with worked numbers, plus a one-line "when they
 >   ask but how?" mechanism sentence (`MECH`); a header toggle sets
->   which comes first) · Quiz (210 multiple-choice +
->   72 explain-out-loud incl. the 15 "but how?" cards, instant feedback,
->   spaced review) · Cards (191 flashcards, 1/3/7/14/30-day intervals) ·
->   Terms (421-entry searchable glossary of OFFICIAL terminology: name ·
->   also-called · plain meaning · scene; 81 core terms also carry an
+>   which comes first) · Quiz (222 multiple-choice +
+>   76 explain-out-loud incl. the 15 "but how?" cards, instant feedback,
+>   spaced review) · Cards (201 flashcards, 1/3/7/14/30-day intervals) ·
+>   Terms (436-entry searchable glossary of OFFICIAL terminology: name ·
+>   also-called · plain meaning · scene; 84 core terms also carry an
 >   `ENRICH` entry = concept/why-it-exists · example with numbers ·
 >   don't-confuse-with · connects-to, added 2026-11-11 after the student
->   said definitions alone weren't enough) · Numbers (`NUMBERS`: 39
+>   said definitions alone weren't enough) · Numbers (`NUMBERS`: 42
 >   formulas each with a worked value, constants, mission numbers;
 >   mirrors notebook pp. 3-4) · Teach (timed talks: Section 1
 >   3¼ min · Section 2 3 min · Section 3 4¼ min · Section 4 4 min · Section 5 4 min · Section 6 4¼ min · full
@@ -113,7 +114,8 @@
 >   sources `feedback/src/s6l*.py`), `PROGRAMS.s6` added. Section 7 (space
 >   power): 3 lectures + Quiz 5 (designing a photovoltaic array); lecture
 >   1 solar arrays done (`feedback/S7-L1-solar-arrays-v1.pdf`, with a
->   sizing recipe for the quiz), batteries and RTGs to come. When the last
+>   sizing recipe for the quiz), lecture 2 batteries done
+>   (`feedback/S7-L2-batteries-v1.pdf`), RTGs to come. When the last
 >   lecture is in, give a compact review plan and add `PROGRAMS.s7` plus a
 >   whole-course talk. New app content is added with `app/applib.py`.
 >   Still unknown: what the deadline event is (asked twice, no answer yet).

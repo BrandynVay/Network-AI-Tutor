@@ -31,7 +31,7 @@ track for now — see root `CLAUDE.md` § Current focus.
 | 4 | Space Propulsion Systems | 5 | 27 min | `sections/04-space-propulsion.md` | [x] 2026-11-12, 4 lectures (the panel's 5th item is unconfirmed, probably a quiz) |
 | 5 | Communications from Space to Earth | 3 | 44 min | `sections/05-communications.md` | [x] 2026-11-12, 3 lectures |
 | 6 | Attitude Determination and Control | 4 | 36 min | `sections/06-attitude-determination-and-control.md` | [x] 2026-11-12, 3 lectures (the panel's 4th item is unconfirmed, probably a quiz) |
-| 7 | Space Power Systems | 3 + Quiz 5 (designing a photovoltaic array) | 33 min | `sections/07-space-power-systems.md` | [ ] 1 of 3 lectures (2026-11-12) |
+| 7 | Space Power Systems | 3 + Quiz 5 (designing a photovoltaic array) | 33 min | `sections/07-space-power-systems.md` | [ ] 2 of 3 lectures (2026-11-12) |
 | 8+ | *(not visible in the course panel yet — add when known)* | | | | |
 
 Visible sections sum to ~3.3 hours, so there is at most one short
@@ -271,3 +271,18 @@ the Done column and date it when a section's quiz is graded.
   Juno). App v19: scene 17 "The sunlight sandwich" (14 MC, 4 explain,
   12 cards, 18 terms, 3 concept entries, 3 formulas). App patches now
   go through `app/applib.py` (dedupes terms automatically).
+
+- **2026-11-12 (deadline push)** — S7 Lec 2 "Batteries": transcript +
+  slides 2, 4, 5 of 5 (slide 3, the definitions and DoD formula,
+  reconstructed from the transcript). Lean PDF
+  `feedback/S7-L2-batteries-v1.pdf` (4 pp): primary vs secondary,
+  charge zigzag with DoD, life-vs-DoD curve with the slide's values,
+  sizing formula; a five-step sizing recipe and a low-orbit vs GEO
+  table. Instructor loose: battery called "auxiliary, low power" (it is
+  the only source in eclipse); "penumbra time" for eclipse; "two-hour
+  cycle, 12 a day" again (about 92 min, 16 a day; he says 1.5 h earlier
+  in the same lecture); secondary "low energy density" (lower, not
+  low); no account of how a cell works, which chemistries fly, or that
+  the array must also recharge the battery. App v20: scene 18 "The
+  bucket for the dark" (12 MC, 4 explain, 10 cards, 15 terms, 3 concept
+  entries, 3 formulas). One lecture left: RTGs.
