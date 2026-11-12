@@ -27,7 +27,7 @@
 > - **Space X Study app (added 2026-11-10):** a separate published
 >   Artifact for this course, https://claude.ai/artifact/CnDfEEJHGhs76GMZNu7BSM
 >   (source mirrored at `COURSES/udemy-interplanetary-spacecraft/app/space-x-study.html`).
->   Tabs: Today (with a "how this app helps you" card) · Learn (15 scenes;
+>   Tabs: Today (with a "how this app helps you" card) · Learn (16 scenes;
 >   scene 8 "Throw it backward" = S4 propulsion basics + chemical engines,
 >   scene 9 "The tortoise engine" = S4 electric propulsion / ion thruster,
 >   scene 10 "The kettle with no fire" = S4 nuclear thermal rockets,
@@ -35,21 +35,22 @@
 >   scene 12 "Two windows in the wall" = S5 atmospheric windows + bands,
 >   scene 13 "Shouting across a stadium" = S5 link chain + link budget,
 >   scene 14 "Point, check, nudge" = S6 attitude, control loop, spin stability,
->   scene 15 "Inner ear, eyes and a compass" = S6 attitude sensors;
+>   scene 15 "Inner ear, eyes and a compass" = S6 attitude sensors,
+>   scene 16 "Spin a wheel, turn the ship" = S6 actuators;
 >   each with a 🧒 simple version AND a 🛠 "how it actually works"
 >   engineer section with worked numbers, plus a one-line "when they
 >   ask but how?" mechanism sentence (`MECH`); a header toggle sets
->   which comes first) · Quiz (182 multiple-choice +
->   64 explain-out-loud incl. the 15 "but how?" cards, instant feedback,
->   spaced review) · Cards (167 flashcards, 1/3/7/14/30-day intervals) ·
->   Terms (388-entry searchable glossary of OFFICIAL terminology: name ·
->   also-called · plain meaning · scene; 74 core terms also carry an
+>   which comes first) · Quiz (196 multiple-choice +
+>   68 explain-out-loud incl. the 15 "but how?" cards, instant feedback,
+>   spaced review) · Cards (179 flashcards, 1/3/7/14/30-day intervals) ·
+>   Terms (403-entry searchable glossary of OFFICIAL terminology: name ·
+>   also-called · plain meaning · scene; 78 core terms also carry an
 >   `ENRICH` entry = concept/why-it-exists · example with numbers ·
 >   don't-confuse-with · connects-to, added 2026-11-11 after the student
->   said definitions alone weren't enough) · Numbers (`NUMBERS`: 32
+>   said definitions alone weren't enough) · Numbers (`NUMBERS`: 36
 >   formulas each with a worked value, constants, mission numbers;
 >   mirrors notebook pp. 3-4) · Teach (timed talks: Section 1
->   3¼ min · Section 2 3 min · Section 3 4¼ min · Section 4 4 min · Section 5 4 min · full
+>   3¼ min · Section 2 3 min · Section 3 4¼ min · Section 4 4 min · Section 5 4 min · Section 6 4¼ min · full
 >   7 min covering S1-S3 only, each with cue card) · Progress. Progress is stored per viewer in
 >   the artifact db at `data/users/<id>/progress` (private to the
 >   viewer; Claude cannot read it), with a localStorage fallback. The
@@ -107,9 +108,11 @@
 >   TEACH + FACT CHECK + VOCABULARY only (no copy-into-notes page, no
 >   concept cards, no Who's Who updates); see NOTES_METHOD.md § Lean
 >   mode. Don't nag about outstanding talk runs during the push. Section
->   6: lectures 1-2 of 4 done (`feedback/S6-L1-...pdf`, `S6-L2-...pdf`,
->   sources `feedback/src/s6l1.py`, `s6l2.py`). When the last lecture is in, give a compact
->   review plan and add `PROGRAMS.s6`/`s7` plus a whole-course talk.
+>   6 **complete**: three lectures (`feedback/S6-L1`, `S6-L2`, `S6-L3` PDFs,
+>   sources `feedback/src/s6l*.py`), `PROGRAMS.s6` added. Section 7 (space
+>   power systems, 4 lectures) is next. When its last lecture is in, give
+>   a compact review plan and add `PROGRAMS.s7` plus a whole-course talk.
+>   Still unknown: what the deadline event is (asked twice, no answer yet).
 > - When Network+ resumes, delete this block, and resume from
 >   "Project status" below (Day 01 was never started in the app).
 

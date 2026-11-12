@@ -30,7 +30,7 @@ track for now — see root `CLAUDE.md` § Current focus.
 | 3 | Orbital Mechanics | 3 | 34 min | `sections/03-orbital-mechanics.md` | [ ] |
 | 4 | Space Propulsion Systems | 5 | 27 min | `sections/04-space-propulsion.md` | [x] 2026-11-12, 4 lectures (the panel's 5th item is unconfirmed, probably a quiz) |
 | 5 | Communications from Space to Earth | 3 | 44 min | `sections/05-communications.md` | [x] 2026-11-12, 3 lectures |
-| 6 | Attitude Determination and Control | 4 | 36 min | `sections/06-attitude-determination-and-control.md` | [ ] 2 of 4 lectures (2026-11-12) |
+| 6 | Attitude Determination and Control | 4 | 36 min | `sections/06-attitude-determination-and-control.md` | [x] 2026-11-12, 3 lectures (the panel's 4th item is unconfirmed, probably a quiz) |
 | 7 | Space Power Systems | 4 | 33 min | `sections/07-space-power-systems.md` | [ ] |
 | 8+ | *(not visible in the course panel yet — add when known)* | | | | |
 
@@ -235,3 +235,21 @@ the Done column and date it when a section's quiz is graded.
   attitude explained by positions (it uses arrival-time differences).
   App v17: scene 15 "Inner ear, eyes and a compass" (12 MC, 4 explain,
   10 cards, 16 terms, 3 concept entries, 2 formulas).
+
+- **2026-11-12 (deadline push)** — S6 Lec 3 "Actuators": transcript +
+  all 7 content slides; the instructor says it closes the section. Lean
+  PDF `feedback/S6-L3-attitude-actuators-v1.pdf` (4 pp): reaction wheel
+  vs CMG, magnetic torquer vs thrusters, saturation sawtooth;
+  five-actuator comparison table. Added the idea the lecture never
+  states: internal actuators (wheels, CMGs) only swap angular momentum,
+  external ones (thrusters, magnetorquers) change the total, hence
+  saturation and momentum dumping. Instructor loose: saturation blamed
+  on "instabilities" (steady disturbance torques); momentum vs reaction
+  wheel blurred; "65,000 rpm" (flight wheels run a few thousand); CMG
+  called a full set of wheels (one wheel on a gimbal); slew rate called
+  responsiveness; magnetorquer called a sensor and "like a CMG"; cold
+  gas "usually CO2" (nitrogen); slide typos "Reactor wheels", "3 axis
+  determination". **Section 6 complete on Claude's side:** app v18 has
+  scene 16 "Spin a wheel, turn the ship" (14 MC, 4 explain, 12 cards,
+  15 terms, 4 concept entries, 4 formulas) and a Section 6 timed talk
+  (`PROGRAMS.s6`, 4¼ min). Next: Section 7, space power systems.
