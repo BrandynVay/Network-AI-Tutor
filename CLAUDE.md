@@ -27,19 +27,20 @@
 > - **Space X Study app (added 2026-11-10):** a separate published
 >   Artifact for this course, https://claude.ai/artifact/CnDfEEJHGhs76GMZNu7BSM
 >   (source mirrored at `COURSES/udemy-interplanetary-spacecraft/app/space-x-study.html`).
->   Tabs: Today (with a "how this app helps you" card) · Learn (8 scenes;
->   scene 8 "Throw it backward" = Section 4 propulsion, lectures 1-2 so far;
+>   Tabs: Today (with a "how this app helps you" card) · Learn (9 scenes;
+>   scene 8 "Throw it backward" = S4 propulsion basics + chemical engines,
+>   scene 9 "The tortoise engine" = S4 electric propulsion / ion thruster;
 >   each with a 🧒 simple version AND a 🛠 "how it actually works"
 >   engineer section with worked numbers, plus a one-line "when they
 >   ask but how?" mechanism sentence (`MECH`); a header toggle sets
->   which comes first) · Quiz (88 multiple-choice +
->   34 explain-out-loud incl. the 15 "but how?" cards, instant feedback,
->   spaced review) · Cards (79 flashcards, 1/3/7/14/30-day intervals) ·
->   Terms (229-entry searchable glossary of OFFICIAL terminology: name ·
->   also-called · plain meaning · scene; 42 core terms also carry an
+>   which comes first) · Quiz (100 multiple-choice +
+>   38 explain-out-loud incl. the 15 "but how?" cards, instant feedback,
+>   spaced review) · Cards (91 flashcards, 1/3/7/14/30-day intervals) ·
+>   Terms (250-entry searchable glossary of OFFICIAL terminology: name ·
+>   also-called · plain meaning · scene; 47 core terms also carry an
 >   `ENRICH` entry = concept/why-it-exists · example with numbers ·
 >   don't-confuse-with · connects-to, added 2026-11-11 after the student
->   said definitions alone weren't enough) · Numbers (`NUMBERS`: 15
+>   said definitions alone weren't enough) · Numbers (`NUMBERS`: 17
 >   formulas each with a worked value, constants, mission numbers;
 >   mirrors notebook pp. 3-4) · Teach (timed talks: Section 1
 >   3¼ min · Section 2 3 min · Section 3 4¼ min · full 7 min, each with
@@ -79,10 +80,10 @@
 >   burns 2.42 + 1.47 km/s; rocket-equation mass ratios; flyby turning
 >   angle). Every new lecture gets the same three layers: simple story,
 >   official terms, and a worked mechanism with numbers.
-> - **Section 4 in progress (2026-11-12):** lectures 1-2 of 5 done
->   (`feedback/S4-L1-...pdf`, `feedback/S4-L2-...pdf`, sources in
+> - **Section 4 in progress (2026-11-12):** lectures 1-3 of 5 done
+>   (`feedback/S4-L1-...pdf`, `S4-L2-...pdf`, `S4-L3-...pdf`, sources in
 >   `feedback/src/`). Lecture PDFs now carry a copy-into-notes page and
->   concept-card pages (C17-C19 so far); format in NOTES_METHOD.md §
+>   concept-card pages (C17-C21 so far); format in NOTES_METHOD.md §
 >   Lecture PDF format from Section 4 on. Still ungraded: the Section 1
 >   talk run and the Section 3 conversation test.
 > - When Network+ resumes, delete this block, and resume from

@@ -28,7 +28,7 @@ track for now — see root `CLAUDE.md` § Current focus.
 | 1 | Presentation, intro to space engineering, mission design & objectives, Quiz 1 (time of flight) | 3 + quiz | 13 min | `sections/01-mission-design-and-time-of-flight.md` | [x] 2026-11-07 |
 | 2 | Space Environment | 3 | 11 min | `sections/02-space-environment.md` | [ ] |
 | 3 | Orbital Mechanics | 3 | 34 min | `sections/03-orbital-mechanics.md` | [ ] |
-| 4 | Space Propulsion Systems | 5 | 27 min | `sections/04-space-propulsion.md` | [ ] 2 of 5 lectures (2026-11-12) |
+| 4 | Space Propulsion Systems | 5 | 27 min | `sections/04-space-propulsion.md` | [ ] 3 of 5 lectures (2026-11-12) |
 | 5 | Communications from Space to Earth | 3 | 44 min | `sections/05-communications.md` | [ ] |
 | 6 | Attitude Determination and Control | 4 | 36 min | `sections/06-attitude-determination-and-control.md` | [ ] |
 | 7 | Space Power Systems | 4 | 33 min | `sections/07-space-power-systems.md` | [ ] |
@@ -102,3 +102,21 @@ the Done column and date it when a section's quiz is graded.
   Remaining S4 lectures (electric, nuclear, ...) to come from the
   student; the Section 4 talk, word-bank sheet and glossary PDF get
   rebuilt once the section is complete.
+
+- **2026-11-12 (later)** — S4 Lec 3 "Electric propulsion + ion
+  thrusters": transcript + 4 of 7 slides (2, 4, 5, 7; slides 3 and 6
+  reconstructed from the transcript). PDF:
+  `feedback/S4-L3-electric-propulsion-ion-thrusters-v1.pdf` (7 pp):
+  ion-thruster cutaway + four steps + tortoise/hare speed-time sketch;
+  mechanism with Deep Space 1 numbers (1,100 V -> 40 km/s, 0.092 N from
+  2.3 kW, 16 m/s per day, 4.3 km/s from 74 kg Xe); concept cards
+  C20-C21 (EP, ion thruster, plasma, neutralizer). Instructor loose:
+  "breaking electronic bonds" (it is ionization of single atoms);
+  plasma = "the positive particles" (ions AND electrons); neutralizer
+  explained as letting gas disperse (real reason: charge balance);
+  BepiColombo's ion engines are for the cruise to Mercury, not
+  maneuvers around it (arrival was planned for Nov 2026; not
+  verified); low thrust blamed on mass flow rather than power; Hall
+  thruster never mentioned. 14 caption errors tabled. App v11: scene 9
+  "The tortoise engine" (12 MC, 4 explain, 12 cards, 21 terms, 5
+  concept entries, 2 formulas). Two S4 lectures remain.

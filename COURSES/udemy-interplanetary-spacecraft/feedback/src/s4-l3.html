@@ -1,0 +1,293 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Interplanetary transfers</title>
+<style>
+@page { size: letter landscape; margin: 0; }
+* { box-sizing:border-box; }
+:root { --navy:#0b1437; --orange:#ff6b1a; --blue:#1e7cff; --green:#19b36b; --pink:#e5338f; --purple:#7b3fe4; --yellow:#ffd23f; --paper:#fffdf5; }
+body { margin:0; font-family: Verdana, "DejaVu Sans", Arial, sans-serif; color:#111; }
+.page { width:11in; height:8.5in; padding:0.35in 0.45in; page-break-after:always; position:relative; background:#fff; overflow:hidden; }
+.page:last-child { page-break-after:auto; }
+.top { display:flex; align-items:center; gap:14px; margin-bottom:6px; }
+.badge { background:var(--navy); color:#fff; font-weight:900; font-size:11px; letter-spacing:2px; padding:6px 12px; border-radius:999px; }
+h1 { font-size:22px; margin:0; font-weight:900; }
+h1 span { color:var(--orange); }
+.sub { color:#555; font-size:11.5px; margin-bottom:8px; }
+.spread { display:flex; gap:16px; height:6.9in; }
+.np { flex:1; border:3px solid #111; border-radius:14px; background:var(--paper); position:relative; padding:12px 14px; font-size:12px;
+  background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 23px, #e3e8f2 23px, #e3e8f2 24px); background-position:0 40px; }
+.np.o{border-color:var(--orange);} .np.b{border-color:var(--blue);}
+.tag { position:absolute; top:-14px; left:14px; color:#fff; font-weight:900; font-size:12px; padding:4px 12px; border-radius:999px; letter-spacing:1px; }
+.o .tag{background:var(--orange);} .b .tag{background:var(--blue);}
+.hdr { font-weight:900; font-size:13px; border-bottom:3px solid #111; margin:4px 0 8px; padding-bottom:5px; display:flex; justify-content:space-between; }
+.ink { color:#1a3fb0; font-family:"Comic Sans MS","Segoe Print","Bradley Hand",cursive; }
+.pencil { color:#8a8a8a; font-family:"Comic Sans MS","Segoe Print",cursive; }
+.cornell { display:flex; height:calc(100% - 44px); }
+.cue { width:36%; border-right:3px solid var(--blue); padding-right:8px; }
+.notes { flex:1; padding-left:12px; }
+.summary { position:absolute; left:12px; right:12px; bottom:12px; height:108px; border:3px solid var(--green); border-radius:10px; padding:6px 10px; background:#f2fff7; }
+.summary b { color:var(--green); font-size:12px; }
+.q { margin:0 0 10px; line-height:1.25; }
+.hl { padding:0 3px; border-radius:3px; }
+.hl.y{background:#fff176;} .hl.k{background:#ffb3d9;} .hl.b{background:#9fd3ff;} .hl.g{background:#a8f0c6;} .hl.o{background:#ffcf9e;}
+.banner { border:2.5px solid #111; border-radius:10px; padding:3px 10px; font-weight:900; font-size:13px; display:inline-block; background:#fff176; box-shadow:3px 3px 0 #111; }
+.mini { border:2px solid #111; border-radius:8px; padding:5px 8px; background:#fff; font-size:11px; margin-top:6px; box-shadow:2px 2px 0 #111; }
+table.t { border-collapse:collapse; width:100%; font-size:11px; }
+table.t th, table.t td { border:2px solid #111; padding:3px 5px; text-align:left; vertical-align:top; }
+table.t th { background:var(--navy); color:#fff; }
+.card { border:3px solid #111; border-radius:14px; padding:12px 16px; font-size:12.5px; background:var(--paper); }
+.card h3 { margin:0 0 6px; font-size:15px; font-weight:900; }
+.two { display:flex; gap:16px; }
+.two > div { flex:1; }
+ul.r { margin:4px 0 0; padding-left:18px; line-height:1.45; font-size:12px; }
+.ok { color:var(--green); font-weight:900; } .fix { color:var(--orange); font-weight:900; }
+.callout { background:var(--yellow); border:3px solid #111; border-radius:12px; padding:10px 14px; font-weight:700; font-size:12.5px; margin-top:12px; }
+</style>
+<style>
+.sm { width:3.6in; height:5.4in; border:3px solid #111; border-radius:10px; background:var(--paper); position:relative; padding:8px 9px; font-size:9.5px;
+  background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 15px, #dfe5ef 15px, #dfe5ef 16px); background-position:0 26px; }
+.sm.o{border-color:var(--orange);} .sm.b{border-color:var(--blue);}
+.sm .tag { font-size:10px; padding:3px 9px; top:-12px; left:10px; }
+.sm .hdr { font-size:10px; margin:2px 0 5px; padding-bottom:3px; border-width:2px; }
+.zone { border:2px dashed #999; border-radius:6px; padding:4px 6px; margin-top:5px; font-size:9px; color:#333; background:rgba(255,255,255,.75); }
+.zone b { color:#111; }
+.lines { color:#b0582c; font-weight:700; font-size:8.5px; }
+.smwrap { display:flex; gap:10px; justify-content:center; }
+</style>
+
+<style>
+.bg { width:4.95in; height:7.35in; border:3px solid #111; border-radius:12px; background:var(--paper); position:relative; padding:12px 14px; font-size:12px;
+  background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 21px, #dfe5ef 21px, #dfe5ef 22px); background-position:0 44px; }
+.bg.o{border-color:var(--orange);} .bg.b{border-color:var(--blue);}
+.bg .tag { position:absolute; top:-14px; left:14px; color:#fff; font-weight:900; font-size:12px; padding:4px 12px; border-radius:999px; letter-spacing:1px; }
+.bg.o .tag{background:var(--orange);} .bg.b .tag{background:var(--blue);}
+.bg .hdr { font-weight:900; font-size:13px; border-bottom:3px solid #111; margin:4px 0 8px; padding-bottom:5px; display:flex; justify-content:space-between; }
+.bg .ink { font-size:12px; line-height:1.45; }
+.bg .q { margin:0 0 10px; line-height:1.3; }
+.bz { border:2px dashed #999; border-radius:8px; padding:6px 9px; margin-top:8px; font-size:11.5px; background:rgba(255,255,255,.8); }
+.bz b { color:#111; }
+.lb { color:#b0582c; font-weight:700; font-size:10px; }
+</style>
+<style>
+.gl2{columns:2;column-gap:22px;font-size:10.6px;line-height:1.38}
+.gl2 div{break-inside:avoid;margin-bottom:4px}
+.gl2 i{color:#555}
+.mech{border-collapse:collapse;width:100%;font-size:10.4px}
+.mech th,.mech td{border:1.5px solid #111;padding:3px 6px;text-align:left;vertical-align:top}
+.mech th{background:#0b1437;color:#fff}
+.eli{background:#fff8d6;border:3px solid #111;border-radius:14px;padding:9px 15px;margin-bottom:10px;font-size:12.2px;line-height:1.48}
+.names{font-size:11px;line-height:1.45;margin:0;padding-left:16px}
+.nb{width:4.3in;height:6.4in;border:3px solid #111;border-radius:10px;background:#fff;position:relative;padding:0 10px;overflow:hidden;flex:none}
+.nbh{height:.42in;display:flex;justify-content:space-between;align-items:flex-end;padding-bottom:4px;font-size:9.5px;font-weight:900;letter-spacing:.5px;color:#333;border-bottom:2px solid #111}
+.nbh span.pg{border:2px solid #111;border-radius:6px;padding:1px 7px;font-size:12px}
+.ln{height:.262in;border-bottom:1px solid #c9d1de;display:flex;align-items:flex-end;padding-bottom:2px;font-size:12.6px;white-space:nowrap;color:#222}
+.ln .s{flex:none;width:42px;font-weight:900;font-size:11.5px;color:#000}
+.ln.n{font-weight:900;font-size:12.4px;color:#000}
+.ln.n .nmbox{border:2px solid #111;border-radius:5px;padding:0 5px;margin-left:-3px;background:#eee}
+.ln.n2{font-weight:700}
+.ln .num{flex:none;width:14px;font-size:7.5px;color:#9aa3b2;margin-left:-8px}
+.ln.gap{background:repeating-linear-gradient(90deg,#999 0 6px,transparent 6px 12px) center/100% 1.5px no-repeat}
+.route{font-size:11px;line-height:1.45}
+.route h3{margin:0 0 3px;font-size:13px}
+.route .copy{font-family:"DejaVu Sans Mono",monospace;font-size:10.2px;background:#f4f4f4;border:1.5px dashed #777;border-radius:6px;padding:5px 8px;margin:3px 0 8px;white-space:pre-wrap;line-height:1.5}
+</style></head><body><div class="page"><div class="top"><div class="badge">SEC 4 · LEC 3 · ELECTRIC PROPULSION + ION THRUSTERS</div><h1>The tortoise <span>engine</span></h1></div><div class="sub">Left = your left notebook page. Right = your right page. Copy the drawing in pencil first, then the cues and notes. The summary box stays empty until the video and this PDF are closed.</div>
+<div style="display:flex; gap:18px; justify-content:center">
+  <div class="bg o"><span class="tag">🖍 LEFT PAGE · DRAW</span>
+    <div class="hdr"><span>S4 / L3 — Electric propulsion</span><span>date · pg __</span></div>
+    <svg width="100%" height="428" viewBox="0 0 330 412" style="display:block" font-family="Verdana, sans-serif">
+<defs><marker id="ar" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#111"/></marker>
+<pattern id="hat" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="5" stroke="#111" stroke-width="1"/></pattern></defs>
+<text x="8" y="13" font-size="10" font-weight="bold" fill="#111">1 · INSIDE AN ION THRUSTER</text>
+<text x="228" y="30" text-anchor="middle" font-size="8.5" font-weight="bold" fill="#111">+ grid | − grid</text>
+<line x1="221" y1="34" x2="221" y2="52" stroke="#777" stroke-width="0.8"/><line x1="233" y1="34" x2="233" y2="52" stroke="#777" stroke-width="0.8"/>
+<rect x="95" y="40" width="34" height="10" fill="url(#hat)" stroke="#111" stroke-width="1.2"/><rect x="160" y="40" width="34" height="10" fill="url(#hat)" stroke="#111" stroke-width="1.2"/>
+<rect x="95" y="136" width="34" height="10" fill="url(#hat)" stroke="#111" stroke-width="1.2"/><rect x="160" y="136" width="34" height="10" fill="url(#hat)" stroke="#111" stroke-width="1.2"/>
+<path d="M221,54 H72 V132 H221" fill="none" stroke="#111" stroke-width="2.2"/>
+<line x1="221" y1="54" x2="221" y2="132" stroke="#111" stroke-width="2.2" stroke-dasharray="5 4"/>
+<line x1="233" y1="54" x2="233" y2="132" stroke="#111" stroke-width="2.2" stroke-dasharray="5 4"/>
+<rect x="58" y="84" width="24" height="18" fill="#ddd" stroke="#111" stroke-width="1.6"/>
+<line x1="14" y1="66" x2="68" y2="66" stroke="#111" stroke-width="1.4" marker-end="url(#ar)"/>
+<text x="8" y="60" font-size="8.5" font-weight="bold" fill="#111">gas in</text>
+<text x="8" y="118" font-size="8.5" font-weight="bold" fill="#111">electron</text><text x="8" y="129" font-size="8.5" font-weight="bold" fill="#111">gun</text>
+<circle cx="92" cy="93" r="1.7" fill="#111"/><circle cx="104" cy="88" r="1.7" fill="#111"/><circle cx="117" cy="99" r="1.7" fill="#111"/><circle cx="150" cy="70" r="1.7" fill="#111"/><circle cx="170" cy="112" r="1.7" fill="#111"/><circle cx="196" cy="84" r="1.7" fill="#111"/>
+<circle cx="100" cy="70" r="4.2" fill="#fff" stroke="#111" stroke-width="1.3"/><circle cx="128" cy="116" r="4.2" fill="#fff" stroke="#111" stroke-width="1.3"/><circle cx="145" cy="92" r="4.2" fill="#fff" stroke="#111" stroke-width="1.3"/>
+<circle cx="170" cy="74" r="4.6" fill="#fff" stroke="#111" stroke-width="1.3"/><text x="170" y="76.6" text-anchor="middle" font-size="7.5" font-weight="bold" fill="#111">+</text><circle cx="190" cy="104" r="4.6" fill="#fff" stroke="#111" stroke-width="1.3"/><text x="190" y="106.6" text-anchor="middle" font-size="7.5" font-weight="bold" fill="#111">+</text><circle cx="205" cy="68" r="4.6" fill="#fff" stroke="#111" stroke-width="1.3"/><text x="205" y="70.6" text-anchor="middle" font-size="7.5" font-weight="bold" fill="#111">+</text><circle cx="152" cy="118" r="4.6" fill="#fff" stroke="#111" stroke-width="1.3"/><text x="152" y="120.6" text-anchor="middle" font-size="7.5" font-weight="bold" fill="#111">+</text>
+<circle cx="250" cy="66" r="4.6" fill="#fff" stroke="#111" stroke-width="1.3"/><text x="250" y="68.6" text-anchor="middle" font-size="7.5" font-weight="bold" fill="#111">+</text><circle cx="250" cy="93" r="4.6" fill="#fff" stroke="#111" stroke-width="1.3"/><text x="250" y="95.6" text-anchor="middle" font-size="7.5" font-weight="bold" fill="#111">+</text><circle cx="250" cy="120" r="4.6" fill="#fff" stroke="#111" stroke-width="1.3"/><text x="250" y="122.6" text-anchor="middle" font-size="7.5" font-weight="bold" fill="#111">+</text>
+<line x1="258" y1="66" x2="318" y2="66" stroke="#111" stroke-width="1.2" marker-end="url(#ar)"/><line x1="258" y1="93" x2="320" y2="93" stroke="#111" stroke-width="1.2" marker-end="url(#ar)"/><line x1="258" y1="120" x2="318" y2="120" stroke="#111" stroke-width="1.2" marker-end="url(#ar)"/>
+<rect x="262" y="24" width="30" height="13" fill="#ddd" stroke="#111" stroke-width="1.5"/>
+<circle cx="284" cy="45" r="1.7" fill="#111"/><circle cx="292" cy="52" r="1.7" fill="#111"/><circle cx="302" cy="58" r="1.7" fill="#111"/>
+<text x="322" y="18" text-anchor="end" font-size="8.5" font-weight="bold" fill="#111">neutralizer</text>
+<text x="322" y="146" text-anchor="end" font-size="8.5" font-weight="bold" fill="#111">ions out at ~40 km/s</text>
+<text x="8" y="163" font-size="8" fill="#111">○ neutral atom   ⊕ positive ion   • electron</text>
+<text x="8" y="175" font-size="8" fill="#111">hatched = magnet · dashed = grid with holes</text>
+<line x1="8" y1="184" x2="322" y2="184" stroke="#bbb" stroke-width="1"/>
+<text x="8" y="199" font-size="10" font-weight="bold" fill="#111">2 · THE FOUR STEPS</text>
+<g font-size="8.5" fill="#111">
+<rect x="8" y="206" width="152" height="38" rx="6" fill="#fff" stroke="#111" stroke-width="1.6"/>
+<text x="15" y="221" font-weight="bold">1 FEED</text><text x="15" y="234">xenon gas, a few mg per second</text>
+<rect x="170" y="206" width="152" height="38" rx="6" fill="#fff" stroke="#111" stroke-width="1.6"/>
+<text x="177" y="221" font-weight="bold">2 IONIZE</text><text x="177" y="234">electrons knock electrons off</text>
+<rect x="8" y="250" width="152" height="38" rx="6" fill="#fff" stroke="#111" stroke-width="1.6"/>
+<text x="15" y="265" font-weight="bold">3 ACCELERATE</text><text x="15" y="278">grids pull the ions out fast</text>
+<rect x="170" y="250" width="152" height="38" rx="6" fill="#fff" stroke="#111" stroke-width="1.6"/>
+<text x="177" y="265" font-weight="bold">4 NEUTRALIZE</text><text x="177" y="278">add electrons back to the beam</text>
+</g>
+<line x1="8" y1="296" x2="322" y2="296" stroke="#bbb" stroke-width="1"/>
+<text x="8" y="311" font-size="10" font-weight="bold" fill="#111">3 · TORTOISE AND HARE</text>
+<line x1="40" y1="400" x2="40" y2="320" stroke="#111" stroke-width="1.3" marker-end="url(#ar)"/>
+<line x1="40" y1="400" x2="318" y2="400" stroke="#111" stroke-width="1.3" marker-end="url(#ar)"/>
+<text x="8" y="330" font-size="8" fill="#111">speed</text><text x="300" y="411" font-size="8" fill="#111">time</text>
+<path d="M40,400 L56,356 L300,356" fill="none" stroke="#111" stroke-width="2.4"/>
+<path d="M40,400 L296,327" fill="none" stroke="#111" stroke-width="2.4" stroke-dasharray="7 4"/>
+<text x="64" y="350" font-size="8.5" font-weight="bold" fill="#111">chemical: minutes, then coast</text>
+<text x="322" y="378" text-anchor="end" font-size="8.5" font-weight="bold" fill="#111">electric (dashed): gentle push</text>
+<text x="322" y="390" text-anchor="end" font-size="8.5" font-weight="bold" fill="#111">for months, ends up faster</text>
+</svg><div class="bz" style="margin-top:4px; font-size:10.5px"><b>✏️ PENCIL KEY</b> · ○ atom · ⊕ ion · • electron · hatched = magnet · dashed line = grid · dashed curve = electric</div>
+    <div class="bz"><b>⭐ 3 TAKEAWAYS</b> <span class="lb">3 lines</span><br><span class="ink">1. Electric = very fast exhaust, very little propellant, very small push.<br>2. Thrust is capped by electric power; it wins by pushing for months.<br>3. Ion thruster: ionize the gas, grids fling the ions out, neutralizer adds electrons.</span></div>
+    <div class="bz" style="border-color:var(--green); background:#f2fff7"><b>🧠 SUMMARY · video + PDF closed</b> <span class="lb">3 lines</span><br>
+      <span class="pencil" style="font-size:12px">1. ______________________________________<br>2. ______________________________________<br>3. ______________________________________</span></div>
+  </div>
+  <div class="bg b"><span class="tag">❓ RIGHT PAGE · CORNELL</span>
+    <div class="hdr"><span>CUES (questions)</span><span>NOTES (keywords)</span></div>
+    <div style="display:flex; height:6.5in">
+      <div style="width:37%; border-right:3px solid var(--blue); padding-right:8px" class="ink"><p class="q">What do electric and chemical engines have in common?</p><p class="q">Why does electric use so little propellant?</p><p class="q">Why is the thrust so low?</p><p class="q">How does a tiny push reach a high speed?</p><p class="q">What is it used for? What can't it do?</p><p class="q">Ion thruster: the four steps?</p><p class="q">What do the two grids do?</p><p class="q">Why the neutralizer?</p><p class="q">Two example missions?</p><p class="q"><span class="hl b">? what exactly is plasma</span></p></div>
+      <div style="flex:1; padding-left:10px" class="ink"><div style="margin-bottom:5px"><span class="hl y">electric propulsion</span>: stored propellant → high-speed jet (same idea as chemical)</div><div style="margin-bottom:5px"><span class="hl y">Isp</span> very high (<span class="hl k">3,000+ s</span>) → exhaust very fast → <span class="hl g">very little propellant</span></div><div style="margin-bottom:5px">thrust <span class="hl o">low</span>: limited electric power → tiny mass flow</div><div style="margin-bottom:5px">low thrust × very long time = <span class="hl g">very high final speed</span></div><div style="margin-bottom:5px">mature tech · most new satellites carry it</div><div style="margin-bottom:5px">uses: orbit changes (<span class="hl y">primary propulsion</span>) · orbit maintenance · <span class="hl o">NOT launch or landing</span> (no big thrust)</div><div style="margin-bottom:5px"><span class="hl y">ion thruster</span> = accelerates ions with electricity</div><div style="margin-bottom:5px"><span class="hl y">ionize</span>: electron gun fires electrons at neutral atoms → knocks an electron off → positive <span class="hl y">ion</span> · <span class="hl y">plasma</span> = ionized gas · magnets help</div><div style="margin-bottom:5px">accelerate: voltage between <span class="hl y">+ grid</span> and <span class="hl y">− grid</span> shoots ions out at <span class="hl k">~40 km/s</span></div><div style="margin-bottom:5px"><span class="hl y">neutralizer</span>: fires electrons into the beam → ship stays uncharged</div><div style="margin-bottom:5px">Deep Space 1 (NASA, <span class="hl k">1998</span>) · BepiColombo (ESA + JAXA, <span class="hl k">2018</span>, to Mercury)</div></div>
+    </div>
+  </div>
+</div></div><div class="page"><div class="top"><div class="badge">SEC 4 · LEC 3 · TEACH</div><h1>Static electricity, <span>pointed backward</span></h1></div><div class="sub">Simple story first, then the official names, then how it actually works with numbers you can check.</div>
+<div class="eli"><b style="font-size:14px">🧒 Like you're 5</b><br>
+Rub a balloon on your hair and it pulls your hair toward it without touching. That pull is electricity grabbing things that are <b>charged</b>. An ion engine is that trick, aimed out the back. Step one: take a gas and knock one tiny piece (an electron) off each atom. The atom is now charged, and it is called an <b>ion</b>. Step two: put two metal screens full of holes at the back, one charged plus and one charged minus. They yank the ions through the holes and fling them out at 40 km a second, forty times faster than a rifle bullet. Step three: squirt the knocked-off electrons out as well, or the ship would end up charged and pull its own exhaust straight back.<br>
+The push is about the weight of two sheets of paper. But it never stops. A chemical rocket is the hare: one huge sprint, then it is out of breath. The ion engine is the <b>tortoise</b>: a tiny push, every second, for years, and it ends up going faster on a fifth of the propellant.</div>
+<div class="two">
+<div class="card" style="padding:9px 13px"><h3>🏷 The official names (name first, then what it means)</h3>
+<ul class="names">
+<li><b>Electric propulsion, EP</b> (<b>solar electric propulsion, SEP</b>, when solar panels supply the power): electricity, not fire, accelerates the propellant.</li>
+<li><b>Gridded ion thruster</b> (electrostatic ion thruster, ion engine): the type in this lecture. Its cousin the <b>Hall-effect thruster</b> is the most common electric engine today and was not covered.</li>
+<li><b>Ionization</b> (here: electron-impact ionization): knocking an electron off a neutral atom. It costs the <b>ionization energy</b>, 12.1 eV for xenon.</li>
+<li><b>Ion</b>: an atom with a net charge. Lose an electron and it is a positive ion.</li>
+<li><b>Plasma</b>: gas hot or energetic enough that it is a mix of ions and free electrons. Overall it is still neutral. Often called the fourth state of matter.</li>
+<li><b>Discharge chamber</b> (ionization chamber): the can where the gas is ionized.</li>
+<li><b>Discharge cathode</b> (hollow cathode; the slide's "electron gun") and <b>anode</b>: the negative source of electrons and the positive wall that attracts them.</li>
+<li><b>Potential difference</b> (voltage): the electrical "height" between two points. Charges fall through it and speed up.</li>
+<li><b>Ion optics</b>: the pair of grids. <b>Screen grid</b> (the slide's "positive grid") and <b>accelerator grid</b> ("negative grid").</li>
+<li><b>Neutralizer</b> (neutralizer cathode; the slide's "neutralizing electron gun"): emits electrons into the ion beam.</li>
+<li><b>Electron backstreaming</b>: outside electrons rushing back into the engine. The negative grid blocks it.</li>
+<li><b>Recombination</b>: an ion and an electron rejoining into a neutral atom.</li>
+<li><b>Primary propulsion</b> / <b>station-keeping</b> / <b>attitude control</b>: the main Δv job / holding an orbit / pointing.</li>
+</ul></div>
+<div class="card" style="padding:9px 13px"><h3>🛠 How it actually works</h3>
+<table class="mech"><tr><th style="width:70px">Step</th><th>The mechanism, with numbers (Deep Space 1's engine)</th></tr>
+<tr><td><b>1 · Feed</b></td><td>Xenon gas trickles into the chamber: about <b>3 milligrams per second</b>. Xenon because it is heavy, easy to ionize and does not react with anything.</td></tr>
+<tr><td><b>2 · Ionize</b></td><td>The cathode emits electrons; about 30 volts speeds them up. One that hits a xenon atom hard enough (12.1 eV) knocks an electron off: now it is a positive ion. Magnets make the electrons spiral, so they travel far farther before reaching the wall and get many more chances to hit an atom.</td></tr>
+<tr><td><b>3 · Accelerate</b></td><td>Screen grid at <b>+1,100 V</b>, accelerator grid at −180 V, half a millimetre apart. An ion that drifts into a hole falls through that voltage: energy = charge × voltage = ½mv². For xenon, v = √(2qV ÷ m) ≈ <b>40 km/s</b>.</td></tr>
+<tr><td><b>4 · Where the push lands</b></td><td>The grids pull the ions backward-out; the ions pull the grids forward with the same force. Newton's third law again. The thrust is felt on the grids.</td></tr>
+<tr><td><b>5 · Neutralize</b></td><td>The beam carries off 1.76 amps of positive charge. Unbalanced, the ship would charge negative in microseconds and drag its own ions back: no thrust. The neutralizer emits the same 1.76 A of electrons.</td></tr>
+<tr><td><b>6 · Thrust</b></td><td>F = ṁ × vₑ ≈ 3 mg/s × 30 km/s = <b>0.092 N</b>, 9 grams of push. (Effective exhaust is 30, not 40 km/s, because some gas leaves un-ionized.) Isp ≈ <b>3,100 s</b>.</td></tr>
+<tr><td><b>7 · Power is the limit</b></td><td>That 0.092 N took 2,300 W, a whole solar array. Thrust ≈ 2 × efficiency × power ÷ vₑ. For fixed power, faster exhaust means <i>less</i> thrust. About 40 mN per kW.</td></tr>
+<tr><td><b>8 · Add it up</b></td><td>0.092 N on 486 kg adds 16 m/s every day. Deep Space 1 thrust for 678 days in total: Δv <b>4.3 km/s</b> from 74 kg of xenon. A chemical engine would need about 360 kg.</td></tr></table></div>
+</div></div><div class="page"><div class="top"><div class="badge">SEC 4 · LEC 3 · FACT CHECK</div><h1>Where it is used, <span>and what he got loose</span></h1></div><div class="sub">The uses, the caption errors (many this time) and where the instructor was loose or wrong.</div>
+<div class="two">
+<div>
+<div class="card" style="padding:8px 13px"><h3>🛰 What electric propulsion does and doesn't do</h3>
+<table class="mech" style="font-size:10.4px"><tr><th>Job</th><th>Electric?</th><th>Why</th></tr>
+<tr><td><b>Launch from the ground</b></td><td>Never</td><td>Thrust is 10,000+ times less than the craft's weight, and the engine only works in vacuum.</td></tr>
+<tr><td><b>Landing, capture burns</b></td><td>No</td><td>They need km/s within minutes.</td></tr>
+<tr><td><b>Raising orbit to GEO</b></td><td>Yes</td><td>Takes about 6 months instead of days, but saves tonnes of propellant.</td></tr>
+<tr><td><b>Station-keeping</b></td><td>Yes, since the 1990s</td><td>Small, steady corrections: exactly what it is good at.</td></tr>
+<tr><td><b>Deep-space cruise</b></td><td>Yes</td><td>Months of thrust add up to many km/s: Deep Space 1, Dawn, BepiColombo, Psyche.</td></tr>
+<tr><td><b>Fine pointing</b></td><td>Starting to</td><td>Tiny electric thrusters already do this on a few science missions.</td></tr></table></div>
+<div class="card" style="margin-top:10px;padding:8px 13px"><h3>🔎 Caption errors</h3>
+<table class="t" style="font-size:10px"><tr><th>Captions said</th><th>Instructor meant</th></tr>
+<tr><td>"stort much propellant… propeller"</td><td><b>stored mass propellant</b>… propellant</td></tr>
+<tr><td>"specific Kimballs" / "G-0 GZA"</td><td>specific <b>impulse</b> / <b>g₀</b></td></tr>
+<tr><td>"X and velocity", "section velocity"</td><td><b>ejection</b> velocity</td></tr>
+<tr><td>"lexing propulsion"</td><td><b>electric</b> propulsion</td></tr>
+<tr><td>"healthy object"</td><td>type of <b>objective</b></td></tr>
+<tr><td>"looking for parts and systems"</td><td><b>launch or landing</b> systems</td></tr>
+<tr><td>"I am now using a new tool Gus"</td><td><b>ionizing a neutral gas</b></td></tr>
+<tr><td>"election", "electron gamma ray"</td><td><b>electron</b>, electron <b>gun</b></td></tr>
+<tr><td>"a cathode and that out"</td><td>a cathode and <b>an anode</b></td></tr>
+<tr><td>"the Greeks", "negative grade"</td><td>the <b>grids</b>, negative <b>grid</b></td></tr>
+<tr><td>"the plastic"</td><td>the <b>plasma</b></td></tr>
+<tr><td>"in the camps the organization efficiency"</td><td><b>enhance the ionization</b> efficiency</td></tr>
+<tr><td>"audience", "electrons annoyance"</td><td><b>ions</b>, electrons <b>and ions</b></td></tr>
+<tr><td>"a sound yak's a collaboration… All of them be"</td><td><b>ESA and JAXA</b> collaboration… <b>BepiColombo</b></td></tr></table></div></div>
+<div><div class="card" style="padding:8px 13px"><h3>▲ Where the instructor was loose</h3>
+<ul class="r" style="font-size:10.7px">
+<li><b>"Electrons collide with atoms breaking their electronic bonds."</b> No bonds are involved; xenon is single atoms. The collision knocks an electron <i>off the atom</i>. That is ionization.</li>
+<li><b>"Plasma is… all of these particles which are positive."</b> Plasma is the ions <i>and</i> the free electrons together, neutral overall. Only the ions get pulled out by the grids.</li>
+<li><b>"The neutralizer… so the gas will freely disperse."</b> The real reason is charge. Fire out only positive ions and the ship goes negative and pulls them back. This is the spacecraft charging from Section 2, self-inflicted.</li>
+<li><b>"It cannot be used for launch… because of very low mass ejection."</b> Closer: its thrust is thousands of times smaller than the craft's weight, and it needs vacuum to run.</li>
+<li><b>"By 2020 half of all satellites will have electric propulsion."</b> An old forecast that came true and more. Every Starlink has an electric thruster, and they are most of what gets launched.</li>
+<li><b>BepiColombo "to perform orbital maneuvers around Mercury."</b> Its ion engines are for the trip <i>to</i> Mercury, braking against the Sun's pull for years. That module is dropped before arrival; chemical thrusters do the capture. Arrival was planned for November 2026, which is right now. I can't confirm whether it has happened.</li>
+<li><b>"Electron gun" and "positive / negative grid"</b> are the diagram's labels. The engineering names are discharge cathode, screen grid and accelerator grid.</li>
+<li><b>Not said: why low thrust.</b> He says the mass flow is low. The cause is power: every milligram needs about 500 joules to reach 30 km/s, and the panels only supply so many joules per second.</li>
+<li><b>Not said: the Hall thruster</b>, the most common electric engine flying.</li></ul></div>
+<div class="card" style="margin-top:10px;padding:8px 13px"><h3>📒 Question bank cards</h3>
+<ul class="r" style="font-size:10.8px">
+<li>Four steps of an ion thruster, in order.</li>
+<li>What limits an electric engine's thrust: propellant, or power?</li>
+<li>What happens if the neutralizer fails?</li>
+<li>Where on the engine does the push actually land?</li>
+<li>Name three jobs electric propulsion does and two it can't.</li></ul></div></div>
+</div></div><div class="page"><div class="top"><div class="badge">SEC 4 · LEC 3 · VOCABULARY</div><h1>Every word used, <span>in plain English</span></h1></div><div class="sub">45 entries. This lecture is full of electricity words, so they are all here. "Repeat" = you have met it before.</div>
+<div class="gl2" style="font-size:10.1px;line-height:1.33"><div><b>Electric propulsion (EP)</b> — engines that use electricity to accelerate propellant. <i>Repeat, L1.</i></div><div><b>Solar electric propulsion (SEP)</b> — electric propulsion powered by solar panels. Nearly all of it so far.</div><div><b>Stored mass propellant</b> — the propellant carried on board. Here xenon gas. <i>Repeat.</i></div><div><b>Propulsive jet</b> — the stream leaving the engine. Here a beam of ions. <i>Repeat.</i></div><div><b>Specific impulse (Isp)</b> — exhaust speed ÷ g₀, in seconds. Electric: 1,500–4,000+ s. <i>Repeat.</i></div><div><b>Ejection velocity = exhaust velocity (vₑ)</b> — how fast the propellant leaves. 30–40 km/s here. <i>Repeat.</i></div><div><b>g₀</b> — 9.81 m/s², a constant. <i>Repeat.</i></div><div><b>Thrust / low thrust</b> — the push / here, a fraction of a newton. <i>Repeat.</i></div><div><b>Electric power (watts, kW)</b> — energy per second supplied by the solar panels. 1 kW = 1,000 W.</div><div><b>Mature technology</b> — proven, flown many times, no longer experimental.</div><div><b>Orbit change / primary propulsion</b> — the engine that provides the mission&#x27;s main Δv.</div><div><b>Orbital maintenance = station-keeping</b> — small burns that hold an orbit against drift. <i>Repeat, scene 1.</i></div><div><b>Attitude control</b> — controlling which way the spacecraft points. <i>Repeat. Section 6.</i></div><div><b>Launch / landing systems</b> — getting off a planet / down onto one. Both need thrust bigger than weight.</div><div><b>Peak thrust</b> — the most push an engine can give at one moment.</div><div><b>Ion thruster (gridded ion engine)</b> — ionizes gas and accelerates the ions with charged grids. <i>Static electricity, pointed backward.</i></div><div><b>Atom / neutral atom</b> — the smallest piece of an element / one with equal + and − charges, so no net charge.</div><div><b>Electron</b> — the tiny negative particle around an atom. Easy to knock off.</div><div><b>Ion / positive ion</b> — an atom with a net charge / one that lost an electron.</div><div><b>Ionize / ionization</b> — to turn atoms into ions / the process.</div><div><b>Ionization energy</b> — the energy it takes to knock one electron off. Xenon: 12.1 eV. <i>eV is a repeat from Section 2.</i></div><div><b>Charge (positive / negative)</b> — the property electricity acts on. Opposites attract, likes repel.</div><div><b>Electric field</b> — the region where a charge feels a push. Between the grids it is very strong.</div><div><b>Potential difference = voltage (V)</b> — electrical &#x27;height&#x27; between two points. A charge speeds up falling through it. <i>A hill for charges.</i></div><div><b>Cathode / anode</b> — the negative electrode that gives off electrons / the positive one that collects them.</div><div><b>Electron gun</b> — the slide&#x27;s name for the cathode that sprays electrons into the chamber.</div><div><b>Electron beam</b> — a stream of electrons.</div><div><b>Collide / collision</b> — hit. Here an electron hitting an atom.</div><div><b>Plasma</b> — ionized gas: ions and free electrons mixed, neutral overall. Lightning, neon signs, the Sun. <i>The fourth state of matter.</i></div><div><b>Discharge chamber</b> — the can where the gas is ionized.</div><div><b>Magnet / magnetic field</b> — makes electrons spiral so they hit more atoms.</div><div><b>Ionization efficiency</b> — what fraction of the gas actually gets ionized.</div><div><b>Grid</b> — a thin metal plate with thousands of holes.</div><div><b>Screen grid = positive grid</b> — the inner grid, at high positive voltage.</div><div><b>Accelerator grid = negative grid</b> — the outer grid, slightly negative. Pulls ions out and keeps outside electrons from getting in.</div><div><b>Repel</b> — push away. Negative repels negative.</div><div><b>Neutralizer = neutralizing electron gun</b> — a small cathode that sprays electrons into the ion beam so the ship stays uncharged.</div><div><b>Neutralize / charge balance</b> — make the + and − equal again.</div><div><b>Recombination</b> — an ion and an electron joining back into a neutral atom, out in the beam.</div><div><b>Disperse</b> — spread out and drift away.</div><div><b>Xenon</b> — the heavy, inert gas ion engines use. <i>Repeat, L1.</i></div><div><b>Ampere (A)</b> — the unit of electric current: charge flowing per second.</div><div><b>Hall-effect thruster</b> — the other main electric engine; not in this lecture. <i>Repeat, L1.</i></div><div><b>Deep Space 1</b> — NASA&#x27;s 1998 test probe, first to cruise on an ion engine. <i>Who&#x27;s Who.</i></div><div><b>BepiColombo / ESA / JAXA</b> — Mercury mission launched 2018 / European and Japanese space agencies. <i>Who&#x27;s Who.</i></div></div></div><div class="page"><div class="top"><div class="badge">SEC 4 · LEC 3 · COPY INTO NOTES</div><h1>Where each piece goes <span>in the notebook</span></h1></div><div class="sub">Routes A to D for this lecture. The concept cards (route E) are on the next page.</div>
+<div class="two route">
+<div class="card" style="padding:9px 13px"><h3>A · Equations &amp; key numbers page (p3–4)</h3>
+<div class="copy">v = √(2qV ÷ m)     ion speed from grid voltage
+                   xenon, 1,100 V → 40 km/s
+F ≈ 2·η·P ÷ vₑ     thrust from power (η = efficiency)
+                   2,300 W → 0.092 N · ~40 mN per kW
+ion engine         Isp ~3,100 s · ṁ ~3 mg/s · 16 m/s per day
+Deep Space 1       678 days thrust · 74 kg Xe · Δv 4.3 km/s</div>
+<h3>B · Section 4 map page (add to the sentence)</h3>
+<div class="copy">electric: ionize xenon → grids (+1,100 V) fling ions at 40 km/s
+→ neutralizer adds electrons; tiny push for years, power-limited</div>
+<h3>D · Question bank ("but how?" cards)</h3>
+<div class="copy">Q: How does an ion engine speed the gas up with no fire?
+A: Knock an electron off each atom (ion). Charged grids pull the
+   ions through 1,100 V: v = √(2qV/m) ≈ 40 km/s.
+Q: Why does it need a neutralizer?
+A: Positive ions leave, so the ship would charge negative and pull
+   them back. Equal electrons out keeps it neutral.
+Q: Why is the thrust so small?
+A: Power. Fast exhaust costs ~500 J per milligram; panels give
+   only a few thousand joules per second.
+Q: How can 9 grams of push get anywhere?
+A: It never stops: 16 m/s per day, 4.3 km/s after 678 days.</div></div>
+<div class="card" style="padding:9px 13px"><h3>C · One-line word bank (new lines)</h3>
+<div class="copy">p__ · electric propulsion (EP) = SEP · electricity throws it  → C20
+p__ · primary propulsion · the engine doing the main Δv
+p__ · ion thruster = gridded ion engine · ionize, then grids  → C20
+p__ · atom / electron · smallest bit of an element / its − particle
+p__ · ion · atom with a net charge (lost an electron = +)
+p__ · ionization · knocking an electron off an atom
+p__ · ionization energy · cost of that: xenon 12.1 eV
+p__ · plasma = ionized gas · ions + electrons, neutral overall  → C21
+p__ · charge · what electricity acts on; opposites attract
+p__ · voltage = potential difference · a hill charges fall down
+p__ · cathode / anode · gives off electrons / collects them
+p__ · electron gun = discharge cathode · sprays electrons in
+p__ · discharge chamber · the can where gas is ionized
+p__ · screen grid (+) / accelerator grid (−) · pull the ions out
+p__ · neutralizer · electrons into beam; ship stays neutral → C21
+p__ · electron backstreaming · outside electrons rushing in
+p__ · recombination · ion + electron → neutral atom again
+p__ · Hall-effect thruster · other electric engine, magnetic
+p__ · ampere (A) · current: charge per second</div></div>
+</div></div><div class="page"><div class="top"><div class="badge">SEC 4 · LEC 3 · CONCEPT CARDS</div><h1>Route E: <span>pages C20 and C21</span></h1></div><div class="sub">Two notebook pages, two cards each. Copy line for line; the faint numbers are your ruled lines.</div>
+<div style="display:flex;gap:16px;justify-content:center"><div class="nb"><div class="nbh"><span>WORD BANK · CONCEPT CARDS · scene 9</span><span class="pg">C20</span></div><div class="ln n"><span class="num">1</span><span class="nmbox">ELECTRIC PROPULSION (EP)</span></div><div class="ln"><span class="num">2</span><span class="s">=</span>electricity, not fire, accelerates</div><div class="ln"><span class="num">3</span><span class="s"></span>the propellant</div><div class="ln"><span class="num">4</span><span class="s">WHY</span>chemistry caps exhaust at ~4.5 km/s.</div><div class="ln"><span class="num">5</span><span class="s"></span>Electricity has no cap, so EP uses a</div><div class="ln"><span class="num">6</span><span class="s"></span>tenth of the propellant</div><div class="ln"><span class="num">7</span><span class="s">#</span>Isp 3,000+ s · thrust under 1 N ·</div><div class="ln"><span class="num">8</span><span class="s"></span>runs for years</div><div class="ln"><span class="num">9</span><span class="s">≠</span>a weak = bad engine (more total Δv)</div><div class="ln"><span class="num">10</span><span class="s">→</span>power limits thrust · ion + Hall</div><div class="ln"><span class="num">11</span><span class="s"></span>thrusters</div><div class="ln gap"><span class="num">12</span></div><div class="ln n"><span class="num">13</span><span class="nmbox">ION THRUSTER  = gridded ion engine</span></div><div class="ln"><span class="num">14</span><span class="s">=</span>ionizes gas, then grids fling the</div><div class="ln"><span class="num">15</span><span class="s"></span>ions out</div><div class="ln"><span class="num">16</span><span class="s">WHY</span>a charged atom can be grabbed by</div><div class="ln"><span class="num">17</span><span class="s"></span>voltage and thrown far faster than</div><div class="ln"><span class="num">18</span><span class="s"></span>any flame can throw gas</div><div class="ln"><span class="num">19</span><span class="s">#</span>+1,100 V → xenon ions at 40 km/s ·</div><div class="ln"><span class="num">20</span><span class="s"></span>0.092 N from 2.3 kW</div><div class="ln"><span class="num">21</span><span class="s">≠</span>Hall thruster (magnetic, no grids)</div><div class="ln"><span class="num">22</span><span class="s">→</span>ionize → accelerate → neutralize</div></div><div class="nb"><div class="nbh"><span>WORD BANK · CONCEPT CARDS · scene 9</span><span class="pg">C21</span></div><div class="ln n"><span class="num">1</span><span class="nmbox">PLASMA  = ionized gas</span></div><div class="ln"><span class="num">2</span><span class="s">=</span>ions + free electrons, neutral</div><div class="ln"><span class="num">3</span><span class="s"></span>overall</div><div class="ln"><span class="num">4</span><span class="s">WHY</span>neutral gas ignores electricity.</div><div class="ln"><span class="num">5</span><span class="s"></span>Knock electrons off and you can steer</div><div class="ln"><span class="num">6</span><span class="s"></span>and accelerate it</div><div class="ln"><span class="num">7</span><span class="s">#</span>xenon: 12.1 eV per atom to ionize</div><div class="ln"><span class="num">8</span><span class="s">≠</span>&#x27;only positive particles&#x27; (electrons</div><div class="ln"><span class="num">9</span><span class="s"></span>are in it too)</div><div class="ln"><span class="num">10</span><span class="s">→</span>ionization · ionosphere · spacecraft</div><div class="ln"><span class="num">11</span><span class="s"></span>charging</div><div class="ln gap"><span class="num">12</span></div><div class="ln n"><span class="num">13</span><span class="nmbox">NEUTRALIZER  = neutralizer cathode</span></div><div class="ln"><span class="num">14</span><span class="s">=</span>sprays electrons into the ion beam</div><div class="ln"><span class="num">15</span><span class="s">WHY</span>shoot out only + ions and the ship</div><div class="ln"><span class="num">16</span><span class="s"></span>goes negative and pulls them back:</div><div class="ln"><span class="num">17</span><span class="s"></span>thrust dies</div><div class="ln"><span class="num">18</span><span class="s">#</span>Deep Space 1: 1.76 A of ions out,</div><div class="ln"><span class="num">19</span><span class="s"></span>1.76 A of electrons out</div><div class="ln"><span class="num">20</span><span class="s">≠</span>the electron gun inside (that one</div><div class="ln"><span class="num">21</span><span class="s"></span>ionizes)</div><div class="ln"><span class="num">22</span><span class="s">→</span>spacecraft charging · recombination</div></div></div>
+<div style="text-align:center;font-size:10.5px;color:#444;margin-top:6px">C20: 11 + 10 lines of 22 · C21: 11 + 10 lines of 22</div></div><div class="page"><div class="top"><div class="badge">SEC 4 · LEC 3 · SAY IT OUT LOUD</div><h1>Last page: <span>prove it by talking</span></h1></div><div class="sub">After the spread and the 3-line summary, with everything closed. Send me what you said and I will grade it like a friend would.</div>
+<div class="two"><div>
+<div class="card"><h3>🗣 The friend's opening question</h3><div style="font-size:13px;line-height:1.5">"An engine that pushes as hard as two sheets of paper? How is that any use?"</div></div>
+<div class="card" style="margin-top:12px"><h3>✅ Three sentences you should be able to say</h3><ul class="r" style="font-size:12px">
+<li>Because it never stops. It adds a few metres per second every day for years, and ends up faster than a chemical rocket on a fifth of the propellant.</li>
+<li>It works like static electricity: knock an electron off each gas atom so it is charged, then two charged grids fling those ions out the back at 40 kilometres a second.</li>
+<li>The catch is power. Throwing gas that fast takes a lot of electricity and solar panels only give so much, so the push is tiny and you can't launch or land with it.</li></ul></div>
+<div class="card" style="margin-top:12px"><h3>❓ Follow-ups a friend might ask</h3><ul class="r" style="font-size:12px">
+<li>"What's an ion?" (an atom that lost an electron, so electricity can grab it)</li>
+<li>"What's plasma?" (gas where the atoms have been split into ions and loose electrons)</li>
+<li>"Why spit the electrons out too?" (otherwise the ship charges up and pulls its exhaust back)</li>
+<li>"Has it actually flown?" (since 1964; Deep Space 1 in 1998, Dawn, BepiColombo, every Starlink)</li>
+<li>"Why not just add more solar panels?" (you can, but panels are mass, and far from the Sun they fade)</li></ul></div></div>
+<div><div class="card" style="min-height:3.2in"><h3>📝 Your explanation (paste or dictate)</h3><div style="border:2px dashed #999;border-radius:8px;height:2.5in;padding:8px;color:#999;font-size:11px">_ send it to me in chat; I'll put it here _</div></div>
+<div class="card" style="margin-top:12px;min-height:2.2in;border-color:var(--green)"><h3 style="color:var(--green)">🎯 My read</h3><div style="border:2px dashed #999;border-radius:8px;height:1.5in;padding:8px;color:#999;font-size:11px">solid on: _<br>fuzzy on: _<br>fix: _<br>→ question-bank cards: _</div></div>
+<div class="callout" style="margin-top:12px;font-size:11.5px">⚡ Two lectures left in Section 4. Send them the same way.</div></div></div></div></body></html>
