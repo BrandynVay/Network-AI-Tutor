@@ -120,9 +120,15 @@
 >   review. **All 23 lectures of the course now have PDFs and app
 >   scenes.** `review/Whole-Course-Review-S1-S7-v1.pdf` = the whole course
 >   on one page + a three-hour plan for 2026-11-13. New app content is
->   added with `app/applib.py`. **Next session:** find out what the
->   deadline event was/is (asked four times, never answered) and how it
->   went; grade any talk the student sends; then offer to backfill what
+>   added with `app/applib.py`. **The deadline event is a call on the
+>   night of 2026-11-13 with a friend who has already taken this course
+>   and will check what the student understands.** Everything is combined
+>   in `Space-X-Notebook-COMPLETE-S1-S7-v1.pdf` (169 pp: contents, review,
+>   a 2-page call sheet, seven sections behind divider pages, back
+>   matter), built by `notebook-src/build_notebook.py <version>`; rebuild
+>   with a new version suffix whenever a lecture PDF changes. **Next
+>   session:** ask how the call went and what the friend asked that the
+>   student couldn't answer; grade any talk the student sends; then offer to backfill what
 >   lean mode paused for Sections 6-7 (concept-card pages from C32,
 >   copy-into-notes pages, Who's Who names). The student has explained
 >   nothing back since Section 3.

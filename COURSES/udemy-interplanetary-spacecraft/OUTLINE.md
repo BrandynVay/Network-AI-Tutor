@@ -307,3 +307,22 @@ the Done column and date it when a section's quiz is graded.
   don't-repeat; a five-block three-hour plan for 2026-11-13 and the
   Quiz 5 recipe). The deadline event is still unknown (asked four
   times). Nothing explained back since Section 3 (16 lectures).
+
+- **2026-11-12 (after the last lecture)** — Student answered the open
+  question: **the deadline is a call with a friend on the night of
+  2026-11-13; the friend has already taken this course and will check
+  what the student has learned and understood.** Student also asked for
+  every PDF combined "like a notebook". Built
+  `Space-X-Notebook-COMPLETE-S1-S7-v1.pdf` (169 pp, ~20 MB) with
+  `notebook-src/build_notebook.py`: contents page, whole-course review
+  (2 pp), a new 2-page **call sheet** (three likely questions per
+  section with one-breath answers, how to answer anything, and eight
+  instructor errors the friend may repeat because he learned from the
+  same course), then the seven sections in course order, each behind a
+  new divider page (say-this sentence, talk cue card pulled from the
+  app's `PROGRAMS`, lecture page numbers, number to know, don't
+  repeat), then the back matter (teach-back kit v3, concept cards,
+  word banks, glossary, copy-into-notes, Who's Who v7, notebook map).
+  Page numbers stamped top right on every page; PDF bookmarks per
+  section and lecture. Only the latest version of each PDF is included;
+  the three layout how-to PDFs are left out.
