@@ -27,7 +27,7 @@
 > - **Space X Study app (added 2026-11-10):** a separate published
 >   Artifact for this course, https://claude.ai/artifact/CnDfEEJHGhs76GMZNu7BSM
 >   (source mirrored at `COURSES/udemy-interplanetary-spacecraft/app/space-x-study.html`).
->   Tabs: Today (with a "how this app helps you" card) · Learn (18 scenes;
+>   Tabs: Today (with a "how this app helps you" card) · Learn (19 scenes;
 >   scene 8 "Throw it backward" = S4 propulsion basics + chemical engines,
 >   scene 9 "The tortoise engine" = S4 electric propulsion / ion thruster,
 >   scene 10 "The kettle with no fire" = S4 nuclear thermal rockets,
@@ -38,22 +38,24 @@
 >   scene 15 "Inner ear, eyes and a compass" = S6 attitude sensors,
 >   scene 16 "Spin a wheel, turn the ship" = S6 actuators,
 >   scene 17 "The sunlight sandwich" = S7 solar arrays,
->   scene 18 "The bucket for the dark" = S7 batteries;
+>   scene 18 "The bucket for the dark" = S7 batteries,
+>   scene 19 "The rock that stays warm" = S7 RTGs;
 >   each with a 🧒 simple version AND a 🛠 "how it actually works"
 >   engineer section with worked numbers, plus a one-line "when they
 >   ask but how?" mechanism sentence (`MECH`); a header toggle sets
->   which comes first) · Quiz (222 multiple-choice +
->   76 explain-out-loud incl. the 15 "but how?" cards, instant feedback,
->   spaced review) · Cards (201 flashcards, 1/3/7/14/30-day intervals) ·
->   Terms (436-entry searchable glossary of OFFICIAL terminology: name ·
->   also-called · plain meaning · scene; 84 core terms also carry an
+>   which comes first) · Quiz (234 multiple-choice +
+>   80 explain-out-loud incl. the 15 "but how?" cards, instant feedback,
+>   spaced review) · Cards (211 flashcards, 1/3/7/14/30-day intervals) ·
+>   Terms (448-entry searchable glossary of OFFICIAL terminology: name ·
+>   also-called · plain meaning · scene; 87 core terms also carry an
 >   `ENRICH` entry = concept/why-it-exists · example with numbers ·
 >   don't-confuse-with · connects-to, added 2026-11-11 after the student
->   said definitions alone weren't enough) · Numbers (`NUMBERS`: 42
+>   said definitions alone weren't enough) · Numbers (`NUMBERS`: 45
 >   formulas each with a worked value, constants, mission numbers;
 >   mirrors notebook pp. 3-4) · Teach (timed talks: Section 1
->   3¼ min · Section 2 3 min · Section 3 4¼ min · Section 4 4 min · Section 5 4 min · Section 6 4¼ min · full
->   7 min covering S1-S3 only, each with cue card) · Progress. Progress is stored per viewer in
+>   3¼ min · Section 2 3 min · Section 3 4¼ min · Section 4 4 min · Section 5 4 min · Section 6 4¼ min · Section 7 3½ min ·
+>   "S1–S3 talk" 7 min (`PROGRAMS.full`) · "Whole course" 7 min over all
+>   seven sections (`PROGRAMS.all`), each with cue card) · Progress. Progress is stored per viewer in
 >   the artifact db at `data/users/<id>/progress` (private to the
 >   viewer; Claude cannot read it), with a localStorage fallback. The
 >   Network+ Ops Console was deliberately NOT modified: its structure is
@@ -111,14 +113,19 @@
 >   concept cards, no Who's Who updates); see NOTES_METHOD.md § Lean
 >   mode. Don't nag about outstanding talk runs during the push. Section
 >   6 **complete**: three lectures (`feedback/S6-L1`, `S6-L2`, `S6-L3` PDFs,
->   sources `feedback/src/s6l*.py`), `PROGRAMS.s6` added. Section 7 (space
->   power): 3 lectures + Quiz 5 (designing a photovoltaic array); lecture
->   1 solar arrays done (`feedback/S7-L1-solar-arrays-v1.pdf`, with a
->   sizing recipe for the quiz), lecture 2 batteries done
->   (`feedback/S7-L2-batteries-v1.pdf`), RTGs to come. When the last
->   lecture is in, give a compact review plan and add `PROGRAMS.s7` plus a
->   whole-course talk. New app content is added with `app/applib.py`.
->   Still unknown: what the deadline event is (asked twice, no answer yet).
+>   sources `feedback/src/s6l*.py`), `PROGRAMS.s6` added. **Section 7 complete**
+>   (2026-11-12): solar arrays, batteries, RTGs (`feedback/S7-L1`, `S7-L2`,
+>   `S7-L3` PDFs, sources `feedback/src/s7l*.py`); Quiz 5 (designing a
+>   photovoltaic array) not yet taken, recipe is in the S7-L1 PDF and the
+>   review. **All 23 lectures of the course now have PDFs and app
+>   scenes.** `review/Whole-Course-Review-S1-S7-v1.pdf` = the whole course
+>   on one page + a three-hour plan for 2026-11-13. New app content is
+>   added with `app/applib.py`. **Next session:** find out what the
+>   deadline event was/is (asked four times, never answered) and how it
+>   went; grade any talk the student sends; then offer to backfill what
+>   lean mode paused for Sections 6-7 (concept-card pages from C32,
+>   copy-into-notes pages, Who's Who names). The student has explained
+>   nothing back since Section 3.
 > - When Network+ resumes, delete this block, and resume from
 >   "Project status" below (Day 01 was never started in the app).
 

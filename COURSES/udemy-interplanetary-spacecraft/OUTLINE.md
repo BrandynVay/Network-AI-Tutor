@@ -31,7 +31,7 @@ track for now — see root `CLAUDE.md` § Current focus.
 | 4 | Space Propulsion Systems | 5 | 27 min | `sections/04-space-propulsion.md` | [x] 2026-11-12, 4 lectures (the panel's 5th item is unconfirmed, probably a quiz) |
 | 5 | Communications from Space to Earth | 3 | 44 min | `sections/05-communications.md` | [x] 2026-11-12, 3 lectures |
 | 6 | Attitude Determination and Control | 4 | 36 min | `sections/06-attitude-determination-and-control.md` | [x] 2026-11-12, 3 lectures (the panel's 4th item is unconfirmed, probably a quiz) |
-| 7 | Space Power Systems | 3 + Quiz 5 (designing a photovoltaic array) | 33 min | `sections/07-space-power-systems.md` | [ ] 2 of 3 lectures (2026-11-12) |
+| 7 | Space Power Systems | 3 + Quiz 5 (designing a photovoltaic array) | 33 min | `sections/07-space-power-systems.md` | [x] 2026-11-12, 3 lectures (Quiz 5 not yet taken) |
 | 8+ | *(not visible in the course panel yet — add when known)* | | | | |
 
 Visible sections sum to ~3.3 hours, so there is at most one short
@@ -286,3 +286,24 @@ the Done column and date it when a section's quiz is graded.
   the array must also recharge the battery. App v20: scene 18 "The
   bucket for the dark" (12 MC, 4 explain, 10 cards, 15 terms, 3 concept
   entries, 3 formulas). One lecture left: RTGs.
+
+- **2026-11-12 (end of the push)** — S7 Lec 3 "Radioisotope Thermal
+  Generators (RTG)": transcript + all 4 content slides. Lean PDF
+  `feedback/S7-L3-radioisotope-generators-RTG-v1.pdf` (4 pp): decay,
+  finned cross-section + thermocouple, fading curve, which power where;
+  a table of all Section 7 power sources; Galileo's slide numbers
+  checked against the half-life (290 W x 0.895 = 260 W, ageing takes it
+  to 250). Instructor loose: name ("thermal" for thermoelectric); "500
+  years" spoken vs 100 on his slide (useful life is decades); "1.50 m"
+  vs 114 cm on the slide; "temperature ejected from the nucleus"; "only
+  for space" (Soviet Sr-90 lighthouses, pacemakers); ESA "developing
+  strontium" (americium-241 as far as known); efficiency never given.
+  **ALL SEVEN SECTIONS NOW HAVE LECTURE PDFs (23 lectures).** App v21:
+  scene 19 "The rock that stays warm" (12 MC, 4 explain, 10 cards, 12
+  terms, 3 concept entries, 3 formulas), `PROGRAMS.s7` (3.5 min) and
+  `PROGRAMS.all` = whole-course 7-minute talk (the old "full" talk is
+  relabelled "S1-S3 talk"). New: `review/Whole-Course-Review-S1-S7-v1.pdf`
+  (2 pp: all seven sections on one page with say-this / number /
+  don't-repeat; a five-block three-hour plan for 2026-11-13 and the
+  Quiz 5 recipe). The deadline event is still unknown (asked four
+  times). Nothing explained back since Section 3 (16 lectures).
