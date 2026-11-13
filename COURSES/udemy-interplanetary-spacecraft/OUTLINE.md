@@ -326,3 +326,14 @@ the Done column and date it when a section's quiz is graded.
   Page numbers stamped top right on every page; PDF bookmarks per
   section and lecture. Only the latest version of each PDF is included;
   the three layout how-to PDFs are left out.
+- **2026-11-13 — Notebook in the app, Duo layout, Homelab HQ link.** App
+  Version 23 adds a Notebook tab: the 169-page combined notebook as page
+  images (`app/dist/nb/`), with half-page, whole-page, split-at-hinge and
+  two-page views, zoom, full screen, contents and section chips. "The
+  DUO" turned out to be the student's foldable iPhone; sizes and layout
+  rules came from the Homelab HQ session, which this session can now
+  message. `app/dist/` is the ready-to-serve folder for hosting on the
+  homelab (not deployed; the student decides, after the call). Progress
+  tab gained Export/Import. Tested locally at the seven Duo sizes, on a
+  laptop size, and offline from a localhost copy; not tested on the real
+  device.

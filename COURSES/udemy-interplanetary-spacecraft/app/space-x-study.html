@@ -68,6 +68,38 @@ ul.clean li{margin:4px 0}
 table.deep{border-collapse:collapse;width:100%;font-size:.86rem;min-width:560px}
 table.deep th,table.deep td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
 table.deep th{background:var(--paper2)}
+/* Notebook reader: a stage of one or two page panes, sized in JS to the space available. */
+.nbchips{display:flex;gap:6px;overflow-x:auto;padding:2px 0 8px;scrollbar-width:none}
+.nbchips::-webkit-scrollbar{display:none}
+.nbchips .pill{flex:none;cursor:pointer;background:var(--paper);border-color:var(--c);color:var(--fg);padding:6px 14px;font-size:.85rem;min-height:44px}
+.nbchips .pill.on{background:var(--c);border-color:var(--c);color:#fff}
+.nbbar{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.nbbar .btn{padding:9px 14px;min-height:44px}
+.nbbar .nbnum{font-variant-numeric:tabular-nums;min-width:104px;text-align:center}
+.nbtools{display:flex;gap:6px;margin-left:auto;flex-wrap:wrap}
+.nbtools .btn{padding:7px 10px;font-size:.84rem;min-height:44px}
+.nblabel{font-size:.86rem;color:var(--mute);margin:6px 0 8px;min-height:1.3em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.nbdot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:7px}
+.nbtoc{padding:6px;margin-bottom:8px;max-height:60vh;overflow:auto}
+.nbtoc button{display:flex;justify-content:space-between;gap:12px;width:100%;text-align:left;border:0;border-left:5px solid transparent;background:none;color:var(--fg);font:600 .95rem var(--f-body);padding:9px 10px;border-radius:6px;cursor:pointer;min-height:44px;align-items:center}
+.nbtoc button.l1{font-weight:400;padding:7px 10px 7px 26px;font-size:.92rem}
+.nbtoc button:hover{background:var(--paper2)}
+.nbstage{display:flex;justify-content:center;align-items:center;min-height:200px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.nbslot{flex:none;display:flex;justify-content:center;align-items:center;min-width:0}
+.nbpane{flex:none;overflow:hidden;background:#fffdf8;border-radius:4px;box-shadow:0 0 0 1.5px var(--line2)}
+.nbpane.z{overflow:auto;cursor:grab}
+.nbin{position:relative;overflow:hidden;aspect-ratio:11/8.5}
+.nbin.L,.nbin.R{aspect-ratio:5.5/8.5}
+.nbin img{position:absolute;top:0;left:0;height:100%;width:100%;display:block;user-select:none;-webkit-user-drag:none}
+.nbin.L img,.nbin.R img{width:200%;max-width:none}
+.nbin.R img{left:-100%}
+#nbRoot.nbfocus{position:fixed;inset:0;height:100vh;height:100dvh;z-index:40;background:var(--bg);display:flex;flex-direction:column;padding:max(6px,env(safe-area-inset-top,0px)) max(6px,env(safe-area-inset-right,0px)) max(6px,env(safe-area-inset-bottom,0px)) max(6px,env(safe-area-inset-left,0px))}
+#nbRoot.nbfocus .nbhide,#nbRoot.nbfocus .nblabel{display:none}
+#nbRoot.nbfocus .nbbar{padding-bottom:6px;flex-wrap:nowrap;overflow-x:auto}
+#nbRoot.nbfocus .nbbar .btn{padding:6px 10px;font-size:.84rem;flex:none;min-height:44px}
+#nbRoot.nbfocus .nbtools{flex-wrap:nowrap}
+#nbRoot.nbfocus .nbstage{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain}
+#nbRoot.nbfocus .nbtoc{position:absolute;z-index:2;left:8px;right:8px;top:62px;max-height:calc(100% - 74px);max-width:440px}
 @media (prefers-reduced-motion: no-preference){ .opt,.btn,nav.tabs button{transition:background .15s,border-color .15s} }
 </style>
 
@@ -79,6 +111,7 @@ table.deep th{background:var(--paper2)}
   <nav class="tabs" role="tablist" id="tabs">
     <button role="tab" data-tab="home" aria-selected="true">Today</button>
     <button role="tab" data-tab="learn">Learn</button>
+    <button role="tab" data-tab="notebook">Notebook</button>
     <button role="tab" data-tab="quiz">Quiz</button>
     <button role="tab" data-tab="cards">Cards</button>
     <button role="tab" data-tab="terms">Terms</button>
@@ -1609,7 +1642,8 @@ document.getElementById("tabs").addEventListener("click",e=>{ const b=e.target.c
 function esc(s){ return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
 function render(){
   document.querySelectorAll("#tabs button").forEach(b=>b.setAttribute("aria-selected",b.dataset.tab===tab));
-  ({home,learn,quiz,cards,terms,numbers,teach,progress})[tab]();
+  if(tab!=="notebook"&&nb.focus){ nb.focus=false; document.body.style.overflow=""; }
+  ({home,learn,notebook,quiz,cards,terms,numbers,teach,progress})[tab]();
   window.scrollTo({top:0});
 }
 
@@ -1628,6 +1662,7 @@ function home(){
     <div class="small" style="margin-top:8px;line-height:1.5">
       <p style="margin:0 0 6px"><b>The goal:</b> understand every idea in the course deeply enough to explain it to someone and hold your own when they ask “why?”. Each tab is one step of that, in order:</p>
       <ol style="margin:0 0 8px 18px;padding:0">
+        <li><b>Notebook</b> = look it up. Every page of your combined notebook, with the call sheet at the front. For checking a drawing or a number, not for re-reading.</li>
         <li><b>Learn</b> = understand. Every concept twice: the 🧒 simple version (a picture you can say out loud) and the 🛠 engineer version (how it actually works, with the real numbers and the official names). The toggle at the top switches which one comes first.</li>
         <li><b>Terms</b> = name it. Every word the lectures use, the official engineering term, what else it's called, what it means. If a word in a video or an article feels unfamiliar, it's here.</li>
         <li><b>Quiz</b> = retrieve it. Pulling an answer out of your head is what makes memory, not re-reading. Instant feedback explains every answer. Misses come back.</li>
@@ -1637,6 +1672,7 @@ function home(){
       </ol>
       <p style="margin:0"><b>Daily loop:</b> Today tab → cards due → quiz missed/due → weakest scene in Learn → one talk. 10–20 minutes. The notebook is where you write; this is where you test.</p>
     </div></details>
+  <div class="card" style="margin-top:12px;display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap"><div style="min-width:200px;flex:1"><h3>📓 Your notebook is in here now</h3><p class="small muted" style="margin:0">All 169 pages: every lecture, the review, the word banks. Made to read on a phone, a laptop or a double screen.</p></div><div class="row"><button class="btn primary" data-go="notebook" data-nb="4">Call sheet</button><button class="btn" data-go="notebook">Open notebook</button></div></div>
   <h2>Today's 10 minutes</h2>
   <div class="grid two">
     <div class="card"><h3>1 · Cards due</h3><div class="big">${dueCards}</div><p class="small muted">Flip, say the answer out loud, grade yourself.</p><button class="btn primary" data-go="cards">Review cards</button></div>
@@ -1645,7 +1681,7 @@ function home(){
     <div class="card"><h3>4 · Say it out loud</h3><p class="small muted">${lastSession?`Last quiz: ${lastSession.right}/${lastSession.total} on ${lastSession.date}.`:"No quiz yet."} Teach-back talks, one per section, each with a timer.</p><button class="btn" data-go="teach">Open Teach</button></div>
   </div>
   <p class="note" style="margin-top:14px"><b>Terms tab:</b> the official name for everything, searchable. Use it whenever a word in the lecture or an article feels unfamiliar. Progress is saved per person. The badge at the top says whether it's on your account (syncs between phone and laptop) or just this device.</p>`;
-  view.querySelectorAll("[data-go]").forEach(b=>b.addEventListener("click",()=>{ tab=b.dataset.go; if(b.dataset.scene) openScene=b.dataset.scene; render(); }));
+  view.querySelectorAll("[data-go]").forEach(b=>b.addEventListener("click",()=>{ tab=b.dataset.go; if(b.dataset.scene) openScene=b.dataset.scene; if(b.dataset.nb){ nb.p=+b.dataset.nb; nb.side=0; nbSave(); } render(); }));
 }
 
 // ---- Learn
@@ -1675,6 +1711,173 @@ function learn(){
     wrap.appendChild(el);
   });
 }
+
+// ---- Notebook (the combined 169-page notebook as page images in nb/)
+// Each page is letter landscape: two half-sheets side by side. The reader picks a layout from the
+// space it has: half a page at a time on a phone, a whole page on a wide screen, two pages on a
+// tall or very wide one, and one half-sheet per screen when the browser reports a hinge.
+const NB={total:169, dir:"nb/", A:11/8.5,
+ toc:[
+  ["Contents",1,0,"#0b1437","Start"],
+  ["The whole course on one page + plan",2,0,"#0b1437","Review"],
+  ["Call sheet: what he will ask, what you say",4,0,"#b13a67","Call sheet"],
+  ["Section 1 · Mission design",6,0,"#ff6b1a","S1"],
+  ["Satellite types and orbits",7,1],["Types of interplanetary spacecraft",10,1],
+  ["Section 2 · Space environment",13,0,"#19b36b","S2"],
+  ["Space vacuum",14,1],["Earth's atmosphere",17,1],
+  ["Section 3 · Orbital mechanics",20,0,"#7b3fe4","S3"],
+  ["Orbit definition and the six parameters",21,1],["Earth orbits and constellations",25,1],["Interplanetary transfers and flybys",29,1],
+  ["Section 4 · Space propulsion",33,0,"#0e8f9c","S4"],
+  ["Propulsion: definitions and types",34,1],["Chemical engines",40,1],["Electric propulsion and ion thrusters",47,1],["Nuclear thermal rockets",54,1],
+  ["Section 5 · Communications",61,0,"#c0392b","S5"],
+  ["Antennas",62,1],["Atmosphere and frequency bands",71,1],["Satellite and spacecraft links",78,1],
+  ["Section 6 · Attitude determination and control",87,0,"#283593","S6"],
+  ["Attitude: definitions and physics",88,1],["Sensors",93,1],["Actuators",97,1],
+  ["Section 7 · Space power systems",101,0,"#ef6c00","S7"],
+  ["Solar arrays",102,1],["Batteries",106,1],["Radioisotope generators (RTG)",110,1],
+  ["Back of the notebook",114,0,"#0b1437","Back"],
+  ["Teach-it-back kit, Sections 1–3",115,1],["Concept cards in notebook layout, C1–C16",131,1],["Word bank, concept level, Sections 1–3",141,1],
+  ["Glossary, every word, Sections 1–3",150,1],["One-line word bank, Sections 1–3",160,1],["Copy-into-notes sheet, Sections 1–3",163,1],
+  ["Who's Who: every mission, engine and person named",165,1],["Map of the paper notebook",169,1]
+ ]};
+const NB_VIEWS=["auto","half","whole","split","two"], NB_VIEW_NAME={auto:"Auto",half:"Half page",whole:"Whole page",split:"Split at hinge",two:"Two pages"}, NB_ZOOMS=[1,1.5,2,3];
+let nb={p:1,side:0,view:"auto",zoom:1,focus:false,L:null};
+try{ const o=JSON.parse(localStorage.getItem("sxs_nb")||"{}"); if(o.p>=1&&o.p<=NB.total) nb.p=o.p|0; if(o.side===1) nb.side=1; if(NB_VIEWS.includes(o.view)) nb.view=o.view; }catch(e){}
+function nbSave(){ try{ localStorage.setItem("sxs_nb",JSON.stringify({p:nb.p,side:nb.side,view:nb.view})); }catch(e){} }
+function nbSrc(p){ return NB.dir+"p"+String(p).padStart(3,"0")+".webp"; }
+function nbWhere(p){ let sec=NB.toc[0],lec=null; for(const t of NB.toc){ if(t[1]>p) break; if(t[2]===0){ sec=t; lec=null; } else lec=t; } return [sec,lec]; }
+// A hinge, when the browser reports one: two screens side by side ("row") or stacked ("col").
+function nbSegments(){
+  try{
+    const s=(window.viewport&&window.viewport.segments)||(window.visualViewport&&window.visualViewport.segments)||(window.getWindowSegments&&window.getWindowSegments());
+    if(!s||s.length!==2) return null;
+    const a=s[0], b=s[1];
+    if(Math.abs(a.top-b.top)<2) return {dir:"row", gap:Math.max(0,b.left-a.right), a, b};
+    return {dir:"col", gap:Math.max(0,b.top-a.bottom), a, b};
+  }catch(e){ return null; }
+}
+// An unfolded foldable phone reports no hinge to the page (measured on the iPhone Duo: 951x585 full screen,
+// 653x515 windowed, no fold APIs). The house rule from the homelab notes: a touch screen that is at least
+// 600 wide, at least 440 tall and at least 6:5 is unfolded. Folded (382x580) and folded-rotated (600x366) are not.
+const NB_GUTTER=36;
+function nbUnfolded(){
+  let coarse=false; try{ coarse=matchMedia("(pointer:coarse)").matches; }catch(e){}
+  const w=window.innerWidth, h=window.innerHeight;
+  return coarse&&w>=600&&h>=440&&w/h>=1.2&&w<=1400;
+}
+function nbSplit(W,H,gap){ // each half-sheet fills its side; it may be taller than the screen, then the spread scrolls as one
+  const A2=NB.A/2, sw=Math.floor((W-gap)/2), fitW=Math.floor(Math.min(sw,H*A2));
+  const w=Math.min(sw,Math.floor(fitW*1.45)), h=Math.floor(w/A2);
+  return {mode:"split",dir:"row",gap,slots:[[sw,h],[sw,h]],w,h,scroll:h>H};
+}
+function nbCalc(st){
+  const W=Math.max(200,st.clientWidth), top=st.getBoundingClientRect().top;
+  const H=Math.max(220, nb.focus ? st.clientHeight : window.innerHeight-20);
+  const A=NB.A, fit=(w,h,a)=>{ const x=Math.floor(Math.min(w,h*a)); return [x,Math.floor(x/a)]; };
+  const seg=nb.view==="auto"?nbSegments():null;
+  if(seg&&seg.dir==="row") return nbSplit(W,H,Math.max(NB_GUTTER,seg.gap)); // one half-sheet per screen, hinge in the gap
+  if(nb.view==="split"||(nb.view==="auto"&&!seg&&nbUnfolded())) return nbSplit(W,H,NB_GUTTER);
+  if(seg&&seg.dir==="col"){ // one whole page per screen
+    const h1=Math.max(160,seg.a.bottom-Math.max(top,seg.a.top)), h2=Math.max(160,Math.min(seg.b.height, H-h1-seg.gap));
+    const [w,h]=fit(W,Math.min(h1,h2),A);
+    return {mode:"two",dir:"column",gap:seg.gap,slots:[[W,h1],[W,h2]],w,h};
+  }
+  const whole=fit(W,H,A), half=fit(W,H,A/2);
+  const g=10, stack=fit(W,(H-g)/2,A), side=fit((W-g)/2,H,A);
+  const two=stack[0]>=side[0]?{dir:"column",s:stack}:{dir:"row",s:side};
+  let mode=nb.view;
+  if(mode==="auto"){
+    if(W<700&&H>W) mode="half";
+    else if(two.s[0]>=700&&two.s[0]>=0.72*whole[0]) mode="two";
+    else mode="whole";
+  }
+  if(mode==="half") return {mode,dir:"row",gap:0,slots:[half],w:half[0],h:half[1]};
+  if(mode==="two") return {mode,dir:two.dir,gap:g,slots:[two.s,two.s],w:two.s[0],h:two.s[1]};
+  return {mode:"whole",dir:"row",gap:0,slots:[whole],w:whole[0],h:whole[1]};
+}
+function nbDraw(){
+  const st=document.getElementById("nbStage"); if(!st) return;
+  const L=nb.L=nbCalc(st);
+  let panes;
+  if(L.mode==="half") panes=[[nb.p,nb.side?"R":"L"]];
+  else if(L.mode==="split") panes=[[nb.p,"L"],[nb.p,"R"]];
+  else if(L.mode==="two") panes=nb.p<NB.total?[[nb.p,"W"],[nb.p+1,"W"]]:[[nb.p,"W"]];
+  else panes=[[nb.p,"W"]];
+  st.style.flexDirection=L.dir; st.style.gap=L.gap+"px"; st.style.alignItems=L.scroll?"flex-start":"center"; st.scrollTop=0;
+  const [sec,lec]=nbWhere(nb.p), label=sec[0]+(lec?" · "+lec[0]:"");
+  st.innerHTML=panes.map(([p,k],i)=>{ const sl=L.slots[Math.min(i,L.slots.length-1)], w=nbWhere(p);
+    return `<div class="nbslot" style="width:${Math.floor(sl[0])}px;height:${Math.floor(sl[1])}px"><div class="nbpane${nb.zoom>1?" z":""}" style="width:${L.w}px;height:${L.h}px"><div class="nbin ${k}" style="width:${nb.zoom*100}%"><img src="${nbSrc(p)}" draggable="false" alt="Notebook page ${p} of ${NB.total}${k==="L"?", left half":k==="R"?", right half":""}: ${esc(w[0][0]+(w[1]?" · "+w[1][0]:""))}"></div></div></div>`; }).join("");
+  st.querySelectorAll("img").forEach(im=>im.addEventListener("error",()=>{ im.closest(".nbpane").innerHTML='<p class="small" style="padding:14px;color:#2b1d29">This page did not load. Check the connection, then tap Next and Back.</p>'; }));
+  const last=panes[panes.length-1][0];
+  document.getElementById("nbNum").textContent=(L.mode==="two"&&last!==nb.p?nb.p+"–"+last:nb.p+(L.mode==="half"?(nb.side?"b":"a"):""))+" / "+NB.total;
+  document.getElementById("nbLabel").innerHTML=`<span class="nbdot" style="background:${sec[3]}"></span>${esc(label)}`;
+  document.getElementById("nbView").textContent="View: "+NB_VIEW_NAME[nb.view];
+  document.getElementById("nbZoom").textContent="Zoom "+nb.zoom+"×";
+  document.getElementById("nbFocus").textContent=nb.focus?"✕ Close":"⛶ Full screen";
+  const sl=document.getElementById("nbSlide"); if(sl) sl.value=nb.p;
+  document.querySelectorAll("#nbChips [data-p]").forEach(c=>c.classList.toggle("on",+c.dataset.p===sec[1]));
+  document.getElementById("nbPrev").disabled=nb.p===1&&(L.mode!=="half"||nb.side===0);
+  document.getElementById("nbNext").disabled=last===NB.total&&(L.mode!=="half"||nb.side===1);
+  for(const q of [last+1,last+2]) if(q<=NB.total){ const im=new Image(); im.src=nbSrc(q); }
+}
+function nbStep(d){
+  const m=nb.L?nb.L.mode:"whole";
+  if(m==="half"){ let i=(nb.p-1)*2+nb.side+d; i=Math.max(0,Math.min(NB.total*2-1,i)); nb.p=(i>>1)+1; nb.side=i&1; }
+  else { nb.p=Math.max(1,Math.min(NB.total,nb.p+d*(m==="two"?2:1))); nb.side=0; }
+  nbSave(); nbDraw();
+}
+function nbGo(p){ nb.p=Math.max(1,Math.min(NB.total,p|0)); nb.side=0; nbSave(); nbDraw(); }
+function nbSetFocus(on){
+  nb.focus=on; const r=document.getElementById("nbRoot"); if(!r) return;
+  r.classList.toggle("nbfocus",on); document.body.style.overflow=on?"hidden":"";
+  try{ if(on&&document.documentElement.requestFullscreen) document.documentElement.requestFullscreen().catch(()=>{}); else if(!on&&document.fullscreenElement) document.exitFullscreen().catch(()=>{}); }catch(e){}
+  nbDraw();
+}
+function notebook(){
+  const chips=NB.toc.filter(t=>t[2]===0);
+  view.innerHTML=`
+  <div id="nbRoot" class="${nb.focus?"nbfocus":""}">
+    <p class="small muted nbhide" style="margin:0 0 8px">Your whole notebook, 169 pages. This is for <b>looking things up</b>. Reading it again is not studying; saying it out loud is. Tonight: open the <b>Call sheet</b>.</p>
+    <div class="nbchips nbhide" id="nbChips">${chips.map(t=>`<button class="pill" data-p="${t[1]}" style="--c:${t[3]}">${esc(t[4])}</button>`).join("")}</div>
+    <div class="nbbar">
+      <button class="btn" id="nbPrev" aria-label="Previous page">◀ Back</button>
+      <button class="btn nbnum" id="nbTocBtn" aria-expanded="false" title="Open the contents"><span id="nbNum"></span> ☰</button>
+      <button class="btn primary" id="nbNext" aria-label="Next page">Next ▶</button>
+      <span class="nbtools"><button class="btn ghost" id="nbView"></button><button class="btn ghost" id="nbZoom"></button><button class="btn ghost" id="nbFocus"></button></span>
+    </div>
+    <div class="nblabel" id="nbLabel"></div>
+    <div class="card nbtoc" id="nbToc" hidden>${NB.toc.map(t=>`<button data-p="${t[1]}" class="l${t[2]}"${t[2]===0?` style="border-left-color:${t[3]}"`:""}><span>${esc(t[0])}</span><span class="muted">${t[1]}</span></button>`).join("")}</div>
+    <div class="nbstage" id="nbStage"></div>
+    <div class="nbhide" style="margin-top:10px"><label class="sr" for="nbSlide">Jump to page</label><input type="range" id="nbSlide" min="1" max="${NB.total}" value="${nb.p}" style="width:100%"></div>
+    <p class="note nbhide">Tap the right side of a page for next, the left side for back, or swipe. Arrow keys work on a keyboard. <b>View</b> switches between half a page (best on a phone or the Duo folded), a whole page, split at the hinge (the Duo unfolded: one half-sheet on each side, nothing on the fold), and two pages (a big screen). Auto picks for you. <b>Full screen</b> hides everything except the page.</p>
+  </div>`;
+  const $=id=>document.getElementById(id);
+  $("nbPrev").addEventListener("click",()=>nbStep(-1));
+  $("nbNext").addEventListener("click",()=>nbStep(1));
+  $("nbView").addEventListener("click",()=>{ nb.view=NB_VIEWS[(NB_VIEWS.indexOf(nb.view)+1)%NB_VIEWS.length]; nb.side=0; nbSave(); nbDraw(); });
+  $("nbZoom").addEventListener("click",()=>{ nb.zoom=NB_ZOOMS[(NB_ZOOMS.indexOf(nb.zoom)+1)%NB_ZOOMS.length]; nbDraw(); });
+  $("nbFocus").addEventListener("click",()=>nbSetFocus(!nb.focus));
+  $("nbTocBtn").addEventListener("click",()=>{ const t=$("nbToc"); t.hidden=!t.hidden; $("nbTocBtn").setAttribute("aria-expanded",String(!t.hidden)); });
+  $("nbToc").addEventListener("click",e=>{ const b=e.target.closest("[data-p]"); if(!b) return; $("nbToc").hidden=true; $("nbTocBtn").setAttribute("aria-expanded","false"); nbGo(+b.dataset.p); });
+  $("nbChips").addEventListener("click",e=>{ const b=e.target.closest("[data-p]"); if(b) nbGo(+b.dataset.p); });
+  $("nbSlide").addEventListener("input",e=>nbGo(+e.target.value));
+  const st=$("nbStage"); let sx=null, sy=0, swiped=false;
+  st.addEventListener("touchstart",e=>{ if(e.touches.length===1){ sx=e.touches[0].clientX; sy=e.touches[0].clientY; } else sx=null; },{passive:true});
+  st.addEventListener("touchend",e=>{ if(sx===null||nb.zoom>1) return; const t=e.changedTouches[0], dx=t.clientX-sx, dy=t.clientY-sy; sx=null; if(Math.abs(dx)>45&&Math.abs(dx)>1.5*Math.abs(dy)){ swiped=true; setTimeout(()=>swiped=false,350); nbStep(dx<0?1:-1); } },{passive:true});
+  st.addEventListener("click",e=>{ if(swiped||nb.zoom>1) return; const r=st.getBoundingClientRect(), x=(e.clientX-r.left)/r.width; if(x<0.3) nbStep(-1); else if(x>0.7) nbStep(1); });
+  nbDraw();
+}
+let nbRz=null;
+window.addEventListener("resize",()=>{ if(tab!=="notebook") return; clearTimeout(nbRz); nbRz=setTimeout(nbDraw,120); });
+document.addEventListener("fullscreenchange",()=>{ if(tab==="notebook") setTimeout(nbDraw,150); });
+document.addEventListener("keydown",e=>{
+  if(tab!=="notebook"||e.target.matches("input,textarea,select")) return;
+  if(e.key==="ArrowRight"||e.key==="PageDown"){ e.preventDefault(); nbStep(1); }
+  else if(e.key==="ArrowLeft"||e.key==="PageUp"){ e.preventDefault(); nbStep(-1); }
+  else if(e.key==="Home"){ e.preventDefault(); nbGo(1); }
+  else if(e.key==="End"){ e.preventDefault(); nbGo(NB.total); }
+  else if(e.key==="Escape"&&nb.focus) nbSetFocus(false);
+});
 
 // ---- Quiz
 let quizFilter="missed", quizSet=null, qi=0, qright=0, qwrongList=[];
@@ -1837,11 +2040,42 @@ function progress(){
     <div class="card"><h3>Still missing</h3>${missed.length?`<ul class="clean small">${missed.map(q=>`<li>${esc(q.q)}</li>`).join("")}</ul>`:`<p class="muted small">Nothing marked wrong right now.</p>`}</div>
     <div class="card"><h3>Recent quiz sets</h3>${sessions.length?sessions.map(s=>`<div class="stat small"><span>${s.date} · ${esc(s.filter)}</span><b>${s.right}/${s.total}</b></div>`).join(""):`<p class="muted small">No sets yet.</p>`}<p class="note" style="margin-top:8px">${totalAttempts} answers recorded · ${dueCards} cards due</p></div>
   </div>
+  <div class="card" style="margin-top:12px"><h3>Move progress to another copy</h3><p class="small muted">Each address this app lives at keeps its own progress. Export here, then Import in the other copy. Importing adds to what is there; it never deletes.</p>
+    <div class="row"><button class="btn" id="expBtn">Export progress</button><button class="btn" id="impBtn">Import progress…</button><input type="file" id="impFile" accept="application/json,.json" hidden></div>
+    <div id="xferBox" hidden style="margin-top:10px"><label class="small muted" for="xferText" id="xferLabel"></label><textarea id="xferText" rows="5" style="width:100%;margin-top:4px;font:.8rem ui-monospace,monospace;background:var(--paper2);color:var(--fg);border:1.5px solid var(--line2);border-radius:8px;padding:8px"></textarea><div class="row" style="margin-top:6px"><button class="btn primary" id="impGo" hidden>Import this text</button><button class="btn ghost" id="impPick" hidden>Choose a file instead</button></div></div>
+    <p class="small" id="xferMsg" style="margin:8px 0 0" role="status"></p></div>
   <div class="card" style="margin-top:12px"><h3>Reset</h3><p class="small muted">Wipes all progress on this account. There is no undo.</p><button class="btn ghost" id="reset1">Reset progress…</button><span id="confirm" hidden> <button class="btn" id="reset2" style="border-color:var(--bad);color:var(--bad)">Yes, wipe it</button></span></div>`;
+  const $=id=>document.getElementById(id), msg=t=>{ $("xferMsg").textContent=t; };
+  $("expBtn").addEventListener("click",()=>{
+    const text=JSON.stringify({app:"space-x-study",format:1,exported:new Date().toISOString(),state});
+    $("xferBox").hidden=false; $("impGo").hidden=true; $("impPick").hidden=true; $("xferText").value=text; const hosted=typeof claude==="undefined"; $("xferLabel").textContent=hosted?"A file was saved. If it was not, copy all of this text instead:":"Copy all of this text, then paste it into Import in the other copy:";
+    if(hosted) try{ const a=document.createElement("a"); a.href=URL.createObjectURL(new Blob([text],{type:"application/json"})); a.download="space-x-study-progress-"+todayKey()+".json"; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(a.href),4000); }catch(e){}
+    msg("Exported "+(Object.keys(state.mc).length+Object.keys(state.why).length+Object.keys(state.cards).length)+" answered items.");
+  });
+  const doImport=text=>{
+    try{ const d=JSON.parse(text), st=d&&d.app==="space-x-study"?d.state:null;
+      if(!st||typeof st.mc!=="object"||typeof st.why!=="object"||typeof st.cards!=="object") throw new Error("not a Space X Study export");
+      state=mergeState(state,st); persist(); render(); document.getElementById("xferMsg").textContent="Imported. Progress from both copies is now combined.";
+    }catch(e){ msg("That did not import: "+e.message+". Nothing was changed."); }
+  };
+  $("impBtn").addEventListener("click",()=>{ $("xferBox").hidden=false; $("impGo").hidden=false; $("impPick").hidden=false; $("xferText").value=""; $("xferLabel").textContent="Paste the exported text here, or choose the exported file:"; msg(""); });
+  $("impPick").addEventListener("click",()=>$("impFile").click());
+  $("impFile").addEventListener("change",e=>{ const f=e.target.files[0]; if(!f) return; const r=new FileReader(); r.onload=()=>doImport(String(r.result)); r.readAsText(f); });
+  $("impGo").addEventListener("click",()=>doImport($("xferText").value));
   document.getElementById("reset1").addEventListener("click",()=>{ document.getElementById("confirm").hidden=false; });
   document.getElementById("reset2").addEventListener("click",()=>{ state={mc:{},why:{},cards:{},scenes:{},sessions:[],runs:[]}; persist(); render(); });
 }
 
 render();
 initStore();
+// Outside claude.ai (a self-hosted copy) the app installs to the Home Screen and works offline:
+// sw.js serves everything from cache, and the notebook pages are fetched into that cache in the background.
+(function selfHosted(){
+  if(typeof claude!=="undefined"||!(location.protocol==="https:"||location.hostname==="localhost")||!("serviceWorker" in navigator)) return;
+  const l=document.createElement("link"); l.rel="manifest"; l.href="manifest.webmanifest"; document.head.appendChild(l);
+  navigator.serviceWorker.register("sw.js").then(()=>navigator.serviceWorker.ready).then(reg=>{
+    const pages=[]; for(let p=1;p<=NB.total;p++) pages.push(nbSrc(p));
+    setTimeout(()=>{ if(reg.active) reg.active.postMessage({warm:pages}); },4000);
+  }).catch(()=>{});
+})();
 </script>

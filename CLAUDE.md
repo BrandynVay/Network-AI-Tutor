@@ -27,7 +27,7 @@
 > - **Space X Study app (added 2026-11-10):** a separate published
 >   Artifact for this course, https://claude.ai/artifact/CnDfEEJHGhs76GMZNu7BSM
 >   (source mirrored at `COURSES/udemy-interplanetary-spacecraft/app/space-x-study.html`).
->   Tabs: Today (with a "how this app helps you" card) · Learn (19 scenes;
+>   Tabs: Today (with a "how this app helps you" card) · Notebook (see the 2026-11-13 bullet below) · Learn (19 scenes;
 >   scene 8 "Throw it backward" = S4 propulsion basics + chemical engines,
 >   scene 9 "The tortoise engine" = S4 electric propulsion / ion thruster,
 >   scene 10 "The kettle with no fire" = S4 nuclear thermal rockets,
@@ -68,6 +68,34 @@
 >   entry, not just a definition; `Word-Bank-CONCEPTS-S1-S3-v4.pdf` is
 >   generated from those arrays by `app/concepts.js` (rebuild it with a
 >   new version suffix when terms change).
+> - **Notebook tab, the Duo, and Homelab HQ (2026-11-13, app Version 23):**
+>   the app has a ninth tab, **Notebook**: all 169 pages of
+>   `Space-X-Notebook-COMPLETE-S1-S7-v1.pdf` as page images (`nb/p001.webp`
+>   … `p169.webp`, 180 dpi, 64-colour lossless, 16 MB, published as
+>   supporting files of the same artifact; `NB.toc` in the HTML mirrors the
+>   PDF bookmarks). Views: Auto · Half page · Whole page · Split at hinge ·
+>   Two pages, plus zoom and a full-screen reader. **"The DUO" is the
+>   student's foldable iPhone** (Safari; folded 382×580, unfolded 951×585,
+>   hinge vertical on the centre line, no fold APIs). Auto shows half a
+>   sheet folded and one half-sheet each side of a 36 px gutter unfolded
+>   (rule from the homelab notes: touch, width ≥ 600, height ≥ 440, aspect
+>   ≥ 6:5). Only the full-screen reader was checked against the "nothing on
+>   the centre line" rule; the other tabs were only checked for sideways
+>   overflow. **Homelab HQ** is another Claude session on the student's own
+>   PC (`session_01PSZBScB86TmN2ssS63u3kr`) that hosts their apps on a
+>   private network. This session was allowed to message it
+>   (`send_message`); it answers in its own transcript (read with
+>   `list_events`, look for "TO NETWORK AI TUTOR:") and deploys only when
+>   the student tells it directly ("host the study app"), not before the
+>   call. The ready-to-serve folder for it is `app/dist/` (`index.html` with
+>   its own page skeleton, `nb/`, `sw.js`, `manifest.webmanifest`, `icons/`,
+>   `SHA256SUMS`), rebuilt with `app/mkdist.py`; page images with
+>   `app/nbpages.py`; layout/offline test `app/test-notebook.js`. Progress
+>   tab has Export/Import to carry progress between the claude.ai copy and a
+>   hosted copy (claude.ai blocks downloads, so export there is copy-text).
+>   When the notebook PDF is rebuilt, re-render the pages, update `NB`,
+>   bump `VERSION` in `sw.js`, rebuild `dist/`, republish with the `nb/`
+>   files, and tell Homelab HQ the new commit and `SHA256SUMS` hash.
 > - **Concept cards on paper (2026-11-11):** the same 32 terms are also
 >   handwritten in the notebook as pages C1-C16 (two cards per 22-line
 >   page), from `Word-Bank-CONCEPT-CARDS-notebook-S1-S3-v1.pdf`; source
